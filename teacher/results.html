@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekapitulasi Hasil Kuis Siswa - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/teacher.css">
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Guru -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Dashboard Guru</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="manage-quizzes.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>Kelola Kuis (Evaluasi)</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="students.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Data Siswa</span>
+        </a>
+      </li>
+      <li class="sidebar-item active">
+        <a href="results.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Hasil Kuis Siswa</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil Guru</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Rekapitulasi Hasil Evaluasi Siswa</h2>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">Data nilai evaluasi kuis untuk pengolahan nilai rapor</div>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-teacher-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-teacher-nip" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-teacher-avatar" style="background-color: #0d9488;">G</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <div class="card">
+        <!-- Bilah Filter & Tombol Cetak (Layar 17 PRD) -->
+        <div class="filter-bar">
+          <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+            <label for="moduleFilterSelect" style="font-size: 0.9rem; font-weight: 600; color: var(--color-primary);">
+              Filter Modul:
+            </label>
+            <select id="moduleFilterSelect" class="form-select" style="width: auto; padding: 0.5rem 1rem;">
+              <option value="all">Semua Modul Pembelajaran</option>
+              <option value="1">Modul 1: Identifikasi Ancaman Jaringan</option>
+              <option value="2">Modul 2: Analisis Sistem Keamanan Jaringan</option>
+              <option value="3">Modul 3: Firewall &amp; Simulasi Paket</option>
+            </select>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem;">
+            <button type="button" class="btn btn-outline btn-sm" id="btnPrintResults">
+              🖨️ Cetak / Ekspor PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabel Rekap Nilai Siswa -->
+        <div class="table-responsive">
+          <table class="data-table" id="resultsPrintTable">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Lengkap Siswa</th>
+                <th>Modul Evaluasi</th>
+                <th>Skor Nilai</th>
+                <th>Status KKM (&ge; 75)</th>
+                <th>Tanggal Pengerjaan</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="resultsTableBody">
+              <!-- Render Dinamis -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Lembar Jawaban Siswa (Layar 17 Hi-Fi) -->
+  <div class="modal-overlay" id="sheetDetailModal">
+    <div class="modal-box modal-box-lg">
+      <div class="modal-header">
+        <h3 class="modal-title">Lembar Jawaban &amp; Pembahasan Siswa</h3>
+        <button type="button" class="modal-close" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body" id="modalSheetBody">
+        <!-- Diisi dinamis -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline modal-close">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/teacher-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let allResults = window.Storage.getAllResults();
+      const tbody = document.getElementById('resultsTableBody');
+      const filterSelect = document.getElementById('moduleFilterSelect');
+
+      // Periksa query parameter URL (?filter=1|2|3)
+      const urlParams = new URLSearchParams(window.location.search);
+      const filterParam = urlParams.get('filter');
+      if (filterParam) {
+        filterSelect.value = filterParam;
+      }
+
+      function loadAndRender() {
+        allResults = window.Storage.getAllResults();
+        filterAndRender();
+      }
+
+      function renderResults(list) {
+        if (list.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding: 2rem; color: var(--color-text-muted);">Belum ada catatan evaluasi kuis pada modul ini.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = list.map((r, idx) => {
+          const isPass = r.score >= 75;
+          const badgeClass = isPass ? 'badge-success' : 'badge-danger';
+          const badgeText = isPass ? 'TUNTAS (✓ Lulus KKM)' : 'BELUM TUNTAS (< KKM)';
+
+          return `
+            <tr>
+              <td>${idx + 1}</td>
+              <td><strong>${r.studentName}</strong></td>
+              <td><span class="badge badge-info">Modul ${r.moduleId}</span> ${r.moduleTitle}</td>
+              <td><span style="font-weight: 800; font-size: 1.1rem; color: ${isPass ? 'var(--color-success)' : 'var(--color-danger)'};">${r.score} / 100</span></td>
+              <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+              <td>${window.Utils.formatDate(r.timestamp)}</td>
+              <td>
+                <button type="button" class="btn btn-outline btn-sm js-view-sheet" data-id="${r.id}">
+                  Periksa Jawaban 📋
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        // Event listener periksa lembar jawaban
+        document.querySelectorAll('.js-view-sheet').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const resultId = btn.getAttribute('data-id');
+            showSheetDetail(resultId);
+          });
+        });
+      }
+
+      function showSheetDetail(resultId) {
+        const result = window.Storage.getResultById(resultId);
+        if (!result) return;
+
+        const quizzes = window.Storage.getQuizzes(result.moduleId);
+        const userAnswers = result.userAnswers || {};
+
+        const itemsHtml = quizzes.map((q, idx) => {
+          const studentAns = userAnswers[q.id];
+          const isCorrect = studentAns === q.kunci;
+          const statusBadge = isCorrect 
+            ? '<span class="badge badge-success">Benar ✓</span>' 
+            : '<span class="badge badge-danger">Salah ✗</span>';
+
+          return `
+            <div class="review-modal-item">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span class="font-bold" style="color: var(--color-primary);">Butir Soal #${idx + 1}</span>
+                ${statusBadge}
+              </div>
+              <div style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--color-text-dark);">${q.pertanyaan}</div>
+              <div style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">
+                <div>Pilihan Siswa: <strong>${studentAns ? `${studentAns}. ${q.opsi[studentAns]}` : 'Tidak Menjawab'}</strong></div>
+                <div style="color: var(--color-success);">Kunci Jawaban Resmi: <strong>${q.kunci}. ${q.opsi[q.kunci]}</strong></div>
+              </div>
+              <div style="background: #ffffff; padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--color-accent);">
+                <strong>Pembahasan:</strong> ${q.pembahasan}
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        document.getElementById('modalSheetBody').innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border);">
+            <div>
+              <h3 style="margin: 0; color: var(--color-primary);">${result.studentName}</h3>
+              <div style="font-size: 0.85rem; color: var(--color-text-muted);">
+                Modul ${result.moduleId}: ${result.moduleTitle} &bull; ${window.Utils.formatDate(result.timestamp)}
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 1.5rem; font-weight: 800; color: ${result.score >= 75 ? 'var(--color-success)' : 'var(--color-danger)'};">
+                ${result.score} / 100
+              </div>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted);">${result.correctCount} Benar, ${result.wrongCount} Salah</div>
+            </div>
+          </div>
+          <div>${itemsHtml}</div>
+        `;
+
+        window.Utils.openModal('sheetDetailModal');
+      }
+
+      function filterAndRender() {
+        const val = filterSelect.value;
+        if (val === 'all') {
+          renderResults(allResults);
+        } else {
+          const filtered = allResults.filter(r => String(r.moduleId) === String(val));
+          renderResults(filtered);
+        }
+      }
+
+      filterSelect.addEventListener('change', filterAndRender);
+
+      // Tombol Cetak / Ekspor PDF
+      document.getElementById('btnPrintResults').addEventListener('click', () => {
+        window.print();
+      });
+
+      // Render awal & listen API sync
+      filterAndRender();
+      window.addEventListener('cybertech:synced', loadAndRender);
+    });
+  </script>
+</body>
+</html>
+

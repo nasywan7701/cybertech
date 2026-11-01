@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberTech - Multimedia Pembelajaran Keamanan Jaringan</title>
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/landing.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar (Bar Atas) -->
+  <header class="site-navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.svg" alt="CyberTech Logo" width="34" height="34">
+        <span>CyberTech</span>
+      </a>
+
+      <nav>
+        <ul class="navbar-nav">
+          <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+          <li><a href="#tentang" class="nav-link">Tentang</a></li>
+          <li><a href="#modul" class="nav-link">Modul</a></li>
+          <li><button type="button" class="btn btn-outline-white btn-sm js-open-role-modal">Login</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="beranda">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>Administrasi Sistem Jaringan • SMK Negeri 1 Takalar</span>
+            </div>
+            <h1 class="hero-title">
+              Kuasai <span class="text-gradient">Keamanan Jaringan</span> Secara Visual & Interaktif
+            </h1>
+            <p class="hero-subtitle">
+              Platform multimedia pembelajaran komprehensif untuk memahami ancaman siber, mekanisme firewall, dan sistem keamanan berlapis melalui simulasi interaktif.
+            </p>
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary btn-lg js-open-role-modal">
+                Mulai Belajar
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+              <a href="#modul" class="btn btn-outline btn-lg">Lihat 3 Modul</a>
+            </div>
+          </div>
+
+          <div class="hero-graphic">
+            <div class="hero-glow-bg"></div>
+            <div class="hero-card-illustration">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+                <div style="display: flex; gap: 6px;">
+                  <span style="width: 12px; height: 12px; border-radius: 50%; background: #E5484D;"></span>
+                  <span style="width: 12px; height: 12px; border-radius: 50%; background: #F5A524;"></span>
+                  <span style="width: 12px; height: 12px; border-radius: 50%; background: #2BB673;"></span>
+                </div>
+                <span class="badge badge-success">Firewall: ACTIVE</span>
+              </div>
+              <div style="background: #0B2545; border-radius: var(--radius-md); padding: 1.25rem; color: #00B4D8; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                <div>&gt; INCOMING PACKET: 192.168.1.45:80</div>
+                <div>&gt; PROTOCOL: HTTP [INSPECTING]</div>
+                <div style="color: #2BB673;">&gt; RULE: ALLOW -> TRAFFIC ACCEPTED</div>
+                <div>&gt; INCOMING PACKET: 203.0.113.8:23</div>
+                <div style="color: #E5484D;">&gt; RULE: BLOCK TELNET -> DROPPED!</div>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: var(--color-text-muted);">
+                <span>Simulasi Paket Real-time</span>
+                <span style="color: var(--color-success); font-weight: 600;">Status Terlindungi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Kartu Pilihan Fitur (PRD Seksi 4.1 & 5.1) -->
+    <section class="features-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Fitur Unggulan Pembelajaran</h2>
+          <p class="section-subtitle">Tiga pilar multimedia interaktif yang dirancang untuk mempercepat pemahaman materi teknis jaringan.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Kartu 1: Materi Interaktif -->
+          <div class="feature-card js-feature-card" data-feature="materi">
+            <div>
+              <div class="feature-icon-wrapper">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              </div>
+              <h3 class="feature-card-title">Materi Interaktif</h3>
+              <p class="feature-card-desc">
+                Pelajari konsep fundamental ancaman siber, analisis sistem pertahanan, dan mekanisme firewall dengan visualisasi teks terstruktur dan catatan penting.
+              </p>
+            </div>
+            <div class="feature-card-action">
+              <span>Buka Materi Pembelajaran</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- Kartu 2: Video Pembelajaran -->
+          <div class="feature-card js-feature-card" data-feature="video">
+            <div>
+              <div class="feature-icon-wrapper">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <h3 class="feature-card-title">Video Pembelajaran</h3>
+              <p class="feature-card-desc">
+                Tonton visualisasi video 16:9 beresolusi tinggi dengan penjelasan naratif dan animasi gerak aliran data jaringan yang mudah dicerna.
+              </p>
+            </div>
+            <div class="feature-card-action">
+              <span>Tonton Video Pembelajaran</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+
+          <!-- Kartu 3: Kuis dan Simulasi -->
+          <div class="feature-card js-feature-card" data-feature="simulasi">
+            <div>
+              <div class="feature-icon-wrapper">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              </div>
+              <h3 class="feature-card-title">Kuis & Simulasi</h3>
+              <p class="feature-card-desc">
+                Uji kemampuan mandiri lewat aktivitas Drag & Drop ancaman, studi kasus keamanan, simulator firewall paket data, serta evaluasi otomatis berskor KKM.
+              </p>
+            </div>
+            <div class="feature-card-action">
+              <span>Mulai Kuis & Simulasi</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seksi Gambaran Modul (Modul 1-3) -->
+    <section class="modules-preview-section" id="modul">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">3 Modul Pembelajaran Terstruktur</h2>
+          <p class="section-subtitle">Disusun berdasarkan Capaian Pembelajaran (CP) dan Tujuan Pembelajaran (TP) Administrasi Sistem Jaringan.</p>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+          <!-- Modul 1 -->
+          <div class="module-card-preview">
+            <div class="module-badge-num">01</div>
+            <div style="flex: 1;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+                <h3 style="margin: 0;">Identifikasi Ancaman Jaringan</h3>
+                <span class="badge badge-info">Modul 1</span>
+              </div>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+                Mengklasifikasikan 4 jenis ancaman siber (Virus, Worm, Phishing, DDoS) berdasarkan cara kerja dan skenario kasus nyata melalui aktivitas interaktif Drag and Drop.
+              </p>
+              <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: var(--color-secondary); font-weight: 500;">
+                <span>✓ Video Pembelajaran</span>
+                <span>✓ Drag & Drop</span>
+                <span>✓ Kuis Evaluasi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modul 2 -->
+          <div class="module-card-preview">
+            <div class="module-badge-num">02</div>
+            <div style="flex: 1;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+                <h3 style="margin: 0;">Analisis Sistem Keamanan Jaringan</h3>
+                <span class="badge badge-info">Modul 2</span>
+              </div>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+                Menganalisis efektivitas 4 komponen sistem pertahanan (Antivirus, Firewall, VPN, dan Autentikasi 2FA) dalam menyelesaikan studi kasus keamanan jaringan.
+              </p>
+              <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: var(--color-secondary); font-weight: 500;">
+                <span>✓ Infografis Interaktif</span>
+                <span>✓ Studi Kasus Nyata</span>
+                <span>✓ Kuis Evaluasi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modul 3 -->
+          <div class="module-card-preview">
+            <div class="module-badge-num">03</div>
+            <div style="flex: 1;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+                <h3 style="margin: 0;">Firewall & Konfigurasi Paket</h3>
+                <span class="badge badge-info">Modul 3</span>
+              </div>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+                Menerapkan konfigurasi aturan Allow atau Block pada simulasi alur paket data klien ke server serta mengamati visualisasi inspeksi firewall secara langsung.
+              </p>
+              <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: var(--color-secondary); font-weight: 500;">
+                <span>✓ Animasi Alur Data</span>
+                <span>✓ Simulator Firewall</span>
+                <span>✓ Kuis Evaluasi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seksi Tentang -->
+    <section class="features-section" id="tentang" style="background-color: #FFFFFF; border-top: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Tentang Sistem CyberTech</h2>
+          <p class="section-subtitle">Dikembangkan dengan metodologi Multimedia Development Life Cycle (MDLC) Luther-Sutopo.</p>
+        </div>
+        <div style="max-width: 820px; margin: 0 auto; line-height: 1.7; color: var(--color-text-dark);">
+          <p>
+            <strong>CyberTech</strong> dirancang khusus untuk memfasilitasi kebutuhan belajar siswa jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT / TKJ) di <strong>SMK Negeri 1 Takalar</strong>. Berdasarkan observasi laboratorium, konsep keamanan jaringan seperti penyaringan paket firewall dan perbedaan ancaman siber sulit dipahami hanya melalui buku teks konvensional.
+          </p>
+          <p>
+            Dengan menerapkan <em>Teori Konstruktivisme</em> dan <em>5 Prinsip Multimedia Mayer</em> (Multimedia, Coherence, Signaling, Segmenting, Modality), CyberTech menghadirkan pembelajaran yang visual, interaktif, dan aplikatif sebagai persiapan sebelum siswa melakukan praktikum langsung di laboratorium jaringan.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; gap: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <img src="assets/images/logo.svg" alt="CyberTech Logo" width="36" height="36">
+          <div>
+            <h4 style="color: #FFFFFF; margin: 0; font-size: 1.15rem;">CyberTech</h4>
+            <div style="font-size: 0.8rem; color: #94a3b8;">Sistem Multimedia Pembelajaran Keamanan Jaringan</div>
+          </div>
+        </div>
+        <div style="font-size: 0.85rem; color: #94a3b8; text-align: right;">
+          <div>Kelompok 3 PTIK UNM &copy; 2026</div>
+          <div>Mitra Uji Coba: SMK Negeri 1 Takalar</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        Dirancang dan dikembangkan untuk Tugas Akhir Multimedia Pembelajaran Kejuruan.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       Layar 2: Pop-up Pilih Role Pengguna (Modal Dialog)
+       =================================================================== -->
+  <div class="modal-overlay" id="roleModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Pilih Peran Pengguna</h3>
+        <button type="button" class="modal-close" aria-label="Tutup Modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="role-modal-content">
+          <p class="role-modal-subtitle">Silakan tentukan peran Anda untuk masuk ke sistem CyberTech:</p>
+          
+          <div class="role-selection-grid">
+            <!-- Pilihan Siswa -->
+            <a href="login.html?role=siswa" class="role-card-btn" id="roleBtnSiswa">
+              <div class="role-icon-box">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              </div>
+              <h4 class="role-card-title">Masuk sebagai Siswa</h4>
+              <p class="role-card-desc">Akses modul pembelajaran, latihan aktivitas, dan kuis evaluasi materi.</p>
+            </a>
+
+            <!-- Pilihan Guru -->
+            <a href="login.html?role=guru" class="role-card-btn" id="roleBtnGuru">
+              <div class="role-icon-box">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              </div>
+              <h4 class="role-card-title">Masuk sebagai Guru</h4>
+              <p class="role-card-desc">Kelola butir soal evaluasi, pantau direktori siswa, dan rekapitulasi nilai kuis.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/landing.js"></script>
+</body>
+</html>
+

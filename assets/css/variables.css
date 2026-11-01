@@ -1,0 +1,72 @@
+/* ===================================================================
+   CyberTech - Design System Variables & Tokens
+   Berdasarkan Dokumen PRD CyberTech (Seksi 6: Desain Sistem)
+   =================================================================== */
+
+:root {
+  /* --- Palet Warna Utama & Semantik --- */
+  --color-primary: #0B2545;          /* Biru Malam (Primer): Navigasi, judul utama, brand */
+  --color-secondary: #134074;        /* Biru Tua (Sekunder): Tombol CTA utama, subjudul, menu aktif */
+  --color-accent: #00B4D8;           /* Sian (Aksen): Sorotan menu, progress bar, border aktif */
+  --color-accent-hover: #0096c7;
+  --color-accent-light: rgba(0, 180, 216, 0.12);
+
+  --color-success: #2BB673;          /* Hijau: Benar, Allow Firewall, Lulus KKM */
+  --color-success-bg: #eafaf1;
+  --color-success-border: #a3e9c4;
+
+  --color-danger: #E5484D;           /* Merah: Salah, Block Firewall, Gagal KKM, Hapus */
+  --color-danger-bg: #fdf2f2;
+  --color-danger-border: #f8b4b7;
+
+  --color-warning: #F5A524;          /* Kuning: Catatan penting, istilah kunci */
+  --color-warning-bg: #fef8ec;
+  --color-warning-border: #fbd692;
+
+  --color-bg: #F3F7FB;               /* Abu Biru Muda: Background halaman utama */
+  --color-card: #FFFFFF;             /* Putih: Background kartu, panel materi, modal */
+  --color-text-dark: #1B2A41;        /* Teks Gelap: Konten isi paragraf & soal */
+  --color-text-muted: #64748B;       /* Abu-abu teks sekunder/keterangan */
+  --color-border: #E2E8F0;           /* Garis pembatas halus */
+  --color-border-dark: #CBD5E1;
+
+  /* --- Tipografi (Font: Poppins) --- */
+  --font-family-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  --font-size-h1: 60px;              /* Judul Utama Landing Page */
+  --font-size-h2: 32px;              /* Judul Modul & Judul Halaman */
+  --font-size-h3: 20px;              /* Subjudul materi / Judul kartu */
+  --font-size-body: 16px;            /* Teks isi paragraf, tombol & soal */
+  --font-size-caption: 14px;         /* Label formulir & keterangan */
+  --font-size-small: 12px;           /* Badge & waktu */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-body: 1.6;
+  --line-height-heading: 1.25;
+
+  /* --- Efek Visual & Bayangan (Elevation) --- */
+  --shadow-sm: 0 1px 3px rgba(11, 37, 69, 0.06), 0 1px 2px rgba(11, 37, 69, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(11, 37, 69, 0.08), 0 2px 4px -1px rgba(11, 37, 69, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(11, 37, 69, 0.1), 0 4px 6px -2px rgba(11, 37, 69, 0.05);
+  --shadow-hover: 0 12px 24px -4px rgba(11, 37, 69, 0.12), 0 6px 12px -2px rgba(0, 180, 216, 0.08);
+
+  /* --- Border Radius --- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* --- Transisi --- */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  /* --- Layout & Spacing --- */
+  --sidebar-width: 260px;
+  --topbar-height: 72px;
+  --max-content-width: 1240px;
+}
+

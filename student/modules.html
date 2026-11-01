@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Modul Pembelajaran - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/student.css">
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Siswa -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="sidebar-item active">
+        <a href="modules.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Modul Pembelajaran</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="activity.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Aktivitas & Hasil Kuis</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Katalog Modul Pembelajaran</h2>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">Pilih modul untuk memulai alur belajar bertahap</div>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-student-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-student-class" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-student-avatar">S</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <div style="margin-bottom: 2rem;">
+        <h3 style="margin-bottom: 0.35rem;">Alur Pembelajaran Keamanan Jaringan</h3>
+        <p style="color: var(--color-text-muted); font-size: 0.95rem; margin: 0;">
+          Tiga modul interaktif terintegrasi sesuai Capaian Pembelajaran Administrasi Sistem Jaringan SMK. Setiap modul terdiri dari Materi Visual, Video Pembelajaran, Latihan Interaktif, dan Kuis Evaluasi.
+        </p>
+      </div>
+
+      <!-- Katalog 3 Modul (Layar 6 PRD) -->
+      <div class="catalog-list">
+        <!-- Modul 1 -->
+        <div class="catalog-card" id="catalogCard1">
+          <div class="catalog-card-icon">01</div>
+          <div class="catalog-card-body">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem;">
+              <span class="badge badge-info">Modul 1</span>
+              <span class="badge badge-secondary" id="catalogBadge1">Belum Dimulai</span>
+            </div>
+            <h3>Identifikasi Ancaman Jaringan</h3>
+            <p class="catalog-card-desc">
+              Memahami definisi keamanan jaringan, karakteristik dan mekanisme serangan 4 jenis malware & ancaman siber (<strong>Virus, Worm, Phishing, dan DDoS</strong>), serta cara pencegahan preventif.
+            </p>
+            <div class="catalog-card-tags">
+              <span class="badge badge-secondary">📹 Video Pembelajaran</span>
+              <span class="badge badge-secondary">🎮 Aktivitas Drag & Drop</span>
+              <span class="badge badge-secondary">📝 Kuis Evaluasi (5 Soal)</span>
+              <span class="badge badge-warning">🎯 KKM: 75</span>
+            </div>
+          </div>
+          <div class="catalog-card-action">
+            <div style="width: 100%; text-align: right;">
+              <span style="font-size: 0.85rem; color: var(--color-text-muted);">Capaian Modul: </span>
+              <strong id="catalogPct1">0%</strong>
+              <div class="progress-track" style="margin-top: 0.35rem; width: 150px;">
+                <div class="progress-bar" id="catalogBar1" style="width: 0%;"></div>
+              </div>
+            </div>
+            <a href="module1-material.html" class="btn btn-primary" id="catalogBtn1" style="width: 100%;">Mulai Modul 1 →</a>
+          </div>
+        </div>
+
+        <!-- Modul 2 -->
+        <div class="catalog-card" id="catalogCard2">
+          <div class="catalog-card-icon">02</div>
+          <div class="catalog-card-body">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem;">
+              <span class="badge badge-info">Modul 2</span>
+              <span class="badge badge-secondary" id="catalogBadge2">Belum Dimulai</span>
+            </div>
+            <h3>Analisis Sistem Keamanan Jaringan</h3>
+            <p class="catalog-card-desc">
+              Menganalisis prinsip kerja dan fungsi dari 4 pilar pertahanan jaringan (<strong>Antivirus, Firewall, Virtual Private Network/VPN, dan Autentikasi 2FA</strong>) untuk memecahkan studi kasus keamanan nyata di lingkungan sekolah/perusahaan.
+            </p>
+            <div class="catalog-card-tags">
+              <span class="badge badge-secondary">📊 Infografis Interaktif</span>
+              <span class="badge badge-secondary">💼 Studi Kasus Skenario</span>
+              <span class="badge badge-secondary">📝 Kuis Evaluasi (5 Soal)</span>
+              <span class="badge badge-warning">🎯 KKM: 75</span>
+            </div>
+          </div>
+          <div class="catalog-card-action">
+            <div style="width: 100%; text-align: right;">
+              <span style="font-size: 0.85rem; color: var(--color-text-muted);">Capaian Modul: </span>
+              <strong id="catalogPct2">0%</strong>
+              <div class="progress-track" style="margin-top: 0.35rem; width: 150px;">
+                <div class="progress-bar" id="catalogBar2" style="width: 0%;"></div>
+              </div>
+            </div>
+            <a href="module2-material.html" class="btn btn-primary" id="catalogBtn2" style="width: 100%;">Mulai Modul 2 →</a>
+          </div>
+        </div>
+
+        <!-- Modul 3 -->
+        <div class="catalog-card" id="catalogCard3">
+          <div class="catalog-card-icon">03</div>
+          <div class="catalog-card-body">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem;">
+              <span class="badge badge-info">Modul 3</span>
+              <span class="badge badge-secondary" id="catalogBadge3">Belum Dimulai</span>
+            </div>
+            <h3>Firewall & Simulasi Lalu Lintas Jaringan</h3>
+            <p class="catalog-card-desc">
+              Mempelajari fungsi firewall, mekanisme inspeksi paket data (Packet Filtering), port layanan jaringan (HTTP, HTTPS, Telnet), dan mengonfigurasi aturan <strong>Allow</strong> atau <strong>Block</strong> pada simulator firewall interaktif.
+            </p>
+            <div class="catalog-card-tags">
+              <span class="badge badge-secondary">⚡ Animasi Alur Data</span>
+              <span class="badge badge-secondary">🕹️ Simulator Firewall Allow/Block</span>
+              <span class="badge badge-secondary">📝 Kuis Evaluasi (5 Soal)</span>
+              <span class="badge badge-warning">🎯 KKM: 75</span>
+            </div>
+          </div>
+          <div class="catalog-card-action">
+            <div style="width: 100%; text-align: right;">
+              <span style="font-size: 0.85rem; color: var(--color-text-muted);">Capaian Modul: </span>
+              <strong id="catalogPct3">0%</strong>
+              <div class="progress-track" style="margin-top: 0.35rem; width: 150px;">
+                <div class="progress-bar" id="catalogBar3" style="width: 0%;"></div>
+              </div>
+            </div>
+            <a href="module3-material.html" class="btn btn-primary" id="catalogBtn3" style="width: 100%;">Mulai Modul 3 →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/student-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentUser = window.Auth.getCurrentUser();
+      if (!currentUser) return;
+
+      const summary = window.StudentHelper.getGlobalProgress(currentUser.id);
+
+      ['1', '2', '3'].forEach(mId => {
+        const modProg = summary.modules[mId] || { percentage: 0, completed: false };
+        const badge = document.getElementById(`catalogBadge${mId}`);
+        const pctText = document.getElementById(`catalogPct${mId}`);
+        const bar = document.getElementById(`catalogBar1${mId}`) || document.getElementById(`catalogBar${mId}`);
+        const btn = document.getElementById(`catalogBtn${mId}`);
+
+        pctText.textContent = `${modProg.percentage || 0}%`;
+        if (bar) bar.style.width = `${modProg.percentage || 0}%`;
+
+        if (modProg.completed || (modProg.quizScore !== null && modProg.quizScore >= 75)) {
+          badge.className = 'badge badge-success';
+          badge.textContent = '100% Selesai ✓';
+          btn.textContent = 'Pelajari Ulang →';
+          btn.className = 'btn btn-outline';
+        } else if (modProg.percentage > 0) {
+          badge.className = 'badge badge-info';
+          badge.textContent = 'Sedang Dipelajari';
+          btn.textContent = 'Lanjutkan Modul →';
+        } else {
+          badge.className = 'badge badge-secondary';
+          badge.textContent = 'Belum Dimulai';
+          btn.textContent = 'Mulai Modul →';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+

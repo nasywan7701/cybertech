@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Modul 2: Analisis Sistem Keamanan Jaringan - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/student.css">
+  <link rel="stylesheet" href="css/module.css">
+  <style>
+    /* Styling Khusus Infografis Interaktif Modul 2 */
+    .infographic-container {
+      background: #f8fafc;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+
+    .infographic-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .infographic-tab-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 0.75rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .infographic-tab-btn:hover {
+      border-color: var(--color-accent);
+      background: #f0faff;
+      transform: translateY(-2px);
+    }
+
+    .infographic-tab-btn.active {
+      border-color: var(--color-secondary);
+      background: var(--color-secondary);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .infographic-tab-btn.active .tab-icon-box {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    .tab-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      transition: all var(--transition-fast);
+    }
+
+    .infographic-panel-content {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      padding: 1.75rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .diagram-mockup {
+      background: #0B2545;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      color: #ffffff;
+      font-family: monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 992px) {
+      .infographic-tabs {
+        grid-template-columns: 1fr 1fr;
+      }
+      .infographic-panel-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Siswa -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="sidebar-item active">
+        <a href="modules.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Modul Pembelajaran</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="activity.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Aktivitas & Hasil Kuis</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <div class="module-breadcrumb">
+          <a href="dashboard.html">Beranda</a>
+          <span class="separator">/</span>
+          <a href="modules.html">Modul Pembelajaran</a>
+          <span class="separator">/</span>
+          <span class="current">Modul 2: Materi</span>
+        </div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Modul 2: Analisis Sistem Keamanan Jaringan</h2>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-student-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-student-class" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-student-avatar">S</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <!-- Module Header Box & Step Progress Tracker -->
+      <div class="module-header-box">
+        <div>
+          <span class="badge badge-info" style="margin-bottom: 0.35rem;">Topik: Sistem Pertahanan Berlapis</span>
+          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;">Tahap 1: Pembacaan Materi & Infografis</h3>
+        </div>
+        <div class="module-stepper">
+          <span class="stepper-item active">1. Materi</span>
+          <a href="module2-infografis.html" class="stepper-item">2. Infografis Interaktif</a>
+          <a href="module2-activity.html" class="stepper-item">3. Studi Kasus</a>
+          <a href="quiz.html?module=2" class="stepper-item">4. Kuis Evaluasi</a>
+        </div>
+      </div>
+
+      <!-- Main Material Panel -->
+      <article class="material-panel">
+        <h2>A. Konsep Pertahanan Berlapis (Defense in Depth)</h2>
+        <p>
+          Dalam dunia keamanan siber profesional, tidak ada satu pun perangkat atau aplikasi yang mampu menjamin keamanan secara mutlak $100\%$. Oleh karena itu, arsitektur jaringan modern menerapkan strategi <strong>Defense in Depth (Pertahanan Berlapis)</strong>, yaitu pendekatan di mana berbagai mekanisme pertahanan ditempatkan secara bertingkat untuk saling melengkapi. Jika satu lapisan pertahanan berhasil ditembus, lapisan berikutnya akan mencegah kerusakan lebih lanjut.
+        </p>
+
+        <h3>B. 4 Pilar Sistem Keamanan Jaringan Komputer</h3>
+        <p>
+          Klik masing-masing tab pada <strong>Infografis Interaktif</strong> di bawah ini untuk mempelajari fungsi teknis dan cara kerja dari masing-masing sistem keamanan:
+        </p>
+
+        <!-- Infografis Interaktif 4 Sistem Keamanan (PRD Seksi 3 & 5.2 - Layar 7) -->
+        <div class="infographic-container">
+          <div class="infographic-tabs">
+            <button type="button" class="infographic-tab-btn active" data-tab="antivirus">
+              <div class="tab-icon-box">🛡️</div>
+              <strong>1. Antivirus</strong>
+            </button>
+            <button type="button" class="infographic-tab-btn" data-tab="firewall">
+              <div class="tab-icon-box">🧱</div>
+              <strong>2. Firewall</strong>
+            </button>
+            <button type="button" class="infographic-tab-btn" data-tab="vpn">
+              <div class="tab-icon-box">🚇</div>
+              <strong>3. VPN</strong>
+            </button>
+            <button type="button" class="infographic-tab-btn" data-tab="auth">
+              <div class="tab-icon-box">🔑</div>
+              <strong>4. Autentikasi</strong>
+            </button>
+          </div>
+
+          <div class="infographic-panel-content" id="infographicContent">
+            <div>
+              <span class="badge badge-info" id="infoBadge">Proteksi Endpoint</span>
+              <h3 style="margin-top: 0.5rem; margin-bottom: 0.75rem;" id="infoTitle">Antivirus / Anti-Malware</h3>
+              <p style="font-size: 0.95rem; line-height: 1.6;" id="infoDesc">
+                Perangkat lunak yang dipasang langsung pada komputer klien (endpoint) untuk mendeteksi, mencegah, dan menghapus kode berbahaya. Antivirus bekerja melalui teknik pencocokan database <em>signature</em> serta analisis perilaku heuristik terhadap aplikasi yang sedang berjalan.
+              </p>
+              <div style="background: #f1f5f9; padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem;" id="infoExample">
+                <strong>Contoh Penggunaan:</strong> Memindai flashdisk siswa yang baru dicolokkan ke komputer lab sebelum file di dalamnya dibuka.
+              </div>
+            </div>
+            <div class="diagram-mockup" id="infoMockup">
+              <div style="color: #00B4D8; margin-bottom: 0.5rem;">[ENDPOINT SCANNING ENGINE]</div>
+              <div>&gt; Scanning: C:\Windows\System32</div>
+              <div>&gt; Checking file signatures...</div>
+              <div style="color: #2BB673;">&gt; Status: 0 Threats Detected</div>
+              <div>&gt; Realtime Shield: ACTIVE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kotak Catatan Penting Kuning (#F5A524) -->
+        <div class="note-box">
+          <div class="note-box-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span>Poin Analisis Studi Kasus:</span>
+          </div>
+          <div>
+            Setiap sistem keamanan memiliki fokus peran spesifik: <strong>Antivirus</strong> melindungi perangkat dari file berbahaya; <strong>Firewall</strong> mengatur lalu lintas keluar-masuk port jaringan; <strong>VPN</strong> mengenkripsi saluran data agar tidak disadap di Wi-Fi publik; dan <strong>Autentikasi (2FA)</strong> memverifikasi identitas pengguna agar akun tidak mudah dibajak.
+          </div>
+        </div>
+
+        <h3>C. Perbandingan Solusi Keamanan dalam Praktik Nyata</h3>
+        <div class="table-responsive" style="margin-top: 1rem;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Sistem Keamanan</th>
+                <th>Titik Perlindungan</th>
+                <th>Ancaman Utama yang Diatasi</th>
+                <th>Keterbatasan Solusi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Antivirus</strong></td>
+                <td>Perangkat Klien / Server (Endpoint)</td>
+                <td>Virus, Worm, Trojan, Ransomware file</td>
+                <td>Tidak dapat mengenkripsi paket jaringan</td>
+              </tr>
+              <tr>
+                <td><strong>Firewall</strong></td>
+                <td>Gerbang Jaringan (Perimeter)</td>
+                <td>Port scanning, akses tidak sah, DDoS flood</td>
+                <td>Tidak memeriksa isi email penipuan (phishing)</td>
+              </tr>
+              <tr>
+                <td><strong>VPN</strong></td>
+                <td>Saluran Transmisi Data (Tunneling)</td>
+                <td>Penyadapan (Sniffing) di jaringan publik</td>
+                <td>Tidak mencegah infeksi virus jika pengguna mendownload malware</td>
+              </tr>
+              <tr>
+                <td><strong>Autentikasi 2FA</strong></td>
+                <td>Akses Identitas Akun (Identity)</td>
+                <td>Pencurian password, brute force login</td>
+                <td>Tidak memfilter lalu lintas paket jaringan</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bottom Action Area -->
+        <div class="bottom-action-area">
+          <a href="modules.html" class="btn btn-outline">
+            ← Kembali ke Katalog Modul
+          </a>
+          <a href="module2-infografis.html" class="btn btn-primary" id="btnNextVideo2">
+            Lanjut ke Infografis Interaktif →
+          </a>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/student-common.js"></script>
+  <script src="js/module-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tandai otomatis materi Modul 2 telah dibaca
+      window.ModuleHelper.markMaterialRead('2');
+
+      // Interaksi Tab Infografis Sistem Keamanan
+      const tabData = {
+        antivirus: {
+          badge: 'Proteksi Endpoint',
+          title: 'Antivirus / Anti-Malware',
+          desc: 'Perangkat lunak yang dipasang langsung pada komputer klien (endpoint) untuk mendeteksi, mencegah, dan menghapus kode berbahaya. Antivirus bekerja melalui teknik pencocokan database signature serta analisis perilaku heuristik terhadap aplikasi yang sedang berjalan.',
+          example: 'Memindai flashdisk siswa yang baru dicolokkan ke komputer lab sebelum file di dalamnya dibuka.',
+          mockup: `
+            <div style="color: #00B4D8; margin-bottom: 0.5rem;">[ENDPOINT SCANNING ENGINE]</div>
+            <div>&gt; Scanning: C:\\Windows\\System32</div>
+            <div>&gt; Checking file signatures...</div>
+            <div style="color: #2BB673;">&gt; Status: 0 Threats Detected</div>
+            <div>&gt; Realtime Shield: ACTIVE</div>
+          `
+        },
+        firewall: {
+          badge: 'Proteksi Perimeter Jaringan',
+          title: 'Firewall (Penyaring Paket)',
+          desc: 'Sistem pengaman yang bertindak sebagai pos pemeriksaan lalu lintas data antara komputer laboratorium dan internet. Firewall memeriksa IP address, protokol komunikasi (TCP/UDP), dan nomor port untuk menentukan apakah paket data boleh lewat (Allow) atau diblokir (Block).',
+          example: 'Menutup port Telnet 23 yang rentan dan mengizinkan hanya port browsing HTTPS 443.',
+          mockup: `
+            <div style="color: #00B4D8; margin-bottom: 0.5rem;">[PACKET FILTER RULES]</div>
+            <div>&gt; PORT 80 HTTP  -> ALLOW</div>
+            <div>&gt; PORT 443 HTTPS -> ALLOW</div>
+            <div style="color: #E5484D;">&gt; PORT 23 TELNET -> BLOCK</div>
+            <div style="color: #2BB673;">&gt; DEFAULT POLICY: DENY ALL</div>
+          `
+        },
+        vpn: {
+          badge: 'Proteksi Transmisi Enkripsi',
+          title: 'VPN (Virtual Private Network)',
+          desc: 'Teknologi yang membungkus dan mengenkripsi seluruh pertukaran informasi dalam saluran terowongan aman (encrypted tunnel) saat melintasi jaringan internet publik. Orang lain yang terhubung ke jaringan Wi-Fi yang sama tidak akan bisa membaca isi komunikasi Anda.',
+          example: 'Guru mengakses server data nilai sekolah dari kafe menggunakan koneksi Wi-Fi publik tanpa khawatir data disadap peretas.',
+          mockup: `
+            <div style="color: #00B4D8; margin-bottom: 0.5rem;">[VPN ENCRYPTED TUNNEL]</div>
+            <div>&gt; Client IP: 192.168.43.12 (Public)</div>
+            <div>&gt; Tunnel: AES-256-GCM [ACTIVE]</div>
+            <div style="color: #2BB673;">&gt; Virtual IP: 10.8.0.5 -> School LAN</div>
+            <div>&gt; Sniffing Defense: PROTECTED</div>
+          `
+        },
+        auth: {
+          badge: 'Proteksi Identitas Akun',
+          title: 'Autentikasi 2FA / MFA',
+          desc: 'Mekanisme verifikasi identitas berlapis yang mewajibkan pengguna membuktikan identitasnya melalui dua atau lebih faktor: sesuatu yang diketahui (kata sandi) dan sesuatu yang dimiliki (kode OTP di ponsel atau kunci fisik).',
+          example: 'Siswa masuk ke portal ujian dengan memasukkan username & password, lalu menginput 6 digit kode OTP yang dikirimkan ke aplikasi autentikator.',
+          mockup: `
+            <div style="color: #00B4D8; margin-bottom: 0.5rem;">[2-FACTOR AUTHENTICATION]</div>
+            <div>&gt; Factor 1: Password -> [VALID]</div>
+            <div>&gt; Factor 2: Enter 6-digit OTP...</div>
+            <div style="color: #2BB673;">&gt; OTP Verified: 849201 [SUCCESS]</div>
+            <div>&gt; Session Token Granted!</div>
+          `
+        }
+      };
+
+      const tabBtns = document.querySelectorAll('.infographic-tab-btn');
+      const infoBadge = document.getElementById('infoBadge');
+      const infoTitle = document.getElementById('infoTitle');
+      const infoDesc = document.getElementById('infoDesc');
+      const infoExample = document.getElementById('infoExample');
+      const infoMockup = document.getElementById('infoMockup');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const key = btn.getAttribute('data-tab');
+          const data = tabData[key];
+
+          infoBadge.textContent = data.badge;
+          infoTitle.textContent = data.title;
+          infoDesc.textContent = data.desc;
+          infoExample.innerHTML = `<strong>Contoh Penggunaan:</strong> ${data.example}`;
+          infoMockup.innerHTML = data.mockup;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

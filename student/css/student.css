@@ -1,0 +1,339 @@
+/* ===================================================================
+   CyberTech - Student Portal Stylesheet
+   Dashboard, Modul Catalog, dan Profil Siswa
+   =================================================================== */
+
+/* Welcome Banner */
+.student-banner {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 70%, #0077b6 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.student-banner::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.banner-content {
+  max-width: 650px;
+  position: relative;
+  z-index: 2;
+}
+
+.banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 0.85rem;
+}
+
+.banner-title {
+  color: #ffffff;
+  font-size: 1.85rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.5rem;
+}
+
+.banner-subtitle {
+  color: #e2e8f0;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Global Progress Summary Card */
+.progress-summary-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.progress-summary-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.progress-summary-title {
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.progress-summary-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+}
+
+.progress-pct-badge {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary);
+}
+
+/* Grid Modul di Dashboard (Layar 5) */
+.student-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.module-status-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.module-status-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(0, 180, 216, 0.4);
+}
+
+/* Status Selesai Hijau (Sesuai Komponen CARD 1_ Modul 1 100% Selesai di PRD) */
+.module-status-card.is-completed {
+  border-color: var(--color-success-border);
+  background: linear-gradient(180deg, #ffffff 0%, #f6fdf9 100%);
+}
+
+.module-status-card.is-completed .module-card-icon {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.module-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.module-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-accent-light);
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.module-card-title {
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.module-card-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.module-step-indicators {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.step-indicator-pill {
+  flex: 1;
+  text-align: center;
+  padding: 0.35rem 0.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+  background: #f1f5f9;
+  color: var(--color-text-muted);
+}
+
+.step-indicator-pill.done {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Katalog Daftar Modul (Layar 6: Daftar Modul) */
+.catalog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.catalog-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  transition: all var(--transition-fast);
+}
+
+.catalog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.catalog-card-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.catalog-card-body h3 {
+  font-size: 1.35rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.catalog-card-desc {
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 1rem;
+  max-width: 720px;
+}
+
+.catalog-card-tags {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+
+.catalog-card-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  min-width: 170px;
+}
+
+/* Halaman Profil Siswa */
+.profile-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  padding: 2.25rem;
+  margin-bottom: 2rem;
+}
+
+.profile-header-box {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.profile-avatar-large {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+}
+
+.avatar-selector {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.avatar-preset-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #ffffff;
+  transition: all var(--transition-fast);
+}
+
+.avatar-preset-btn:hover, .avatar-preset-btn.active {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  transform: scale(1.1);
+}
+
+/* Responsivitas */
+@media (max-width: 1100px) {
+  .student-modules-grid {
+    grid-template-columns: 1fr;
+  }
+  .catalog-card {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .catalog-card-action {
+    align-items: flex-start;
+  }
+}
+

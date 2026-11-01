@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Guru - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/teacher.css">
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Guru (Layar 13 PRD) -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item active">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Dashboard Guru</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="manage-quizzes.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>Kelola Kuis (Evaluasi)</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="students.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Data Siswa</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="results.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Hasil Kuis Siswa</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil Guru</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Dashboard Pengelolaan Guru</h2>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">Administrasi Sistem Jaringan &bull; SMK Negeri 1 Takalar</div>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-teacher-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-teacher-nip" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-teacher-avatar" style="background-color: #0d9488;">G</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <!-- 1. Banner Guru -->
+      <section class="teacher-banner">
+        <div>
+          <span class="badge badge-info" style="background: rgba(255, 255, 255, 0.2); color: #ffffff; margin-bottom: 0.5rem;">
+            Panel Administrator Pembelajaran
+          </span>
+          <h1 style="color: #ffffff; font-size: 1.85rem; margin-bottom: 0.35rem;">
+            Selamat Datang, <span class="js-teacher-name">Bapak/Ibu Guru</span>! 👨‍🏫
+          </h1>
+          <p style="color: #e2e8f0; font-size: 0.95rem; margin: 0; max-width: 650px;">
+            Pantau perkembangan belajar siswa jurusan TJKT, kelola butir soal kuis evaluasi 3 modul, dan pantau rekapitulasi nilai untuk diolah menjadi nilai akhir.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Empat Kartu Metrik / Statistik Kelas (Layar 13 PRD) -->
+      <section class="metrics-grid">
+        <!-- Metrik 1: Siswa Terdaftar -->
+        <div class="metric-card">
+          <div class="metric-icon-box students">👥</div>
+          <div>
+            <div class="metric-val" id="metricTotalStudents">0</div>
+            <div class="metric-lbl">Total Siswa Terdaftar</div>
+          </div>
+        </div>
+
+        <!-- Metrik 2: Total Soal Aktif -->
+        <div class="metric-card">
+          <div class="metric-icon-box quizzes">📝</div>
+          <div>
+            <div class="metric-val" id="metricTotalQuizzes">0</div>
+            <div class="metric-lbl">Total Bank Soal (M1-M3)</div>
+          </div>
+        </div>
+
+        <!-- Metrik 3: Rata-rata Nilai Kelas -->
+        <div class="metric-card">
+          <div class="metric-icon-box average">📊</div>
+          <div>
+            <div class="metric-val" id="metricAverageScore">0</div>
+            <div class="metric-lbl">Rata-rata Nilai Evaluasi</div>
+          </div>
+        </div>
+
+        <!-- Metrik 4: Ketuntasan Belajar KKM -->
+        <div class="metric-card">
+          <div class="metric-icon-box passing">🎯</div>
+          <div>
+            <div class="metric-val" id="metricPassingRate">0%</div>
+            <div class="metric-lbl">Ketuntasan KKM (&ge; 75)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Tabel Aktivitas Kuis Terbaru Siswa -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h3 style="margin: 0; font-size: 1.15rem;">Aktivitas Evaluasi Kuis Terbaru</h3>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">Daftar siswa yang baru saja menyerahkan jawaban kuis</div>
+          </div>
+          <a href="results.html" class="btn btn-outline btn-sm">Lihat Rekap Lengkap →</a>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Siswa</th>
+                <th>Modul</th>
+                <th>Waktu Penyerahan</th>
+                <th>Skor Nilai</th>
+                <th>Status KKM</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="recentResultsTbody">
+              <tr>
+                <td colspan="7" class="text-center" style="padding: 2rem; color: var(--color-text-muted);">
+                  Belum ada aktivitas pengerjaan kuis dari siswa.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/teacher-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      function renderDashboard() {
+        // 1. Hitung Total Siswa
+        const allUsers = window.Storage.getUsers();
+        const students = allUsers.filter(u => u.role === 'siswa');
+        document.getElementById('metricTotalStudents').textContent = students.length;
+
+        // 2. Hitung Total Bank Soal
+        const allQuizzes = window.Storage.getQuizzes();
+        document.getElementById('metricTotalQuizzes').textContent = allQuizzes.length;
+
+        // 3. Hitung Rata-rata dan Ketuntasan Nilai Siswa
+        const allResults = window.Storage.getAllResults();
+        if (allResults.length > 0) {
+          let totalScore = 0;
+          let passCount = 0;
+
+          allResults.forEach(r => {
+            totalScore += Number(r.score) || 0;
+            if (r.score >= 75) passCount++;
+          });
+
+          const avg = Math.round(totalScore / allResults.length);
+          const passRate = Math.round((passCount / allResults.length) * 100);
+
+          document.getElementById('metricAverageScore').textContent = `${avg}`;
+          document.getElementById('metricPassingRate').textContent = `${passRate}%`;
+
+          // Render 5 Hasil Kuis Terbaru
+          const recentResults = allResults.slice(0, 5);
+          const tbody = document.getElementById('recentResultsTbody');
+          tbody.innerHTML = recentResults.map((r, idx) => {
+            const isPass = r.score >= 75;
+            const badgeClass = isPass ? 'badge-success' : 'badge-danger';
+            const badgeText = isPass ? 'TUNTAS (✓ Lulus KKM)' : 'BELUM TUNTAS (< KKM)';
+            return `
+              <tr>
+                <td>${idx + 1}</td>
+                <td><strong>${r.studentName}</strong></td>
+                <td><span class="badge badge-info">Modul ${r.moduleId}</span></td>
+                <td>${window.Utils.formatDate(r.timestamp)}</td>
+                <td><span style="font-weight: 700; color: ${isPass ? 'var(--color-success)' : 'var(--color-danger)'};">${r.score} / 100</span></td>
+                <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+                <td>
+                  <a href="results.html?filter=${r.moduleId}" class="btn btn-outline btn-sm">Periksa Hasil</a>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        } else {
+          document.getElementById('metricAverageScore').textContent = '0';
+          document.getElementById('metricPassingRate').textContent = '0%';
+          document.getElementById('recentResultsTbody').innerHTML = `
+            <tr>
+              <td colspan="7" class="text-center" style="padding: 2rem; color: var(--color-text-muted);">
+                Belum ada aktivitas pengerjaan kuis dari siswa.
+              </td>
+            </tr>
+          `;
+        }
+      }
+
+      renderDashboard();
+      window.addEventListener('cybertech:synced', renderDashboard);
+    });
+  </script>
+</body>
+</html>
+

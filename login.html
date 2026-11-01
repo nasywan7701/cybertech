@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - CyberTech</title>
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body class="auth-page">
+
+  <div class="auth-container">
+    <a href="index.html" class="auth-back-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Kembali ke Beranda
+    </a>
+
+    <div class="auth-brand">
+      <a href="index.html">
+        <img src="assets/images/logo.svg" alt="CyberTech Logo" width="40" height="40">
+        <span>CyberTech</span>
+      </a>
+      <div class="auth-brand-subtitle">Multimedia Pembelajaran Keamanan Jaringan</div>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-header">
+        <h2 class="auth-title">Masuk ke Akun Anda</h2>
+        <p class="auth-subtitle">Pilih peran dan masukkan kredensial untuk melanjutkan.</p>
+      </div>
+
+      <!-- Tab Switch Role (Siswa / Guru) -->
+      <div class="role-tabs">
+        <button type="button" class="role-tab-btn active" id="tabSiswa" data-role="siswa">
+          Masuk sebagai Siswa
+        </button>
+        <button type="button" class="role-tab-btn" id="tabGuru" data-role="guru">
+          Masuk sebagai Guru
+        </button>
+      </div>
+
+      <!-- Form Login -->
+      <form id="loginForm" novalidate>
+        <input type="hidden" id="loginRole" name="role" value="siswa">
+
+        <div class="form-group">
+          <label for="identifier" class="form-label">Username atau Alamat Email</label>
+          <input 
+            type="text" 
+            id="identifier" 
+            name="identifier" 
+            class="form-control" 
+            placeholder="Masukkan username atau email Anda" 
+            required 
+            autocomplete="username"
+          >
+          <span class="form-error" id="identifierError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Kata Sandi</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-control" 
+            placeholder="Masukkan kata sandi" 
+            required 
+            autocomplete="current-password"
+          >
+          <span class="form-error" id="passwordError"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">
+          Login Sekarang
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </form>
+
+      <!-- Petunjuk Demo Akun Bawaan (Berdasarkan PRD) -->
+      <div class="auth-demo-hint" id="demoHint">
+        <strong>💡 Info Akun Siswa (Demo):</strong><br>
+        Username: <code>siswa</code> &bull; Password: <code>siswa123cybertech</code>
+      </div>
+
+      <!-- Footer Tautan Buat Akun (Khusus Siswa) -->
+      <div class="auth-footer" id="registerPrompt">
+        Belum memiliki akun Siswa? <a href="register.html">Buat Akun Baru</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Periksa query parameter URL (?role=guru atau ?role=siswa)
+      const urlParams = new URLSearchParams(window.location.search);
+      const roleParam = urlParams.get('role');
+
+      const tabSiswa = document.getElementById('tabSiswa');
+      const tabGuru = document.getElementById('tabGuru');
+      const roleInput = document.getElementById('loginRole');
+      const demoHint = document.getElementById('demoHint');
+      const registerPrompt = document.getElementById('registerPrompt');
+
+      function setRole(role) {
+        if (role === 'guru') {
+          tabGuru.classList.add('active');
+          tabSiswa.classList.remove('active');
+          roleInput.value = 'guru';
+          demoHint.innerHTML = '<strong>💡 Info Akun Guru (Pre-provisioned PRD):</strong><br>Username: <code>guru</code> &bull; Password: <code>guru123cybertech</code>';
+          registerPrompt.style.display = 'none'; // Akun guru tidak ada registrasi mandiri
+        } else {
+          tabSiswa.classList.add('active');
+          tabGuru.classList.remove('active');
+          roleInput.value = 'siswa';
+          demoHint.innerHTML = '<strong>💡 Info Akun Siswa (Demo):</strong><br>Username: <code>siswa</code> &bull; Password: <code>siswa123cybertech</code>';
+          registerPrompt.style.display = 'block';
+        }
+      }
+
+      if (roleParam === 'guru') {
+        setRole('guru');
+      } else {
+        setRole('siswa');
+      }
+
+      tabSiswa.addEventListener('click', () => setRole('siswa'));
+      tabGuru.addEventListener('click', () => setRole('guru'));
+
+      // Tangani submit formulir login
+      const form = document.getElementById('loginForm');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const identifier = document.getElementById('identifier').value.trim();
+        const password = document.getElementById('password').value;
+        const role = roleInput.value;
+
+        // Reset error message
+        document.getElementById('identifierError').textContent = '';
+        document.getElementById('passwordError').textContent = '';
+
+        if (!identifier) {
+          document.getElementById('identifierError').textContent = 'Username atau Email wajib diisi.';
+          return;
+        }
+        if (!password) {
+          document.getElementById('passwordError').textContent = 'Kata sandi wajib diisi.';
+          return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const origBtnText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Memverifikasi...';
+
+        try {
+          const res = await window.Auth.login(identifier, password, role);
+          if (res.success) {
+            window.Utils.showToast(`Selamat datang, ${res.user.nama}!`, 'success', 2000);
+            setTimeout(() => {
+              if (res.user.role === 'guru') {
+                window.location.href = 'teacher/dashboard.html';
+              } else {
+                window.location.href = 'student/dashboard.html';
+              }
+            }, 600);
+          } else {
+            window.Utils.showToast(res.message, 'error', 4000);
+            document.getElementById('passwordError').textContent = res.message;
+            submitBtn.disabled = false;
+            submitBtn.textContent = origBtnText;
+          }
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = origBtnText;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+

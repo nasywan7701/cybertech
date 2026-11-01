@@ -1,0 +1,152 @@
+/* ===================================================================
+   CyberTech - Teacher Portal Stylesheet
+   Dashboard Metrik, Direktori Siswa, & Rekap Nilai
+   =================================================================== */
+
+/* Teacher Banner */
+.teacher-banner {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1a365d 70%, #0d9488 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 4 Kartu Metrik Statistik (Layar 13 PRD) */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all var(--transition-fast);
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.metric-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.metric-icon-box.students { background: #e0f2fe; color: #0284c7; }
+.metric-icon-box.quizzes { background: #fef3c7; color: #d97706; }
+.metric-icon-box.average { background: #dcfce7; color: #16a34a; }
+.metric-icon-box.passing { background: #f3e8ff; color: #9333ea; }
+
+.metric-val {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.metric-lbl {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+}
+
+/* Filter Controls Bar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.search-box-wrapper {
+  position: relative;
+  min-width: 280px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.65rem 1rem 0.65rem 2.5rem;
+  font-size: var(--font-size-caption);
+  border: 1.5px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+/* Modal Lembar Jawaban Siswa */
+.review-modal-item {
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Cetak Bersih untuk Print Hasil Kuis */
+@media print {
+  .app-sidebar, .app-topbar, .filter-bar, .sidebar-footer, .btn, .site-navbar {
+    display: none !important;
+  }
+  .app-main {
+    margin-left: 0 !important;
+  }
+  .app-content {
+    padding: 0 !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

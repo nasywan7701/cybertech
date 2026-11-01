@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Modul 3: Firewall & Penyaringan Paket - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/student.css">
+  <link rel="stylesheet" href="css/module.css">
+  <style>
+    /* Animasi Diagram Alur Transmisi Paket Firewall */
+    .firewall-flow-diagram {
+      background: #0B2545;
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      margin: 2rem 0;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-nodes-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .flow-node-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      min-width: 150px;
+    }
+
+    .flow-node-box.firewall-node {
+      border-color: var(--color-accent);
+      background: rgba(0, 180, 216, 0.15);
+      box-shadow: 0 0 20px rgba(0, 180, 216, 0.25);
+    }
+
+    .flow-line {
+      flex: 1;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.2);
+      position: relative;
+      margin: 0 1rem;
+    }
+
+    .flow-packet-animated {
+      position: absolute;
+      top: -6px;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      box-shadow: 0 0 10px var(--color-accent);
+      animation: packetMove 2.5s infinite linear;
+    }
+
+    @keyframes packetMove {
+      0% { left: 0%; opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .flow-nodes-container {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .flow-line {
+        width: 3px;
+        height: 40px;
+        margin: 0.5rem 0;
+      }
+      .flow-packet-animated {
+        animation: packetMoveVertical 2.5s infinite linear;
+      }
+      @keyframes packetMoveVertical {
+        0% { top: 0%; opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+      }
+    }
+  </style>
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Siswa -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="sidebar-item active">
+        <a href="modules.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Modul Pembelajaran</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="activity.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Aktivitas & Hasil Kuis</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <div class="module-breadcrumb">
+          <a href="dashboard.html">Beranda</a>
+          <span class="separator">/</span>
+          <a href="modules.html">Modul Pembelajaran</a>
+          <span class="separator">/</span>
+          <span class="current">Modul 3: Materi</span>
+        </div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Modul 3: Firewall & Konfigurasi Paket</h2>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-student-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-student-class" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-student-avatar">S</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <!-- Stepper Header Box -->
+      <div class="module-header-box">
+        <div>
+          <span class="badge badge-info" style="margin-bottom: 0.35rem;">Topik: Konfigurasi Aturan Lalu Lintas Jaringan</span>
+          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;">Tahap 1: Pembacaan Materi & Animasi Alur</h3>
+        </div>
+        <div class="module-stepper">
+          <span class="stepper-item active">1. Materi</span>
+          <a href="module3-video.html" class="stepper-item">2. Video</a>
+          <a href="module3-activity.html" class="stepper-item">3. Simulasi Firewall</a>
+          <a href="quiz.html?module=3" class="stepper-item">4. Kuis Evaluasi</a>
+        </div>
+      </div>
+
+      <!-- Main Material Panel -->
+      <article class="material-panel">
+        <h2>A. Pengertian dan Fungsi Utama Firewall</h2>
+        <p>
+          <strong>Firewall</strong> adalah sistem keamanan jaringan yang bertindak sebagai tembok pembatas terisolasi antara jaringan internal sekolah (yang tepercaya) dengan jaringan eksternal seperti internet (yang tidak tepercaya). Seluruh lalu lintas data yang masuk (*inbound*) maupun keluar (*outbound*) harus melewati pos pemeriksaan firewall.
+        </p>
+        <p>
+          Tiga fungsi esensial firewall pada sistem administrasi jaringan:
+        </p>
+        <ul>
+          <li><strong>Menyaring Lalu Lintas Paket (Packet Filtering):</strong> Menganalisis parameter header data untuk memastikan hanya paket resmi yang diizinkan lewat.</li>
+          <li><strong>Memblokir Port Berisiko (Port Blocking):</strong> Menutup akses port layanan yang tidak digunakan atau rentan eksploitasi peretas (misal: port Telnet 23).</li>
+          <li><strong>Mencegah Serangan Banjir (Denial of Service):</strong> Mendeteksi lonjakan volume permintaan abnormal dan secara otomatis menjatuhkan (*drop*) paket penyerang.</li>
+        </ul>
+
+        <!-- Animasi Visual Alur Lalu Lintas Jaringan (PRD Seksi 3 & Layar 7) -->
+        <div class="firewall-flow-diagram">
+          <div style="text-align: center; margin-bottom: 1.5rem;">
+            <span class="badge badge-info" style="background: rgba(0, 180, 216, 0.2); color: #00B4D8;">
+              Animasi Alur Pemeriksaan Paket Data (Packet Inspection)
+            </span>
+            <div style="font-size: 0.9rem; color: #cbd5e1; margin-top: 0.35rem;">
+              Paket data dari Klien melewati proses seleksi aturan Firewall sebelum mencapai Server
+            </div>
+          </div>
+
+          <div class="flow-nodes-container">
+            <!-- Node 1: Komputer Klien -->
+            <div class="flow-node-box">
+              <div style="font-size: 1.75rem; margin-bottom: 0.25rem;">💻</div>
+              <strong style="color: #ffffff;">Komputer Klien</strong>
+              <div style="font-size: 0.75rem; color: #94a3b8;">192.168.1.100</div>
+            </div>
+
+            <!-- Flow Line 1 with Packet -->
+            <div class="flow-line">
+              <div class="flow-packet-animated"></div>
+            </div>
+
+            <!-- Node 2: Firewall -->
+            <div class="flow-node-box firewall-node">
+              <div style="font-size: 1.75rem; margin-bottom: 0.25rem;">🧱</div>
+              <strong style="color: #00B4D8;">FIREWALL</strong>
+              <div style="font-size: 0.75rem; color: #cbd5e1;">Ruleset: Allow / Block</div>
+            </div>
+
+            <!-- Flow Line 2 with Packet -->
+            <div class="flow-line">
+              <div class="flow-packet-animated" style="animation-delay: 1.25s;"></div>
+            </div>
+
+            <!-- Node 3: Server Sekolah -->
+            <div class="flow-node-box">
+              <div style="font-size: 1.75rem; margin-bottom: 0.25rem;">🖥️</div>
+              <strong style="color: #ffffff;">Server Sekolah</strong>
+              <div style="font-size: 0.75rem; color: #94a3b8;">10.0.0.1 (Web/DB)</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>B. Mekanisme Penyaringan Paket Data (Packet Filtering)</h3>
+        <p>
+          Pada tingkat penyaringan paket (*Packet Filtering Firewall*), firewall memeriksa informasi yang terdapat pada layer 3 (*Network*) dan layer 4 (*Transport*) model OSI:
+        </p>
+        <ol>
+          <li><strong>IP Asal (Source IP):</strong> Alamat komputer pengirim paket data.</li>
+          <li><strong>IP Tujuan (Destination IP):</strong> Alamat komputer atau server yang dituju.</li>
+          <li><strong>Protokol Komunikasi:</strong> Protokol transport yang digunakan (TCP, UDP, atau ICMP).</li>
+          <li><strong>Nomor Port Layanan:</strong>
+            <ul>
+              <li><strong>Port 80 (HTTP):</strong> Layanan browsing website tanpa enkripsi standar.</li>
+              <li><strong>Port 443 (HTTPS):</strong> Layanan browsing website aman berenkripsi SSL/TLS.</li>
+              <li><strong>Port 23 (Telnet):</strong> Layanan remote login jadul tanpa enkripsi teks (sangat berbahaya).</li>
+              <li><strong>Port 22 (SSH):</strong> Layanan remote login terenkripsi aman sebagai pengganti Telnet.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <!-- Kotak Catatan Semantik Kuning (#F5A524) -->
+        <div class="note-box">
+          <div class="note-box-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            <span>Prinsip Emas: "Default Deny / Default Block"</span>
+          </div>
+          <div>
+            Dalam standar industri keamanan jaringan, aturan terbaik adalah <strong>Default Deny</strong>: secara otomatis tolak (Block) seluruh paket data tak dikenal, dan hanya buat aturan <strong>Allow</strong> untuk port yang secara tegas dibutuhkan (seperti port 80 dan 443).
+          </div>
+        </div>
+
+        <h3>C. Dua Aksi Kebijakan Aturan Firewall (Rule Actions)</h3>
+        <div class="threats-grid">
+          <div class="threat-card" style="border-left: 5px solid var(--color-success);">
+            <div class="threat-card-header">
+              <div class="threat-icon" style="background: var(--color-success-bg); color: var(--color-success);">✓</div>
+              <div>
+                <h4 class="threat-card-title" style="color: var(--color-success);">ALLOW (Izinkan)</h4>
+                <span class="badge badge-success">Lalu Lintas Diterima</span>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Firewall mengizinkan paket data melewati antarmuka jaringan dan diteruskan ke server target. Diterapkan untuk lalu lintas terverifikasi yang aman, seperti browsing web HTTPS port 443.
+            </p>
+          </div>
+
+          <div class="threat-card" style="border-left: 5px solid var(--color-danger);">
+            <div class="threat-card-header">
+              <div class="threat-icon" style="background: var(--color-danger-bg); color: var(--color-danger);">✕</div>
+              <div>
+                <h4 class="threat-card-title" style="color: var(--color-danger);">BLOCK / DROP (Tolak)</h4>
+                <span class="badge badge-danger">Lalu Lintas Ditolak</span>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; line-height: 1.5; margin: 0;">
+              Firewall menghentikan dan membuang paket data di gerbang perimeter tanpa meneruskannya ke server. Diterapkan untuk port berbahaya (Telnet port 23) atau banjir paket serangan DDoS.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom Action Area -->
+        <div class="bottom-action-area">
+          <a href="modules.html" class="btn btn-outline">
+            ← Kembali ke Katalog Modul
+          </a>
+          <a href="module3-video.html" class="btn btn-primary" id="btnNextVideo3">
+            Lanjut ke Video Pembelajaran →
+          </a>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/student-common.js"></script>
+  <script src="js/module-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tandai otomatis materi Modul 3 telah dibaca
+      window.ModuleHelper.markMaterialRead('3');
+    });
+  </script>
+</body>
+</html>
+

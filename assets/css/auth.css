@@ -1,0 +1,141 @@
+/* ===================================================================
+   CyberTech - Authentication Stylesheet (Login & Register)
+   =================================================================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0B2545 0%, #134074 50%, #00B4D8 100%);
+  padding: 2rem 1.5rem;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 480px;
+}
+
+.auth-brand {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.auth-brand a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.auth-brand-subtitle {
+  color: #cbd5e1;
+  font-size: var(--font-size-caption);
+  margin-top: 0.35rem;
+}
+
+.auth-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 35px -5px rgba(11, 37, 69, 0.3);
+  padding: 2.25rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-header {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.auth-subtitle {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+}
+
+/* Role Toggle Tabs in Login Form */
+.role-tabs {
+  display: flex;
+  background-color: #f1f5f9;
+  border-radius: var(--radius-md);
+  padding: 0.35rem;
+  margin-bottom: 1.5rem;
+  gap: 0.25rem;
+}
+
+.role-tab-btn {
+  flex: 1;
+  padding: 0.6rem 0.5rem;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  background: transparent;
+  text-align: center;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.role-tab-btn.active {
+  background-color: #ffffff;
+  color: var(--color-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-footer {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+}
+
+.auth-footer a {
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.auth-footer a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.auth-demo-hint {
+  background-color: #f8fafc;
+  border: 1px dashed var(--color-border-dark);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.auth-demo-hint strong {
+  color: var(--color-primary);
+}
+
+.auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #e2e8f0;
+  font-size: var(--font-size-caption);
+  margin-bottom: 1.25rem;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.auth-back-link:hover {
+  color: #ffffff;
+}
+

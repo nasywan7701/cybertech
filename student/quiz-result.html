@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasil Evaluasi Kuis - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/student.css">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Siswa -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="modules.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Modul Pembelajaran</span>
+        </a>
+      </li>
+      <li class="sidebar-item active">
+        <a href="activity.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Aktivitas & Hasil Kuis</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Hasil Evaluasi Kuis</h2>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);" id="headerSubtitle">Ringkasan Nilai Pengerjaan</div>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-student-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-student-class" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-student-avatar">S</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <!-- Hero Scorecard Container (Section - HERO RESULT SCORECARD_margin.png PRD) -->
+      <div class="hero-scorecard-card">
+        <div class="scorecard-badge-top">
+          <span class="badge badge-info" id="resultModuleBadge">Modul Pembelajaran</span>
+        </div>
+
+        <div class="scorecard-trophy-icon" id="trophyIcon">🏆</div>
+        
+        <h2 class="scorecard-title" id="scorecardTitle">Pengerjaan Kuis Selesai!</h2>
+        <p style="color: var(--color-text-muted); font-size: 1rem; margin: 0;" id="scorecardGreeting">
+          Berikut adalah rincian capaian nilai kuis evaluasi Anda:
+        </p>
+
+        <!-- Angka Skor Besar -->
+        <div class="scorecard-score-display" id="scoreDisplay">0</div>
+
+        <!-- Lencana Status KKM -->
+        <div>
+          <span class="badge badge-success" id="kkmBadge" style="font-size: 1rem; padding: 0.5rem 1.25rem;">
+            TUNTAS (✓ LULUS KKM)
+          </span>
+        </div>
+
+        <!-- Statistik Jawaban -->
+        <div class="scorecard-stats-grid">
+          <div class="score-stat-item">
+            <div class="score-stat-value" style="color: var(--color-success);" id="statCorrect">0</div>
+            <div class="score-stat-label">Jawaban Benar</div>
+          </div>
+          <div class="score-stat-item">
+            <div class="score-stat-value" style="color: var(--color-danger);" id="statWrong">0</div>
+            <div class="score-stat-label">Jawaban Salah</div>
+          </div>
+          <div class="score-stat-item">
+            <div class="score-stat-value" id="statTime">00:00</div>
+            <div class="score-stat-label">Waktu Pengerjaan</div>
+          </div>
+        </div>
+
+        <!-- Tombol Aksi Bawah -->
+        <div class="scorecard-actions">
+          <a href="#" class="btn btn-primary btn-lg" id="btnReview">
+            Lihat Pembahasan Soal 📖
+          </a>
+          <a href="#" class="btn btn-outline btn-lg" id="btnRetry">
+            Ulangi Kuis 🔄
+          </a>
+          <a href="dashboard.html" class="btn btn-outline btn-lg">
+            Kembali ke Dashboard
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/student-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const resultId = urlParams.get('id');
+
+      if (!resultId) {
+        alert('Data hasil evaluasi tidak ditemukan.');
+        window.location.href = 'dashboard.html';
+        return;
+      }
+
+      const result = window.Storage.getResultById(resultId);
+      if (!result) {
+        alert('Data hasil evaluasi tidak ditemukan.');
+        window.location.href = 'dashboard.html';
+        return;
+      }
+
+      // Render Hasil
+      document.getElementById('resultModuleBadge').textContent = `Modul ${result.moduleId}: ${result.moduleTitle}`;
+      document.getElementById('headerSubtitle').textContent = `Diserahkan pada ${window.Utils.formatDate(result.timestamp)}`;
+      document.getElementById('scoreDisplay').textContent = `${result.score} / 100`;
+
+      document.getElementById('statCorrect').textContent = `${result.correctCount} Soal`;
+      document.getElementById('statWrong').textContent = `${result.wrongCount} Soal`;
+
+      const m = Math.floor(result.durationSpent / 60);
+      const s = result.durationSpent % 60;
+      document.getElementById('statTime').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+      const isPass = result.score >= 75;
+      const kkmBadge = document.getElementById('kkmBadge');
+      const trophyIcon = document.getElementById('trophyIcon');
+      const title = document.getElementById('scorecardTitle');
+      const greeting = document.getElementById('scorecardGreeting');
+
+      if (isPass) {
+        kkmBadge.className = 'badge badge-success';
+        kkmBadge.textContent = `TUNTAS (✓ LULUS KKM ≥ 75)`;
+        trophyIcon.textContent = '🏆';
+        title.textContent = 'Luar Biasa, Anda Berhasil!';
+        greeting.textContent = 'Selamat! Nilai evaluasi Anda telah melampaui batas KKM.';
+      } else {
+        kkmBadge.className = 'badge badge-danger';
+        kkmBadge.textContent = `BELUM TUNTAS (< KKM 75)`;
+        trophyIcon.textContent = '📚';
+        title.textContent = 'Perlu Belajar Lebih Giat!';
+        greeting.textContent = 'Skor Anda belum mencapai KKM 75. Silakan pelajari pembahasan dan ulangi kuis.';
+      }
+
+      document.getElementById('btnReview').href = `quiz-review.html?id=${result.id}`;
+      document.getElementById('btnRetry').href = `quiz.html?module=${result.moduleId}`;
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Siswa - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/student.css">
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Siswa (Layar 5 PRD) -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <!-- Menu Vertikal (Beranda, Modul, Aktivitas, Profil) -->
+    <ul class="sidebar-menu">
+      <li class="sidebar-item active">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="modules.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Modul Pembelajaran</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="activity.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Aktivitas & Hasil Kuis</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Tombol Logout di Bagian Bawah Sidebar -->
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <!-- Topbar -->
+    <header class="app-topbar">
+      <div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Dashboard Belajar Siswa</h2>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">SMK Negeri 1 Takalar &bull; Teknik Jaringan Komputer & Telekomunikasi</div>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-student-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-student-class" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-student-avatar">S</div>
+      </div>
+    </header>
+
+    <!-- Main Workspace Content -->
+    <main class="app-content">
+      <!-- 1. Banner Sambutan -->
+      <section class="student-banner">
+        <div class="banner-content">
+          <div class="banner-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>Semester 5 • Administrasi Sistem Jaringan</span>
+          </div>
+          <h1 class="banner-title">
+            Selamat Datang, <span class="js-student-firstname">Siswa</span>! 👋
+          </h1>
+          <p class="banner-subtitle">
+            Siap memperkuat pemahaman keamanan jaringan hari ini? Pilih modul, ikuti materi interaktif, dan taklukkan kuis evaluasinya.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Bilah Progres Global -->
+      <section class="progress-summary-card">
+        <div class="progress-summary-info">
+          <div class="progress-summary-title">Capaian Progres Belajar Global</div>
+          <div class="progress-summary-desc">
+            Menghitung total ketuntasan materi, aktivitas interaktif, dan kuis evaluasi dari 3 modul.
+          </div>
+          <div class="progress-track" style="height: 12px;">
+            <div class="progress-bar" id="globalProgressBar" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div style="text-align: right; min-width: 140px;">
+          <div class="progress-pct-badge" id="globalProgressPct">0%</div>
+          <div style="font-size: 0.85rem; color: var(--color-text-muted);" id="completedModulesBadge">
+            0 dari 3 Modul Tuntas
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Status 3 Modul Pembelajaran (Layar 5 PRD) -->
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+        <h3 style="margin: 0;">Status Capaian Modul Pembelajaran</h3>
+        <a href="modules.html" class="btn btn-outline btn-sm">Lihat Semua Modul →</a>
+      </div>
+
+      <div class="student-modules-grid" id="modulesGrid">
+        <!-- Modul 1 -->
+        <div class="module-status-card" id="cardModule1">
+          <div>
+            <div class="module-card-header">
+              <div class="module-card-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <span class="badge badge-secondary" id="badgeM1">Belum Dimulai</span>
+            </div>
+            <h4 class="module-card-title">Modul 1: Identifikasi Ancaman Jaringan</h4>
+            <p class="module-card-desc">
+              Pengertian keamanan jaringan & 4 ancaman siber (Virus, Worm, Phishing, DDoS) beserta aktivitas Drag & Drop.
+            </p>
+            <div class="module-step-indicators">
+              <span class="step-indicator-pill" id="pillM1_mat">Materi</span>
+              <span class="step-indicator-pill" id="pillM1_vid">Video</span>
+              <span class="step-indicator-pill" id="pillM1_act">Aktivitas</span>
+              <span class="step-indicator-pill" id="pillM1_quiz">Kuis</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.35rem;">
+                <span style="color: var(--color-text-muted);">Progres Modul</span>
+                <span class="font-semibold" id="pctM1">0%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" id="barM1" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+          <a href="module1-material.html" class="btn btn-primary btn-block" id="btnM1">Mulai Belajar</a>
+        </div>
+
+        <!-- Modul 2 -->
+        <div class="module-status-card" id="cardModule2">
+          <div>
+            <div class="module-card-header">
+              <div class="module-card-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <span class="badge badge-secondary" id="badgeM2">Belum Dimulai</span>
+            </div>
+            <h4 class="module-card-title">Modul 2: Analisis Sistem Keamanan</h4>
+            <p class="module-card-desc">
+              Fungsi Antivirus, Firewall, VPN, dan Autentikasi 2FA beserta latihan Studi Kasus pengamanan nyata.
+            </p>
+            <div class="module-step-indicators">
+              <span class="step-indicator-pill" id="pillM2_mat">Materi</span>
+              <span class="step-indicator-pill" id="pillM2_vid">Video</span>
+              <span class="step-indicator-pill" id="pillM2_act">Aktivitas</span>
+              <span class="step-indicator-pill" id="pillM2_quiz">Kuis</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.35rem;">
+                <span style="color: var(--color-text-muted);">Progres Modul</span>
+                <span class="font-semibold" id="pctM2">0%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" id="barM2" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+          <a href="module2-material.html" class="btn btn-primary btn-block" id="btnM2">Mulai Belajar</a>
+        </div>
+
+        <!-- Modul 3 -->
+        <div class="module-status-card" id="cardModule3">
+          <div>
+            <div class="module-card-header">
+              <div class="module-card-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
+              <span class="badge badge-secondary" id="badgeM3">Belum Dimulai</span>
+            </div>
+            <h4 class="module-card-title">Modul 3: Firewall & Simulasi Paket</h4>
+            <p class="module-card-desc">
+              Penyaringan paket data, aturan Allow/Block, dan Simulator interaktif firewall lalu lintas jaringan.
+            </p>
+            <div class="module-step-indicators">
+              <span class="step-indicator-pill" id="pillM3_mat">Materi</span>
+              <span class="step-indicator-pill" id="pillM3_vid">Video</span>
+              <span class="step-indicator-pill" id="pillM3_act">Aktivitas</span>
+              <span class="step-indicator-pill" id="pillM3_quiz">Kuis</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.35rem;">
+                <span style="color: var(--color-text-muted);">Progres Modul</span>
+                <span class="font-semibold" id="pctM3">0%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar" id="barM3" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+          <a href="module3-material.html" class="btn btn-primary btn-block" id="btnM3">Mulai Belajar</a>
+        </div>
+      </div>
+
+      <!-- 4. Ringkasan Aktivitas Terakhir -->
+      <section class="card">
+        <div class="card-header">
+          <h3 style="margin: 0; font-size: 1.15rem;">Aktivitas & Riwayat Kuis Terbaru</h3>
+          <a href="activity.html" style="font-size: 0.85rem; font-weight: 600;">Lihat Lembar Hasil Lengkap →</a>
+        </div>
+        <div id="recentActivityBox">
+          <p style="color: var(--color-text-muted); font-size: 0.9rem;">
+            Belum ada data pengerjaan kuis. Silakan pilih salah satu modul pembelajaran di atas untuk memulai.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/student-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentUser = window.Auth.getCurrentUser();
+      if (!currentUser) return;
+
+      // Ambil progres global siswa
+      const summary = window.StudentHelper.getGlobalProgress(currentUser.id);
+      
+      // Update global progress bar
+      document.getElementById('globalProgressBar').style.width = `${summary.percentage}%`;
+      document.getElementById('globalProgressPct').textContent = `${summary.percentage}%`;
+      document.getElementById('completedModulesBadge').textContent = `${summary.completedCount} dari 3 Modul Tuntas`;
+
+      // Update masing-masing kartu modul
+      ['1', '2', '3'].forEach(mId => {
+        const modProg = summary.modules[mId] || { percentage: 0, completed: false };
+        const card = document.getElementById(`cardModule${mId}`);
+        const badge = document.getElementById(`badgeM${mId}`);
+        const pctText = document.getElementById(`pctM${mId}`);
+        const bar = document.getElementById(`barM${mId}`);
+        const btn = document.getElementById(`btnM${mId}`);
+
+        pctText.textContent = `${modProg.percentage || 0}%`;
+        bar.style.width = `${modProg.percentage || 0}%`;
+
+        // Update pill tahapan
+        if (modProg.materialRead) document.getElementById(`pillM${mId}_mat`).classList.add('done');
+        if (modProg.videoWatched) document.getElementById(`pillM${mId}_vid`).classList.add('done');
+        if (modProg.activityDone) document.getElementById(`pillM${mId}_act`).classList.add('done');
+        if (modProg.quizScore !== null && modProg.quizScore >= 75) {
+          document.getElementById(`pillM${mId}_quiz`).classList.add('done');
+        }
+
+        if (modProg.completed || (modProg.quizScore !== null && modProg.quizScore >= 75)) {
+          card.classList.add('is-completed');
+          badge.className = 'badge badge-success';
+          badge.textContent = '100% Selesai ✓';
+          bar.classList.add('progress-bar-success');
+          btn.textContent = 'Pelajari Ulang';
+          btn.className = 'btn btn-outline btn-block';
+        } else if (modProg.percentage > 0) {
+          badge.className = 'badge badge-info';
+          badge.textContent = 'Sedang Dipelajari';
+          btn.textContent = 'Lanjutkan Belajar';
+        } else {
+          badge.className = 'badge badge-secondary';
+          badge.textContent = 'Belum Dimulai';
+          btn.textContent = 'Mulai Belajar';
+        }
+      });
+
+      // Render riwayat kuis terakhir
+      const results = window.Storage.getResultsByStudent(currentUser.id);
+      const activityBox = document.getElementById('recentActivityBox');
+      if (results && results.length > 0) {
+        const latest = results[0];
+        const statusBadge = latest.score >= 75 
+          ? `<span class="badge badge-success">Lulus KKM (${latest.score}/100)</span>` 
+          : `<span class="badge badge-danger">Belum Lulus (${latest.score}/100)</span>`;
+
+        activityBox.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0;">
+            <div>
+              <div style="font-weight: 600; color: var(--color-primary);">${latest.moduleTitle || 'Modul Pembelajaran'}</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted);">Dikerjakan pada ${window.Utils.formatDate(latest.timestamp)}</div>
+            </div>
+            <div>
+              ${statusBadge}
+            </div>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
+

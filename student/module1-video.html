@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Pembelajaran Modul 1 - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/student.css">
+  <link rel="stylesheet" href="css/module.css">
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Siswa -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="sidebar-item active">
+        <a href="modules.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Modul Pembelajaran</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="activity.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Aktivitas & Hasil Kuis</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <div class="module-breadcrumb">
+          <a href="dashboard.html">Beranda</a>
+          <span class="separator">/</span>
+          <a href="modules.html">Modul Pembelajaran</a>
+          <span class="separator">/</span>
+          <span class="current">Modul 1: Video</span>
+        </div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Modul 1: Identifikasi Ancaman Jaringan</h2>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-student-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-student-class" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-student-avatar">S</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <!-- Stepper Box -->
+      <div class="module-header-box">
+        <div>
+          <span class="badge badge-info" style="margin-bottom: 0.35rem;">Topik: Keamanan Jaringan Dasar</span>
+          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;">Tahap 2: Video Pembelajaran Interaktif</h3>
+        </div>
+        <div class="module-stepper">
+          <a href="module1-material.html" class="stepper-item completed">✓ 1. Materi</a>
+          <span class="stepper-item active">2. Video</span>
+          <a href="module1-activity.html" class="stepper-item">3. Aktivitas Drag & Drop</a>
+          <a href="quiz.html?module=1" class="stepper-item">4. Kuis Evaluasi</a>
+        </div>
+      </div>
+
+      <!-- Video Player Card Container 16:9 Thematic -->
+      <div class="card" style="padding: 2rem;">
+        <h3 style="margin-bottom: 0.5rem;">Visualisasi Cara Kerja 4 Ancaman Siber</h3>
+        <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+          Tonton animasi interaktif berikut untuk memahami bagaimana Virus, Worm, Phishing, dan DDoS melancarkan serangannya di jaringan.
+        </p>
+
+        <!-- Player Frame 16:9 -->
+        <div class="video-player-container" id="videoSimulator">
+          <div class="video-simulation-canvas" id="videoCanvas">
+            <!-- Dynamic Content Slide Display -->
+            <div id="videoSlideContent">
+              <div style="font-size: 3rem; margin-bottom: 1rem;" id="slideIcon">🛡️</div>
+              <h2 style="color: #00B4D8; margin-bottom: 0.5rem; font-size: 1.75rem;" id="slideTitle">
+                Simulasi Multimedia: Ancaman Keamanan Jaringan
+              </h2>
+              <p style="color: #cbd5e1; max-width: 600px; font-size: 1rem;" id="slideDesc">
+                Klik tombol Play di bawah untuk memulai visualisasi animasi perbedaan Virus, Worm, Phishing, dan serangan DDoS.
+              </p>
+            </div>
+          </div>
+
+          <!-- Video Controls Bar -->
+          <div class="video-controls-bar">
+            <button type="button" class="video-btn" id="playBtn" title="Play / Pause">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="playIcon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </button>
+            <div class="video-time-track" id="timeTrack">
+              <div class="video-time-bar" id="timeBar"></div>
+            </div>
+            <div class="video-time-text" id="timeText">00:00 / 01:20</div>
+            <button type="button" class="video-btn" id="resetBtn" title="Ulangi dari Awal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Ulasan Ringkas Materi Video -->
+        <div class="note-box" style="margin-top: 1.5rem;">
+          <div class="note-box-title">
+            <span>Rangkuman Video:</span>
+          </div>
+          <div style="font-size: 0.95rem; line-height: 1.6;">
+            1. <strong>Virus:</strong> Menempel pada file induk, butuh aksi eksekusi pengguna.<br>
+            2. <strong>Worm:</strong> Menggandakan diri mandiri tanpa campur tangan pengguna melalui celah port jaringan.<br>
+            3. <strong>Phishing:</strong> Manipulasi email/web palsu untuk mencuri kredensial.<br>
+            4. <strong>DDoS:</strong> Banjir jutaan koneksi palsu dari banyak botnet hingga server down.
+          </div>
+        </div>
+
+        <!-- Bottom Action Area -->
+        <div class="bottom-action-area">
+          <a href="module1-material.html" class="btn btn-outline">
+            ← Kembali ke Materi
+          </a>
+          <a href="module1-activity.html" class="btn btn-primary" id="btnNextActivity">
+            Lanjut ke Aktivitas Drag & Drop →
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/student-common.js"></script>
+  <script src="js/module-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Simulasikan Pemutar Video 16:9 Thematic Edukasi
+      const playBtn = document.getElementById('playBtn');
+      const playIcon = document.getElementById('playIcon');
+      const timeBar = document.getElementById('timeBar');
+      const timeText = document.getElementById('timeText');
+      const resetBtn = document.getElementById('resetBtn');
+
+      const slideIcon = document.getElementById('slideIcon');
+      const slideTitle = document.getElementById('slideTitle');
+      const slideDesc = document.getElementById('slideDesc');
+
+      const slides = [
+        {
+          time: 0,
+          icon: '🦠',
+          title: '1. Simulasi Serangan Virus',
+          desc: 'Pengguna menjalankan file program bajakan .exe. Virus mulai menggandakan diri ke dokumen lain di komputer.'
+        },
+        {
+          time: 20,
+          icon: '🐛',
+          title: '2. Simulasi Serangan Worm',
+          desc: 'Worm masuk lewat port jaringan yang tidak tertutup firewall, menyebar mandiri ke seluruh komputer laboratorium tanpa perlu ada file yang diklik.'
+        },
+        {
+          time: 40,
+          icon: '🎣',
+          title: '3. Simulasi Serangan Phishing',
+          desc: 'Email palsu mengatasnamakan admin sekolah meminta pembaruan password. Korban terjebak memasukkan kata sandi ke website tiruan.'
+        },
+        {
+          time: 60,
+          icon: '🌊',
+          title: '4. Simulasi Serangan DDoS',
+          desc: 'Ratusan komputer botnet secara bersamaan mengirim request palsu ke server web sekolah hingga server kehabisan memori dan tidak bisa diakses.'
+        }
+      ];
+
+      let isPlaying = false;
+      let currentTime = 0;
+      const totalDuration = 80; // 80 detik
+      let intervalId = null;
+
+      function formatTime(seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+      }
+
+      function updateSlide(time) {
+        let activeSlide = slides[0];
+        for (let i = 0; i < slides.length; i++) {
+          if (time >= slides[i].time) {
+            activeSlide = slides[i];
+          }
+        }
+        slideIcon.textContent = activeSlide.icon;
+        slideTitle.textContent = activeSlide.title;
+        slideDesc.textContent = activeSlide.desc;
+      }
+
+      function playVideo() {
+        isPlaying = true;
+        playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+        
+        // Tandai bahwa video sudah ditonton
+        window.ModuleHelper.markVideoWatched('1');
+
+        intervalId = setInterval(() => {
+          currentTime += 1;
+          if (currentTime > totalDuration) {
+            currentTime = totalDuration;
+            pauseVideo();
+            window.Utils.showToast('Video pembelajaran Modul 1 selesai! Silakan lanjut ke Aktivitas Drag & Drop.', 'success');
+          }
+          const pct = (currentTime / totalDuration) * 100;
+          timeBar.style.width = `${pct}%`;
+          timeText.textContent = `${formatTime(currentTime)} / ${formatTime(totalDuration)}`;
+          updateSlide(currentTime);
+        }, 1000);
+      }
+
+      function pauseVideo() {
+        isPlaying = false;
+        playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+        clearInterval(intervalId);
+      }
+
+      playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          pauseVideo();
+        } else {
+          playVideo();
+        }
+      });
+
+      resetBtn.addEventListener('click', () => {
+        pauseVideo();
+        currentTime = 0;
+        timeBar.style.width = '0%';
+        timeText.textContent = `00:00 / ${formatTime(totalDuration)}`;
+        updateSlide(0);
+      });
+
+      document.getElementById('timeTrack').addEventListener('click', (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const pct = clickX / rect.width;
+        currentTime = Math.floor(pct * totalDuration);
+        timeBar.style.width = `${pct * 100}%`;
+        timeText.textContent = `${formatTime(currentTime)} / ${formatTime(totalDuration)}`;
+        updateSlide(currentTime);
+      });
+
+      document.getElementById('btnNextActivity').addEventListener('click', () => {
+        window.ModuleHelper.markVideoWatched('1');
+      });
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Guru - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/teacher.css">
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Guru -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Dashboard Guru</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="manage-quizzes.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>Kelola Kuis (Evaluasi)</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="students.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Data Siswa</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="results.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Hasil Kuis Siswa</span>
+        </a>
+      </li>
+      <li class="sidebar-item active">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil Guru</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Pengaturan Profil Guru</h2>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">Kelola data akun pengajar dan kata sandi</div>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-teacher-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-teacher-nip" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-teacher-avatar" style="background-color: #0d9488;">G</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <div style="max-width: 800px; margin: 0 auto;">
+        
+        <!-- Kartu 1: Data Identitas Guru -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; gap: 1.75rem; margin-bottom: 2rem; padding-bottom: 1.75rem; border-bottom: 1px solid var(--color-border);">
+            <div class="user-avatar" id="avatarPreview" style="width: 84px; height: 84px; font-size: 2.25rem; background: #0d9488;">G</div>
+            <div>
+              <h3 style="margin-bottom: 0.25rem;" class="js-teacher-name">Nama Guru</h3>
+              <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.35rem;">
+                <span class="js-teacher-nip">NIP</span> &bull; <span class="badge badge-success">Akun Guru Terverifikasi</span>
+              </div>
+              <div style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 500;">
+                Pengampu Administrasi Sistem Jaringan &bull; SMK Negeri 1 Takalar
+              </div>
+            </div>
+          </div>
+
+          <form id="teacherProfileForm">
+            <h4 style="margin-bottom: 1.25rem;">Informasi Data Pengajar</h4>
+
+            <div class="form-group">
+              <label for="profNama" class="form-label">Nama Lengkap &amp; Gelar</label>
+              <input type="text" id="profNama" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="profNip" class="form-label">Nomor Induk Pegawai (NIP)</label>
+              <input type="text" id="profNip" class="form-control" placeholder="Contoh: 198507152010011012">
+            </div>
+
+            <div class="form-group">
+              <label for="profEmail" class="form-label">Alamat Email Guru</label>
+              <input type="email" id="profEmail" class="form-control" disabled>
+              <span class="form-hint">Email akun guru terdaftar secara khusus (pre-provisioned).</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">
+              Simpan Perubahan Identitas
+            </button>
+          </form>
+        </div>
+
+        <!-- Kartu 2: Ubah Password Guru -->
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Ubah Kata Sandi Guru</h4>
+          <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">
+            Jaga kerahasiaan kata sandi portal guru untuk melindungi integritas bank soal dan nilai siswa.
+          </p>
+
+          <form id="teacherPasswordForm">
+            <div class="form-group">
+              <label for="oldPassword" class="form-label">Kata Sandi Lama</label>
+              <input type="password" id="oldPassword" class="form-control" required placeholder="Masukkan kata sandi lama">
+            </div>
+
+            <div class="form-group">
+              <label for="newPassword" class="form-label">Kata Sandi Baru</label>
+              <input type="password" id="newPassword" class="form-control" required placeholder="Minimal 6 karakter">
+            </div>
+
+            <div class="form-group">
+              <label for="confirmNewPassword" class="form-label">Konfirmasi Kata Sandi Baru</label>
+              <input type="password" id="confirmNewPassword" class="form-control" required placeholder="Ulangi kata sandi baru">
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Perbarui Kata Sandi
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/teacher-common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentUser = window.Auth.getCurrentUser();
+      if (!currentUser) return;
+
+      const profNama = document.getElementById('profNama');
+      const profNip = document.getElementById('profNip');
+      const profEmail = document.getElementById('profEmail');
+      const avatarPreview = document.getElementById('avatarPreview');
+
+      profNama.value = currentUser.nama || '';
+      profNip.value = currentUser.nip || '';
+      profEmail.value = currentUser.email || '';
+      avatarPreview.textContent = currentUser.avatar || 'G';
+
+      // Update Profile
+      document.getElementById('teacherProfileForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nama = profNama.value.trim();
+        const nip = profNip.value.trim();
+
+        if (!nama) {
+          window.Utils.showToast('Nama lengkap tidak boleh kosong.', 'error');
+          return;
+        }
+
+        const res = await window.Auth.updateProfile({
+          nama: nama,
+          nip: nip
+        });
+
+        if (res.success) {
+          window.Utils.showToast('Profil guru berhasil diperbarui!', 'success');
+          setTimeout(() => location.reload(), 1000);
+        } else {
+          window.Utils.showToast(res.message, 'error');
+        }
+      });
+
+      // Update Password
+      document.getElementById('teacherPasswordForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const oldPass = document.getElementById('oldPassword').value;
+        const newPass = document.getElementById('newPassword').value;
+        const confPass = document.getElementById('confirmNewPassword').value;
+
+        const res = await window.Auth.changePassword(oldPass, newPass, confPass);
+        if (res.success) {
+          window.Utils.showToast('Kata sandi guru berhasil diperbarui!', 'success');
+          document.getElementById('teacherPasswordForm').reset();
+        } else {
+          window.Utils.showToast(res.message, 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+

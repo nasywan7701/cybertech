@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktivitas Drag & Drop Modul 1 - CyberTech</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="css/student.css">
+  <link rel="stylesheet" href="css/module.css">
+</head>
+<body class="app-layout">
+
+  <!-- Sidebar Navigasi Siswa -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard.html" class="navbar-brand">
+        <img src="../assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
+        <span>CyberTech</span>
+      </a>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="dashboard.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="sidebar-item active">
+        <a href="modules.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Modul Pembelajaran</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="activity.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Aktivitas & Hasil Kuis</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="profile.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-logout-btn js-logout-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Area Konten Utama -->
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <div class="module-breadcrumb">
+          <a href="dashboard.html">Beranda</a>
+          <span class="separator">/</span>
+          <a href="modules.html">Modul Pembelajaran</a>
+          <span class="separator">/</span>
+          <span class="current">Modul 1: Aktivitas Drag & Drop</span>
+        </div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Modul 1: Identifikasi Ancaman Jaringan</h2>
+      </div>
+
+      <div class="user-profile-badge">
+        <div style="text-align: right;">
+          <div class="font-semibold js-student-name" style="font-size: 0.95rem; color: var(--color-primary);">-</div>
+          <div class="js-student-class" style="font-size: 0.8rem; color: var(--color-text-muted);">-</div>
+        </div>
+        <div class="user-avatar js-student-avatar">S</div>
+      </div>
+    </header>
+
+    <main class="app-content">
+      <!-- Stepper Box -->
+      <div class="module-header-box">
+        <div>
+          <span class="badge badge-info" style="margin-bottom: 0.35rem;">Topik: Keamanan Jaringan Dasar</span>
+          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;">Tahap 3: Latihan Mandiri Interaktif (Drag & Drop)</h3>
+        </div>
+        <div class="module-stepper">
+          <a href="module1-material.html" class="stepper-item completed">✓ 1. Materi</a>
+          <a href="module1-video.html" class="stepper-item completed">✓ 2. Video</a>
+          <span class="stepper-item active">3. Aktivitas Drag & Drop</span>
+          <a href="quiz.html?module=1" class="stepper-item" id="navStepQuiz">4. Kuis Evaluasi</a>
+        </div>
+      </div>
+
+      <!-- Activity Container -->
+      <div class="activity-card">
+        <div class="activity-instruction">
+          <div style="font-weight: 700; margin-bottom: 0.25rem;">📌 Instruksi Pengerjaan:</div>
+          <div>
+            Tarik (<em>drag</em>) kartu skenario kasus di sebelah kiri, lalu tempatkan (<em>drop</em>) ke dalam kotak jenis ancaman yang sesuai di sebelah kanan. Anda juga dapat mengklik kartu lalu mengklik kotak target. Tekan tombol <strong>"Cek Jawaban"</strong> untuk memverifikasi.
+          </div>
+        </div>
+
+        <div class="dnd-board">
+          <!-- Pool Kartu Kasus (Draggable Cards) -->
+          <div>
+            <h4 style="margin-bottom: 1rem; color: var(--color-secondary);">Kartu Skenario Kasus (Tarik ke Target):</h4>
+            <div class="draggable-pool" id="draggablePool">
+              <!-- Kartu 1: Phishing -->
+              <div class="draggable-card" draggable="true" id="card_phishing" data-answer="phishing">
+                <span class="drag-handle-icon">⠿</span>
+                <div>
+                  <strong>Skenario A:</strong> Sebuah email masuk mengatasnamakan bank sekolah meminta guru memasukkan password akun segera melalui tautan terlampir yang mirip dengan situs asli.
+                </div>
+              </div>
+
+              <!-- Kartu 2: DDoS -->
+              <div class="draggable-card" draggable="true" id="card_ddos" data-answer="ddos">
+                <span class="drag-handle-icon">⠿</span>
+                <div>
+                  <strong>Skenario B:</strong> Server website sekolah tiba-tiba tidak dapat diakses setelah menerima jutaan permintaan koneksi palsu secara serentak dari ribuan komputer botnet.
+                </div>
+              </div>
+
+              <!-- Kartu 3: Virus -->
+              <div class="draggable-card" draggable="true" id="card_virus" data-answer="virus">
+                <span class="drag-handle-icon">⠿</span>
+                <div>
+                  <strong>Skenario C:</strong> Sebuah komputer lab terinfeksi setelah siswa menjalankan file <code>.exe</code> bajakan, kemudian file dokumen Word di sekitarnya ikut rusak.
+                </div>
+              </div>
+
+              <!-- Kartu 4: Worm -->
+              <div class="draggable-card" draggable="true" id="card_worm" data-answer="worm">
+                <span class="drag-handle-icon">⠿</span>
+                <div>
+                  <strong>Skenario D:</strong> Tanpa ada file yang dibuka atau diklik oleh pengguna, satu ruangan lab terinfeksi secara otomatis melalui celah port jaringan yang terbuka.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zona Target (Drop Zones) -->
+          <div>
+            <h4 style="margin-bottom: 1rem; color: var(--color-secondary);">Zona Target Jenis Ancaman:</h4>
+            <div class="drop-zones-grid">
+              <!-- Drop Zone 1: Virus -->
+              <div class="drop-zone" id="zone_virus" data-target="virus">
+                <div class="drop-zone-header">
+                  <span>🦠 Zona Virus Komputer</span>
+                </div>
+                <div class="drop-zone-content">
+                  <div class="drop-zone-placeholder">Tempatkan skenario Virus di sini</div>
+                </div>
+              </div>
+
+              <!-- Drop Zone 2: Worm -->
+              <div class="drop-zone" id="zone_worm" data-target="worm">
+                <div class="drop-zone-header">
+                  <span>🐛 Zona Worm Jaringan</span>
+                </div>
+                <div class="drop-zone-content">
+                  <div class="drop-zone-placeholder">Tempatkan skenario Worm di sini</div>
+                </div>
+              </div>
+
+              <!-- Drop Zone 3: Phishing -->
+              <div class="drop-zone" id="zone_phishing" data-target="phishing">
+                <div class="drop-zone-header">
+                  <span>🎣 Zona Phishing</span>
+                </div>
+                <div class="drop-zone-content">
+                  <div class="drop-zone-placeholder">Tempatkan skenario Phishing di sini</div>
+                </div>
+              </div>
+
+              <!-- Drop Zone 4: DDoS -->
+              <div class="drop-zone" id="zone_ddos" data-target="ddos">
+                <div class="drop-zone-header">
+                  <span>🌊 Zona Serangan DDoS</span>
+                </div>
+                <div class="drop-zone-content">
+                  <div class="drop-zone-placeholder">Tempatkan skenario DDoS di sini</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Aksi Kontrol Pengerjaan -->
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <button type="button" class="btn btn-primary btn-lg" id="checkAnswerBtn">
+            Cek Jawaban Saya ✓
+          </button>
+          <button type="button" class="btn btn-outline" id="resetActivityBtn">
+            Reset Latihan
+          </button>
+        </div>
+
+        <!-- Banner Umpan Balik Sukses -->
+        <div class="activity-feedback-banner" id="feedbackBanner">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 2rem;">🎉</div>
+            <div>
+              <h4 style="color: var(--color-success); margin: 0; font-size: 1.15rem;">
+                Selamat! Seluruh 4 Ancaman Berhasil Diklasifikasikan!
+              </h4>
+              <p style="margin: 0; font-size: 0.9rem; color: #1e3a8a;">
+                Pemahaman Anda tentang karakteristik Virus, Worm, Phishing, dan DDoS sudah sangat matang. Silakan lanjutkan ke Kuis Evaluasi Modul 1.
+              </p>
+            </div>
+          </div>
+          <a href="quiz.html?module=1" class="btn btn-success" id="nextQuizBtnBanner">
+            Kerjakan Kuis Sekarang →
+          </a>
+        </div>
+
+        <!-- Bottom Action Area -->
+        <div class="bottom-action-area">
+          <a href="module1-video.html" class="btn btn-outline">
+            ← Kembali ke Video
+          </a>
+          <a href="quiz.html?module=1" class="btn btn-primary disabled" id="nextQuizBtn" style="pointer-events: none; opacity: 0.6;">
+            Lanjut ke Kuis Evaluasi Modul 1 →
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="js/student-common.js"></script>
+  <script src="js/module-common.js"></script>
+  <script src="js/drag-drop.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Jika siswa sebelumnya sudah menyelesaikan aktivitas ini, buka kuncinya otomatis
+      const user = window.Auth.getCurrentUser();
+      if (user) {
+        const prog = window.Storage.getStudentProgress(user.id)['1'];
+        if (prog && prog.activityDone) {
+          const nextBtn = document.getElementById('nextQuizBtn');
+          nextBtn.classList.remove('disabled');
+          nextBtn.removeAttribute('disabled');
+          nextBtn.style.pointerEvents = 'auto';
+          nextBtn.style.opacity = '1';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
