@@ -15,3 +15,6 @@ $RECYCLE.BIN/
 *.log
 tmp/
 
+# Video Berukuran Besar (>100MB melampaui batas maksimal push GitHub)
+assets/videos/*.mp4
+
