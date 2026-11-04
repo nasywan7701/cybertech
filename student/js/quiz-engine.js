@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State Pengerjaan Kuis
   let currentIndex = 0;
+  let isQuizStarted = false;
   const userAnswers = {}; // { [quizId]: 'A' | 'B' | 'C' | 'D' }
   const totalQuestions = rawQuizzes.length;
   let remainingSeconds = 10 * 60; // 10 menit
@@ -78,6 +79,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   }
 
+  // Fungsi Mulai Sesi Kuis (Diaktifkan saat siswa klik tombol 'Mulai Kuis')
+  function startQuizSession() {
+    if (isQuizStarted) return;
+    isQuizStarted = true;
+
+    // Sembunyikan banner mulai kuis
+    const startBanner = document.getElementById('quizStartBanner');
+    if (startBanner) {
+      startBanner.style.display = 'none';
+    }
+
+    // Ubah tombol di header
+    const startBtn = document.getElementById('btnStartQuiz');
+    if (startBtn) {
+      startBtn.className = 'badge badge-success';
+      startBtn.style.padding = '0.45rem 0.85rem';
+      startBtn.style.fontSize = '0.85rem';
+      startBtn.style.fontWeight = '600';
+      startBtn.innerHTML = '✓ Kuis Berjalan';
+      startBtn.disabled = true;
+    }
+
+    // Jalankan timer countdown
+    startTimer();
+
+    // Render ulang lembar soal agar opsi aktif dan bisa diklik
+    renderQuestion(currentIndex);
+
+    if (window.Utils) {
+      window.Utils.showToast('Kuis dimulai! Waktu berjalan 10 menit. Selamat mengerjakan.', 'info');
+    }
+  }
+
   // 3. Render Soal Aktif
   function renderQuestion(index) {
     currentIndex = index;
@@ -91,6 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ['A', 'B', 'C', 'D'].forEach(key => {
       const optionItem = document.createElement('div');
       optionItem.className = 'quiz-option-item';
+      
+      // Kunci opsi jika kuis belum dimulai
+      if (!isQuizStarted) {
+        optionItem.classList.add('locked');
+      }
+
       if (userAnswers[q.id] === key) {
         optionItem.classList.add('selected');
       }
@@ -101,6 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       optionItem.addEventListener('click', () => {
+        if (!isQuizStarted) {
+          if (window.Utils) {
+            window.Utils.showToast('Silakan klik tombol "Mulai Kuis" terlebih dahulu untuk mengaktifkan pilihan jawaban.', 'warning');
+          }
+          return;
+        }
         userAnswers[q.id] = key;
         renderQuestion(currentIndex);
         updatePalette();
@@ -109,8 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
       optionsList.appendChild(optionItem);
     });
 
-    // Perbarui tombol navigasi
-    prevBtn.disabled = currentIndex === 0;
+    // Perbarui status tombol navigasi
+    prevBtn.disabled = !isQuizStarted || currentIndex === 0;
     if (currentIndex === totalQuestions - 1) {
       nextBtn.style.display = 'none';
       submitBtn.style.display = 'inline-flex';
@@ -118,6 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nextBtn.style.display = 'inline-flex';
       submitBtn.style.display = 'inline-flex';
     }
+    nextBtn.disabled = !isQuizStarted;
+    submitBtn.disabled = !isQuizStarted;
 
     updatePalette();
   }
@@ -199,6 +247,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 800);
   }
 
+  // Event Listeners Tombol Mulai Kuis
+  const btnStartQuiz = document.getElementById('btnStartQuiz');
+  if (btnStartQuiz) {
+    btnStartQuiz.addEventListener('click', startQuizSession);
+  }
+
+  const btnStartQuizInBanner = document.getElementById('btnStartQuizInBanner');
+  if (btnStartQuizInBanner) {
+    btnStartQuizInBanner.addEventListener('click', startQuizSession);
+  }
+
   // Event Listeners Navigasi
   prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) renderQuestion(currentIndex - 1);
@@ -209,11 +268,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   submitBtn.addEventListener('click', () => {
+    if (!isQuizStarted) {
+      if (window.Utils) {
+        window.Utils.showToast('Kuis belum dimulai.', 'warning');
+      }
+      return;
+    }
     submitQuiz(false);
   });
 
-  // Mulai Kuis
+  // Tampilkan soal pertama dalam keadaan Standby (waktu belum berjalan)
   renderQuestion(0);
-  startTimer();
+  timerText.textContent = formatTimer(remainingSeconds);
 });
 
