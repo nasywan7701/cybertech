@@ -290,6 +290,12 @@ const Storage = {
    */
   getApiBaseUrl() {
     if (!window.location.protocol.startsWith('http')) return null;
+
+    // Jika dibuka lewat Live Server (Port 5500, dsb), hubungkan ke server Apache Laragon
+    if (window.location.port && window.location.port !== '80' && window.location.port !== '443') {
+      return 'http://localhost/cybertech/api';
+    }
+
     const path = window.location.pathname;
     const projectIdx = path.indexOf('/cybertech');
     if (projectIdx !== -1) {
