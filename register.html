@@ -63,7 +63,25 @@
           <span class="form-error" id="emailError"></span>
         </div>
 
-        <!-- 3. Password -->
+        <!-- 3. Pilihan Tingkat Kelas (XI atau XII) -->
+        <div class="form-group">
+          <label for="regKelas" class="form-label">Pilih Tingkat Kelas (Jurusan TJKT)</label>
+          <select id="regKelas" name="kelas" class="form-control" required style="cursor: pointer;">
+            <optgroup label="Kelas XI (Tingkat 11)">
+              <option value="XI TJKT 1" selected>Kelas XI (11) - XI TJKT 1</option>
+              <option value="XI TJKT 2">Kelas XI (11) - XI TJKT 2</option>
+              <option value="XI TJKT 3">Kelas XI (11) - XI TJKT 3</option>
+            </optgroup>
+            <optgroup label="Kelas XII (Tingkat 12)">
+              <option value="XII TJKT 1">Kelas XII (12) - XII TJKT 1</option>
+              <option value="XII TJKT 2">Kelas XII (12) - XII TJKT 2</option>
+              <option value="XII TJKT 3">Kelas XII (12) - XII TJKT 3</option>
+            </optgroup>
+          </select>
+          <span class="form-hint">Pilih tingkatan kelas Anda di SMK Negeri 1 Takalar.</span>
+        </div>
+
+        <!-- 4. Password -->
         <div class="form-group">
           <label for="regPassword" class="form-label">Kata Sandi</label>
           <input 
@@ -120,6 +138,7 @@
 
         const nama = document.getElementById('regNama').value.trim();
         const email = document.getElementById('regEmail').value.trim();
+        const kelas = document.getElementById('regKelas').value;
         const password = document.getElementById('regPassword').value;
         const confirmPassword = document.getElementById('regConfirmPassword').value;
 
@@ -170,7 +189,7 @@
 
         try {
           // Proses registrasi via Auth helper (tersinkron otomatis ke MySQL jika server aktif)
-          const result = await window.Auth.registerStudent(nama, email, password, confirmPassword);
+          const result = await window.Auth.registerStudent(nama, email, password, confirmPassword, kelas);
           if (result.success) {
             window.Utils.showToast('Akun berhasil dibuat! Mengalihkan ke Dashboard Siswa...', 'success', 2500);
             setTimeout(() => {
