@@ -3,13 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Pembelajaran Modul 3 - CyberTech</title>
+  <title>Animasi Interaktif Modul 3 - CyberTech</title>
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/components.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="css/student.css">
   <link rel="stylesheet" href="css/module.css">
+  <style>
+    /* Styling Khusus Pilihan Animasi Modul 3 */
+    .animation-switcher-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: 0.4rem;
+      max-width: 600px;
+      margin: 0 auto 1.75rem auto;
+      gap: 0.5rem;
+    }
+
+    .anim-switch-btn {
+      flex: 1;
+      padding: 0.7rem 1.25rem;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--color-text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .anim-switch-btn:hover {
+      color: var(--color-primary);
+    }
+
+    .anim-switch-btn.active {
+      background: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(11, 37, 69, 0.25);
+    }
+
+    /* Container Pemutar Video Animasi */
+    .video-anim-container {
+      background: #000000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      margin-bottom: 1.5rem;
+    }
+
+    .video-anim-player {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      display: block;
+      background: #000000;
+      outline: none;
+    }
+
+    /* Toolbar Video Animasi */
+    .video-toolbar {
+      background: #f8fafc;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .speed-btn {
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .speed-btn:hover {
+      background: #f1f5f9;
+    }
+
+    .speed-btn.active {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+
+    .skip-btn {
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+    }
+
+    .skip-btn:hover {
+      background: #e2e8f0;
+    }
+  </style>
 </head>
 <body class="app-layout">
 
@@ -66,7 +187,7 @@
           <span class="separator">/</span>
           <a href="modules.html">Modul Pembelajaran</a>
           <span class="separator">/</span>
-          <span class="current">Modul 3: Video</span>
+          <span class="current">Modul 3: Animasi Firewall</span>
         </div>
         <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Modul 3: Firewall & Simulasi Paket</h2>
       </div>
@@ -81,72 +202,139 @@
     </header>
 
     <main class="app-content">
-      <!-- Stepper Box -->
+      <!-- Stepper Box Modul 3 -->
       <div class="module-header-box">
         <div>
           <span class="badge badge-info" style="margin-bottom: 0.35rem;">Topik: Konfigurasi Aturan Lalu Lintas Jaringan</span>
-          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;">Tahap 2: Video Pembelajaran Interaktif</h3>
+          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;">Tahap 2: Animasi Interaktif Firewall</h3>
         </div>
         <div class="module-stepper">
           <a href="module3-material.html" class="stepper-item completed">✓ 1. Materi</a>
-          <span class="stepper-item active">2. Video</span>
+          <span class="stepper-item active">2. Animasi Firewall</span>
           <a href="module3-activity.html" class="stepper-item">3. Simulasi Firewall</a>
           <a href="quiz.html?module=3" class="stepper-item">4. Kuis Evaluasi</a>
         </div>
       </div>
 
-      <!-- Video Player Card Container 16:9 Thematic -->
+      <!-- Main Animation Container Card -->
       <div class="card" style="padding: 2rem;">
-        <h3 style="margin-bottom: 0.5rem;">Visualisasi Cara Kerja Firewall Menyaring Paket Jaringan</h3>
-        <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-          Tonton video simulasi berikut untuk mengamati bagaimana aturan ALLOW dan BLOCK diterapkan pada protokol HTTP, HTTPS, Telnet, dan serangan DDoS.
-        </p>
-
-        <!-- Player Frame 16:9 -->
-        <div class="video-player-container" id="videoSimulator">
-          <div class="video-simulation-canvas" id="videoCanvas">
-            <!-- Dynamic Content Slide Display -->
-            <div id="videoSlideContent">
-              <div style="font-size: 3rem; margin-bottom: 1rem;" id="slideIcon">🧱</div>
-              <h2 style="color: #00B4D8; margin-bottom: 0.5rem; font-size: 1.75rem;" id="slideTitle">
-                Simulasi Multimedia: Mekanisme Firewall Allow / Block
-              </h2>
-              <p style="color: #cbd5e1; max-width: 600px; font-size: 1rem;" id="slideDesc">
-                Klik tombol Play di bawah untuk mempelajari visualisasi penyaringan paket data di gerbang firewall.
-              </p>
-            </div>
+        
+        <!-- Header Penjelasan & Badge Status -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+          <div>
+            <h3 style="margin: 0 0 0.35rem 0;" id="animHeaderTitle">Animasi Pembelajaran: Mekanisme Firewall Allow / Block</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.95rem; margin: 0;" id="animHeaderDesc">
+              Pelajari visualisasi animasi penyaringan paket data di gerbang firewall dengan memilih salah satu tampilan animasi di bawah.
+            </p>
           </div>
-
-          <!-- Video Controls Bar -->
-          <div class="video-controls-bar">
-            <button type="button" class="video-btn" id="playBtn" title="Play / Pause">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="playIcon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            </button>
-            <div class="video-time-track" id="timeTrack">
-              <div class="video-time-bar" id="timeBar"></div>
-            </div>
-            <div class="video-time-text" id="timeText">00:00 / 01:20</div>
-            <button type="button" class="video-btn" id="resetBtn" title="Ulangi dari Awal">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-            </button>
+          <div>
+            <span class="badge badge-secondary" id="animStatusBadge" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+              ⏳ Belum Dipelajari
+            </span>
           </div>
         </div>
 
-        <!-- Ulasan Ringkas Materi Video -->
-        <div class="note-box" style="margin-top: 1.5rem;">
+        <!-- BILAH PILIHAN ANIMASI (TOMBOL TOGGLE SWITCHER) -->
+        <div class="animation-switcher-bar">
+          <button type="button" class="anim-switch-btn active" id="btnSwitchVideo">
+            <span>🎬</span> Video Animasi Firewall
+          </button>
+          <button type="button" class="anim-switch-btn" id="btnSwitchSim">
+            <span>🕹️</span> Simulasi Paket Interaktif
+          </button>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- PILIHAN 1: VIDEO ANIMASI FIREWALL (DARI MP4 ASLI) -->
+        <!-- ============================================================= -->
+        <div id="sectionVideoAnim">
+          <div class="video-anim-container">
+            <video 
+              id="firewallVideoPlayer" 
+              class="video-anim-player" 
+              controls 
+              controlsList="nodownload" 
+              preload="metadata" 
+              playsinline>
+              <source src="../assets/videos/animasi-firewall-modul-3.mp4" type="video/mp4">
+              Browser Anda tidak mendukung tag video HTML5. Silakan buka melalui Google Chrome atau browser modern lainnya.
+            </video>
+          </div>
+
+          <!-- Toolbar Kontrol Tambahan -->
+          <div class="video-toolbar">
+            <div class="toolbar-group">
+              <button type="button" class="skip-btn" id="btnRewind10" title="Mundur 10 Detik">
+                ⏪ -10s
+              </button>
+              <button type="button" class="skip-btn" id="btnForward10" title="Maju 10 Detik">
+                ⏩ +10s
+              </button>
+              <button type="button" class="skip-btn" id="btnRestartVideo" title="Ulangi dari Awal">
+                🔄 Ulangi
+              </button>
+            </div>
+
+            <div class="toolbar-group">
+              <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 500;">Kecepatan Putar:</span>
+              <button type="button" class="speed-btn" data-speed="0.75">0.75x</button>
+              <button type="button" class="speed-btn active" data-speed="1.0">1.0x</button>
+              <button type="button" class="speed-btn" data-speed="1.25">1.25x</button>
+              <button type="button" class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- PILIHAN 2: SIMULASI ANIMASI PAKET INTERAKTIF (ANIMASI BAWAAN) -->
+        <!-- ============================================================= -->
+        <div id="sectionSimAnim" style="display: none;">
+          <div class="video-player-container" id="videoSimulator">
+            <div class="video-simulation-canvas" id="videoCanvas">
+              <!-- Dynamic Content Slide Display -->
+              <div id="videoSlideContent">
+                <div style="font-size: 3rem; margin-bottom: 1rem;" id="slideIcon">🧱</div>
+                <h2 style="color: #00B4D8; margin-bottom: 0.5rem; font-size: 1.75rem;" id="slideTitle">
+                  Simulasi Multimedia: Mekanisme Firewall Allow / Block
+                </h2>
+                <p style="color: #cbd5e1; max-width: 600px; font-size: 1rem; line-height: 1.5;" id="slideDesc">
+                  Klik tombol Play di bawah untuk mengamati animasi perjalanan paket data, verifikasi port, dan tindakan Allow/Block di perimeter jaringan.
+                </p>
+              </div>
+            </div>
+
+            <!-- Video Controls Bar -->
+            <div class="video-controls-bar">
+              <button type="button" class="video-btn" id="playBtn" title="Play / Pause">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="playIcon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </button>
+              <div class="video-time-track" id="timeTrack">
+                <div class="video-time-bar" id="timeBar"></div>
+              </div>
+              <div class="video-time-text" id="timeText">00:00 / 01:20</div>
+              <button type="button" class="video-btn" id="resetBtn" title="Ulangi dari Awal">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ulasan Ringkas Intisari Animasi -->
+        <div class="note-box" style="margin-top: 1rem;">
           <div class="note-box-title">
-            <span>Rangkuman Video:</span>
+            <span>📌 Rangkuman Pemahaman Animasi Firewall:</span>
           </div>
           <div style="font-size: 0.95rem; line-height: 1.6;">
-            1. <strong>Packet Inspection:</strong> Firewall membaca IP asal, IP tujuan, protokol, dan port sebelum mengambil keputusan.<br>
-            2. <strong>ALLOW HTTP 80 &amp; HTTPS 443:</strong> Lalu lintas web aman diteruskan ke server web sekolah.<br>
-            3. <strong>BLOCK Telnet 23:</strong> Port rentan tanpa enkripsi dicegat dan dibuang agar terhindar dari peretasan.<br>
-            4. <strong>BLOCK DDoS Flood:</strong> Lonjakan paket ICMP abnormal otomatis di-drop agar server tidak mati.
+            1. <strong>Packet Inspection (Inspeksi Paket):</strong> Firewall membaca IP asal, IP tujuan, protokol (TCP/UDP), dan nomor port sebelum mengambil keputusan.<br>
+            2. <strong>ALLOW HTTP (80) &amp; HTTPS (443):</strong> Lalu lintas web aman diizinkan diteruskan ke server web sekolah.<br>
+            3. <strong>BLOCK / DROP Telnet (23):</strong> Port usang tanpa enkripsi dicegat di gerbang dan dibuang agar terhindar dari sniffing.<br>
+            4. <strong>BLOCK DDoS Flood (ICMP):</strong> Lonjakan trafik abnormal otomatis dijatuhkan (*dropped*) agar server tidak kehabisan memori.<br>
+            5. <strong>Prinsip Default Deny:</strong> Port yang tidak terdaftar secara resmi otomatis ditolak oleh firewall.
           </div>
         </div>
 
         <!-- Bottom Action Area -->
-        <div class="bottom-action-area">
+        <div class="bottom-action-area" style="margin-top: 2rem;">
           <a href="module3-material.html" class="btn btn-outline">
             ← Kembali ke Materi
           </a>
@@ -166,6 +354,90 @@
   <script src="js/module-common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // 1. Cek Progres Belajar Sebelumnya
+      const animStatusBadge = document.getElementById('animStatusBadge');
+      const currentUser = window.Auth ? window.Auth.getCurrentUser() : null;
+      if (currentUser && window.Storage) {
+        const prog = window.Storage.getStudentProgress(currentUser.id);
+        if (prog && prog['3'] && prog['3'].videoWatched) {
+          animStatusBadge.className = 'badge badge-success';
+          animStatusBadge.innerHTML = '✓ Telah Dipelajari';
+        }
+      }
+
+      function setStatusStudying() {
+        if (!animStatusBadge.classList.contains('badge-success')) {
+          animStatusBadge.className = 'badge badge-info';
+          animStatusBadge.innerHTML = '▶️ Sedang Dipelajari...';
+        }
+        window.ModuleHelper.markVideoWatched('3');
+      }
+
+      function setStatusCompleted() {
+        animStatusBadge.className = 'badge badge-success';
+        animStatusBadge.innerHTML = '✓ Telah Selesai Dipelajari';
+        window.ModuleHelper.markVideoWatched('3');
+        window.Utils.showToast('Bagus! Anda telah menyelesaikan animasi firewall Modul 3. Silakan lanjut ke Simulator Firewall.', 'success');
+      }
+
+      // =========================================================
+      // FITUR TOGGLE / PENGALIH TAMPILAN ANIMASI
+      // =========================================================
+      const btnSwitchVideo = document.getElementById('btnSwitchVideo');
+      const btnSwitchSim = document.getElementById('btnSwitchSim');
+      const sectionVideoAnim = document.getElementById('sectionVideoAnim');
+      const sectionSimAnim = document.getElementById('sectionSimAnim');
+      const videoEl = document.getElementById('firewallVideoPlayer');
+
+      btnSwitchVideo.addEventListener('click', () => {
+        btnSwitchVideo.classList.add('active');
+        btnSwitchSim.classList.remove('active');
+        sectionVideoAnim.style.display = 'block';
+        sectionSimAnim.style.display = 'none';
+        pauseSimAnim();
+      });
+
+      btnSwitchSim.addEventListener('click', () => {
+        btnSwitchSim.classList.add('active');
+        btnSwitchVideo.classList.remove('active');
+        sectionSimAnim.style.display = 'block';
+        sectionVideoAnim.style.display = 'none';
+        if (videoEl && !videoEl.paused) {
+          videoEl.pause();
+        }
+      });
+
+      // =========================================================
+      // KONTROL PILIHAN 1: VIDEO ANIMASI MP4
+      // =========================================================
+      videoEl.addEventListener('play', setStatusStudying);
+      videoEl.addEventListener('ended', setStatusCompleted);
+
+      document.getElementById('btnRewind10').addEventListener('click', () => {
+        videoEl.currentTime = Math.max(0, videoEl.currentTime - 10);
+      });
+
+      document.getElementById('btnForward10').addEventListener('click', () => {
+        videoEl.currentTime = Math.min(videoEl.duration || 0, videoEl.currentTime + 10);
+      });
+
+      document.getElementById('btnRestartVideo').addEventListener('click', () => {
+        videoEl.currentTime = 0;
+        videoEl.play();
+      });
+
+      document.querySelectorAll('.speed-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const spd = parseFloat(btn.getAttribute('data-speed'));
+          videoEl.playbackRate = spd;
+        });
+      });
+
+      // =========================================================
+      // KONTROL PILIHAN 2: SIMULASI ANIMASI PAKET BAWAAN
+      // =========================================================
       const playBtn = document.getElementById('playBtn');
       const playIcon = document.getElementById('playIcon');
       const timeBar = document.getElementById('timeBar');
@@ -203,10 +475,10 @@
         }
       ];
 
-      let isPlaying = false;
-      let currentTime = 0;
-      const totalDuration = 80;
-      let intervalId = null;
+      let isPlayingSim = false;
+      let currentSimTime = 0;
+      const totalSimDuration = 80;
+      let simInterval = null;
 
       function formatTime(seconds) {
         const m = Math.floor(seconds / 60);
@@ -226,45 +498,44 @@
         slideDesc.textContent = activeSlide.desc;
       }
 
-      function playVideo() {
-        isPlaying = true;
+      function playSimAnim() {
+        isPlayingSim = true;
         playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
-        
-        window.ModuleHelper.markVideoWatched('3');
+        setStatusStudying();
 
-        intervalId = setInterval(() => {
-          currentTime += 1;
-          if (currentTime > totalDuration) {
-            currentTime = totalDuration;
-            pauseVideo();
-            window.Utils.showToast('Video pembelajaran Modul 3 selesai! Silakan lanjut ke Simulator Firewall.', 'success');
+        simInterval = setInterval(() => {
+          currentSimTime += 1;
+          if (currentSimTime > totalSimDuration) {
+            currentSimTime = totalSimDuration;
+            pauseSimAnim();
+            setStatusCompleted();
           }
-          const pct = (currentTime / totalDuration) * 100;
+          const pct = (currentSimTime / totalSimDuration) * 100;
           timeBar.style.width = `${pct}%`;
-          timeText.textContent = `${formatTime(currentTime)} / ${formatTime(totalDuration)}`;
-          updateSlide(currentTime);
+          timeText.textContent = `${formatTime(currentSimTime)} / ${formatTime(totalSimDuration)}`;
+          updateSlide(currentSimTime);
         }, 1000);
       }
 
-      function pauseVideo() {
-        isPlaying = false;
+      function pauseSimAnim() {
+        isPlayingSim = false;
         playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
-        clearInterval(intervalId);
+        clearInterval(simInterval);
       }
 
       playBtn.addEventListener('click', () => {
-        if (isPlaying) {
-          pauseVideo();
+        if (isPlayingSim) {
+          pauseSimAnim();
         } else {
-          playVideo();
+          playSimAnim();
         }
       });
 
       resetBtn.addEventListener('click', () => {
-        pauseVideo();
-        currentTime = 0;
+        pauseSimAnim();
+        currentSimTime = 0;
         timeBar.style.width = '0%';
-        timeText.textContent = `00:00 / ${formatTime(totalDuration)}`;
+        timeText.textContent = `00:00 / ${formatTime(totalSimDuration)}`;
         updateSlide(0);
       });
 
@@ -272,12 +543,13 @@
         const rect = e.currentTarget.getBoundingClientRect();
         const clickX = e.clientX - rect.left;
         const pct = clickX / rect.width;
-        currentTime = Math.floor(pct * totalDuration);
+        currentSimTime = Math.floor(pct * totalSimDuration);
         timeBar.style.width = `${pct * 100}%`;
-        timeText.textContent = `${formatTime(currentTime)} / ${formatTime(totalDuration)}`;
-        updateSlide(currentTime);
+        timeText.textContent = `${formatTime(currentSimTime)} / ${formatTime(totalSimDuration)}`;
+        updateSlide(currentSimTime);
       });
 
+      // Tombol Lanjut ke Simulator
       document.getElementById('btnNextSimulator').addEventListener('click', () => {
         window.ModuleHelper.markVideoWatched('3');
       });
@@ -285,4 +557,3 @@
   </script>
 </body>
 </html>
-

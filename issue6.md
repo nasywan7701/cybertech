@@ -1,7 +1,7 @@
-# Issue 6: Modul 3 - Firewall (Materi, Animasi Alur Paket, Video, & Simulasi Firewall Interaktif)
+# Issue 6: Modul 3 - Firewall (Materi, Animasi Alur Paket, Animasi Interaktif Firewall, & Simulator Firewall)
 
 ## 1. Deskripsi & Tujuan
-Sebagai Siswa, saya ingin mempelajari fungsi firewall dan konsep penyaringan paket data (*packet filtering*), melihat visualisasi animasi alur lalu lintas data, menonton video pembelajaran, serta melakukan eksperimen mandiri melalui **Aktivitas Simulasi Firewall** (*Allow* / *Block*) untuk memahami cara kerja pengamanan jaringan secara langsung.
+Sebagai Siswa, saya ingin mempelajari fungsi firewall dan konsep penyaringan paket data (*packet filtering*), melihat visualisasi animasi alur lalu lintas data, mengeksplorasi **Animasi Interaktif Firewall** (Video Animasi Visual & Simulasi Paket Interaktif), serta melakukan eksperimen mandiri melalui **Aktivitas Simulasi Firewall** (*Allow* / *Block*) untuk memahami cara kerja pengamanan jaringan secara langsung.
 
 ---
 
@@ -30,11 +30,14 @@ Sebagai Siswa, saya ingin mempelajari fungsi firewall dan konsep penyaringan pak
 - **Kotak Catatan Penting:** Catatan semantik kuning `#F5A524` mengenai prinsip dasar *"Default Deny"* dalam konfigurasi firewall profesional.
 - **Navigasi Bawah:**
   - `← Kembali ke Daftar Modul`
-  - `Lanjut ke Video Pembelajaran →`
+  - `Lanjut ke Animasi Firewall →`
 
-### 3.2 Layar 8: Halaman Video Pembelajaran (`student/module3-video.html`)
-- Pemutar video bertema *CyberTech* 16:9 yang menjelaskan arsitektur firewall dan contoh praktis aturan *Allow/Block*.
-- Kontrol pemutar lengkap.
+### 3.2 Layar 8: Halaman Animasi Interaktif Firewall (`student/module3-video.html`)
+- Mengganti konsep video konvensional menjadi **Animasi Pembelajaran** dengan **Bilah Pilihan (Toggle Switcher)**:
+  1. **Mode 1 - Video Animasi Firewall (Motion Visual):** Memutar file video animasi visual firewall berformat MP4 (`animasi-firewall-modul-3.mp4`).
+  2. **Mode 2 - Simulasi Animasi Paket Interaktif (Bawaan CyberTech):** Simulasi gerak 4 alur paket data (HTTP/HTTPS Allow, Telnet Block, DDoS Flood Drop, dan Default Deny) dengan slider timeline dan tombol kendali play/pause.
+- Pilihan kecepatan putar (0.75x, 1.0x, 1.25x, 1.5x) dan tombol lompat 10 detik.
+- Rangkuman intisari pemahaman mekanisme firewall.
 - **Navigasi Bawah:**
   - `← Kembali ke Materi`
   - `Lanjut ke Simulasi Firewall →`
