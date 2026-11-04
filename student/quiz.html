@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../assets/css/components.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="css/student.css">
+  <link rel="stylesheet" href="css/module.css">
   <link rel="stylesheet" href="css/quiz.css">
 </head>
 <body class="app-layout">
@@ -61,8 +62,14 @@
   <div class="app-main">
     <header class="app-topbar">
       <div>
+        <div class="module-breadcrumb" id="quizBreadcrumb">
+          <a href="dashboard.html">Beranda</a>
+          <span class="separator">/</span>
+          <a href="modules.html">Modul Pembelajaran</a>
+          <span class="separator">/</span>
+          <span class="current" id="quizBreadcrumbCurrent">Modul 1: Kuis Evaluasi</span>
+        </div>
         <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);" id="quizTitle">Kuis Evaluasi Modul</h2>
-        <div style="font-size: 0.85rem; color: var(--color-text-muted);" id="quizSubtitle">Administrasi Sistem Jaringan</div>
       </div>
 
       <div class="user-profile-badge">
@@ -75,6 +82,17 @@
     </header>
 
     <main class="app-content">
+      <!-- Stepper Box Modul (Bisa diklik untuk navigasi ke tahap materi/video/aktivitas) -->
+      <div class="module-header-box" id="quizModuleHeaderBox">
+        <div>
+          <span class="badge badge-info" id="quizTopicBadge" style="margin-bottom: 0.35rem;">Topik: Keamanan Jaringan</span>
+          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;" id="quizStageHeading">Tahap 4: Kuis Evaluasi Pemahaman</h3>
+        </div>
+        <div class="module-stepper" id="quizModuleStepper">
+          <!-- Diisi dinamis oleh quiz-engine.js -->
+        </div>
+      </div>
+
       <!-- Quiz Header Bar with Realtime Countdown Timer -->
       <div class="quiz-header-bar">
         <div>

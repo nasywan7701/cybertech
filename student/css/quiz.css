@@ -3,6 +3,13 @@
    Kuis Soal, Timer Countdown, Hero Scorecard, & Pembahasan
    =================================================================== */
 
+/* Stepper Header Modul pada Halaman Kuis */
+.module-header-box {
+  max-width: 1050px;
+  margin: 0 auto 1.5rem auto;
+  width: 100%;
+}
+
 /* Header Kuis */
 .quiz-header-bar {
   background: #ffffff;

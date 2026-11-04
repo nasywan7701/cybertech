@@ -36,9 +36,44 @@ document.addEventListener('DOMContentLoaded', () => {
   let remainingSeconds = 10 * 60; // 10 menit
   let timerInterval = null;
 
+  // Metadata Modul & Tahapan Stepper Navigasi
+  const moduleInfoMap = {
+    '1': {
+      topik: 'Topik: Keamanan Jaringan Dasar',
+      title: 'Modul 1: Identifikasi Ancaman Jaringan',
+      steps: [
+        { label: '✓ 1. Materi', href: 'module1-material.html' },
+        { label: '✓ 2. Video', href: 'module1-video.html' },
+        { label: '✓ 3. Aktivitas Drag & Drop', href: 'module1-activity.html' },
+        { label: '4. Kuis Evaluasi', href: '#', active: true }
+      ]
+    },
+    '2': {
+      topik: 'Topik: Sistem Pertahanan Berlapis',
+      title: 'Modul 2: Analisis Sistem Keamanan Jaringan',
+      steps: [
+        { label: '✓ 1. Materi', href: 'module2-material.html' },
+        { label: '✓ 2. Infografis Interaktif', href: 'module2-infografis.html' },
+        { label: '✓ 3. Studi Kasus', href: 'module2-activity.html' },
+        { label: '4. Kuis Evaluasi', href: '#', active: true }
+      ]
+    },
+    '3': {
+      topik: 'Topik: Konfigurasi Aturan Lalu Lintas Jaringan',
+      title: 'Modul 3: Firewall & Simulasi Paket',
+      steps: [
+        { label: '✓ 1. Materi', href: 'module3-material.html' },
+        { label: '✓ 2. Animasi Firewall', href: 'module3-video.html' },
+        { label: '✓ 3. Simulasi Firewall', href: 'module3-activity.html' },
+        { label: '4. Kuis Evaluasi', href: '#', active: true }
+      ]
+    }
+  };
+
+  const modData = moduleInfoMap[moduleId] || moduleInfoMap['1'];
+
   // DOM Elements
   const quizTitle = document.getElementById('quizTitle');
-  const quizSubtitle = document.getElementById('quizSubtitle');
   const timerText = document.getElementById('timerText');
   const timerBox = document.getElementById('timerBox');
   const questionNumBadge = document.getElementById('questionNumBadge');
@@ -49,9 +84,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('nextBtn');
   const submitBtn = document.getElementById('submitBtn');
   const answeredCountText = document.getElementById('answeredCountText');
+  const quizTopicBadge = document.getElementById('quizTopicBadge');
+  const quizModuleStepper = document.getElementById('quizModuleStepper');
+  const quizBreadcrumbCurrent = document.getElementById('quizBreadcrumbCurrent');
 
-  quizTitle.textContent = `Kuis Evaluasi Modul ${moduleId}`;
-  quizSubtitle.textContent = moduleMeta.judul;
+  if (quizBreadcrumbCurrent) {
+    quizBreadcrumbCurrent.textContent = `Modul ${moduleId}: Kuis Evaluasi`;
+  }
+  if (quizTitle) {
+    quizTitle.textContent = modData.title;
+  }
+  if (quizTopicBadge) {
+    quizTopicBadge.textContent = modData.topik;
+  }
+
+  // Render Stepper Bar
+  if (quizModuleStepper) {
+    quizModuleStepper.innerHTML = modData.steps.map(step => {
+      if (step.active) {
+        return `<span class="stepper-item active">${step.label}</span>`;
+      } else {
+        return `<a href="${step.href}" class="stepper-item completed js-stepper-link">${step.label}</a>`;
+      }
+    }).join('');
+
+    quizModuleStepper.querySelectorAll('.js-stepper-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (isQuizStarted) {
+          const leave = confirm('Kuis sedang berlangsung. Jika Anda meninggalkan halaman ini, jawaban saat ini belum tersimpan. Yakin ingin kembali ke tahap sebelumnya?');
+          if (!leave) {
+            e.preventDefault();
+          }
+        }
+      });
+    });
+  }
 
   // 1. Format Waktu Menit:Detik
   function formatTimer(sec) {
