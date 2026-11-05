@@ -337,3 +337,71 @@
   }
 }
 
+@media (max-width: 768px) {
+  .student-banner {
+    padding: 1.25rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .banner-title {
+    font-size: 1.35rem;
+  }
+
+  .progress-summary-card {
+    padding: 1.25rem 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .progress-summary-info {
+    min-width: 100%;
+  }
+
+  .catalog-card {
+    padding: 1.25rem 1rem;
+    gap: 1rem;
+  }
+
+  .catalog-card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.15rem;
+    border-radius: var(--radius-md);
+  }
+
+  .catalog-card-body h3 {
+    font-size: 1.15rem;
+  }
+
+  .catalog-card-action {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .catalog-card-action .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .profile-header-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .avatar-selector {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+

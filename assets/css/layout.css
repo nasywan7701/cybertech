@@ -20,6 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .navbar-brand {
@@ -31,6 +32,7 @@
   font-weight: var(--font-weight-bold);
   text-decoration: none;
   letter-spacing: -0.01em;
+  flex-shrink: 0;
 }
 
 .navbar-brand .brand-badge {
@@ -42,6 +44,22 @@
   font-weight: var(--font-weight-bold);
 }
 
+.navbar-actions-mobile {
+  display: none;
+}
+
+.navbar-mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar-nav {
   display: flex;
   align-items: center;
@@ -49,6 +67,62 @@
   gap: 1.75rem;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 768px) {
+  .site-navbar {
+    height: 60px;
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem;
+    gap: 0.5rem;
+  }
+
+  .navbar-brand img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .navbar-actions-mobile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .navbar-mobile-toggle {
+    display: flex;
+  }
+
+  .site-navbar .navbar-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-primary);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem 1.5rem;
+    gap: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: none;
+    z-index: 999;
+  }
+
+  .site-navbar .navbar-nav.show {
+    display: flex;
+  }
+
+  .site-navbar .nav-link {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .navbar-login-desktop-item {
+    display: none;
+  }
 }
 
 .nav-link {
@@ -225,25 +299,112 @@
   object-fit: cover;
 }
 
-/* Responsivitas Layar Tablet / Ponsel */
+/* Tombol Hamburger Sidebar Mobile */
+.sidebar-toggle-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  color: var(--color-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+  margin-right: 0.5rem;
+}
+
+.sidebar-toggle-btn:hover {
+  background: #f1f5f9;
+  border-color: var(--color-secondary);
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 37, 69, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 150;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.sidebar-backdrop.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Responsivitas Layar Tablet */
 @media (max-width: 992px) {
+  .sidebar-toggle-btn {
+    display: inline-flex;
+  }
   .app-sidebar {
     transform: translateX(-100%);
+    z-index: 200;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .app-sidebar.show {
     transform: translateX(0);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.3);
   }
   .app-main {
     margin-left: 0;
     width: 100%;
     max-width: 100%;
   }
-  .sidebar-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 150;
+}
+
+/* Responsivitas Layar Ponsel (Mobile < 768px) */
+@media (max-width: 768px) {
+  .app-topbar {
+    height: auto;
+    min-height: 60px;
+    padding: 0.65rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .app-topbar > div:first-child {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    gap: 0.5rem;
+  }
+
+  .app-topbar h2 {
+    font-size: 1.05rem !important;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .module-breadcrumb {
+    display: none; /* Sembunyikan breadcrumb panjang agar judul rapi */
+  }
+
+  .user-profile-badge {
+    margin-left: auto;
+    gap: 0.4rem;
+  }
+
+  .user-profile-badge > div:first-child {
+    display: none; /* Sembunyikan teks nama panjang di ponsel, avatar inisial tetap ada */
+  }
+
+  .user-avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+    border-width: 1.5px;
+  }
+
+  .app-content {
+    padding: 1rem 0.85rem;
   }
 }
 

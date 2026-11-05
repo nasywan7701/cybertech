@@ -16,16 +16,24 @@
   <header class="site-navbar">
     <div class="container">
       <a href="index.html" class="navbar-brand">
-        <img src="assets/images/logo.svg" alt="CyberTech Logo" width="34" height="34">
+        <img src="assets/images/logo.svg" alt="CyberTech Logo" width="32" height="32">
         <span>CyberTech</span>
       </a>
+
+      <!-- Aksi Navbar Mobile (Tombol Login & Hamburger) -->
+      <div class="navbar-actions-mobile">
+        <button type="button" class="btn btn-outline-white btn-sm js-open-role-modal">Login</button>
+        <button type="button" class="navbar-mobile-toggle js-navbar-mobile-toggle" aria-label="Menu Navigasi">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
 
       <nav>
         <ul class="navbar-nav">
           <li><a href="#beranda" class="nav-link active">Beranda</a></li>
           <li><a href="#tentang" class="nav-link">Tentang</a></li>
           <li><a href="#modul" class="nav-link">Modul</a></li>
-          <li><button type="button" class="btn btn-outline-white btn-sm js-open-role-modal">Login</button></li>
+          <li class="navbar-login-desktop-item"><button type="button" class="btn btn-outline-white btn-sm js-open-role-modal">Login</button></li>
         </ul>
       </nav>
     </div>

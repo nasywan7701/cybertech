@@ -42,5 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Toggle Menu Navigasi Mobile pada Landing Page
+  const mobileToggle = document.querySelector('.js-navbar-mobile-toggle');
+  const navbarNav = document.querySelector('.site-navbar .navbar-nav');
+  if (mobileToggle && navbarNav) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navbarNav.classList.toggle('show');
+    });
+
+    // Tutup menu saat salah satu link diklik
+    navbarNav.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navbarNav.classList.remove('show');
+      });
+    });
+
+    // Tutup menu saat klik di luar
+    document.addEventListener('click', (e) => {
+      if (!navbarNav.contains(e.target) && !mobileToggle.contains(e.target)) {
+        navbarNav.classList.remove('show');
+      }
+    });
+  }
 });
 
