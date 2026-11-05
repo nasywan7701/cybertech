@@ -299,6 +299,11 @@
   object-fit: cover;
 }
 
+/* Breadcrumbs disembunyikan secara global karena navigasi sudah tersedia di sidebar */
+.module-breadcrumb {
+  display: none !important;
+}
+
 /* Tombol Hamburger Sidebar Mobile */
 .sidebar-toggle-btn {
   display: none !important;

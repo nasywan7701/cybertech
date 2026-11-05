@@ -2,31 +2,52 @@
    CyberTech - Module Stylesheet (Material, Video 16:9, & Activity)
    =================================================================== */
 
-/* Breadcrumbs */
+/* Breadcrumbs - Sembunyikan karena navigasi sudah tersedia di sidebar kiri */
 .module-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--font-size-caption);
-  color: var(--color-text-muted);
-  margin-bottom: 1.25rem;
+  display: none !important;
 }
 
-.module-breadcrumb a {
-  color: var(--color-text-muted);
+/* Header Topbar Modul: Judul Modul Ditengahkan */
+.app-topbar {
+  position: relative;
 }
 
-.module-breadcrumb a:hover {
-  color: var(--color-secondary);
+@media (min-width: 993px) {
+  .app-topbar {
+    justify-content: center;
+  }
+
+  .app-topbar > div:not(.user-profile-badge) {
+    width: 100%;
+    text-align: center;
+    padding: 0 180px;
+  }
+
+  .app-topbar > div:not(.user-profile-badge) h2 {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .app-topbar .user-profile-badge {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
-.module-breadcrumb .separator {
-  color: #cbd5e1;
-}
+@media (max-width: 992px) {
+  .app-topbar > div:not(.user-profile-badge) {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
 
-.module-breadcrumb .current {
-  color: var(--color-secondary);
-  font-weight: var(--font-weight-medium);
+  .app-topbar > div:not(.user-profile-badge) h2 {
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 /* Module Header Bar */
