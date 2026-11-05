@@ -84,15 +84,31 @@
         
         <!-- Kartu 1: Data Identitas Siswa -->
         <div class="profile-card">
-          <div class="profile-header-box">
-            <div class="profile-avatar-large" id="avatarPreview">S</div>
-            <div>
+          <div class="profile-header-box" style="align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+            <div style="position: relative; flex-shrink: 0;">
+              <div class="profile-avatar-large" id="avatarPreview">S</div>
+              <label for="avatarFileInput" style="position: absolute; bottom: 0; right: 0; background: var(--color-primary); color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid #ffffff; box-shadow: var(--shadow-sm);" title="Pilih & Unggah Foto Profil">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              </label>
+            </div>
+            <div style="flex: 1; min-width: 220px;">
               <h3 style="margin-bottom: 0.25rem;" class="js-student-name">Nama Siswa</h3>
-              <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.35rem;">
+              <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">
                 <span class="js-student-email">email@smkn1takalar.sch.id</span> &bull; <span class="badge badge-info">Siswa Aktif</span>
               </div>
-              <div style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 500;">
-                <span class="js-student-class">Kelas XI TJKT</span> &bull; SMK Negeri 1 Takalar
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+                <input type="file" id="avatarFileInput" accept="image/png, image/jpeg, image/jpg, image/webp" style="display: none;">
+                <button type="button" class="btn btn-outline btn-sm" id="btnUploadPhoto" style="display: inline-flex; align-items: center; gap: 6px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  <span>Unggah Foto Profil</span>
+                </button>
+                <button type="button" class="btn btn-outline btn-sm" id="btnResetPhoto" style="display: inline-flex; align-items: center; gap: 6px; color: var(--color-danger); border-color: #fca5a5;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                  <span>Gunakan Inisial / Emoji</span>
+                </button>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.4rem;">
+                Format didukung: JPG, PNG, atau WebP (Otomatis disesuaikan).
               </div>
             </div>
           </div>
@@ -101,18 +117,18 @@
             <h4 style="margin-bottom: 1.25rem;">Informasi Akun</h4>
             
             <div class="form-group">
-              <label for="profNama" class="form-label">Nama Lengkap Siswa</label>
-              <input type="text" id="profNama" class="form-control" required>
+              <label for="profNama" class="form-label">Nama Lengkap Siswa *</label>
+              <input type="text" id="profNama" class="form-control" required placeholder="Masukkan nama lengkap siswa">
             </div>
 
             <div class="form-group">
-              <label for="profEmail" class="form-label">Alamat Email (Akun)</label>
-              <input type="email" id="profEmail" class="form-control" disabled>
-              <span class="form-hint">Alamat email digunakan sebagai ID login dan tidak dapat diubah.</span>
+              <label for="profEmail" class="form-label">Alamat Email (Akun Siswa) *</label>
+              <input type="email" id="profEmail" class="form-control" required placeholder="Contoh: siswa@smkn1takalar.sch.id">
+              <span class="form-hint">Email aktif digunakan untuk masuk (login) dan pemulihan kata sandi saat lupa.</span>
             </div>
 
             <div class="form-group">
-              <label for="profKelas" class="form-label">Kelas (Jurusan TJKT)</label>
+              <label for="profKelas" class="form-label">Kelas (Jurusan TJKT) *</label>
               <select id="profKelas" class="form-control" style="cursor: pointer;">
                 <optgroup label="Kelas XI">
                   <option value="XI TJKT 1">XI TJKT 1</option>
@@ -126,7 +142,7 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Pilih Karakter Avatar</label>
+              <label class="form-label">Atau Pilih Karakter Avatar Cepat</label>
               <div class="avatar-selector">
                 <button type="button" class="avatar-preset-btn" data-avatar="👨‍💻">👨‍💻</button>
                 <button type="button" class="avatar-preset-btn" data-avatar="👩‍💻">👩‍💻</button>
@@ -137,8 +153,9 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">
-              Simpan Perubahan Profil
+            <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+              <span>Simpan Perubahan Profil</span>
             </button>
           </form>
         </div>
@@ -190,13 +207,99 @@
       const profEmail = document.getElementById('profEmail');
       const profKelas = document.getElementById('profKelas');
       const avatarPreview = document.getElementById('avatarPreview');
+      const avatarFileInput = document.getElementById('avatarFileInput');
+      const btnUploadPhoto = document.getElementById('btnUploadPhoto');
+      const btnResetPhoto = document.getElementById('btnResetPhoto');
 
       profNama.value = currentUser.nama || '';
       profEmail.value = currentUser.email || '';
       profKelas.value = currentUser.kelas || 'XI TJKT 1';
-      avatarPreview.textContent = currentUser.avatar || currentUser.nama.charAt(0).toUpperCase();
 
       let selectedAvatar = currentUser.avatar || currentUser.nama.charAt(0).toUpperCase();
+
+      function renderAvatarPreview(av) {
+        if (av && (av.startsWith('data:image/') || av.startsWith('http') || av.startsWith('/'))) {
+          avatarPreview.innerHTML = `<img src="${av}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;">`;
+          avatarPreview.style.padding = '0';
+          avatarPreview.style.overflow = 'hidden';
+        } else {
+          avatarPreview.textContent = av || (profNama.value ? profNama.value.charAt(0).toUpperCase() : 'S');
+          avatarPreview.style.padding = '';
+          avatarPreview.style.overflow = '';
+        }
+      }
+
+      renderAvatarPreview(selectedAvatar);
+
+      // Event listener tombol upload foto
+      if (btnUploadPhoto && avatarFileInput) {
+        btnUploadPhoto.addEventListener('click', () => {
+          avatarFileInput.click();
+        });
+      }
+
+      // Handler input file foto profil (kompres otomatis max 320px agar hemat memori & cepat disimpan)
+      if (avatarFileInput) {
+        avatarFileInput.addEventListener('change', (e) => {
+          const file = e.target.files && e.target.files[0];
+          if (!file) return;
+
+          if (!file.type.startsWith('image/')) {
+            window.Utils.showToast('Harap pilih file gambar (JPG, PNG, atau WebP).', 'error');
+            return;
+          }
+
+          if (file.size > 5 * 1024 * 1024) {
+            window.Utils.showToast('Ukuran file foto maksimal 5 MB.', 'error');
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              const maxDim = 320;
+              let w = img.width;
+              let h = img.height;
+              if (w > h) {
+                if (w > maxDim) {
+                  h = Math.round((h * maxDim) / w);
+                  w = maxDim;
+                }
+              } else {
+                if (h > maxDim) {
+                  w = Math.round((w * maxDim) / h);
+                  h = maxDim;
+                }
+              }
+              canvas.width = w;
+              canvas.height = h;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, w, h);
+              const dataUrl = canvas.toDataURL('image/jpeg', 0.88);
+              selectedAvatar = dataUrl;
+              renderAvatarPreview(selectedAvatar);
+
+              // Nonaktifkan seleksi preset emoji
+              document.querySelectorAll('.avatar-preset-btn').forEach(b => b.classList.remove('active'));
+              window.Utils.showToast('Foto profil dipilih. Klik "Simpan Perubahan Profil" untuk menyimpan.', 'info', 3000);
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      // Handler reset foto ke inisial nama
+      if (btnResetPhoto) {
+        btnResetPhoto.addEventListener('click', () => {
+          selectedAvatar = profNama.value.trim().charAt(0).toUpperCase() || 'S';
+          renderAvatarPreview(selectedAvatar);
+          document.querySelectorAll('.avatar-preset-btn').forEach(b => b.classList.remove('active'));
+          window.Utils.showToast('Foto profil direset ke inisial nama.', 'info');
+        });
+      }
 
       // Tangani pemilihan avatar preset
       document.querySelectorAll('.avatar-preset-btn').forEach(btn => {
@@ -207,14 +310,15 @@
           document.querySelectorAll('.avatar-preset-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           selectedAvatar = btn.getAttribute('data-avatar');
-          avatarPreview.textContent = selectedAvatar;
+          renderAvatarPreview(selectedAvatar);
         });
       });
 
-      // Submit update profile
+      // Submit update profile (Nama, Email, Kelas, Avatar)
       document.getElementById('profileForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const nama = profNama.value.trim();
+        const email = profEmail.value.trim();
         const kelas = profKelas.value.trim();
 
         if (!nama) {
@@ -222,14 +326,26 @@
           return;
         }
 
+        if (!email) {
+          window.Utils.showToast('Alamat email tidak boleh kosong.', 'error');
+          return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          window.Utils.showToast('Format alamat email tidak valid.', 'error');
+          return;
+        }
+
         const res = await window.Auth.updateProfile({
           nama: nama,
+          email: email,
           kelas: kelas,
           avatar: selectedAvatar
         });
 
         if (res.success) {
-          window.Utils.showToast('Profil berhasil diperbarui!', 'success');
+          window.Utils.showToast('Profil & data akun berhasil diperbarui!', 'success');
           setTimeout(() => location.reload(), 1000);
         } else {
           window.Utils.showToast(res.message, 'error');

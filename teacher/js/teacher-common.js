@@ -28,7 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.querySelectorAll('.js-teacher-avatar').forEach(el => {
-    el.textContent = currentUser.avatar || 'G';
+    const av = currentUser.avatar;
+    if (av && (av.startsWith('data:image/') || av.startsWith('http') || av.startsWith('/'))) {
+      el.innerHTML = `<img src="${av}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;">`;
+      el.style.padding = '0';
+      el.style.overflow = 'hidden';
+    } else {
+      el.textContent = av || 'G';
+      el.style.padding = '';
+      el.style.overflow = '';
+    }
   });
 
   // 3. Pasang Event Listener Logout

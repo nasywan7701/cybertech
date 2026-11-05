@@ -877,6 +877,7 @@ const Storage = {
           body: JSON.stringify({
             id: id,
             nama: users[index].nama,
+            email: users[index].email,
             kelas: users[index].kelas || '',
             nip: users[index].nip || '',
             avatar: users[index].avatar || ''

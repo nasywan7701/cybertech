@@ -115,6 +115,7 @@ switch ($action) {
     case 'profile':
         $userId = $data['id'] ?? '';
         $nama = trim($data['nama'] ?? '');
+        $email = trim(strtolower($data['email'] ?? ''));
         $kelas = trim($data['kelas'] ?? '');
         $nip = trim($data['nip'] ?? '');
         $avatar = $data['avatar'] ?? null;
@@ -124,14 +125,42 @@ switch ($action) {
             exit;
         }
 
-        $stmt = $pdo->prepare("UPDATE users SET nama = :nama, kelas = :kelas, nip = :nip, avatar = COALESCE(:avatar, avatar) WHERE id = :id");
-        $stmt->execute([
+        // Jika email diubah, validasi dan cek duplikat
+        if (!empty($email)) {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo json_encode(['success' => false, 'message' => 'Format alamat email tidak valid.']);
+                exit;
+            }
+
+            $stmtCheck = $pdo->prepare("SELECT id FROM users WHERE LOWER(email) = :email AND id != :id LIMIT 1");
+            $stmtCheck->execute([':email' => $email, ':id' => $userId]);
+            if ($stmtCheck->fetch()) {
+                echo json_encode(['success' => false, 'message' => 'Alamat email tersebut sudah digunakan oleh akun lain.']);
+                exit;
+            }
+        }
+
+        $query = "UPDATE users SET nama = :nama, kelas = :kelas, nip = :nip";
+        $params = [
             ':nama' => $nama,
             ':kelas' => $kelas,
             ':nip' => $nip,
-            ':avatar' => $avatar,
             ':id' => $userId
-        ]);
+        ];
+
+        if (!empty($email)) {
+            $query .= ", email = :email";
+            $params[':email'] = $email;
+        }
+
+        if ($avatar !== null) {
+            $query .= ", avatar = :avatar";
+            $params[':avatar'] = $avatar;
+        }
+
+        $query .= " WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($params);
 
         $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
         $stmt->execute([':id' => $userId]);
@@ -139,6 +168,70 @@ switch ($action) {
         unset($updatedUser['password']);
 
         echo json_encode(['success' => true, 'user' => $updatedUser, 'message' => 'Profil berhasil diperbarui.']);
+        break;
+
+    case 'verify_account':
+        $identifier = trim($data['identifier'] ?? '');
+        if (empty($identifier)) {
+            echo json_encode(['success' => false, 'message' => 'Email atau username wajib diisi.']);
+            exit;
+        }
+
+        $stmt = $pdo->prepare("SELECT id, username, email, nama, role FROM users WHERE LOWER(email) = LOWER(:id1) OR LOWER(username) = LOWER(:id2) LIMIT 1");
+        $stmt->execute([':id1' => $identifier, ':id2' => $identifier]);
+        $user = $stmt->fetch();
+
+        if (!$user) {
+            echo json_encode(['success' => false, 'message' => 'Akun dengan email atau username tersebut tidak ditemukan.']);
+            exit;
+        }
+
+        echo json_encode([
+            'success' => true,
+            'user' => [
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'email' => $user['email'],
+                'nama' => $user['nama'],
+                'role' => $user['role']
+            ],
+            'message' => 'Akun terverifikasi.'
+        ]);
+        break;
+
+    case 'reset_password':
+        $identifier = trim($data['identifier'] ?? '');
+        $newPass = $data['newPassword'] ?? '';
+        $confirmPass = $data['confirmPassword'] ?? '';
+
+        if (empty($identifier) || empty($newPass)) {
+            echo json_encode(['success' => false, 'message' => 'Identitas akun dan kata sandi baru wajib diisi.']);
+            exit;
+        }
+
+        if (strlen($newPass) < 6) {
+            echo json_encode(['success' => false, 'message' => 'Kata sandi baru minimal 6 karakter.']);
+            exit;
+        }
+
+        if (!empty($confirmPass) && $newPass !== $confirmPass) {
+            echo json_encode(['success' => false, 'message' => 'Konfirmasi kata sandi baru tidak cocok.']);
+            exit;
+        }
+
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE LOWER(email) = LOWER(:id1) OR LOWER(username) = LOWER(:id2) LIMIT 1");
+        $stmt->execute([':id1' => $identifier, ':id2' => $identifier]);
+        $user = $stmt->fetch();
+
+        if (!$user) {
+            echo json_encode(['success' => false, 'message' => 'Akun tidak ditemukan.']);
+            exit;
+        }
+
+        $stmt = $pdo->prepare("UPDATE users SET password = :newPass WHERE id = :id");
+        $stmt->execute([':newPass' => $newPass, ':id' => $user['id']]);
+
+        echo json_encode(['success' => true, 'message' => 'Kata sandi berhasil dipulihkan dan diperbarui! Silakan login kembali.']);
         break;
 
     case 'password':

@@ -179,26 +179,47 @@ const Auth = {
   },
 
   /**
-   * Perbarui informasi profil pengguna aktif
+   * Perbarui informasi profil pengguna aktif (Nama, Email, Avatar, Kelas/NIP)
    */
   async updateProfile(updates) {
     const currentUser = this.getCurrentUser();
     if (!currentUser) return { success: false, message: 'Sesi tidak aktif.' };
 
+    // Validasi email jika pengguna memperbarui email
+    if (updates.email && updates.email.trim().toLowerCase() !== (currentUser.email || '').toLowerCase()) {
+      const emailVal = updates.email.trim().toLowerCase();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailVal)) {
+        return { success: false, message: 'Format alamat email tidak valid.' };
+      }
+
+      // Periksa duplikasi email di data lokal
+      const allUsers = window.Storage.getUsers();
+      const isTaken = allUsers.some(u => u.id !== currentUser.id && u.email && u.email.toLowerCase() === emailVal);
+      if (isTaken) {
+        return { success: false, message: 'Alamat email tersebut sudah digunakan oleh akun lain.' };
+      }
+    }
+
     const api = window.Storage ? window.Storage.getApiBaseUrl() : null;
     if (api) {
       try {
-        await fetch(`${api}/auth.php?action=profile`, {
+        const response = await fetch(`${api}/auth.php?action=profile`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             id: currentUser.id,
             nama: updates.nama || currentUser.nama,
-            kelas: updates.kelas || currentUser.kelas || '',
-            nip: updates.nip || currentUser.nip || '',
-            avatar: updates.avatar || currentUser.avatar || ''
+            email: updates.email || currentUser.email,
+            kelas: updates.kelas !== undefined ? updates.kelas : (currentUser.kelas || ''),
+            nip: updates.nip !== undefined ? updates.nip : (currentUser.nip || ''),
+            avatar: updates.avatar !== undefined ? updates.avatar : (currentUser.avatar || '')
           })
         });
+        const resData = await response.json();
+        if (!resData.success) {
+          return { success: false, message: resData.message || 'Gagal memperbarui profil di server.' };
+        }
       } catch (err) {
         console.warn('[CyberTech Auth] Gagal memanggil API profil MySQL:', err);
       }
@@ -206,6 +227,104 @@ const Auth = {
 
     const updated = window.Storage.updateUser(currentUser.id, updates);
     return { success: true, user: updated, message: 'Profil berhasil diperbarui.' };
+  },
+
+  /**
+   * Verifikasi identitas akun untuk keperluan pemulihan kata sandi
+   */
+  async verifyAccount(identifier) {
+    const query = String(identifier || '').trim().toLowerCase();
+    if (!query) {
+      return { success: false, message: 'Silakan masukkan email atau username terdaftar.' };
+    }
+
+    const api = window.Storage ? window.Storage.getApiBaseUrl() : null;
+    if (api) {
+      try {
+        const response = await fetch(`${api}/auth.php?action=verify_account`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ identifier: query })
+        });
+        const data = await response.json();
+        if (data.success && data.user) {
+          return { success: true, user: data.user, message: data.message };
+        } else if (data.message) {
+          return { success: false, message: data.message };
+        }
+      } catch (e) {
+        console.warn('[CyberTech Auth] Gagal verifikasi akun via MySQL, cek cache lokal:', e);
+      }
+    }
+
+    const user = window.Storage.getUserByUsernameOrEmail(query);
+    if (user) {
+      return {
+        success: true,
+        user: {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          nama: user.nama,
+          role: user.role
+        },
+        message: 'Akun terverifikasi.'
+      };
+    }
+
+    return { success: false, message: 'Akun dengan email atau username tersebut tidak ditemukan di sistem.' };
+  },
+
+  /**
+   * Pemulihan dan pengaturan kata sandi baru (Reset Password)
+   */
+  async resetPassword(identifier, newPassword, confirmPassword) {
+    const query = String(identifier || '').trim().toLowerCase();
+    if (!query) {
+      return { success: false, message: 'Email atau username tidak boleh kosong.' };
+    }
+    if (!newPassword || newPassword.length < 6) {
+      return { success: false, message: 'Kata sandi baru minimal 6 karakter.' };
+    }
+    if (newPassword !== confirmPassword) {
+      return { success: false, message: 'Konfirmasi kata sandi baru tidak cocok.' };
+    }
+
+    const api = window.Storage ? window.Storage.getApiBaseUrl() : null;
+    if (api) {
+      try {
+        const response = await fetch(`${api}/auth.php?action=reset_password`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            identifier: query,
+            newPassword: newPassword,
+            confirmPassword: confirmPassword
+          })
+        });
+        const data = await response.json();
+        if (data.success) {
+          // Sinkronkan juga di localStorage jika ada
+          const localUser = window.Storage.getUserByUsernameOrEmail(query);
+          if (localUser) {
+            window.Storage.updateUser(localUser.id, { password: newPassword });
+          }
+          return { success: true, message: data.message };
+        } else {
+          return { success: false, message: data.message || 'Gagal mengatur ulang kata sandi.' };
+        }
+      } catch (e) {
+        console.warn('[CyberTech Auth] Gagal reset password via MySQL, update cache lokal:', e);
+      }
+    }
+
+    const localUser = window.Storage.getUserByUsernameOrEmail(query);
+    if (!localUser) {
+      return { success: false, message: 'Akun dengan email atau username tersebut tidak ditemukan.' };
+    }
+
+    window.Storage.updateUser(localUser.id, { password: newPassword });
+    return { success: true, message: 'Kata sandi Anda berhasil diperbarui! Silakan login dengan kata sandi baru.' };
   },
 
   /**
