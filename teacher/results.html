@@ -207,8 +207,13 @@
         const result = window.Storage.getResultById(resultId);
         if (!result) return;
 
-        const quizzes = window.Storage.getQuizzes(result.moduleId);
+        // Ambil butir soal yang diujikan pada sesi siswa ini
+        const allQuizzes = window.Storage.getQuizzes(result.moduleId);
         const userAnswers = result.userAnswers || {};
+        const assignedIds = result.assignedQuestionIds || Object.keys(userAnswers);
+        const quizzes = assignedIds.length > 0 
+          ? assignedIds.map(id => allQuizzes.find(q => q.id === id)).filter(Boolean)
+          : allQuizzes;
 
         const itemsHtml = quizzes.map((q, idx) => {
           const studentAns = userAnswers[q.id];

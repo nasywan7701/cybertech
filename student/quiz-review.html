@@ -127,9 +127,13 @@
         return;
       }
 
-      // Ambil soal yang sesuai dengan modul
-      const quizzes = window.Storage.getQuizzes(result.moduleId);
+      // Ambil butir soal yang secara spesifik diujikan pada sesi kuis siswa ini
+      const allQuizzes = window.Storage.getQuizzes(result.moduleId);
       const userAnswers = result.userAnswers || {};
+      const assignedIds = result.assignedQuestionIds || Object.keys(userAnswers);
+      const quizzes = assignedIds.length > 0 
+        ? assignedIds.map(id => allQuizzes.find(q => q.id === id)).filter(Boolean)
+        : allQuizzes;
 
       document.getElementById('reviewModuleTitle').textContent = `Modul ${result.moduleId}: ${result.moduleTitle}`;
       document.getElementById('reviewScoreSummary').textContent = `Nilai Perolehan: ${result.score} / 100 (${result.correctCount} Benar, ${result.wrongCount} Salah)`;

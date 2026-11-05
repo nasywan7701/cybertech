@@ -21,12 +21,27 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Ambil bank soal aktif untuk modul terkait
-  const rawQuizzes = window.Storage.getQuizzes(moduleId);
-  if (!rawQuizzes || rawQuizzes.length === 0) {
+  const allQuizzes = window.Storage.getQuizzes(moduleId);
+  if (!allQuizzes || allQuizzes.length === 0) {
     alert('Bank soal untuk modul ini belum tersedia.');
     window.location.href = 'modules.html';
     return;
   }
+
+  // Anti-Contek (Anti-Cheat): Acak urutan dan ambil sampel butir soal (5 butir)
+  // Setiap siswa yang membuka kuis akan mendapatkan variasi dan urutan soal yang berbeda
+  const QUESTIONS_PER_QUIZ = 5;
+  function shuffleArray(arr) {
+    const copy = [...arr];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  // Acak bank soal dan ambil 5 soal secara dinamis untuk sesi siswa ini
+  const rawQuizzes = shuffleArray(allQuizzes).slice(0, Math.min(QUESTIONS_PER_QUIZ, allQuizzes.length));
 
   // State Pengerjaan Kuis
   let currentIndex = 0;
@@ -291,6 +306,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const score = Math.round((correctCount / totalQuestions) * 100);
     const durationSpent = (10 * 60) - remainingSeconds;
 
+    // Pastikan seluruh soal yang ditugaskan tercatat pada userAnswers (meski belum sempat dijawab)
+    rawQuizzes.forEach(q => {
+      if (!userAnswers[q.id]) {
+        userAnswers[q.id] = null;
+      }
+    });
+
     const resultPayload = {
       studentId: currentUser.id,
       studentName: currentUser.nama,
@@ -301,6 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
       wrongCount: totalQuestions - correctCount,
       totalQuestions: totalQuestions,
       userAnswers: userAnswers,
+      assignedQuestionIds: rawQuizzes.map(q => q.id),
       durationSpent: durationSpent,
       kkm: 75
     };

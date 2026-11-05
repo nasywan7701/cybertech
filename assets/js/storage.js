@@ -145,6 +145,136 @@ const DEFAULT_QUIZZES = [
     kunci: 'B',
     pembahasan: 'Pencegahan malware yang efektif melibatkan kombinasi perangkat lunak antivirus yang selalu diperbarui, penambalan celah keamanan sistem operasi, dan kehati-hatian pengguna dalam membuka file atau tautan tak dikenal.'
   },
+  {
+    id: 'q_m1_06',
+    moduleId: '1',
+    pertanyaan: 'Malware yang menyamar sebagai perangkat lunak resmi atau game yang sah, namun ketika dipasang diam-diam membuka pintu belakang (backdoor) ke sistem komputer disebut...',
+    opsi: {
+      A: 'Trojan Horse',
+      B: 'Adware',
+      C: 'Worm',
+      D: 'Ransomware'
+    },
+    kunci: 'A',
+    pembahasan: 'Trojan Horse adalah program jahat yang disamarkan sebagai file atau aplikasi yang tampak sah untuk menipu pengguna agar menginstalnya, lalu membuka celah akses jarak jauh (backdoor).'
+  },
+  {
+    id: 'q_m1_07',
+    moduleId: '1',
+    pertanyaan: 'Jenis serangan siber di mana pelaku menyusup di antara komunikasi dua pihak (misalnya antara komputer klien dan server perbankan) untuk menguping atau mengubah data tanpa disadari disebut...',
+    opsi: {
+      A: 'Denial of Service',
+      B: 'Man-in-the-Middle (MitM)',
+      C: 'Brute Force Attack',
+      D: 'Cross-Site Scripting'
+    },
+    kunci: 'B',
+    pembahasan: 'Serangan Man-in-the-Middle (MitM) terjadi ketika pihak ketiga secara diam-diam memotong dan memanipulasi lalu lintas data antara dua pihak yang berkomunikasi di jaringan tanpa sepengetahuan mereka.'
+  },
+  {
+    id: 'q_m1_08',
+    moduleId: '1',
+    pertanyaan: 'Serangan berbahaya yang mengunci atau mengenkripsi seluruh file penting di komputer korban dan menuntut tebusan uang untuk mendapatkan kunci pembukanya disebut...',
+    opsi: {
+      A: 'Spyware',
+      B: 'Ransomware',
+      C: 'Keylogger',
+      D: 'Rootkit'
+    },
+    kunci: 'B',
+    pembahasan: 'Ransomware adalah varian malware pemerasan yang mengenkripsi data berharga milik korban dan meminta pembayaran tebusan (biasanya mata uang kripto) agar file dapat dipulihkan.'
+  },
+  {
+    id: 'q_m1_09',
+    moduleId: '1',
+    pertanyaan: 'Program pengintai yang dipasang tanpa persetujuan pengguna untuk merekam ketikan keyboard, riwayat peramban, dan kata sandi lalu mengirimkannya ke server penyerang disebut...',
+    opsi: {
+      A: 'Spyware / Keylogger',
+      B: 'Firmware',
+      C: 'Adware ramah',
+      D: 'Patch sistem'
+    },
+    kunci: 'A',
+    pembahasan: 'Spyware (termasuk modul Keylogger) dirancang untuk memata-matai seluruh kegiatan pengguna, terutama masukan ketikan keyboard dan kata sandi rahasia.'
+  },
+  {
+    id: 'q_m1_10',
+    moduleId: '1',
+    pertanyaan: 'Metode serangan peretasan akun yang mencoba menebak kata sandi secara berulang-ulang dengan menguji jutaan kombinasi karakter secara otomatis disebut...',
+    opsi: {
+      A: 'Phishing',
+      B: 'Brute Force Attack',
+      C: 'Social Engineering',
+      D: 'DNS Poisoning'
+    },
+    kunci: 'B',
+    pembahasan: 'Brute Force Attack adalah metode tebakan sistematis yang mencoba seluruh kemungkinan kombinasi huruf, angka, dan simbol sampai kata sandi yang valid berhasil ditemukan.'
+  },
+  {
+    id: 'q_m1_11',
+    moduleId: '1',
+    pertanyaan: 'Taktik manipulasi psikologis di mana pelaku menghubungi korban sambil mengaku sebagai petugas teknis IT dan meminta kata sandi darurat secara lisan termasuk teknik...',
+    opsi: {
+      A: 'Social Engineering',
+      B: 'Port Scanning',
+      C: 'Packet Sniffing',
+      D: 'SQL Injection'
+    },
+    kunci: 'A',
+    pembahasan: 'Social Engineering (rekayasa sosial) mengeksploitasi kelemahan psikologis manusia, seperti rasa percaya atau panik, untuk membocorkan informasi rahasia tanpa melalui celah teknis perangkat lunak.'
+  },
+  {
+    id: 'q_m1_12',
+    moduleId: '1',
+    pertanyaan: 'Perangkat lunak berbahaya tingkat lanjut yang menyembunyikan keberadaannya di dalam inti sistem operasi (kernel) agar tidak terdeteksi oleh antivirus konvensional disebut...',
+    opsi: {
+      A: 'Rootkit',
+      B: 'Bloatware',
+      C: 'Dialer',
+      D: 'Spam'
+    },
+    kunci: 'A',
+    pembahasan: 'Rootkit adalah sekumpulan program jahat yang memodifikasi kernel atau komponen internal OS untuk menyembunyikan proses, file, dan backdoor dari deteksi alat keamanan.'
+  },
+  {
+    id: 'q_m1_13',
+    moduleId: '1',
+    pertanyaan: 'Apa yang dimaksud dengan kerentanan "Zero-Day Exploit" dalam dunia keamanan jaringan?',
+    opsi: {
+      A: 'Serangan yang hanya membutuhkan waktu nol detik untuk mematikan komputer.',
+      B: 'Celah keamanan baru pada aplikasi yang belum diketahui oleh pengembang dan belum ada patch perbaikannya.',
+      C: 'Antivirus gratis yang kedaluwarsa dalam nol hari.',
+      D: 'Pencurian kabel jaringan di laboratorium komputer.'
+    },
+    kunci: 'B',
+    pembahasan: 'Zero-day exploit menargetkan celah keamanan perangkat lunak yang belum dirilis tambalannya (patch) oleh pengembang, sehingga sistem rentan terhadap serangan langsung.'
+  },
+  {
+    id: 'q_m1_14',
+    moduleId: '1',
+    pertanyaan: 'Pemberian izin akses aplikasi berbahaya melalui jendela peringatan UAC (User Account Control) yang sering diabaikan pengguna Windows berisiko menyebabkan...',
+    opsi: {
+      A: 'Layar monitor menjadi lebih jernih.',
+      B: 'Malware memperoleh hak akses administrator penuh ke sistem komputer.',
+      C: 'Kecepatan internet otomatis bertambah.',
+      D: 'Keyboard tidak membutuhkan arus listrik.'
+    },
+    kunci: 'B',
+    pembahasan: 'Ketika peringatan hak akses administrator disetujui sembarangan, malware mendapatkan privilege level tertinggi untuk memodifikasi registry, file sistem, dan menonaktifkan pertahanan Windows.'
+  },
+  {
+    id: 'q_m1_15',
+    moduleId: '1',
+    pertanyaan: 'Teknik penipuan identitas di mana penyerang memalsukan alamat IP asal pada header paket untuk menyamar sebagai perangkat terpercaya disebut...',
+    opsi: {
+      A: 'IP Spoofing',
+      B: 'MAC Binding',
+      C: 'DHCP Snooping',
+      D: 'NAT Forwarding'
+    },
+    kunci: 'A',
+    pembahasan: 'IP Spoofing adalah pembuatan paket IP dengan alamat sumber palsu untuk mengelabui filter penerima atau menyembunyikan identitas asli mesin penyerang dalam serangan DoS.'
+  },
 
   /* --- KUIS MODUL 2: Analisis Sistem Keamanan Jaringan --- */
   {
@@ -212,6 +342,136 @@ const DEFAULT_QUIZZES = [
     kunci: 'A',
     pembahasan: 'Antivirus modern mengandalkan basis data signature virus yang diperbarui serta analisis heuristik untuk mengenali perilaku aplikasi yang abnormal atau berpotensi merusak sistem.'
   },
+  {
+    id: 'q_m2_06',
+    moduleId: '2',
+    pertanyaan: 'Tiga pilar utama dalam keamanan informasi yang dikenal dengan singkatan CIA Triad adalah...',
+    opsi: {
+      A: 'Control, Internet, Access',
+      B: 'Confidentiality, Integrity, Availability',
+      C: 'Computer, Identity, Authentication',
+      D: 'Cables, Interface, Application'
+    },
+    kunci: 'B',
+    pembahasan: 'CIA Triad (Kerahasiaan, Integritas, dan Ketersediaan) adalah model fondasi keamanan informasi untuk melindungi data dari akses tanpa izin, perubahan tidak sah, dan gangguan ketersediaan.'
+  },
+  {
+    id: 'q_m2_07',
+    moduleId: '2',
+    pertanyaan: 'Perbedaan utama antara IDS (Intrusion Detection System) dan IPS (Intrusion Prevention System) pada jaringan adalah...',
+    opsi: {
+      A: 'IDS hanya memonitor dan memberi peringatan (alert), sedangkan IPS dapat langsung memblokir ancaman secara aktif.',
+      B: 'IDS dipasang di kabel Wi-Fi, sedangkan IPS di kabel LAN.',
+      C: 'IDS mempercepat download, sedangkan IPS menghapus file.',
+      D: 'IDS hanya untuk sistem operasi Linux, sedangkan IPS untuk Windows.'
+    },
+    kunci: 'A',
+    pembahasan: 'IDS bersifat pasif yang menganalisis lalu lintas dan mengirimkan notifikasi saat ancaman terdeteksi, sedangkan IPS bertindak aktif di jalur transmisi (inline) dan langsung menjatuhkan (drop) paket jahat.'
+  },
+  {
+    id: 'q_m2_08',
+    moduleId: '2',
+    pertanyaan: 'Prinsip keamanan "Least Privilege" (Hak Akses Minimum) dalam manajemen akun sistem jaringan bermakna bahwa...',
+    opsi: {
+      A: 'Semua siswa harus diberikan hak Administrator tertinggi.',
+      B: 'Setiap pengguna hanya diberikan hak akses yang benar-benar dibutuhkan untuk menyelesaikan tugas pekerjaannya.',
+      C: 'Password akun tidak boleh diubah selamanya.',
+      D: 'Semua file di server harus bisa dibaca oleh siapapun tanpa login.'
+    },
+    kunci: 'B',
+    pembahasan: 'Prinsip Least Privilege membatasi hak akses pengguna ke tingkat minimum yang diperlukan untuk mencegah potensi kerusakan atau penyalahgunaan jika akun tersebut disusupi.'
+  },
+  {
+    id: 'q_m2_09',
+    moduleId: '2',
+    pertanyaan: 'Protokol keamanan nirkabel yang paling kuat dan mutakhir untuk mengamankan jaringan Wi-Fi modern terhadap serangan offline dictionary attack adalah...',
+    opsi: {
+      A: 'WEP (Wired Equivalent Privacy)',
+      B: 'WPA (Wi-Fi Protected Access)',
+      C: 'WPA3 dengan protokol SAE',
+      D: 'Open System tanpa sandi'
+    },
+    kunci: 'C',
+    pembahasan: 'WPA3 menggunakan Simultaneous Authentication of Equals (SAE) yang tahan terhadap serangan kamus offline (offline dictionary attacks) dan menyediakan enkripsi yang lebih tangguh dibanding WPA2.'
+  },
+  {
+    id: 'q_m2_10',
+    moduleId: '2',
+    pertanyaan: 'Alat bantu baris perintah (CLI) yang sangat populer digunakan oleh administrator jaringan untuk melakukan audit keamanan dan pemindaian port aktif (port scanning) adalah...',
+    opsi: {
+      A: 'Nmap',
+      B: 'Notepad',
+      C: 'Winamp',
+      D: 'Paint'
+    },
+    kunci: 'A',
+    pembahasan: 'Nmap (Network Mapper) adalah utilitas open-source standar industri untuk eksplorasi jaringan, pemindaian port terbuka, inventarisasi perangkat, dan audit keamanan sistem.'
+  },
+  {
+    id: 'q_m2_11',
+    moduleId: '2',
+    pertanyaan: 'Mekanisme kriptografi yang menggunakan sepasang kunci berbeda, yaitu kunci publik (Public Key) untuk enkripsi dan kunci privat (Private Key) untuk dekripsi disebut...',
+    opsi: {
+      A: 'Kriptografi Asimetris (Public-key Cryptography)',
+      B: 'Kriptografi Simetris (Secret-key)',
+      C: 'Encoding Base64',
+      D: 'Hashing MD5'
+    },
+    kunci: 'A',
+    pembahasan: 'Kriptografi Asimetris menggunakan pasangan kunci matematis yang berbeda: kunci publik disebarkan secara terbuka untuk mengenkripsi pesan, sedangkan kunci privat disimpan rahasia oleh pemilik untuk membukanya.'
+  },
+  {
+    id: 'q_m2_12',
+    moduleId: '2',
+    pertanyaan: 'Mengapa salinan cadangan data (Data Backup) harus menerapkan aturan 3-2-1 untuk menjamin pemulihan bencana (Disaster Recovery)?',
+    opsi: {
+      A: 'Agar media penyimpanan cepat penuh.',
+      B: 'Menyimpan 3 salinan data, pada 2 jenis media berbeda, dengan 1 salinan disimpan di lokasi terpisah (off-site/cloud).',
+      C: 'Melakukan backup 3 kali sehari selama 2 jam dengan 1 teknisi.',
+      D: 'Menghapus data asli setelah 3 hari disimpan.'
+    },
+    kunci: 'B',
+    pembahasan: 'Aturan 3-2-1 menjamin ketahanan data: miliki minimal 3 salinan, simpan di 2 media berbeda (misal: NAS dan Hard Drive), dan 1 di lokasi luar (cloud/offsite) untuk mengantisipasi kebakaran atau ransomware.'
+  },
+  {
+    id: 'q_m2_13',
+    moduleId: '2',
+    pertanyaan: 'Fungsi Hash Satu Arah (Cryptographic Hash Function seperti SHA-256) dalam verifikasi integritas data file unduhan adalah...',
+    opsi: {
+      A: 'Menghasilkan checksum unik untuk memastikan file tidak mengalami modifikasi atau sisipan malware selama transfer.',
+      B: 'Mengompres ukuran file menjadi nol kilobyte.',
+      C: 'Menghapus password dari file terenkripsi.',
+      D: 'Mengubah format file dokumen menjadi video.'
+    },
+    kunci: 'A',
+    pembahasan: 'Fungsi hash menghasilkan nilai digest berukuran tetap unik. Jika satu bit saja dalam file berubah akibat kerusakan atau serangan malware, nilai hash yang dihasilkan akan berubah secara drastis (avalanche effect).'
+  },
+  {
+    id: 'q_m2_14',
+    moduleId: '2',
+    pertanyaan: 'Sertifikat Digital SSL/TLS yang terpasang pada sebuah server web diverifikasi keabsahannya oleh pihak ketiga tepercaya yang disebut...',
+    opsi: {
+      A: 'Certificate Authority (CA)',
+      B: 'Internet Service Provider (ISP)',
+      C: 'Search Engine Robot',
+      D: 'Domain Registrar'
+    },
+    kunci: 'A',
+    pembahasan: 'Certificate Authority (CA) adalah otoritas pihak ketiga terpercaya yang menerbitkan dan menandatangani sertifikat digital untuk memvalidasi kepemilikan domain dan mengaktifkan koneksi HTTPS.'
+  },
+  {
+    id: 'q_m2_15',
+    moduleId: '2',
+    pertanyaan: 'Teknik pertahanan keamanan jaringan yang sengaja menyiapkan server umpan palsu untuk memancing dan mempelajari perilaku penyerang disebut...',
+    opsi: {
+      A: 'Honeypot',
+      B: 'Proxy Server',
+      C: 'DNS Resolver',
+      D: 'Gateway Server'
+    },
+    kunci: 'A',
+    pembahasan: 'Honeypot adalah sistem keamanan jebakan yang sengaja dibiarkan rentan agar peretas masuk, memungkinkan tim keamanan mengisolasi dan mempelajari teknik penyerang tanpa membahayakan sistem produksi.'
+  },
 
   /* --- KUIS MODUL 3: Firewall & Penyaringan Paket --- */
   {
@@ -278,6 +538,136 @@ const DEFAULT_QUIZZES = [
     },
     kunci: 'B',
     pembahasan: 'Tindakan Block/Drop menghentikan paket berbahaya di perimeter firewall dan membuangnya dari antrean transmisi, melindungi server di balik firewall dari potensi serangan atau eksploitasi.'
+  },
+  {
+    id: 'q_m3_06',
+    moduleId: '3',
+    pertanyaan: 'Firewall generasi mutakhir yang tidak hanya memeriksa port dan IP, namun mampu menginspeksi isi konten aplikasi pada Layer 7 OSI serta dilengkapi IPS terintegrasi disebut...',
+    opsi: {
+      A: 'Next-Generation Firewall (NGFW)',
+      B: 'Hub Pasif',
+      C: 'Modem Dial-up',
+      D: 'Kabel Coaxial'
+    },
+    kunci: 'A',
+    pembahasan: 'Next-Generation Firewall (NGFW) menggabungkan inspeksi paket mendalam (DPI), kontrol aplikasi Layer 7, deteksi ancaman berbasis cloud, dan pencegahan intrusi terintegrasi.'
+  },
+  {
+    id: 'q_m3_07',
+    moduleId: '3',
+    pertanyaan: 'Zona jaringan khusus yang memisahkan server publik (seperti Web Server dan Mail Server) dari jaringan internal lokal sekolah guna membatasi risiko kebocoran disebut...',
+    opsi: {
+      A: 'DMZ (Demilitarized Zone)',
+      B: 'Intranet Murni',
+      C: 'Localhost Loopback',
+      D: 'Broadcast Domain'
+    },
+    kunci: 'A',
+    pembahasan: 'DMZ (Demilitarized Zone) adalah subnet terisolasi perimeter jaringan tempat server layanan publik ditempatkan. Jika server DMZ diretas, penyerang tidak dapat langsung mengakses jaringan internal privat.'
+  },
+  {
+    id: 'q_m3_08',
+    moduleId: '3',
+    pertanyaan: 'Pada sistem operasi Linux, utilitas firewall berbasis tabel filter paket yang sangat umum dikonfigurasi melalui baris perintah adalah...',
+    opsi: {
+      A: 'iptables / nftables',
+      B: 'apt-get install',
+      C: 'mkdir & rmdir',
+      D: 'ping & traceroute'
+    },
+    kunci: 'A',
+    pembahasan: 'iptables dan penggantinya (nftables) adalah kerangka kerja firewall bawaan kernel Linux (Netfilter) yang mengelola aturan penyaringan, pengalihan, dan modifikasi paket jaringan.'
+  },
+  {
+    id: 'q_m3_09',
+    moduleId: '3',
+    pertanyaan: 'Pada konfigurasi iptables Linux, rantai (chain) aturan yang bertugas menyaring paket data yang masuk dan ditujukan khusus untuk mesin server itu sendiri adalah...',
+    opsi: {
+      A: 'Chain INPUT',
+      B: 'Chain OUTPUT',
+      C: 'Chain FORWARD',
+      D: 'Chain PREROUTING'
+    },
+    kunci: 'A',
+    pembahasan: 'Chain INPUT menangani paket yang memiliki alamat tujuan IP mesin lokal server tersebut, Chain FORWARD menangani paket yang dilewatkan/dirutekan, dan Chain OUTPUT untuk paket yang keluar dari server.'
+  },
+  {
+    id: 'q_m3_10',
+    moduleId: '3',
+    pertanyaan: 'Perbedaan utama antara tindakan DROP dan REJECT pada firewall ketika menolak paket data yang tidak sah adalah...',
+    opsi: {
+      A: 'DROP membuang paket secara diam-diam tanpa balasan ke pengirim, sedangkan REJECT membuang paket dan mengirim pesan kesalahan (ICMP) ke pengirim.',
+      B: 'DROP merusak kabel jaringan, sedangkan REJECT mematikan router.',
+      C: 'DROP mengizinkan paket lewat, sedangkan REJECT menggandakan paket.',
+      D: 'DROP hanya berlaku untuk protokol HTTP, sedangkan REJECT untuk SSH.'
+    },
+    kunci: 'A',
+    pembahasan: 'DROP membuang paket seketika (silent discard) sehingga penyerang mengalami timeout dan sulit mendeteksi keberadaan target. REJECT membuang paket namun mengembalikan paket penolakan (ICMP unreachable/TCP RST).'
+  },
+  {
+    id: 'q_m3_11',
+    moduleId: '3',
+    pertanyaan: 'Firewall tipe Stateful Inspection memiliki keunggulan dibandingkan Stateless Packet Filtering biasa karena...',
+    opsi: {
+      A: 'Mengingat dan melacak status tabel koneksi (State Table) aktif dari awal hingga akhir sesi transmisi.',
+      B: 'Tidak membutuhkan listrik untuk beroperasi.',
+      C: 'Bisa membaca file PDF tanpa Adobe Acrobat.',
+      D: 'Hanya bisa dipakai pada satu komputer klien saja.'
+    },
+    kunci: 'A',
+    pembahasan: 'Stateful firewall memelihara tabel status koneksi (SYN, ESTABLISHED, RELATED), sehingga paket balasan dari sesi yang sah diizinkan masuk otomatis tanpa perlu membuka port secara manual dari arah luar.'
+  },
+  {
+    id: 'q_m3_12',
+    moduleId: '3',
+    pertanyaan: 'Port standar jaringan yang digunakan oleh layanan Domain Name System (DNS) untuk menerjemahkan nama domain website menjadi alamat IP adalah port...',
+    opsi: {
+      A: 'Port 53 (UDP/TCP)',
+      B: 'Port 80 (HTTP)',
+      C: 'Port 21 (FTP)',
+      D: 'Port 25 (SMTP)'
+    },
+    kunci: 'A',
+    pembahasan: 'Port 53 adalah port baku protokol DNS yang menangani penerjemahan alamat hostname/domain ke alamat IP numerik yang dapat dipahami perangkat jaringan.'
+  },
+  {
+    id: 'q_m3_13',
+    moduleId: '3',
+    pertanyaan: 'Fitur NAT (Network Address Translation) jenis Masquerading pada router gateway firewall berfungsi untuk...',
+    opsi: {
+      A: 'Menerjemahkan banyak alamat IP privat jaringan lokal ke satu alamat IP publik agar semua klien dapat mengakses internet.',
+      B: 'Memperbanyak virus di komputer siswa.',
+      C: 'Menghapus konfigurasi router saat terjadi mati lampu.',
+      D: 'Mengubah sinyal Wi-Fi menjadi frekuensi radio FM.'
+    },
+    kunci: 'A',
+    pembahasan: 'IP Masquerade (Source NAT) menyamarkan alamat IP privat klien internal di balik satu alamat IP publik gateway ketika paket melintasi perbatasan ke jaringan internet.'
+  },
+  {
+    id: 'q_m3_14',
+    moduleId: '3',
+    pertanyaan: 'Layanan Secure Shell (SSH) untuk remote administrasi server menggunakan port default nomor...',
+    opsi: {
+      A: 'Port 22',
+      B: 'Port 23',
+      C: 'Port 80',
+      D: 'Port 443'
+    },
+    kunci: 'A',
+    pembahasan: 'SSH (Secure Shell) secara default beroperasi pada port 22, menggantikan protokol Telnet yang tidak aman dengan menyediakan saluran komunikasi terenkripsi penuh.'
+  },
+  {
+    id: 'q_m3_15',
+    moduleId: '3',
+    pertanyaan: 'Sebuah server web di laboratorium sekolah hanya boleh diakses menggunakan peramban web aman HTTPS. Aturan firewall paling tepat yang harus diterapkan adalah...',
+    opsi: {
+      A: 'ALLOW TCP Port 443 dan BLOCK port layanan lain yang tidak digunakan (Default Deny).',
+      B: 'ALLOW semua port dari 1 sampai 65535.',
+      C: 'BLOCK Port 443 dan buka Port 23 Telnet.',
+      D: 'Matikan router setiap kali ada akses masuk.'
+    },
+    kunci: 'A',
+    pembahasan: 'Konfigurasi paling aman adalah membuka hanya port yang dibutuhkan (Port 443 TCP untuk HTTPS) dan menerapkan kebijakan default block untuk seluruh port layanan lainnya guna mempersempit bidang serangan (attack surface).'
   }
 ];
 
@@ -316,6 +706,24 @@ const Storage = {
     }
     if (!localStorage.getItem(STORAGE_KEYS.QUIZZES)) {
       localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(DEFAULT_QUIZZES));
+    } else {
+      // Pastikan butir soal baru terintegrasi ke dalam localStorage yang sudah ada
+      try {
+        const storedQuizzes = JSON.parse(localStorage.getItem(STORAGE_KEYS.QUIZZES) || '[]');
+        const storedIds = new Set(storedQuizzes.map(q => q.id));
+        let hasNew = false;
+        DEFAULT_QUIZZES.forEach(dq => {
+          if (!storedIds.has(dq.id)) {
+            storedQuizzes.push(dq);
+            hasNew = true;
+          }
+        });
+        if (hasNew) {
+          localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(storedQuizzes));
+        }
+      } catch (e) {
+        localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(DEFAULT_QUIZZES));
+      }
     }
     if (!localStorage.getItem(STORAGE_KEYS.RESULTS)) {
       localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify([]));
@@ -336,12 +744,17 @@ const Storage = {
     if (!api) return;
 
     try {
-      // 1. Sync Bank Soal dari MySQL
+      // 1. Sync Bank Soal dari MySQL (merging dengan DEFAULT_QUIZZES)
       const p1 = fetch(`${api}/quizzes.php`)
         .then(r => r.json())
         .then(res => {
           if (res.success && Array.isArray(res.data) && res.data.length > 0) {
-            localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(res.data));
+            const currentQuizzes = JSON.parse(localStorage.getItem(STORAGE_KEYS.QUIZZES) || '[]');
+            const map = new Map();
+            DEFAULT_QUIZZES.forEach(q => map.set(q.id, q));
+            currentQuizzes.forEach(q => map.set(q.id, q));
+            res.data.forEach(q => map.set(q.id, q));
+            localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(Array.from(map.values())));
           }
         }).catch(() => {});
 
