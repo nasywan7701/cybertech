@@ -130,13 +130,13 @@
     <div class="modal-box modal-box-lg">
       <div class="modal-header">
         <h3 class="modal-title">Lembar Jawaban &amp; Pembahasan Siswa</h3>
-        <button type="button" class="modal-close" aria-label="Tutup">&times;</button>
+        <button type="button" class="modal-close" aria-label="Tutup" onclick="window.Utils.closeModal('sheetDetailModal')">&times;</button>
       </div>
       <div class="modal-body" id="modalSheetBody">
         <!-- Diisi dinamis -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline modal-close">Tutup</button>
+        <button type="button" class="btn btn-outline modal-close" onclick="window.Utils.closeModal('sheetDetailModal')">Tutup</button>
       </div>
     </div>
   </div>

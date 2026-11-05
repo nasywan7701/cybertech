@@ -85,22 +85,35 @@ const Utils = {
   },
 
   /**
-   * Inisialisasi handler klik tutup modal di luar area modal box
+   * Inisialisasi handler klik tutup modal (semua tombol tutup, backdrop, dan tombol ESC)
    */
   initModalListeners() {
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
+    // Delegasi event klik ke seluruh dokumen untuk semua tombol penutup modal (.modal-close)
+    document.addEventListener('click', (e) => {
+      const closeBtn = e.target.closest('.modal-close');
+      if (closeBtn) {
+        const overlay = closeBtn.closest('.modal-overlay');
+        if (overlay) {
           overlay.classList.remove('active');
           document.body.style.overflow = '';
         }
-      });
-      const closeBtn = overlay.querySelector('.modal-close');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
+        return;
+      }
+
+      // Tutup modal jika klik terjadi langsung di area backdrop / latar gelap
+      if (e.target.classList.contains('modal-overlay')) {
+        e.target.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Dukungan tombol Escape keyboard untuk menutup modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        document.querySelectorAll('.modal-overlay.active').forEach(overlay => {
           overlay.classList.remove('active');
-          document.body.style.overflow = '';
         });
+        document.body.style.overflow = '';
       }
     });
   }
