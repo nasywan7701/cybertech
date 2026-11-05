@@ -87,7 +87,7 @@
             Panel Administrator Pembelajaran
           </span>
           <h1 style="color: #ffffff; font-size: 1.85rem; margin-bottom: 0.35rem;">
-            Selamat Datang, <span class="js-teacher-name">Bapak/Ibu Guru</span>! 👨‍🏫
+            Selamat Datang, <span class="js-teacher-name">Bapak/Ibu Guru</span>!
           </h1>
           <p style="color: #e2e8f0; font-size: 0.95rem; margin: 0; max-width: 650px;">
             Pantau perkembangan belajar siswa jurusan TJKT, kelola butir soal kuis evaluasi 3 modul, dan pantau rekapitulasi nilai untuk diolah menjadi nilai akhir.
@@ -99,7 +99,9 @@
       <section class="metrics-grid">
         <!-- Metrik 1: Siswa Terdaftar -->
         <div class="metric-card">
-          <div class="metric-icon-box students">👥</div>
+          <div class="metric-icon-box students">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
           <div>
             <div class="metric-val" id="metricTotalStudents">0</div>
             <div class="metric-lbl">Total Siswa Terdaftar</div>
@@ -108,7 +110,9 @@
 
         <!-- Metrik 2: Total Soal Aktif -->
         <div class="metric-card">
-          <div class="metric-icon-box quizzes">📝</div>
+          <div class="metric-icon-box quizzes">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          </div>
           <div>
             <div class="metric-val" id="metricTotalQuizzes">0</div>
             <div class="metric-lbl">Total Bank Soal (M1-M3)</div>
@@ -117,7 +121,9 @@
 
         <!-- Metrik 3: Rata-rata Nilai Kelas -->
         <div class="metric-card">
-          <div class="metric-icon-box average">📊</div>
+          <div class="metric-icon-box average">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </div>
           <div>
             <div class="metric-val" id="metricAverageScore">0</div>
             <div class="metric-lbl">Rata-rata Nilai Evaluasi</div>
@@ -126,7 +132,9 @@
 
         <!-- Metrik 4: Ketuntasan Belajar KKM -->
         <div class="metric-card">
-          <div class="metric-icon-box passing">🎯</div>
+          <div class="metric-icon-box passing">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+          </div>
           <div>
             <div class="metric-val" id="metricPassingRate">0%</div>
             <div class="metric-lbl">Ketuntasan KKM (&ge; 75)</div>
@@ -141,7 +149,10 @@
             <h3 style="margin: 0; font-size: 1.15rem;">Aktivitas Evaluasi Kuis Terbaru</h3>
             <div style="font-size: 0.85rem; color: var(--color-text-muted);">Daftar siswa yang baru saja menyerahkan jawaban kuis</div>
           </div>
-          <a href="results.html" class="btn btn-outline btn-sm">Lihat Rekap Lengkap →</a>
+          <a href="results.html" class="btn btn-outline btn-sm" style="display: inline-flex; align-items: center; gap: 6px;">
+            <span>Lihat Rekap Lengkap</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
 
         <div class="table-responsive">

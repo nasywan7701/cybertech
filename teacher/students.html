@@ -176,9 +176,9 @@
           const m2Done = prog['2'] && prog['2'].completed;
           const m3Done = prog['3'] && prog['3'].completed;
 
-          const badgeM1 = m1Done ? '<span class="badge badge-success">M1 ✓</span>' : '<span class="badge badge-secondary">M1 -</span>';
-          const badgeM2 = m2Done ? '<span class="badge badge-success">M2 ✓</span>' : '<span class="badge badge-secondary">M2 -</span>';
-          const badgeM3 = m3Done ? '<span class="badge badge-success">M3 ✓</span>' : '<span class="badge badge-secondary">M3 -</span>';
+          const badgeM1 = m1Done ? '<span class="badge badge-success">M1 Tuntas</span>' : '<span class="badge badge-secondary">M1 -</span>';
+          const badgeM2 = m2Done ? '<span class="badge badge-success">M2 Tuntas</span>' : '<span class="badge badge-secondary">M2 -</span>';
+          const badgeM3 = m3Done ? '<span class="badge badge-success">M3 Tuntas</span>' : '<span class="badge badge-secondary">M3 -</span>';
 
           return `
             <tr>
@@ -188,8 +188,9 @@
               <td>${s.kelas || 'XI TJKT'} &bull; SMK Negeri 1 Takalar</td>
               <td><div style="display: flex; gap: 4px;">${badgeM1} ${badgeM2} ${badgeM3}</div></td>
               <td>
-                <button type="button" class="btn btn-primary btn-sm js-view-student" data-id="${s.id}">
-                  Lihat Detail 👁️
+                <button type="button" class="btn btn-primary btn-sm js-view-student" data-id="${s.id}" style="display: inline-flex; align-items: center; gap: 5px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="7" r="3"></circle></svg>
+                  <span>Lihat Detail</span>
                 </button>
               </td>
             </tr>

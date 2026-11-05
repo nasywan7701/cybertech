@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return `
         <tr>
-          <td style="font-weight: 700;">${idx + 1}</td>
+          <td style="font-weight: 700; text-align: center;">${idx + 1}</td>
           <td>
             <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 0.35rem;">
               ${questionSnippet}
@@ -66,9 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
               <strong>B:</strong> ${q.opsi.B.substring(0, 30)}...
             </div>
           </td>
-          <td><span class="badge badge-info">Modul ${q.moduleId}</span></td>
-          <td>
-            <span class="badge badge-success" style="font-weight: 800; font-size: 0.95rem;">
+          <td style="text-align: center;">
+            <span class="badge badge-info" style="display: inline-flex; align-items: center; justify-content: center; min-width: 82px; padding: 0.35rem 0.75rem; border-radius: 9999px; font-weight: 600; font-size: 0.82rem; white-space: nowrap;">
+              Modul ${q.moduleId}
+            </span>
+          </td>
+          <td style="text-align: center;">
+            <span class="badge badge-success" style="display: inline-flex; align-items: center; justify-content: center; min-width: 85px; padding: 0.35rem 0.75rem; border-radius: 9999px; font-weight: 700; font-size: 0.85rem; white-space: nowrap;">
               Kunci: ${q.kunci}
             </span>
           </td>
@@ -77,13 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
               ${q.pembahasan ? q.pembahasan.substring(0, 60) + '...' : '-'}
             </div>
           </td>
-          <td>
-            <div style="display: flex; gap: 0.5rem;">
-              <button type="button" class="btn btn-outline btn-sm js-edit-quiz" data-id="${q.id}" title="Edit Soal">
-                ✏️ Edit
+          <td style="text-align: center;">
+            <div style="display: flex; gap: 0.5rem; justify-content: center;">
+              <button type="button" class="btn btn-outline btn-sm js-edit-quiz" data-id="${q.id}" title="Edit Soal" style="display: inline-flex; align-items: center; gap: 5px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                <span>Edit</span>
               </button>
-              <button type="button" class="btn btn-danger btn-sm js-delete-quiz" data-id="${q.id}" title="Hapus Soal">
-                🗑️ Hapus
+              <button type="button" class="btn btn-danger btn-sm js-delete-quiz" data-id="${q.id}" title="Hapus Soal" style="display: inline-flex; align-items: center; gap: 5px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                <span>Hapus</span>
               </button>
             </div>
           </td>

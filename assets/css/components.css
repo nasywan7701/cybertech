@@ -320,11 +320,13 @@ textarea.form-control {
 .badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
   padding: 0.25rem 0.65rem;
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-semibold);
   border-radius: var(--radius-full);
+  white-space: nowrap;
 }
 
 .badge-success {

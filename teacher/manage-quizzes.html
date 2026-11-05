@@ -95,8 +95,9 @@
             <span class="badge badge-info" id="questionCountBadge">0 Butir Soal</span>
           </div>
 
-          <button type="button" class="btn btn-primary" id="addQuestionBtn">
-            + Tambah Soal Baru
+          <button type="button" class="btn btn-primary" id="addQuestionBtn" style="display: inline-flex; align-items: center; gap: 6px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Tambah Soal Baru</span>
           </button>
         </div>
 
@@ -105,12 +106,12 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th style="width: 50px;">No</th>
-                <th style="min-width: 300px;">Pertanyaan Soal</th>
-                <th>Modul</th>
-                <th>Kunci Jawaban</th>
-                <th>Ringkasan Pembahasan</th>
-                <th style="width: 160px;">Aksi</th>
+                <th style="width: 50px; text-align: center;">No</th>
+                <th style="min-width: 280px;">Pertanyaan Soal</th>
+                <th style="width: 120px; text-align: center;">Modul</th>
+                <th style="width: 130px; text-align: center;">Kunci Jawaban</th>
+                <th style="min-width: 200px;">Ringkasan Pembahasan</th>
+                <th style="width: 170px; text-align: center;">Aksi</th>
               </tr>
             </thead>
             <tbody id="quizzesTableBody">

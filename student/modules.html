@@ -96,10 +96,10 @@
               Memahami definisi keamanan jaringan, karakteristik dan mekanisme serangan 4 jenis malware & ancaman siber (<strong>Virus, Worm, Phishing, dan DDoS</strong>), serta cara pencegahan preventif.
             </p>
             <div class="catalog-card-tags">
-              <span class="badge badge-secondary">📹 Video Pembelajaran</span>
-              <span class="badge badge-secondary">🎮 Aktivitas Drag & Drop</span>
-              <span class="badge badge-secondary">📝 Kuis Evaluasi (5 Soal)</span>
-              <span class="badge badge-warning">🎯 KKM: 75</span>
+              <span class="badge badge-secondary">Video Pembelajaran</span>
+              <span class="badge badge-secondary">Aktivitas Drag &amp; Drop</span>
+              <span class="badge badge-secondary">Kuis Evaluasi (5 Soal)</span>
+              <span class="badge badge-warning">KKM: 75</span>
             </div>
           </div>
           <div class="catalog-card-action">
@@ -110,7 +110,10 @@
                 <div class="progress-bar" id="catalogBar1" style="width: 0%;"></div>
               </div>
             </div>
-            <a href="module1-material.html" class="btn btn-primary" id="catalogBtn1" style="width: 100%;">Mulai Modul 1 →</a>
+            <a href="module1-material.html" class="btn btn-primary" id="catalogBtn1" style="width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+              <span>Mulai Modul 1</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
         </div>
 
@@ -127,10 +130,10 @@
               Menganalisis prinsip kerja dan fungsi dari 4 pilar pertahanan jaringan (<strong>Antivirus, Firewall, Virtual Private Network/VPN, dan Autentikasi 2FA</strong>) untuk memecahkan studi kasus keamanan nyata di lingkungan sekolah/perusahaan.
             </p>
             <div class="catalog-card-tags">
-              <span class="badge badge-secondary">📊 Infografis Interaktif</span>
-              <span class="badge badge-secondary">💼 Studi Kasus Skenario</span>
-              <span class="badge badge-secondary">📝 Kuis Evaluasi (5 Soal)</span>
-              <span class="badge badge-warning">🎯 KKM: 75</span>
+              <span class="badge badge-secondary">Infografis Interaktif</span>
+              <span class="badge badge-secondary">Studi Kasus Skenario</span>
+              <span class="badge badge-secondary">Kuis Evaluasi (5 Soal)</span>
+              <span class="badge badge-warning">KKM: 75</span>
             </div>
           </div>
           <div class="catalog-card-action">
@@ -141,7 +144,10 @@
                 <div class="progress-bar" id="catalogBar2" style="width: 0%;"></div>
               </div>
             </div>
-            <a href="module2-material.html" class="btn btn-primary" id="catalogBtn2" style="width: 100%;">Mulai Modul 2 →</a>
+            <a href="module2-material.html" class="btn btn-primary" id="catalogBtn2" style="width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+              <span>Mulai Modul 2</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
         </div>
 
@@ -153,15 +159,15 @@
               <span class="badge badge-info">Modul 3</span>
               <span class="badge badge-secondary" id="catalogBadge3">Belum Dimulai</span>
             </div>
-            <h3>Firewall & Simulasi Lalu Lintas Jaringan</h3>
+            <h3>Firewall &amp; Simulasi Lalu Lintas Jaringan</h3>
             <p class="catalog-card-desc">
               Mempelajari fungsi firewall, mekanisme inspeksi paket data (Packet Filtering), port layanan jaringan (HTTP, HTTPS, Telnet), dan mengonfigurasi aturan <strong>Allow</strong> atau <strong>Block</strong> pada simulator firewall interaktif.
             </p>
             <div class="catalog-card-tags">
-              <span class="badge badge-secondary">⚡ Animasi Alur Data</span>
-              <span class="badge badge-secondary">🕹️ Simulator Firewall Allow/Block</span>
-              <span class="badge badge-secondary">📝 Kuis Evaluasi (5 Soal)</span>
-              <span class="badge badge-warning">🎯 KKM: 75</span>
+              <span class="badge badge-secondary">Animasi Alur Data</span>
+              <span class="badge badge-secondary">Simulator Firewall Allow/Block</span>
+              <span class="badge badge-secondary">Kuis Evaluasi (5 Soal)</span>
+              <span class="badge badge-warning">KKM: 75</span>
             </div>
           </div>
           <div class="catalog-card-action">
@@ -172,7 +178,10 @@
                 <div class="progress-bar" id="catalogBar3" style="width: 0%;"></div>
               </div>
             </div>
-            <a href="module3-material.html" class="btn btn-primary" id="catalogBtn3" style="width: 100%;">Mulai Modul 3 →</a>
+            <a href="module3-material.html" class="btn btn-primary" id="catalogBtn3" style="width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+              <span>Mulai Modul 3</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -203,17 +212,17 @@
 
         if (modProg.completed || (modProg.quizScore !== null && modProg.quizScore >= 75)) {
           badge.className = 'badge badge-success';
-          badge.textContent = '100% Selesai ✓';
-          btn.textContent = 'Pelajari Ulang →';
+          badge.textContent = '100% Selesai';
+          btn.textContent = 'Pelajari Ulang';
           btn.className = 'btn btn-outline';
         } else if (modProg.percentage > 0) {
           badge.className = 'badge badge-info';
           badge.textContent = 'Sedang Dipelajari';
-          btn.textContent = 'Lanjutkan Modul →';
+          btn.textContent = 'Lanjutkan Modul';
         } else {
           badge.className = 'badge badge-secondary';
           badge.textContent = 'Belum Dimulai';
-          btn.textContent = 'Mulai Modul →';
+          btn.textContent = 'Mulai Modul';
         }
       });
     });
