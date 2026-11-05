@@ -67,28 +67,28 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </td>
           <td style="text-align: center;">
-            <span class="badge badge-info" style="display: inline-flex; align-items: center; justify-content: center; min-width: 82px; padding: 0.35rem 0.75rem; border-radius: 9999px; font-weight: 600; font-size: 0.82rem; white-space: nowrap;">
+            <span class="badge badge-info" style="display: inline-flex; align-items: center; justify-content: center; min-width: 75px; padding: 0.28rem 0.6rem; border-radius: 9999px; font-weight: 600; font-size: 0.8rem; white-space: nowrap;">
               Modul ${q.moduleId}
             </span>
           </td>
           <td style="text-align: center;">
-            <span class="badge badge-success" style="display: inline-flex; align-items: center; justify-content: center; min-width: 85px; padding: 0.35rem 0.75rem; border-radius: 9999px; font-weight: 700; font-size: 0.85rem; white-space: nowrap;">
+            <span class="badge badge-success" style="display: inline-flex; align-items: center; justify-content: center; min-width: 78px; padding: 0.28rem 0.6rem; border-radius: 9999px; font-weight: 700; font-size: 0.82rem; white-space: nowrap;">
               Kunci: ${q.kunci}
             </span>
           </td>
           <td>
-            <div style="font-size: 0.8rem; color: #475569; max-width: 250px;">
-              ${q.pembahasan ? q.pembahasan.substring(0, 60) + '...' : '-'}
+            <div style="font-size: 0.8rem; color: #475569; line-height: 1.45;">
+              ${q.pembahasan ? (q.pembahasan.length > 55 ? q.pembahasan.substring(0, 55) + '...' : q.pembahasan) : '-'}
             </div>
           </td>
-          <td style="text-align: center;">
-            <div style="display: flex; gap: 0.5rem; justify-content: center;">
-              <button type="button" class="btn btn-outline btn-sm js-edit-quiz" data-id="${q.id}" title="Edit Soal" style="display: inline-flex; align-items: center; gap: 5px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          <td style="text-align: center; white-space: nowrap;">
+            <div style="display: inline-flex; gap: 6px; justify-content: center; align-items: center;">
+              <button type="button" class="btn btn-outline btn-sm js-edit-quiz" data-id="${q.id}" title="Edit Soal" style="padding: 0.35rem 0.65rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                 <span>Edit</span>
               </button>
-              <button type="button" class="btn btn-danger btn-sm js-delete-quiz" data-id="${q.id}" title="Hapus Soal" style="display: inline-flex; align-items: center; gap: 5px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+              <button type="button" class="btn btn-danger btn-sm js-delete-quiz" data-id="${q.id}" title="Hapus Soal" style="padding: 0.35rem 0.65rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
                 <span>Hapus</span>
               </button>
             </div>

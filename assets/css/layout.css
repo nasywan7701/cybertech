@@ -268,8 +268,14 @@
 }
 
 .app-content {
-  padding: 2rem;
+  padding: 1.5rem 1.5rem;
   flex: 1;
+}
+
+@media (max-width: 1366px) {
+  .app-content {
+    padding: 1.25rem 1rem;
+  }
 }
 
 .user-profile-badge {
