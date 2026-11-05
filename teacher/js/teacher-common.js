@@ -69,16 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
       `;
-
-      const firstChild = topbar.firstElementChild;
-      if (firstChild) {
-        firstChild.style.display = 'flex';
-        firstChild.style.alignItems = 'center';
-        firstChild.style.gap = '0.5rem';
-        firstChild.prepend(sidebarToggleBtn);
-      } else {
-        topbar.prepend(sidebarToggleBtn);
-      }
+      topbar.prepend(sidebarToggleBtn);
     }
   }
 

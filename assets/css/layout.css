@@ -301,7 +301,7 @@
 
 /* Tombol Hamburger Sidebar Mobile */
 .sidebar-toggle-btn {
-  display: none;
+  display: none !important;
   align-items: center;
   justify-content: center;
   width: 38px;
@@ -313,7 +313,7 @@
   cursor: pointer;
   flex-shrink: 0;
   transition: all var(--transition-fast);
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
 }
 
 .sidebar-toggle-btn:hover {
@@ -340,7 +340,7 @@
 /* Responsivitas Layar Tablet */
 @media (max-width: 992px) {
   .sidebar-toggle-btn {
-    display: inline-flex;
+    display: inline-flex !important;
   }
   .app-sidebar {
     transform: translateX(-100%);
@@ -356,6 +356,10 @@
     width: 100%;
     max-width: 100%;
   }
+  .app-topbar > div:not(.user-profile-badge) {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 /* Responsivitas Layar Ponsel (Mobile < 768px) */
@@ -364,14 +368,6 @@
     height: auto;
     min-height: 60px;
     padding: 0.65rem 1rem;
-    gap: 0.5rem;
-  }
-
-  .app-topbar > div:first-child {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    min-width: 0;
     gap: 0.5rem;
   }
 
@@ -384,7 +380,7 @@
   }
 
   .module-breadcrumb {
-    display: none; /* Sembunyikan breadcrumb panjang agar judul rapi */
+    display: none; /* Sembunyikan breadcrumb panjang agar judul rapi di ponsel */
   }
 
   .user-profile-badge {
