@@ -161,6 +161,22 @@
       // Ambil seluruh riwayat nilai siswa
       const studentResults = window.Storage.getResultsByStudent(currentUser.id) || [];
 
+      // Perbarui label pilihan modul di dropdown dengan status kuis
+      function updateDropdownOptions(selectedId) {
+        moduleSelector.innerHTML = '';
+        ['1', '2', '3'].forEach(mId => {
+          const modRes = studentResults.find(r => String(r.moduleId) === String(mId));
+          const opt = document.createElement('option');
+          opt.value = mId;
+          const statusText = modRes ? `(✓ Terbuka - Nilai: ${modRes.score})` : `(🔒 Belum Dikerjakan)`;
+          opt.textContent = `Modul ${mId}: ${moduleTitles[mId]} ${statusText}`;
+          if (String(mId) === String(selectedId)) {
+            opt.selected = true;
+          }
+          moduleSelector.appendChild(opt);
+        });
+      }
+
       // Tentukan modul awal dan riwayat target
       let targetModule = '1';
       let targetResult = null;
@@ -170,7 +186,6 @@
         if (targetResult) {
           targetModule = String(targetResult.moduleId);
         } else if (studentResults.length > 0) {
-          // Fallback ke hasil terbaru siswa
           targetResult = studentResults[0];
           targetModule = String(targetResult.moduleId);
         }
@@ -178,14 +193,15 @@
         targetModule = String(paramModuleId);
         targetResult = studentResults.find(r => String(r.moduleId) === targetModule) || null;
       } else {
-        // Jika dibuka langsung dari menu sidebar, ambil hasil terbaru siswa jika ada
-        if (studentResults.length > 0) {
-          targetResult = studentResults[0];
-          targetModule = String(targetResult.moduleId);
+        // Jika dibuka langsung dari menu sidebar, utamakan modul yang sudah pernah dikerjakan
+        const completedResult = studentResults.find(r => r.score !== undefined);
+        if (completedResult) {
+          targetResult = completedResult;
+          targetModule = String(completedResult.moduleId);
         }
       }
 
-      moduleSelector.value = targetModule;
+      updateDropdownOptions(targetModule);
 
       function renderReview(moduleId, resultObj) {
         targetModule = String(moduleId);
@@ -194,8 +210,13 @@
 
         btnTakeQuiz.href = `quiz.html?module=${targetModule}`;
 
+        // Cek jika riwayat belum disuplai, cari di data riwayat siswa untuk modul ini
+        if (!resultObj) {
+          resultObj = studentResults.find(r => String(r.moduleId) === targetModule) || null;
+        }
+
         if (resultObj) {
-          // Mode Review Hasil Evaluasi Siswa
+          // Mode Review Hasil Evaluasi Siswa (Hanya jika kuis telah dikerjakan)
           const isPass = resultObj.score >= 75;
           reviewScoreSummary.textContent = `Nilai Evaluasi Terakhir: ${resultObj.score} / 100 (${resultObj.correctCount} Benar, ${resultObj.wrongCount} Salah) • ${window.Utils.formatDate(resultObj.timestamp)}`;
           
@@ -205,6 +226,7 @@
 
           btnBackToResult.style.display = 'inline-flex';
           btnBackToResult.href = `quiz-result.html?id=${resultObj.id}`;
+          btnTakeQuiz.style.display = 'inline-flex';
           btnTakeQuizText.textContent = 'Ulangi Kuis Modul Ini';
 
           // Ambil soal yang diujikan pada sesi kuis ini
@@ -215,21 +237,36 @@
             ? assignedIds.map(id => allQuizzes.find(q => q.id === id)).filter(Boolean)
             : allQuizzes;
 
-          renderQuestionsList(quizzes, userAnswers, true);
+          renderQuestionsList(quizzes, userAnswers);
         } else {
-          // Mode Eksplorasi Pembahasan Soal Modul (Belum ada riwayat kuis)
-          reviewScoreSummary.textContent = `Bank Pembahasan & Kunci Jawaban Lengkap (Panduan Belajar Mandiri)`;
-          reviewBadgeStatus.innerHTML = `<span class="badge badge-info" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">Bank Pembahasan Aktif</span>`;
+          // Kuis Belum Dikerjakan: Kunci pembahasan agar siswa tidak melihat bocoran kunci jawaban
+          reviewScoreSummary.textContent = `Kuis evaluasi modul ini belum dikerjakan. Selesaikan kuis untuk membuka pembahasan.`;
+          reviewBadgeStatus.innerHTML = `<span class="badge badge-secondary" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">🔒 Terkunci (Belum Dikerjakan)</span>`;
           
           btnBackToResult.style.display = 'none';
+          btnTakeQuiz.style.display = 'inline-flex';
           btnTakeQuizText.textContent = 'Mulai Kuis Modul Ini';
 
-          const quizzes = window.Storage.getQuizzes(targetModule);
-          renderQuestionsList(quizzes, {}, false);
+          // Tampilkan tampilan terkunci (kunci jawaban & pembahasan disembunyikan sepenuhnya)
+          container.innerHTML = `
+            <div class="card text-center" style="padding: 3.5rem 1.5rem; background: #ffffff; border-radius: var(--radius-lg); border: 1px dashed var(--color-border); box-shadow: var(--shadow-sm); margin-top: 1rem;">
+              <div style="width: 72px; height: 72px; border-radius: 50%; background: #fef2f2; color: var(--color-danger); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <h3 style="color: var(--color-primary); margin: 0 0 0.5rem 0; font-size: 1.25rem;">Pembahasan Soal Terkunci</h3>
+              <p style="color: var(--color-text-muted); max-width: 520px; margin: 0 auto 1.75rem auto; line-height: 1.6; font-size: 0.95rem;">
+                Kunci jawaban dan pembahasan soal hanya dapat dibuka setelah Anda menyelesaikan kuis evaluasi pada modul ini. Hal ini bertujuan agar evaluasi belajar tetap objektif.
+              </p>
+              <a href="quiz.html?module=${targetModule}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding: 0.65rem 1.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                <span>Mulai Kerjakan Kuis Modul ${targetModule}</span>
+              </a>
+            </div>
+          `;
         }
       }
 
-      function renderQuestionsList(quizzes, userAnswers, hasAttempt) {
+      function renderQuestionsList(quizzes, userAnswers) {
         container.innerHTML = '';
 
         if (!quizzes || quizzes.length === 0) {
@@ -246,16 +283,11 @@
           const isCorrect = studentAns === q.kunci;
 
           const card = document.createElement('div');
-          card.className = `review-question-card ${hasAttempt ? (isCorrect ? 'is-correct' : 'is-wrong') : ''}`;
+          card.className = `review-question-card ${isCorrect ? 'is-correct' : 'is-wrong'}`;
 
-          let badgeHtml = '';
-          if (hasAttempt) {
-            badgeHtml = isCorrect 
-              ? `<span class="badge badge-success" style="display: inline-flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Jawaban Anda Benar</span>` 
-              : `<span class="badge badge-danger" style="display: inline-flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="18" x2="18" y2="18"></line></svg> ${studentAns ? 'Jawaban Anda Salah' : 'Tidak Dijawab'}</span>`;
-          } else {
-            badgeHtml = `<span class="badge badge-info">Butir Soal #${idx + 1}</span>`;
-          }
+          const badgeHtml = isCorrect 
+            ? `<span class="badge badge-success" style="display: inline-flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Jawaban Anda Benar</span>` 
+            : `<span class="badge badge-danger" style="display: inline-flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="18" x2="18" y2="18"></line></svg> ${studentAns ? 'Jawaban Anda Salah' : 'Tidak Dijawab'}</span>`;
 
           // Render Opsi A, B, C, D
           let optionsHtml = '';
@@ -263,22 +295,15 @@
             let rowClass = 'review-option-row';
             let statusIndicator = '';
 
-            if (hasAttempt) {
-              if (optKey === studentAns && isCorrect) {
-                rowClass += ' user-correct';
-                statusIndicator = '<strong>(Pilihan Anda - Benar)</strong>';
-              } else if (optKey === studentAns && !isCorrect) {
-                rowClass += ' user-wrong';
-                statusIndicator = '<strong>(Pilihan Anda - Salah)</strong>';
-              } else if (optKey === q.kunci) {
-                rowClass += ' official-key';
-                statusIndicator = '<strong style="color: var(--color-success);">(Kunci Jawaban Resmi)</strong>';
-              }
-            } else {
-              if (optKey === q.kunci) {
-                rowClass += ' official-key';
-                statusIndicator = '<strong style="color: var(--color-success);">(Kunci Jawaban Resmi)</strong>';
-              }
+            if (optKey === studentAns && isCorrect) {
+              rowClass += ' user-correct';
+              statusIndicator = '<strong>(Pilihan Anda - Benar)</strong>';
+            } else if (optKey === studentAns && !isCorrect) {
+              rowClass += ' user-wrong';
+              statusIndicator = '<strong>(Pilihan Anda - Salah)</strong>';
+            } else if (optKey === q.kunci) {
+              rowClass += ' official-key';
+              statusIndicator = '<strong style="color: var(--color-success);">(Kunci Jawaban Resmi)</strong>';
             }
 
             optionsHtml += `
