@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/landing.css">
+  <link rel="stylesheet" href="assets/css/landing.css?v=2.1">
 </head>
 <body>
 
@@ -167,20 +167,14 @@
                 </div>
               </div>
 
-              <!-- Navigasi & Indikator Carousel -->
+              <!-- Indikator Slide Otomatis (Berganti Sendiri Tanpa Klik Tombol) -->
               <div class="hero-carousel-controls">
-                <button type="button" class="carousel-nav-btn js-carousel-prev" aria-label="Slide Sebelumnya">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                </button>
                 <div class="carousel-indicators" id="heroCarouselDots">
-                  <button type="button" class="carousel-dot-btn js-carousel-dot active" data-slide-to="0" aria-label="Slide 1"></button>
-                  <button type="button" class="carousel-dot-btn js-carousel-dot" data-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" class="carousel-dot-btn js-carousel-dot" data-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" class="carousel-dot-btn js-carousel-dot" data-slide-to="3" aria-label="Slide 4"></button>
+                  <span class="carousel-dot-btn js-carousel-dot active"></span>
+                  <span class="carousel-dot-btn js-carousel-dot"></span>
+                  <span class="carousel-dot-btn js-carousel-dot"></span>
+                  <span class="carousel-dot-btn js-carousel-dot"></span>
                 </div>
-                <button type="button" class="carousel-nav-btn js-carousel-next" aria-label="Slide Selanjutnya">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </button>
               </div>
             </div>
           </div>
@@ -402,7 +396,7 @@
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/auth.js"></script>
   <script src="assets/js/utils.js"></script>
-  <script src="assets/js/landing.js"></script>
+  <script src="assets/js/landing.js?v=2.1"></script>
 </body>
 </html>
 

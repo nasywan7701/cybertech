@@ -68,96 +68,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===================================================================
-  // Interactive Cyber Simulator Carousel (Auto-rotation & Gesture Swipe)
+  // Interactive Cyber Simulator Carousel (Berpindah Otomatis Penuh)
   // ===================================================================
   const carouselTrack = document.getElementById('heroCarouselTrack');
-  const carouselViewport = document.getElementById('heroCarouselViewport');
-  const dotBtns = document.querySelectorAll('.js-carousel-dot');
-  const prevBtn = document.querySelector('.js-carousel-prev');
-  const nextBtn = document.querySelector('.js-carousel-next');
+  const dotIndicators = document.querySelectorAll('.js-carousel-dot');
 
-  if (carouselTrack && dotBtns.length > 0) {
+  if (carouselTrack) {
     let currentSlide = 0;
-    const totalSlides = dotBtns.length;
-    let autoInterval = null;
+    const totalSlides = carouselTrack.children.length || 4;
 
-    function goToSlide(index) {
-      currentSlide = (index + totalSlides) % totalSlides;
+    function autoAdvanceSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
       carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-      dotBtns.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === currentSlide);
-      });
-    }
-
-    function nextSlide() {
-      goToSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-      goToSlide(currentSlide - 1);
-    }
-
-    function startAutoSlide() {
-      stopAutoSlide();
-      autoInterval = setInterval(nextSlide, 3500); // Otomatis bergeser setiap 3.5 detik
-    }
-
-    function stopAutoSlide() {
-      if (autoInterval) {
-        clearInterval(autoInterval);
-        autoInterval = null;
+      if (dotIndicators.length > 0) {
+        dotIndicators.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentSlide);
+        });
       }
     }
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        nextSlide();
-        startAutoSlide();
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        prevSlide();
-        startAutoSlide();
-      });
-    }
-
-    dotBtns.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        const slideIdx = parseInt(dot.getAttribute('data-slide-to'), 10);
-        goToSlide(slideIdx);
-        startAutoSlide();
-      });
-    });
-
-    // Jeda auto-slide saat pointer/kursor berada di atas card simulasi
-    if (carouselViewport) {
-      carouselViewport.addEventListener('mouseenter', stopAutoSlide);
-      carouselViewport.addEventListener('mouseleave', startAutoSlide);
-
-      // Dukungan sentuhan / swipe geser di layar HP (Touch Gestures)
-      let touchStartX = 0;
-      let touchEndX = 0;
-
-      carouselViewport.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        stopAutoSlide();
-      }, { passive: true });
-
-      carouselViewport.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 45) {
-          nextSlide(); // Geser ke kiri -> lanjut slide
-        } else if (touchEndX - touchStartX > 45) {
-          prevSlide(); // Geser ke kanan -> mundur slide
-        }
-        startAutoSlide();
-      }, { passive: true });
-    }
-
-    // Mulai animasi otomatis
-    startAutoSlide();
+    // Berputar otomatis setiap 3 detik secara mandiri tanpa perlu klik tombol
+    setInterval(autoAdvanceSlide, 3000);
   }
 });
 
