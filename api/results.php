@@ -85,7 +85,7 @@ switch ($method) {
             exit;
         }
 
-        $id = 'res_' . round(microtime(true) * 1000);
+        $id = !empty($data['id']) ? $data['id'] : ('res_' . round(microtime(true) * 1000));
 
         $stmt = $pdo->prepare("INSERT INTO quiz_results (id, student_id, student_name, module_id, module_title, score, correct_count, wrong_count, total_questions, user_answers, duration_spent, kkm) VALUES (:id, :sid, :sn, :mid, :mt, :sc, :cc, :wc, :tq, :ua, :ds, :kkm)");
         $stmt->execute([

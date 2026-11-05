@@ -758,12 +758,16 @@ const Storage = {
           }
         }).catch(() => {});
 
-      // 2. Sync Rekap Hasil Kuis dari MySQL
+      // 2. Sync Rekap Hasil Kuis dari MySQL (merging agar data lokal tidak terhapus)
       const p2 = fetch(`${api}/results.php`)
         .then(r => r.json())
         .then(res => {
           if (res.success && Array.isArray(res.data)) {
-            localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify(res.data));
+            const current = JSON.parse(localStorage.getItem(STORAGE_KEYS.RESULTS) || '[]');
+            const map = new Map();
+            current.forEach(r => map.set(r.id, r));
+            res.data.forEach(r => map.set(r.id, r));
+            localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify(Array.from(map.values())));
           }
         }).catch(() => {});
 
@@ -1052,7 +1056,17 @@ const Storage = {
 
   getResultById(id) {
     const all = this.getAllResults();
-    return all.find(r => r.id === id) || null;
+    let found = all.find(r => r.id === id);
+    if (!found && id) {
+      const targetDigits = String(id).replace(/\D/g, '');
+      if (targetDigits.length >= 6) {
+        found = all.find(r => {
+          const rDigits = String(r.id).replace(/\D/g, '');
+          return Math.abs(parseInt(rDigits.slice(-6)) - parseInt(targetDigits.slice(-6))) < 60000;
+        });
+      }
+    }
+    return found || null;
   },
 
   getResultsByStudent(studentId) {
