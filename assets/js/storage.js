@@ -49,8 +49,8 @@ const DEFAULT_MODULES = [
     judul: 'Identifikasi Ancaman Jaringan',
     subjudul: 'Virus, Worm, Phishing, dan DDoS',
     deskripsi: 'Memahami pengertian keamanan jaringan, mengklasifikasikan 4 jenis ancaman siber, dan metode pencegahan preventif.',
-    durasi: '45 Menit',
-    totalSoal: 5,
+    durasi: '15 Menit',
+    totalSoal: 10,
     kkm: 75,
     icon: 'shield-alert'
   },
@@ -60,8 +60,8 @@ const DEFAULT_MODULES = [
     judul: 'Analisis Sistem Keamanan Jaringan',
     subjudul: 'Antivirus, Firewall, VPN, dan Autentikasi',
     deskripsi: 'Menganalisis efektivitas 4 komponen sistem pertahanan jaringan berlapis dalam mengatasi berbagai insiden keamanan.',
-    durasi: '60 Menit',
-    totalSoal: 5,
+    durasi: '15 Menit',
+    totalSoal: 10,
     kkm: 75,
     icon: 'lock'
   },
@@ -71,8 +71,8 @@ const DEFAULT_MODULES = [
     judul: 'Firewall & Penyaringan Paket Data',
     subjudul: 'Konfigurasi Aturan Allow dan Block',
     deskripsi: 'Menerapkan penyaringan paket lalu lintas data berdasarkan port/protokol serta menganalisis hasil simulasi firewall.',
-    durasi: '60 Menit',
-    totalSoal: 5,
+    durasi: '15 Menit',
+    totalSoal: 10,
     kkm: 75,
     icon: 'flame'
   }
@@ -275,6 +275,136 @@ const DEFAULT_QUIZZES = [
     kunci: 'A',
     pembahasan: 'IP Spoofing adalah pembuatan paket IP dengan alamat sumber palsu untuk mengelabui filter penerima atau menyembunyikan identitas asli mesin penyerang dalam serangan DoS.'
   },
+  {
+    id: 'q_m1_16',
+    moduleId: '1',
+    pertanyaan: 'Serangan siber di mana peretas memanipulasi cache server DNS sehingga pengguna yang mengetikkan alamat web asli diarahkan ke situs tiruan berbahaya disebut...',
+    opsi: {
+      A: 'DNS Spoofing / DNS Cache Poisoning',
+      B: 'ARP Poisoning',
+      C: 'MAC Flooding',
+      D: 'Port Forwarding'
+    },
+    kunci: 'A',
+    pembahasan: 'DNS Cache Poisoning (DNS Spoofing) merusak data resolusi nama domain pada cache server DNS lokal, mengalihkan pengguna ke IP server palsu milik penyerang secara tidak terlihat.'
+  },
+  {
+    id: 'q_m1_17',
+    moduleId: '1',
+    pertanyaan: 'Teknik penyadapan paket data yang melintas tanpa enkripsi pada jaringan kabel atau nirkabel menggunakan software penganalisis paket (packet analyzer) disebut...',
+    opsi: {
+      A: 'Eavesdropping / Packet Sniffing',
+      B: 'SQL Injection',
+      C: 'Buffer Overflow',
+      D: 'Cross-Site Scripting'
+    },
+    kunci: 'A',
+    pembahasan: 'Packet Sniffing / Eavesdropping memanfaatkan alat seperti Wireshark untuk merekam dan membaca isi lalu lintas paket data mentah yang melintas tanpa enkripsi pada satu segmen jaringan.'
+  },
+  {
+    id: 'q_m1_18',
+    moduleId: '1',
+    pertanyaan: 'Kumpulan komputer atau perangkat IoT yang telah terinfeksi malware dan dikendalikan secara rahasia dari jarak jauh oleh penyerang (botmaster) untuk melancarkan serangan terkoordinasi disebut...',
+    opsi: {
+      A: 'Botnet',
+      B: 'Workstation cluster',
+      C: 'Peer-to-peer network',
+      D: 'Intranet lokal'
+    },
+    kunci: 'A',
+    pembahasan: 'Botnet (robot network) adalah jaringan komputer zombi yang telah disusupi malware dan dapat diperintahkan secara massal untuk menyerang server korban (misalnya dalam serangan DDoS).'
+  },
+  {
+    id: 'q_m1_19',
+    moduleId: '1',
+    pertanyaan: 'Varian serangan phishing yang ditargetkan secara khusus dan dipersonalisasi kepada individu atau pejabat berwenang di suatu institusi disebut...',
+    opsi: {
+      A: 'Spear Phishing',
+      B: 'Mass Emailing',
+      C: 'Ping of Death',
+      D: 'Syn Flood'
+    },
+    kunci: 'A',
+    pembahasan: 'Spear Phishing adalah serangan rekayasa sosial yang dirancang khusus dengan mencantumkan nama, jabatan, atau konteks pekerjaan korban tertentu agar tampak sangat meyakinkan dibanding phishing massal.'
+  },
+  {
+    id: 'q_m1_20',
+    moduleId: '1',
+    pertanyaan: 'Serangan siber di mana penyerang mengirimkan pesan ARP palsu ke jaringan lokal untuk mengaitkan alamat MAC penyerang dengan alamat IP gateway yang sah disebut...',
+    opsi: {
+      A: 'ARP Spoofing / ARP Poisoning',
+      B: 'DHCP Starvation',
+      C: 'Smurf Attack',
+      D: 'VLAN Hopping'
+    },
+    kunci: 'A',
+    pembahasan: 'ARP Poisoning merusak tabel cache ARP di komputer korban pada layer data-link (Layer 2), sehingga seluruh lalu lintas diarahkan melalui komputer penyerang terlebih dahulu (Man-in-the-Middle).'
+  },
+  {
+    id: 'q_m1_21',
+    moduleId: '1',
+    pertanyaan: 'Ciri-ciri utama komputer laboratorium yang telah terinfeksi varian Crypto-mining Malware (Cryptojacking) tanpa disadari oleh pengguna adalah...',
+    opsi: {
+      A: 'Penggunaan prosesor (CPU/GPU) terus-menerus mencapai 100% dan kipas berputar kencang meski tidak membuka aplikasi berat.',
+      B: 'Ukuran monitor tiba-tiba mengecil secara fisik.',
+      C: 'Kabel UTP terlepas sendiri dari soket RJ-45.',
+      D: 'Speaker komputer mengeluarkan suara radio FM.'
+    },
+    kunci: 'A',
+    pembahasan: 'Cryptojacking membajak sumber daya komputasi perangkat keras korban (CPU/GPU) secara diam-diam untuk menambang mata uang kripto bagi keuntungan penyerang, menyebabkan sistem panas dan sangat lambat.'
+  },
+  {
+    id: 'q_m1_22',
+    moduleId: '1',
+    pertanyaan: 'Mengapa penggunaan flashdisk tanpa fitur proteksi atau membuka dokumen Word berekstensi asing yang mengandung "Macro" sangat berisiko bagi keamanan sistem?',
+    opsi: {
+      A: 'Macro script berbahaya dapat otomatis mengeksekusi perintah unduhan malware dan menyisipkan backdoor ke sistem operasi.',
+      B: 'Flashdisk akan mengurangi kapasitas daya listrik PLN.',
+      C: 'Macro menghapus keyboard secara permanen.',
+      D: 'Format flashdisk otomatis berubah menjadi CD-ROM.'
+    },
+    kunci: 'A',
+    pembahasan: 'Macro malware memanfaatkan bahasa pemrograman otomasi di dalam dokumen (seperti VBA) untuk mengunduh muatan payload jahat begitu pengguna mengaktifkan izin "Enable Content/Macros".'
+  },
+  {
+    id: 'q_m1_23',
+    moduleId: '1',
+    pertanyaan: 'Serangan Denial of Service yang membanjiri server target dengan paket SYN TCP tanpa pernah menyelesaikan proses three-way handshake disebut...',
+    opsi: {
+      A: 'SYN Flood Attack',
+      B: 'Ping Sweep',
+      C: 'XSS Attack',
+      D: 'Clickjacking'
+    },
+    kunci: 'A',
+    pembahasan: 'SYN Flood mengeksploitasi mekanisme TCP Three-Way Handshake dengan mengirim banjir permintaan koneksi awal (SYN) berulang kali dan membiarkan antrean buffer memori server penuh menunggu paket ACK balasan.'
+  },
+  {
+    id: 'q_m1_24',
+    moduleId: '1',
+    pertanyaan: 'Perangkat lunak jahat yang menyusup ke browser pengguna untuk membajak mesin pencari default dan mengalihkan ke situs iklan mencurigakan tanpa izin disebut...',
+    opsi: {
+      A: 'Browser Hijacker / Adware Agresif',
+      B: 'Device Driver',
+      C: 'Codec Video',
+      D: 'Firmware BIOS'
+    },
+    kunci: 'A',
+    pembahasan: 'Browser Hijacker memodifikasi pengaturan beranda, mesin telusur, dan menambahkan ekstensi mencurigakan untuk mendulang keuntungan tayangan iklan serta mengarahkan ke situs berbahaya.'
+  },
+  {
+    id: 'q_m1_25',
+    moduleId: '1',
+    pertanyaan: 'Metode penyerangan fisik/lingkungan di mana pelaku membuntuti staf resmi dari belakang saat memasuki ruang server berkeamanan tinggi tanpa menempelkan kartu akses sendiri disebut...',
+    opsi: {
+      A: 'Tailgating / Piggybacking',
+      B: 'Shoulder Surfing',
+      C: 'Dumpster Diving',
+      D: 'Baiting'
+    },
+    kunci: 'A',
+    pembahasan: 'Tailgating adalah pelanggaran keamanan fisik di mana orang tanpa hak izin menyusup mengekor di belakang pegawai yang baru saja membuka pintu berotentikasi.'
+  },
 
   /* --- KUIS MODUL 2: Analisis Sistem Keamanan Jaringan --- */
   {
@@ -472,6 +602,136 @@ const DEFAULT_QUIZZES = [
     kunci: 'A',
     pembahasan: 'Honeypot adalah sistem keamanan jebakan yang sengaja dibiarkan rentan agar peretas masuk, memungkinkan tim keamanan mengisolasi dan mempelajari teknik penyerang tanpa membahayakan sistem produksi.'
   },
+  {
+    id: 'q_m2_16',
+    moduleId: '2',
+    pertanyaan: 'Dalam implementasi sistem pertahanan mendalam (Defense in Depth), lapisan keamanan jaringan dirancang dengan prinsip...',
+    opsi: {
+      A: 'Menggabungkan beberapa lapisan perlindungan independen (firewall, segmentasi, antivirus, autentikasi) agar jika satu lapisan gagal, lapisan lain tetap melindungi.',
+      B: 'Hanya mengandalkan satu antivirus terbaik dan menonaktifkan fitur keamanan lainnya.',
+      C: 'Membuat satu password super panjang yang digunakan bersama oleh seluruh staf sekolah.',
+      D: 'Menutup seluruh akses internet selama 24 jam sehari.'
+    },
+    kunci: 'A',
+    pembahasan: 'Defense in Depth menerapkan pertahanan berlapis berjenjang; kegagalan satu komponen kontrol keamanan tidak serta merta membuat seluruh infrastruktur jaringan langsung bobol.'
+  },
+  {
+    id: 'q_m2_17',
+    moduleId: '2',
+    pertanyaan: 'Protokol tunneling VPN yang beroperasi pada layer jaringan dan menyediakan enkripsi data, integritas paket, serta autentikasi asal data yang sangat kuat adalah...',
+    opsi: {
+      A: 'IPsec (Internet Protocol Security)',
+      B: 'Telnet',
+      C: 'HTTP',
+      D: 'SNMP v1'
+    },
+    kunci: 'A',
+    pembahasan: 'IPsec adalah rangkaian protokol keamanan layer jaringan (Layer 3) yang mengamankan komunikasi IP melalui enkripsi dan autentikasi paket (menggunakan AH dan ESP).'
+  },
+  {
+    id: 'q_m2_18',
+    moduleId: '2',
+    pertanyaan: 'Algoritma enkripsi simetris dengan ukuran blok 128 bit yang menjadi standar baku pemerintah dan industri global dalam mengamankan data sensitif adalah...',
+    opsi: {
+      A: 'AES (Advanced Encryption Standard)',
+      B: 'DES (Data Encryption Standard yang sudah usang)',
+      C: 'Caesar Cipher',
+      D: 'ASCII'
+    },
+    kunci: 'A',
+    pembahasan: 'AES (Advanced Encryption Standard) dengan panjang kunci 128, 192, atau 256 bit merupakan standar enkripsi simetris paling aman dan efisien yang digunakan di seluruh dunia saat ini.'
+  },
+  {
+    id: 'q_m2_19',
+    moduleId: '2',
+    pertanyaan: 'Pada arsitektur jaringan aman, fungsi dari DMZ (Demilitarized Zone) adalah untuk...',
+    opsi: {
+      A: 'Menempatkan server publik yang dapat diakses dari internet terpisah dari jaringan komputer lokal internal sekolah.',
+      B: 'Menyimpan cadangan listrik darurat (UPS).',
+      C: 'Mempercepat kecepatan kipas pendingin ruang server.',
+      D: 'Menghapus log rekaman server setiap akhir pekan.'
+    },
+    kunci: 'A',
+    pembahasan: 'DMZ mengisolasi server yang melayani publik (web, email) dari LAN internal, sehingga jika server publik dieksploitasi penyerang, jaringan database dan komputer privat tidak langsung terpapar.'
+  },
+  {
+    id: 'q_m2_20',
+    moduleId: '2',
+    pertanyaan: 'Teknologi otentikasi jaringan yang menggunakan server RADIUS / TACACS+ untuk memusatkan otentikasi akun pengguna Wi-Fi sekolah dikenal dengan arsitektur...',
+    opsi: {
+      A: 'WPA2/WPA3 Enterprise (802.1X)',
+      B: 'WPA Personal (Pre-Shared Key tunggal)',
+      C: 'WEP 64-bit',
+      D: 'Wi-Fi Direct'
+    },
+    kunci: 'A',
+    pembahasan: 'WPA Enterprise menggunakan protokol IEEE 802.1X dan server RADIUS, di mana setiap siswa/guru login menggunakan username dan password pribadinya masing-masing.'
+  },
+  {
+    id: 'q_m2_21',
+    moduleId: '2',
+    pertanyaan: 'Fungsi dari sistem SIEM (Security Information and Event Management) di pusat operasi keamanan (SOC) adalah...',
+    opsi: {
+      A: 'Mengumpulkan, mengkorelasikan, dan menganalisis data log aktivitas dari berbagai perangkat jaringan secara terpusat untuk mendeteksi anomali.',
+      B: 'Mencetak laporan hasil kuis siswa ke kertas printer.',
+      C: 'Menggantikan kabel fiber optik yang terputus.',
+      D: 'Menyediakan koneksi Bluetooth untuk mouse laboratorium.'
+    },
+    kunci: 'A',
+    pembahasan: 'SIEM bertindak sebagai pusat pemantauan keamanan siber yang mengagregasi ribuan file log dari router, firewall, dan server untuk mengidentifikasi indikasi serangan (IoC).'
+  },
+  {
+    id: 'q_m2_22',
+    moduleId: '2',
+    pertanyaan: 'Pada konsep Public Key Infrastructure (PKI), apa yang terjadi apabila kunci privat (Private Key) dari sertifikat server web berhasil dicuri oleh peretas?',
+    opsi: {
+      A: 'Peretas dapat melakukan dekripsi lalu lintas data HTTPS pengguna dan menyamar sebagai server web yang sah.',
+      B: 'Komputer peretas akan rusak terkena arus balik tegangan tinggi.',
+      C: 'Website hanya bisa dibuka lewat peramban Internet Explorer.',
+      D: 'Ukuran domain website bertambah 10 karakter.'
+    },
+    kunci: 'A',
+    pembahasan: 'Private Key adalah rahasia tertinggi dalam enkripsi asimetris. Jika jatuh ke tangan penyerang, penyerang dapat mendekripsi sesi TLS dan melakukan serangan Man-in-the-Middle terselubung.'
+  },
+  {
+    id: 'q_m2_23',
+    moduleId: '2',
+    pertanyaan: 'Pendekatan keamanan modern berprinsip "Zero Trust Architecture" memiliki semboyan operasional yaitu...',
+    opsi: {
+      A: '"Never Trust, Always Verify" (Jangan pernah percaya, selalu verifikasi setiap permintaan akses).',
+      B: '"Trust Internal, Block External" (Percayai semua yang ada di jaringan LAN).',
+      C: '"No Password Needed" (Tidak memerlukan kata sandi).',
+      D: '"Always Allow All Traffic" (Izinkan seluruh lalu lintas).'
+    },
+    kunci: 'A',
+    pembahasan: 'Model Zero Trust mengasumsikan ancaman dapat berasal dari dalam maupun luar perimeter jaringan, sehingga setiap entitas dan perangkat wajib diverifikasi secara berkala sebelum diberi izin akses.'
+  },
+  {
+    id: 'q_m2_24',
+    moduleId: '2',
+    pertanyaan: 'Mekanisme keamanan email DMARC, SPF, dan DKIM dikonfigurasi pada DNS server domain sekolah terutama bertujuan untuk...',
+    opsi: {
+      A: 'Mencegah pemalsuan alamat email pengirim (Email Spoofing) dan memvalidasi keaslian pengirim email institusi.',
+      B: 'Mempercepat pengiriman attachment file video.',
+      C: 'Menghapus folder inbox secara otomatis setiap malam.',
+      D: 'Mengubah format email menjadi pesan SMS biasa.'
+    },
+    kunci: 'A',
+    pembahasan: 'SPF, DKIM, dan DMARC bekerja sama untuk memvalidasi bahwa email yang mengatasnamakan domain sekolah benar-benar berasal dari server resmi yang diotorisasi, menangkal phishing spoofing.'
+  },
+  {
+    id: 'q_m2_25',
+    moduleId: '2',
+    pertanyaan: 'Karakteristik kata sandi yang memenuhi standar rekomendasi NIST (National Institute of Standards and Technology) untuk melindungi akun dari serangan kamus adalah...',
+    opsi: {
+      A: 'Memiliki panjang minimal 12–16 karakter berupa passphrase unik tanpa pola tanggal lahir atau urutan angka berurutan.',
+      B: 'Menggunakan kata sandi pendek 4 huruf yang sering diganti tiap 3 hari.',
+      C: 'Menggunakan nama depan pengguna sebanyak tiga kali berulang.',
+      D: 'Menggunakan kata "password123".'
+    },
+    kunci: 'A',
+    pembahasan: 'NIST merekomendasikan penggunaan frasa sandi (passphrase) yang panjang dan unik ketimbang kombinasi pendek rumit yang mudah ditebak atau memaksa penggantian terlalu sering yang berujung pada pola lemah.'
+  },
 
   /* --- KUIS MODUL 3: Firewall & Penyaringan Paket --- */
   {
@@ -668,6 +928,136 @@ const DEFAULT_QUIZZES = [
     },
     kunci: 'A',
     pembahasan: 'Konfigurasi paling aman adalah membuka hanya port yang dibutuhkan (Port 443 TCP untuk HTTPS) dan menerapkan kebijakan default block untuk seluruh port layanan lainnya guna mempersempit bidang serangan (attack surface).'
+  },
+  {
+    id: 'q_m3_16',
+    moduleId: '3',
+    pertanyaan: 'Port baku yang digunakan oleh protokol transfer file aman SFTP (SSH File Transfer Protocol) adalah...',
+    opsi: {
+      A: 'Port 22 (TCP)',
+      B: 'Port 21 (FTP Plain)',
+      C: 'Port 25 (SMTP)',
+      D: 'Port 110 (POP3)'
+    },
+    kunci: 'A',
+    pembahasan: 'SFTP memanfaatkan protokol SSH pada port 22 untuk mengamankan proses transfer berkas dengan enkripsi penuh, berbeda dengan FTP konvensional pada port 21 yang tidak terenkripsi.'
+  },
+  {
+    id: 'q_m3_17',
+    moduleId: '3',
+    pertanyaan: 'Aturan firewall yang mengarahkan port publik tertentu ke IP privat server internal (misal port 8080 diteruskan ke port 80 pada web server lokal) menerapkan fungsi...',
+    opsi: {
+      A: 'Destination NAT (Port Forwarding)',
+      B: 'Source NAT (Masquerade)',
+      C: 'Loopback Prevention',
+      D: 'ICMP Echo Ping'
+    },
+    kunci: 'A',
+    pembahasan: 'Destination NAT (Dst-NAT / Port Forwarding) mengubah alamat IP dan/atau port tujuan pada header paket agar layanan server internal dapat diakses dari luar jaringan privat.'
+  },
+  {
+    id: 'q_m3_18',
+    moduleId: '3',
+    pertanyaan: 'Perintah firewall iptables Linux: "iptables -A INPUT -p tcp --dport 22 -s 192.168.1.50 -j ACCEPT" memiliki fungsi...',
+    opsi: {
+      A: 'Hanya mengizinkan koneksi SSH (Port 22) yang berasal dari alamat IP komputer administrator 192.168.1.50.',
+      B: 'Menolak seluruh koneksi yang masuk ke server dari alamat IP 192.168.1.50.',
+      C: 'Mematikan port 22 untuk seluruh pengguna jaringan lokal.',
+      D: 'Mengizinkan semua orang di internet mengakses port 22 tanpa batasan.'
+    },
+    kunci: 'A',
+    pembahasan: 'Opsi -s (source IP) menentukan alamat sumber yang diizinkan; perintah tersebut mengunci akses port 22 SSH khusus untuk workstation pengelola 192.168.1.50.'
+  },
+  {
+    id: 'q_m3_19',
+    moduleId: '3',
+    pertanyaan: 'Jika administrator ingin memblokir akses ping ICMP agar server sekolah tidak merespons upaya pemindaian (ping sweep) peretas dari internet, opsi protokol yang harus difilter adalah...',
+    opsi: {
+      A: 'Protokol ICMP (Internet Control Message Protocol)',
+      B: 'Protokol TCP',
+      C: 'Protokol UDP',
+      D: 'Protokol IGMP'
+    },
+    kunci: 'A',
+    pembahasan: 'Utilitas Ping beroperasi menggunakan protokol ICMP (Echo Request tipe 8 dan Echo Reply tipe 0). Memblokir paket ICMP echo-request menyembunyikan host dari alat pemindai aktif.'
+  },
+  {
+    id: 'q_m3_20',
+    moduleId: '3',
+    pertanyaan: 'Perbedaan karakteristik transmisi antara protokol TCP dan UDP yang menjadi pertimbangan dalam penyusunan aturan firewall adalah...',
+    opsi: {
+      A: 'TCP berorientasi koneksi (connection-oriented) dan andal, sedangkan UDP bersifat connectionless dan tanpa jaminan pengiriman paket.',
+      B: 'TCP hanya mengirim gambar, sedangkan UDP hanya mengirim teks.',
+      C: 'TCP tidak memiliki nomor port, sedangkan UDP memiliki nomor port.',
+      D: 'TCP hanya berjalan di kabel fiber optik.'
+    },
+    kunci: 'A',
+    pembahasan: 'TCP melakukan jabat tangan (handshake) dan pelacakan status sesi, sedangkan UDP mengirim datagram secara langsung tanpa jabat tangan (banyak dipakai untuk streaming video, DNS, dan game online).'
+  },
+  {
+    id: 'q_m3_21',
+    moduleId: '3',
+    pertanyaan: 'Dalam urutan pembacaan aturan firewall (Rule Ordering), prinsip evaluasi aturan yang diterapkan oleh mesin firewall adalah...',
+    opsi: {
+      A: 'Aturan dievaluasi berurutan dari atas ke bawah (Top-to-Bottom); saat ada aturan yang cocok (match), paket langsung diproses dan evaluasi aturan di bawahnya dilewati.',
+      B: 'Semua aturan dijalankan secara acak setiap detik.',
+      C: 'Aturan paling bawah selalu mengabaikan aturan di atasnya.',
+      D: 'Firewall hanya membaca aturan pada baris genap.'
+    },
+    kunci: 'A',
+    pembahasan: 'Urutan aturan (ruleset order) sangat krusial: aturan yang lebih spesifik harus ditempatkan di atas, sedangkan aturan penolakan umum (Default Drop) diletakkan di baris paling bawah.'
+  },
+  {
+    id: 'q_m3_22',
+    moduleId: '3',
+    pertanyaan: 'Sebuah Web Application Firewall (WAF) berbeda dari Network Firewall konvensional karena WAF dirancang secara khusus untuk...',
+    opsi: {
+      A: 'Melindungi aplikasi web dari serangan berbasis payload aplikasi seperti SQL Injection, XSS, dan CSRF pada Layer 7.',
+      B: 'Menyambungkan kabel fiber optik antar gedung sekolah.',
+      C: 'Menggantikan peran sistem pendingin AC di ruang server.',
+      D: 'Mempercepat pengisian daya baterai laptop siswa.'
+    },
+    kunci: 'A',
+    pembahasan: 'WAF beroperasi pada Layer 7 (Application Layer) dengan memeriksa konten permintaan HTTP/HTTPS untuk mendeteksi pola serangan injeksi web yang lolos dari firewall layer transport biasa.'
+  },
+  {
+    id: 'q_m3_23',
+    moduleId: '3',
+    pertanyaan: 'Untuk mengizinkan pengguna di jaringan LAN membuka situs web umum di internet, port outbound yang wajib dibuka pada firewall gateway adalah...',
+    opsi: {
+      A: 'Port 80 (HTTP) dan Port 443 (HTTPS) TCP, serta Port 53 (DNS) UDP.',
+      B: 'Hanya Port 21 (FTP).',
+      C: 'Port 23 (Telnet) dan Port 25 (SMTP).',
+      D: 'Port 3389 (RDP) saja.'
+    },
+    kunci: 'A',
+    pembahasan: 'Aktivitas browsing internet membutuhkan resolusi domain (Port 53 UDP/TCP) serta akses ke halaman web baik non-enkripsi (Port 80 TCP) maupun web aman modern (Port 443 TCP).'
+  },
+  {
+    id: 'q_m3_24',
+    moduleId: '3',
+    pertanyaan: 'Fitur "Rate Limiting" atau "Connection Limiting" pada firewall bermanfaat untuk melindungi server dari serangan...',
+    opsi: {
+      A: 'Serangan Brute Force login dan banjir koneksi DoS dengan membatasi jumlah permintaan per detik dari satu IP.',
+      B: 'Korsleting arus listrik PLN.',
+      C: 'Debu yang menempel pada casing server.',
+      D: 'Kerusakan layar monitor LCD.'
+    },
+    kunci: 'A',
+    pembahasan: 'Rate limiting membatasi frekuensi percobaan koneksi atau paket per satuan waktu dari satu IP sumber, secara efektif meredam serangan tebakan password otomatis dan serangan banjir lalu lintas.'
+  },
+  {
+    id: 'q_m3_25',
+    moduleId: '3',
+    pertanyaan: 'Pada simulasi firewall jaringan laboratorium, apa indikator bahwa sebuah aturan firewall "BLOCK Port 80" berhasil diuji dengan benar?',
+    opsi: {
+      A: 'Komputer klien menerima status Connection Timed Out / Connection Refused saat mencoba membuka halaman HTTP web server.',
+      B: 'Halaman website langsung terbuka dalam 0,1 detik.',
+      C: 'Lampu monitor klien langsung mati total.',
+      D: 'Kabel jaringan otomatis terlepas dari switch.'
+    },
+    kunci: 'A',
+    pembahasan: 'Ketika port 80 diblokir oleh firewall, paket TCP SYN yang dikirim oleh peramban klien ditolak atau dibuang, sehingga peramban menampilkan pesan kegagalan koneksi (timeout atau connection refused).'
   }
 ];
 
@@ -703,6 +1093,23 @@ const Storage = {
     }
     if (!localStorage.getItem(STORAGE_KEYS.MODULES)) {
       localStorage.setItem(STORAGE_KEYS.MODULES, JSON.stringify(DEFAULT_MODULES));
+    } else {
+      try {
+        const storedModules = JSON.parse(localStorage.getItem(STORAGE_KEYS.MODULES) || '[]');
+        let modUpdated = false;
+        storedModules.forEach(m => {
+          if (m.totalSoal !== 10) {
+            m.totalSoal = 10;
+            m.durasi = '15 Menit';
+            modUpdated = true;
+          }
+        });
+        if (modUpdated) {
+          localStorage.setItem(STORAGE_KEYS.MODULES, JSON.stringify(storedModules));
+        }
+      } catch (e) {
+        localStorage.setItem(STORAGE_KEYS.MODULES, JSON.stringify(DEFAULT_MODULES));
+      }
     }
     if (!localStorage.getItem(STORAGE_KEYS.QUIZZES)) {
       localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(DEFAULT_QUIZZES));

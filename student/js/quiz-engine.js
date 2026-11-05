@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const moduleMeta = window.Storage.getModuleById(moduleId) || {
     id: moduleId,
     judul: `Modul ${moduleId}`,
-    totalSoal: 5
+    totalSoal: 10
   };
 
   // Ambil bank soal aktif untuk modul terkait
@@ -28,9 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Anti-Contek (Anti-Cheat): Acak urutan dan ambil sampel butir soal (5 butir)
+  // Anti-Contek (Anti-Cheat): Acak urutan dan ambil sampel butir soal (10 butir dari bank soal)
   // Setiap siswa yang membuka kuis akan mendapatkan variasi dan urutan soal yang berbeda
-  const QUESTIONS_PER_QUIZ = 5;
+  const QUESTIONS_PER_QUIZ = 10;
+  const QUIZ_DURATION_SECONDS = 15 * 60; // 15 menit pengerjaan kuis
   function shuffleArray(arr) {
     const copy = [...arr];
     for (let i = copy.length - 1; i > 0; i--) {
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return copy;
   }
 
-  // Acak bank soal dan ambil 5 soal secara dinamis untuk sesi siswa ini
+  // Acak bank soal dan ambil 10 soal secara dinamis untuk sesi siswa ini
   const rawQuizzes = shuffleArray(allQuizzes).slice(0, Math.min(QUESTIONS_PER_QUIZ, allQuizzes.length));
 
   // State Pengerjaan Kuis
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isQuizStarted = false;
   const userAnswers = {}; // { [quizId]: 'A' | 'B' | 'C' | 'D' }
   const totalQuestions = rawQuizzes.length;
-  let remainingSeconds = 10 * 60; // 10 menit
+  let remainingSeconds = QUIZ_DURATION_SECONDS;
   let timerInterval = null;
 
   // Metadata Modul & Tahapan Stepper Navigasi
@@ -190,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderQuestion(currentIndex);
 
     if (window.Utils) {
-      window.Utils.showToast('Kuis dimulai! Waktu berjalan 10 menit. Selamat mengerjakan.', 'info');
+      window.Utils.showToast('Kuis dimulai! Waktu berjalan 15 menit. Selamat mengerjakan.', 'info');
     }
   }
 
@@ -304,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const score = Math.round((correctCount / totalQuestions) * 100);
-    const durationSpent = (10 * 60) - remainingSeconds;
+    const durationSpent = QUIZ_DURATION_SECONDS - remainingSeconds;
 
     // Pastikan seluruh soal yang ditugaskan tercatat pada userAnswers (meski belum sempat dijawab)
     rawQuizzes.forEach(q => {
