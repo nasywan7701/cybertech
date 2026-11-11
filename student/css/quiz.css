@@ -630,23 +630,51 @@
   padding: 0.75rem 1rem;
   border-radius: var(--radius-md);
   font-weight: 700;
-  border: 2px solid var(--color-border);
-  background: #f8fafc;
-  color: var(--color-text-muted);
+  border: 2px solid transparent;
+  color: #ffffff;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
-.hots-fw-btn.allow.active {
+.hots-fw-btn.allow {
   background: var(--color-success);
-  color: #ffffff;
-  border-color: var(--color-success);
+  border-color: #21965d;
+  box-shadow: 0 3px 0 #1e8754, 0 4px 10px rgba(43, 182, 115, 0.22);
+}
+
+.hots-fw-btn.allow:hover:not(:disabled) {
+  background: #24a165;
+  transform: translateY(-1px);
+}
+
+.hots-fw-btn.block {
+  background: var(--color-danger);
+  border-color: #c8373c;
+  box-shadow: 0 3px 0 #b83035, 0 4px 10px rgba(229, 72, 77, 0.22);
+}
+
+.hots-fw-btn.block:hover:not(:disabled) {
+  background: #d13b40;
+  transform: translateY(-1px);
+}
+
+.hots-sim-controls:has(.hots-fw-btn.active) .hots-fw-btn:not(.active) {
+  opacity: 0.55;
+  box-shadow: none;
+}
+
+.hots-fw-btn.allow.active {
+  background: #1f9d60;
+  border-color: #14532d;
+  box-shadow: 0 0 0 3px rgba(43, 182, 115, 0.35), 0 6px 14px rgba(43, 182, 115, 0.35);
+  transform: translateY(-1px);
 }
 
 .hots-fw-btn.block.active {
-  background: var(--color-danger);
-  color: #ffffff;
-  border-color: var(--color-danger);
+  background: #c83338;
+  border-color: #7f1d1d;
+  box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.35), 0 6px 14px rgba(229, 72, 77, 0.35);
+  transform: translateY(-1px);
 }
 
 .hots-sim-log {
