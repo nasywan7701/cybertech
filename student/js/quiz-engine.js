@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Ambil bank kasus HOTS untuk modul terkait
   const allQuizzes = window.Storage.getQuizzes(moduleId);
   if (!allQuizzes || allQuizzes.length === 0) {
-    alert('Bank kasus evaluasi HOTS untuk modul ini belum tersedia.');
+    alert('Bank kasus evaluasi untuk modul ini belum tersedia.');
     window.location.href = 'modules.html';
     return;
   }
@@ -54,36 +54,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const moduleInfoMap = {
     '1': {
-      topik: 'Bloom C4: Analisis & Klasifikasi Ancaman Jaringan',
+      topik: 'Topik: Analisis & Klasifikasi Ancaman Jaringan',
       title: 'Modul 1: Evaluasi Klasifikasi Drag & Drop + Analisis',
-      formatBadge: 'Evaluasi HOTS C4: Klasifikasi Drag & Drop & Justifikasi Teknis (Non-PG)',
+      formatBadge: 'Evaluasi: Klasifikasi Drag & Drop & Justifikasi Teknis',
       steps: [
         { label: '✓ 1. Materi', href: 'module1-material.html' },
         { label: '✓ 2. Video', href: 'module1-video.html' },
         { label: '✓ 3. Latihan Drag & Drop', href: 'module1-activity.html' },
-        { label: '4. Evaluasi HOTS', href: '#', active: true }
+        { label: '4. Evaluasi', href: '#', active: true }
       ]
     },
     '2': {
-      topik: 'Bloom C4-C5: Evaluasi Efektivitas & Rekomendasi Sistem',
+      topik: 'Topik: Evaluasi Efektivitas & Rekomendasi Sistem',
       title: 'Modul 2: Evaluasi Matriks Studi Kasus & Rekomendasi',
-      formatBadge: 'Evaluasi HOTS C4-C5: Matriks Komparatif & Rekomendasi Berkriteria (Non-PG)',
+      formatBadge: 'Evaluasi: Matriks Komparatif & Rekomendasi Berkriteria',
       steps: [
         { label: '✓ 1. Materi', href: 'module2-material.html' },
         { label: '✓ 2. Infografis Interaktif', href: 'module2-infografis.html' },
         { label: '✓ 3. Latihan Studi Kasus', href: 'module2-activity.html' },
-        { label: '4. Evaluasi HOTS', href: '#', active: true }
+        { label: '4. Evaluasi', href: '#', active: true }
       ]
     },
     '3': {
-      topik: 'Bloom C4-C6: Perancangan Kebijakan Firewall & Analisis Log',
+      topik: 'Topik: Konfigurasi Kebijakan Firewall & Analisis Log',
       title: 'Modul 3: Evaluasi Praktik Simulator Firewall & Penjelasan',
-      formatBadge: 'Evaluasi HOTS C4-C6: Uji Simulasi Allow/Block & Analisis Alasan (Non-PG)',
+      formatBadge: 'Evaluasi: Uji Simulasi Allow/Block & Analisis Alasan',
       steps: [
         { label: '✓ 1. Materi', href: 'module3-material.html' },
         { label: '✓ 2. Animasi Firewall', href: 'module3-video.html' },
         { label: '✓ 3. Latihan Simulasi', href: 'module3-activity.html' },
-        { label: '4. Evaluasi HOTS', href: '#', active: true }
+        { label: '4. Evaluasi', href: '#', active: true }
       ]
     }
   };
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizBreadcrumbCurrent = document.getElementById('quizBreadcrumbCurrent');
   const evalFormatBadge = document.getElementById('evalFormatBadge');
 
-  if (quizBreadcrumbCurrent) quizBreadcrumbCurrent.textContent = `Modul ${moduleId}: Evaluasi HOTS`;
+  if (quizBreadcrumbCurrent) quizBreadcrumbCurrent.textContent = `Modul ${moduleId}: Evaluasi`;
   if (quizTitle) quizTitle.textContent = modData.title;
   if (quizTopicBadge) quizTopicBadge.textContent = modData.topik;
   if (evalFormatBadge) evalFormatBadge.textContent = modData.formatBadge;
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     quizModuleStepper.querySelectorAll('.js-stepper-link').forEach(link => {
       link.addEventListener('click', (e) => {
         if (isQuizStarted) {
-          const leave = confirm('Evaluasi HOTS sedang berlangsung. Jika meninggalkan halaman, progres belum tersimpan. Yakin keluar?');
+          const leave = confirm('Evaluasi sedang berlangsung. Jika meninggalkan halaman, progres belum tersimpan. Yakin keluar?');
           if (!leave) e.preventDefault();
         }
       });
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderQuestion(currentIndex);
 
     if (window.Utils) {
-      window.Utils.showToast('Evaluasi HOTS dimulai! Waktu 20 menit berjalan. Kerjakan setiap tahap analisis.', 'info');
+      window.Utils.showToast('Evaluasi dimulai! Waktu 20 menit berjalan. Kerjakan setiap tahap analisis.', 'info');
     }
   }
 
@@ -240,16 +240,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const type = q.questionType || (String(moduleId) === '1' ? 'hots_m1_dnd' : (String(moduleId) === '2' ? 'hots_m2_case' : 'hots_m3_firewall'));
     const hotsData = q.hotsData || {};
 
-    questionNumBadge.textContent = `Kasus HOTS No. ${currentIndex + 1} dari ${totalQuestions}`;
+    questionNumBadge.textContent = `Kasus No. ${currentIndex + 1} dari ${totalQuestions}`;
 
     if (type === 'hots_m1_dnd') {
-      questionText.innerHTML = `<span class="hots-bloom-tag">Bloom C4: Klasifikasi &amp; Analisis Ancaman</span><div class="hots-scenario-box"><strong>Skenario Insiden #${currentIndex + 1}:</strong><br>${escapeHtml(q.pertanyaan)}</div>`;
+      questionText.innerHTML = `<span class="hots-bloom-tag">Klasifikasi &amp; Analisis Ancaman Jaringan</span><div class="hots-scenario-box"><strong>Skenario Insiden #${currentIndex + 1}:</strong><br>${escapeHtml(q.pertanyaan)}</div>`;
       renderModule1Workspace(q, ans, hotsData);
     } else if (type === 'hots_m2_case') {
-      questionText.innerHTML = `<span class="hots-bloom-tag">Bloom C4–C5: Evaluasi Efektivitas &amp; Rekomendasi</span><div class="hots-scenario-box"><strong>Studi Kasus #${currentIndex + 1}:</strong><br>${escapeHtml(q.pertanyaan)}</div>`;
+      questionText.innerHTML = `<span class="hots-bloom-tag">Evaluasi Efektivitas &amp; Rekomendasi Sistem</span><div class="hots-scenario-box"><strong>Studi Kasus #${currentIndex + 1}:</strong><br>${escapeHtml(q.pertanyaan)}</div>`;
       renderModule2Workspace(q, ans, hotsData);
     } else {
-      questionText.innerHTML = `<span class="hots-bloom-tag">Bloom C4–C6: Konfigurasi Kebijakan Firewall &amp; Analisis Log</span><div class="hots-scenario-box"><strong>Tantangan Lalu Lintas #${currentIndex + 1}:</strong><br>${escapeHtml(q.pertanyaan)}</div>`;
+      questionText.innerHTML = `<span class="hots-bloom-tag">Konfigurasi Kebijakan Firewall &amp; Analisis Log</span><div class="hots-scenario-box"><strong>Tantangan Lalu Lintas #${currentIndex + 1}:</strong><br>${escapeHtml(q.pertanyaan)}</div>`;
       renderModule3Workspace(q, ans, hotsData);
     }
 
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <div class="hots-reasoning-box">
-          <div class="hots-section-label" style="margin-bottom: 0.35rem;">2. Analisis Mekanisme &amp; Justifikasi Klasifikasi (Bloom C4):</div>
+          <div class="hots-section-label" style="margin-bottom: 0.35rem;">2. Analisis Mekanisme &amp; Justifikasi Klasifikasi:</div>
           <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 0.65rem;">
             ${escapeHtml(hotsData.rubricHint || 'Jelaskan alasan teknis (cara kerja, media penyebaran, atau ciri bukti) mengapa skenario tersebut termasuk kategori pilihan Anda.')}
           </div>
@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     workspaceEl.innerHTML = `
       <div class="${lockedClass}">
-        <div class="hots-section-label">1. Matriks Analisis Efektivitas Keempat Sistem Keamanan (Bloom C4):</div>
+        <div class="hots-section-label">1. Matriks Analisis Efektivitas Keempat Sistem Keamanan:</div>
         <div class="table-responsive" style="margin-bottom: 1.25rem;">
           <table class="hots-matrix-table">
             <thead>
@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </table>
         </div>
 
-        <div class="hots-section-label">2. Rekomendasikan 1 Sistem Keamanan Paling Tepat Sesuai Kriteria Kasus (Bloom C5):</div>
+        <div class="hots-section-label">2. Rekomendasikan 1 Sistem Keamanan Paling Tepat Sesuai Kriteria Kasus:</div>
         <div class="hots-priority-grid">
           ${systems.map(sys => `
             <button type="button" class="hots-priority-btn ${ans.recommended === sys.key ? 'active' : ''}" data-rec="${sys.key}" ${!isQuizStarted ? 'disabled' : ''}>
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <div class="hots-reasoning-box">
-          <div class="hots-section-label" style="margin-bottom: 0.35rem;">3. Argumentasi &amp; Kriteria Rekomendasi (Bloom C5):</div>
+          <div class="hots-section-label" style="margin-bottom: 0.35rem;">3. Argumentasi &amp; Kriteria Rekomendasi:</div>
           <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 0.65rem;">
             ${escapeHtml(hotsData.rubricHint || 'Jelaskan alasan mengapa sistem yang Anda rekomendasikan paling tepat untuk kriteria kasus tersebut dibanding 3 sistem lainnya.')}
           </div>
@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     workspaceEl.innerHTML = `
       <div class="${lockedClass}">
-        <div class="hots-section-label">1. Rancang Kebijakan Firewall &amp; Uji Simulasi Aliran Paket (Bloom C3–C6):</div>
+        <div class="hots-section-label">1. Rancang Kebijakan Firewall &amp; Uji Simulasi Aliran Paket:</div>
 
         <!-- Info Header Paket -->
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.85rem;">
@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="hots-sim-log ${simLogClass}" id="hotsSimLog" style="white-space: pre-line;">${escapeHtml(simLogText)}</div>
 
         <div class="hots-reasoning-box">
-          <div class="hots-section-label" style="margin-bottom: 0.35rem;">2. Jelaskan Alasan Teknis Hasil Simulasi (Diterima / Ditolak) (Bloom C4–C5):</div>
+          <div class="hots-section-label" style="margin-bottom: 0.35rem;">2. Jelaskan Alasan Teknis Hasil Simulasi (Diterima / Ditolak):</div>
           <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 0.65rem;">
             ${escapeHtml(hotsData.rubricHint || 'Jelaskan alasan teknis mengapa lalu lintas jaringan tersebut harus diterima atau ditolak oleh firewall berdasarkan port, protokol, enkripsi, dan risikonya.')}
           </div>
@@ -756,10 +756,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isAuto) {
       const completedCount = rawQuizzes.filter(q => isItemComplete(q)).length;
       if (completedCount < totalQuestions) {
-        const proceed = confirm(`Anda baru melengkapi ${completedCount} dari ${totalQuestions} kasus HOTS (beserta alasan tertulisnya). Yakin ingin mengumpulkan evaluasi sekarang?`);
+        const proceed = confirm(`Anda baru melengkapi ${completedCount} dari ${totalQuestions} kasus evaluasi (beserta alasan tertulisnya). Yakin ingin mengumpulkan evaluasi sekarang?`);
         if (!proceed) return;
       } else {
-        const confirmSubmit = confirm('Semua kasus & alasan analisis sudah terisi. Kirim Evaluasi HOTS Anda sekarang?');
+        const confirmSubmit = confirm('Semua kasus & alasan analisis sudah terisi. Kirim Evaluasi Anda sekarang?');
         if (!confirmSubmit) return;
       }
     }
@@ -798,7 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const savedResult = window.Storage.saveQuizResult(resultPayload);
 
-    window.Utils.showToast('Evaluasi HOTS berhasil diserahkan! Menghitung capaian rubrik...', 'success', 2000);
+    window.Utils.showToast('Evaluasi berhasil diserahkan! Menghitung capaian rubrik...', 'success', 2000);
     setTimeout(() => {
       window.location.href = `quiz-result.html?id=${savedResult.id}`;
     }, 800);

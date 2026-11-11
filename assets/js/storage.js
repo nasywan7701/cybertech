@@ -47,7 +47,7 @@ const DEFAULT_MODULES = [
     id: '1',
     kode: 'MODUL-01',
     judul: 'Analisis & Klasifikasi Ancaman Jaringan',
-    subjudul: 'Klasifikasi Kasus Virus, Worm, Phishing, & DDoS (C4)',
+    subjudul: 'Klasifikasi Kasus Virus, Worm, Phishing, & DDoS',
     deskripsi: 'Menganalisis mekanisme serangan siber dan mengklasifikasikan empat jenis ancaman jaringan secara tepat melalui aktivitas Drag & Drop beserta justifikasi teknis.',
     durasi: '20 Menit',
     totalSoal: 5,
@@ -58,7 +58,7 @@ const DEFAULT_MODULES = [
     id: '2',
     kode: 'MODUL-02',
     judul: 'Evaluasi & Rekomendasi Sistem Keamanan',
-    subjudul: 'Matriks Efektivitas Antivirus, Firewall, VPN, & 2FA (C4-C5)',
+    subjudul: 'Matriks Efektivitas Antivirus, Firewall, VPN, & 2FA',
     deskripsi: 'Menganalisis efektivitas komparatif empat sistem keamanan jaringan dalam mengatasi ancaman nyata dan merekomendasikan solusi paling tepat berbasis kriteria.',
     durasi: '20 Menit',
     totalSoal: 5,
@@ -69,7 +69,7 @@ const DEFAULT_MODULES = [
     id: '3',
     kode: 'MODUL-03',
     judul: 'Perancangan Kebijakan Firewall & Analisis Log',
-    subjudul: 'Simulasi Aturan Allow/Block & Justifikasi Lalu Lintas (C4-C6)',
+    subjudul: 'Simulasi Aturan Allow/Block & Justifikasi Lalu Lintas',
     deskripsi: 'Merancang dan menerapkan aturan Allow atau Block pada simulasi firewall sesuai jenis lalu lintas serta menjelaskan alasan teknis paket diterima atau ditolak.',
     durasi: '20 Menit',
     totalSoal: 5,
@@ -597,7 +597,7 @@ const Storage = {
             });
             localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(Array.from(map.values())));
           }
-        }).catch(() => {});
+        }).catch(() => { });
 
       // 2. Sync Rekap Hasil Evaluasi HOTS dari MySQL
       const p2 = fetch(`${api}/results.php`)
@@ -610,7 +610,7 @@ const Storage = {
             res.data.forEach(r => map.set(r.id, r));
             localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify(Array.from(map.values())));
           }
-        }).catch(() => {});
+        }).catch(() => { });
 
       // 3. Sync Daftar Siswa & Progres dari MySQL
       const p3 = fetch(`${api}/students.php?action=list`)
@@ -639,7 +639,7 @@ const Storage = {
             });
             localStorage.setItem(STORAGE_KEYS.PROGRESS, JSON.stringify(allProg));
           }
-        }).catch(() => {});
+        }).catch(() => { });
 
       await Promise.allSettled([p1, p2, p3]);
       window.dispatchEvent(new CustomEvent('cybertech:synced'));
@@ -661,8 +661,8 @@ const Storage = {
   getUserByUsernameOrEmail(identifier) {
     const users = this.getUsers();
     const query = String(identifier).trim().toLowerCase();
-    return users.find(u => 
-      (u.username && u.username.toLowerCase() === query) || 
+    return users.find(u =>
+      (u.username && u.username.toLowerCase() === query) ||
       (u.email && u.email.toLowerCase() === query) ||
       (u.nama && u.nama.toLowerCase() === query)
     ) || null;
@@ -691,7 +691,7 @@ const Storage = {
           confirmPassword: user.password || 'siswa123cybertech',
           kelas: user.kelas || 'XI TJKT 1'
         })
-      }).catch(() => {});
+      }).catch(() => { });
     }
 
     return user;
@@ -703,7 +703,7 @@ const Storage = {
     if (index !== -1) {
       users[index] = { ...users[index], ...updates };
       localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
-      
+
       const currentUser = this.getCurrentUser();
       if (currentUser && currentUser.id === id) {
         localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(users[index]));
@@ -723,7 +723,7 @@ const Storage = {
             nip: users[index].nip || '',
             avatar: users[index].avatar || ''
           })
-        }).catch(() => {});
+        }).catch(() => { });
       }
 
       return users[index];
@@ -811,7 +811,7 @@ const Storage = {
           activityDone: updated.activityDone ? 1 : 0,
           quizScore: updated.quizScore
         })
-      }).catch(() => {});
+      }).catch(() => { });
     }
 
     return updated;
@@ -851,7 +851,7 @@ const Storage = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newQuiz)
-      }).catch(() => {});
+      }).catch(() => { });
     }
 
     return newQuiz;
@@ -871,7 +871,7 @@ const Storage = {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id, ...all[index] })
-        }).catch(() => {});
+        }).catch(() => { });
       }
 
       return all[index];
@@ -889,7 +889,7 @@ const Storage = {
     if (api) {
       fetch(`${api}/quizzes.php?id=${encodeURIComponent(id)}`, {
         method: 'DELETE'
-      }).catch(() => {});
+      }).catch(() => { });
     }
 
     return filtered.length !== all.length;
@@ -951,7 +951,7 @@ const Storage = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newResult)
-      }).catch(() => {});
+      }).catch(() => { });
     }
 
     return newResult;
@@ -989,7 +989,7 @@ const Storage = {
           score: cleanScore,
           teacherFeedback: all[index].teacherFeedback
         })
-      }).catch(() => {});
+      }).catch(() => { });
     }
 
     return all[index];

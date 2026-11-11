@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kelola Bank Kasus HOTS C4–C6 - CyberTech</title>
+  <title>Kelola Bank Kasus Evaluasi - CyberTech</title>
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/components.css">
@@ -66,7 +66,7 @@
   <div class="app-main">
     <header class="app-topbar">
       <div>
-        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Kelola Bank Kasus Evaluasi HOTS (C4–C6)</h2>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Kelola Bank Kasus Evaluasi</h2>
         <div style="font-size: 0.85rem; color: var(--color-text-muted);">Manajemen studi kasus klasifikasi, matriks keputusan, simulator firewall &amp; rubrik kata kunci (Modul 1, 2, 3)</div>
       </div>
 
@@ -97,11 +97,11 @@
 
           <button type="button" class="btn btn-primary" id="addQuestionBtn" style="display: inline-flex; align-items: center; gap: 6px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>Tambah Kasus HOTS</span>
+            <span>Tambah Kasus Baru</span>
           </button>
         </div>
 
-        <!-- Tabel Daftar Kasus Evaluasi HOTS -->
+        <!-- Tabel Daftar Kasus Evaluasi -->
         <div class="table-responsive">
           <table class="data-table">
             <thead>
@@ -129,7 +129,7 @@
   <div class="modal-overlay" id="quizEditorModal">
     <div class="modal-box modal-box-lg">
       <div class="modal-header">
-        <h3 class="modal-title" id="editorModalTitle">Tambah Kasus Evaluasi HOTS</h3>
+        <h3 class="modal-title" id="editorModalTitle">Tambah Kasus Evaluasi</h3>
         <button type="button" class="modal-close" aria-label="Tutup">&times;</button>
       </div>
 
@@ -139,11 +139,11 @@
 
           <!-- Pilihan Target Modul -->
           <div class="form-group">
-            <label for="formModuleSelect" class="form-label">Target Modul &amp; Model Evaluasi HOTS *</label>
+            <label for="formModuleSelect" class="form-label">Target Modul &amp; Model Evaluasi *</label>
             <select id="formModuleSelect" class="form-select" required>
-              <option value="1">Modul 1 (C4): Drag &amp; Drop Klasifikasi Ancaman + Justifikasi</option>
-              <option value="2">Modul 2 (C4–C5): Matriks 4 Sistem Keamanan + Rekomendasi</option>
-              <option value="3">Modul 3 (C4–C6): Simulator Firewall Allow/Block + Penjelasan</option>
+              <option value="1">Modul 1: Drag &amp; Drop Klasifikasi Ancaman + Justifikasi</option>
+              <option value="2">Modul 2: Matriks 4 Sistem Keamanan + Rekomendasi</option>
+              <option value="3">Modul 3: Simulator Firewall Allow/Block + Penjelasan</option>
             </select>
           </div>
 
@@ -281,7 +281,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-outline modal-close" onclick="window.Utils.closeModal('quizEditorModal')">Batal</button>
-          <button type="submit" class="btn btn-success" id="saveQuizBtn">Simpan Kasus HOTS</button>
+          <button type="submit" class="btn btn-success" id="saveQuizBtn">Simpan Kasus Evaluasi</button>
         </div>
       </form>
     </div>

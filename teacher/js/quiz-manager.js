@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let quizIdToDelete = null;
 
   const TYPE_LABELS = {
-    hots_m1_dnd: 'C4 Drag & Drop',
-    hots_m2_case: 'C4–C5 Matriks',
-    hots_m3_firewall: 'C4–C6 Firewall'
+    hots_m1_dnd: 'Drag & Drop',
+    hots_m2_case: 'Matriks Kasus',
+    hots_m3_firewall: 'Simulasi Firewall'
   };
 
   function esc(str) {
@@ -77,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedModId = moduleSelect.value;
     const quizzes = window.Storage.getQuizzes(selectedModId) || [];
 
-    questionCountBadge.textContent = `${quizzes.length} Kasus HOTS Aktif`;
+    questionCountBadge.textContent = `${quizzes.length} Kasus Aktif`;
 
     if (quizzes.length === 0) {
       tbody.innerHTML = `
         <tr>
           <td colspan="6" class="text-center" style="padding: 2.5rem; color: var(--color-text-muted);">
-            Belum ada skenario kasus HOTS pada modul ini. Klik tombol <strong>"+ Tambah Kasus HOTS"</strong> untuk menambahkan studi kasus evaluasi.
+            Belum ada skenario kasus evaluasi pada modul ini. Klik tombol <strong>"+ Tambah Kasus Baru"</strong> untuk menambahkan studi kasus evaluasi.
           </td>
         </tr>
       `;
@@ -156,17 +156,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Buka Modal Tambah Kasus HOTS Baru
+  // 2. Buka Modal Tambah Kasus Baru
   addQuestionBtn.addEventListener('click', () => {
     quizForm.reset();
     quizIdInput.value = '';
-    editorModalTitle.textContent = 'Tambah Kasus Evaluasi HOTS (C4–C6)';
+    editorModalTitle.textContent = 'Tambah Kasus Evaluasi Baru';
     quizModuleSelect.value = moduleSelect.value;
     toggleModuleSpecificFields(quizModuleSelect.value);
     window.Utils.openModal('quizEditorModal');
   });
 
-  // 3. Buka Modal Edit Kasus HOTS
+  // 3. Buka Modal Edit Kasus
   function openEditModal(quizId) {
     const quiz = window.Storage.getQuizById(quizId);
     if (!quiz) return;
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modId = String(quiz.moduleId);
 
     quizIdInput.value = quiz.id;
-    editorModalTitle.textContent = `Edit Kasus Evaluasi HOTS (Modul ${modId})`;
+    editorModalTitle.textContent = `Edit Kasus Evaluasi (Modul ${modId})`;
     quizModuleSelect.value = modId;
     toggleModuleSpecificFields(modId);
 
@@ -276,10 +276,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (id) {
       window.Storage.updateQuiz(id, payload);
-      window.Utils.showToast('Kasus HOTS berhasil diperbarui!', 'success');
+      window.Utils.showToast('Kasus evaluasi berhasil diperbarui!', 'success');
     } else {
       window.Storage.addQuiz(payload);
-      window.Utils.showToast('Kasus HOTS baru berhasil ditambahkan ke bank evaluasi!', 'success');
+      window.Utils.showToast('Kasus evaluasi baru berhasil ditambahkan ke bank soal!', 'success');
     }
 
     window.Utils.closeModal('quizEditorModal');
@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
   confirmDeleteBtn.addEventListener('click', () => {
     if (quizIdToDelete) {
       window.Storage.deleteQuiz(quizIdToDelete);
-      window.Utils.showToast('Kasus evaluasi berhasil dihapus dari bank HOTS.', 'info');
+      window.Utils.showToast('Kasus evaluasi berhasil dihapus dari bank evaluasi.', 'info');
       quizIdToDelete = null;
       window.Utils.closeModal('deleteConfirmModal');
       renderQuizzesTable();

@@ -179,7 +179,7 @@
 
       function renderResults(list) {
         if (list.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding: 2rem; color: var(--color-text-muted);">Belum ada catatan evaluasi HOTS pada modul ini.</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding: 2rem; color: var(--color-text-muted);">Belum ada catatan evaluasi pada modul ini.</td></tr>`;
           return;
         }
 
@@ -231,7 +231,7 @@
         const qType = q.questionType || (ans && ans.type) || 'hots_m1_dnd';
 
         if (!ans || typeof ans !== 'object') {
-          return `<div style="font-size:0.85rem;color:var(--color-danger);">Tidak ada data jawaban HOTS terstruktur pada sesi ini.</div>`;
+          return `<div style="font-size:0.85rem;color:var(--color-danger);">Tidak ada data jawaban terstruktur pada sesi ini.</div>`;
         }
 
         if (qType === 'hots_m1_dnd') {
@@ -309,7 +309,7 @@
           return `
             <div class="review-modal-item">
               <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; gap:0.5rem; flex-wrap:wrap;">
-                <span class="font-bold" style="color: var(--color-primary);">Kasus HOTS #${idx + 1}</span>
+                <span class="font-bold" style="color: var(--color-primary);">Kasus #${idx + 1}</span>
                 ${statusBadge}
               </div>
               <div style="font-size: 0.93rem; margin-bottom: 0.65rem; color: var(--color-text-dark); font-weight:600;">${esc(q.pertanyaan)}</div>

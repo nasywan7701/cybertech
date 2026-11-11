@@ -67,7 +67,7 @@
   <div class="app-main">
     <header class="app-topbar">
       <div>
-        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Pembahasan Evaluasi HOTS (C4–C6)</h2>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Pembahasan Soal Evaluasi</h2>
         <div style="font-size: 0.85rem; color: var(--color-text-muted);" id="reviewSubtitle">Ulasan Analisis Kasus, Kunci Keputusan, Rubrik Penalarannya &amp; Umpan Balik Guru</div>
       </div>
 
@@ -153,9 +153,9 @@
       const paramModuleId = urlParams.get('module');
 
       const moduleTitles = {
-        '1': 'Identifikasi Ancaman Jaringan (C4)',
-        '2': 'Analisis Sistem Keamanan Jaringan (C4–C5)',
-        '3': 'Firewall & Simulasi Paket (C4–C6)'
+        '1': 'Identifikasi Ancaman Jaringan',
+        '2': 'Analisis Sistem Keamanan Jaringan',
+        '3': 'Firewall & Simulasi Paket'
       };
 
       const CATEGORY_LABELS = {
@@ -299,7 +299,7 @@
         } else {
           // Strict gating: Kunci pembahasan agar siswa belum mengerjakan tidak melihat kunci atau rubrik resmi
           teacherFeedbackBanner.style.display = 'none';
-          reviewScoreSummary.textContent = `Evaluasi HOTS modul ini belum dikerjakan. Selesaikan evaluasi untuk membuka pembahasan dan rubrik resmi.`;
+          reviewScoreSummary.textContent = `Evaluasi modul ini belum dikerjakan. Selesaikan evaluasi untuk membuka pembahasan dan rubrik resmi.`;
           reviewBadgeStatus.innerHTML = `<span class="badge badge-secondary" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">Terkunci (Belum Dikerjakan)</span>`;
 
           btnBackToResult.style.display = 'none';
@@ -311,9 +311,9 @@
               <div style="width: 72px; height: 72px; border-radius: 50%; background: #fef2f2; color: var(--color-danger); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
               </div>
-              <h3 style="color: var(--color-primary); margin: 0 0 0.5rem 0; font-size: 1.25rem;">Pembahasan Evaluasi HOTS Terkunci</h3>
+              <h3 style="color: var(--color-primary); margin: 0 0 0.5rem 0; font-size: 1.25rem;">Pembahasan Evaluasi Terkunci</h3>
               <p style="color: var(--color-text-muted); max-width: 540px; margin: 0 auto 1.75rem auto; line-height: 1.6; font-size: 0.95rem;">
-                Kunci keputusan, indikator kata kunci rubrik, dan analisis konseptual hanya dapat dibuka setelah Anda menyelesaikan evaluasi kompetensi HOTS (C4–C6) pada modul ini agar proses asesmen tetap objektif.
+                Kunci keputusan, indikator kata kunci rubrik, dan analisis konseptual hanya dapat dibuka setelah Anda menyelesaikan evaluasi kompetensi pada modul ini agar proses asesmen tetap objektif.
               </p>
               <a href="quiz.html?module=${targetModule}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding: 0.65rem 1.5rem;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
@@ -347,7 +347,7 @@
         if (!ans || typeof ans !== 'object') {
           return `
             <div style="padding:0.9rem 1rem;background:#fef2f2;border:1px solid #fecaca;border-radius:var(--radius-sm);color:#991b1b;font-size:0.9rem;">
-              Tidak ada data jawaban tersimpan untuk kasus ini (atau berasal dari sesi format lama). Silakan ulangi evaluasi modul ini untuk mencoba format HOTS terbaru.
+              Tidak ada data jawaban tersimpan untuk kasus ini (atau berasal dari sesi format lama). Silakan ulangi evaluasi modul ini untuk mencoba format terbaru.
             </div>
           `;
         }
