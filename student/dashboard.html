@@ -143,10 +143,9 @@
               Pengertian keamanan jaringan & 4 ancaman siber (Virus, Worm, Phishing, DDoS) beserta aktivitas Drag & Drop.
             </p>
             <div class="module-step-indicators">
-              <span class="step-indicator-pill" id="pillM1_mat">Materi</span>
-              <span class="step-indicator-pill" id="pillM1_vid">Video</span>
+              <span class="step-indicator-pill" id="pillM1_mat">Materi / Video</span>
               <span class="step-indicator-pill" id="pillM1_act">Aktivitas</span>
-              <span class="step-indicator-pill" id="pillM1_quiz">Kuis</span>
+              <span class="step-indicator-pill" id="pillM1_quiz">Evaluasi</span>
             </div>
             <div style="margin-bottom: 1rem;">
               <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.35rem;">
@@ -275,11 +274,28 @@
         bar.style.width = `${modProg.percentage || 0}%`;
 
         // Update pill tahapan
-        if (modProg.materialRead) document.getElementById(`pillM${mId}_mat`).classList.add('done');
-        if (modProg.videoWatched) document.getElementById(`pillM${mId}_vid`).classList.add('done');
-        if (modProg.activityDone) document.getElementById(`pillM${mId}_act`).classList.add('done');
+        if (mId === '1') {
+          if (modProg.materialRead || modProg.videoWatched) {
+            const pMat = document.getElementById('pillM1_mat');
+            if (pMat) pMat.classList.add('done');
+          }
+        } else {
+          if (modProg.materialRead) {
+            const pMat = document.getElementById(`pillM${mId}_mat`);
+            if (pMat) pMat.classList.add('done');
+          }
+          if (modProg.videoWatched) {
+            const pVid = document.getElementById(`pillM${mId}_vid`);
+            if (pVid) pVid.classList.add('done');
+          }
+        }
+        if (modProg.activityDone) {
+          const pAct = document.getElementById(`pillM${mId}_act`);
+          if (pAct) pAct.classList.add('done');
+        }
         if (modProg.quizScore !== null && modProg.quizScore >= 75) {
-          document.getElementById(`pillM${mId}_quiz`).classList.add('done');
+          const pQuiz = document.getElementById(`pillM${mId}_quiz`);
+          if (pQuiz) pQuiz.classList.add('done');
         }
 
         if (modProg.completed || (modProg.quizScore !== null && modProg.quizScore >= 75)) {

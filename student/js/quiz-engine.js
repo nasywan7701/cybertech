@@ -62,17 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const moduleInfoMap = {
     '1': {
       topik: 'Topik: Analisis & Klasifikasi Ancaman Jaringan',
+      stageHeading: 'Tahap 3: Evaluasi Kompetensi',
       title: 'Modul 1: Evaluasi Klasifikasi Drag & Drop + Analisis',
       formatBadge: 'Evaluasi: Klasifikasi Drag & Drop & Justifikasi Teknis',
       steps: [
-        { label: '✓ 1. Materi', href: 'module1-material.html' },
-        { label: '✓ 2. Video', href: 'module1-video.html' },
-        { label: '✓ 3. Latihan Drag & Drop', href: 'module1-activity.html' },
-        { label: '4. Evaluasi', href: '#', active: true }
+        { label: '✓ 1. Materi & Video', href: 'module1-material.html' },
+        { label: '✓ 2. Latihan Drag & Drop', href: 'module1-activity.html' },
+        { label: '3. Evaluasi', href: '#', active: true }
       ]
     },
     '2': {
       topik: 'Topik: Evaluasi & Rekomendasi Sistem Keamanan',
+      stageHeading: 'Tahap 4: Evaluasi Kompetensi',
       title: 'Modul 2: Evaluasi Matriks Studi Kasus & Rekomendasi',
       formatBadge: 'Evaluasi: Matriks Komparatif & Rekomendasi Berkriteria',
       steps: [
@@ -84,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     '3': {
       topik: 'Topik: Konfigurasi Kebijakan Firewall & Log',
+      stageHeading: 'Tahap 4: Evaluasi Kompetensi',
       title: 'Modul 3: Evaluasi Praktik Simulator Firewall & Penjelasan',
       formatBadge: 'Evaluasi: Uji Simulasi Allow/Block & Analisis Alasan',
       steps: [
@@ -99,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // DOM Elements
   const quizTitle = document.getElementById('quizTitle');
+  const quizStageHeading = document.getElementById('quizStageHeading');
   const timerText = document.getElementById('timerText');
   const timerBox = document.getElementById('timerBox');
   const questionNumBadge = document.getElementById('questionNumBadge');
@@ -116,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (quizBreadcrumbCurrent) quizBreadcrumbCurrent.textContent = `Modul ${moduleId}: Evaluasi`;
   if (quizTitle) quizTitle.textContent = modData.title;
+  if (quizStageHeading && modData.stageHeading) quizStageHeading.textContent = modData.stageHeading;
   if (quizTopicBadge) quizTopicBadge.textContent = modData.topik;
   if (evalFormatBadge) evalFormatBadge.textContent = modData.formatBadge;
 

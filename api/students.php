@@ -69,8 +69,13 @@ switch ($action) {
             $qs = ($quizScore !== null) ? $quizScore : ($existing ? $existing['quiz_score'] : null);
 
             $pct = 0;
-            if ($mr) $pct += 20;
-            if ($vw) $pct += 20;
+            if ($moduleId === 1) {
+                // Modul 1 menggabungkan baca materi & video dalam 1 tahap pilihan (40%)
+                if ($mr || $vw) $pct += 40;
+            } else {
+                if ($mr) $pct += 20;
+                if ($vw) $pct += 20;
+            }
             if ($ad) $pct += 30;
             $comp = 0;
             if ($qs !== null && $qs >= 75) {

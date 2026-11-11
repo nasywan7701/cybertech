@@ -3,13 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Materi Modul 1: Identifikasi Ancaman Jaringan - CyberTech</title>
+  <title>Materi &amp; Video Modul 1: Identifikasi Ancaman Jaringan - CyberTech</title>
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/components.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="css/student.css">
   <link rel="stylesheet" href="css/module.css">
+  <style>
+    /* Pemilih Mode Belajar (Baca Materi vs Tonton Video) */
+    .learning-mode-box {
+      background: #f8fafc;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .learning-mode-caption {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .learning-mode-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .mode-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-align: left;
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--color-border);
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .mode-tab-btn:hover {
+      border-color: #93c5fd;
+      background: #f0f9ff;
+    }
+
+    .mode-tab-btn.active {
+      border-color: var(--color-secondary);
+      background: #eff6ff;
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.12);
+    }
+
+    .mode-tab-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: #e2e8f0;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .mode-tab-btn.active .mode-tab-icon {
+      background: var(--color-secondary);
+      color: #ffffff;
+    }
+
+    .mode-tab-title {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--color-primary);
+    }
+
+    .mode-tab-sub {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    .mode-panel[hidden] {
+      display: none !important;
+    }
+
+    /* Pemutar Video HTML5 & Toolbar */
+    .real-video-wrapper {
+      background: #000000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .real-video-player {
+      width: 100%;
+      height: auto;
+      max-height: 540px;
+      display: block;
+      background: #000000;
+      outline: none;
+    }
+
+    .video-toolbar {
+      background: #f8fafc;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .speed-btn {
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .speed-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .speed-btn.active {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+
+    .skip-btn {
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+    }
+
+    .skip-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .video-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .summary-card {
+      background: #f8fafc;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      transition: all 0.2s ease;
+    }
+
+    .summary-card:hover {
+      border-color: var(--color-accent);
+      background: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 720px) {
+      .learning-mode-tabs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body class="app-layout">
 
@@ -38,7 +230,7 @@
       <li class="sidebar-item">
         <a href="activity.html">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          <span>Aktivitas & Hasil Kuis</span>
+          <span>Aktivitas &amp; Hasil Kuis</span>
         </a>
       </li>
       <li class="sidebar-item">
@@ -66,7 +258,7 @@
           <span class="separator">/</span>
           <a href="modules.html">Modul Pembelajaran</a>
           <span class="separator">/</span>
-          <span class="current">Modul 1: Materi</span>
+          <span class="current">Modul 1: Materi &amp; Video</span>
         </div>
         <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Modul 1: Identifikasi Ancaman Jaringan</h2>
       </div>
@@ -81,22 +273,22 @@
     </header>
 
     <main class="app-content">
-      <!-- Module Header Box & Step Progress Tracker -->
+      <!-- Module Header Box & Step Progress Tracker (3 Tahap Efisien) -->
       <div class="module-header-box">
         <div>
           <span class="badge badge-info" style="margin-bottom: 0.35rem;">Topik: Analisis &amp; Klasifikasi Ancaman Jaringan</span>
-          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;">Tahap 1: Pembacaan Materi</h3>
+          <h3 style="margin: 0; color: var(--color-primary); font-size: 1.35rem;">Tahap 1: Materi &amp; Video Pembelajaran</h3>
         </div>
         <div class="module-stepper">
-          <span class="stepper-item active">1. Materi</span>
-          <a href="module1-video.html" class="stepper-item">2. Video</a>
-          <a href="module1-activity.html" class="stepper-item">3. Latihan Drag &amp; Drop</a>
-          <a href="quiz.html?module=1" class="stepper-item">4. Evaluasi</a>
+          <span class="stepper-item active">1. Materi &amp; Video</span>
+          <a href="module1-activity.html" class="stepper-item">2. Latihan Drag &amp; Drop</a>
+          <a href="quiz.html?module=1" class="stepper-item">3. Evaluasi</a>
         </div>
       </div>
 
-      <!-- Main Material Panel -->
+      <!-- Main Material & Video Panel -->
       <article class="material-panel">
+        <!-- Tujuan Pembelajaran (Selalu Tampil untuk Kedua Mode) -->
         <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid #2563eb; border-radius: var(--radius-md); padding: 1.15rem 1.25rem; margin-bottom: 1.5rem;">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.45rem;">
             <strong style="color: #1e3a8a; font-size: 0.95rem;">Tujuan Pembelajaran (TP 1: Mengklasifikasikan Ancaman)</strong>
@@ -109,124 +301,253 @@
             <strong>Target Evaluasi Modul 1:</strong> Klasifikasi insiden nyata lewat Drag &amp; Drop serta justifikasi tertulis mekanisme serangannya (KKM 75).
           </div>
         </div>
-        <h2>A. Pengertian Keamanan Jaringan Komputer</h2>
-        <p>
-          <strong>Keamanan Jaringan (Network Security)</strong> adalah proses pencegahan dan perlindungan sumber daya jaringan komputer dari akses ilegal, manipulasi data, perusakan perangkat lunak, maupun pencurian informasi penting. Di era digital saat ini, jaringan komputer di laboratorium sekolah maupun dunia industri terus-menerus terhubung ke internet global, sehingga risiko terhadap ancaman siber semakin meningkat.
-        </p>
-        <p>
-          Tiga pilar utama dalam keamanan informasi dikenal dengan istilah <strong>CIA Triad</strong>:
-        </p>
-        <ul>
-          <li><strong>Confidentiality (Kerahasiaan):</strong> Menjamin bahwa informasi hanya dapat diakses oleh pihak yang memiliki hak otorisasi.</li>
-          <li><strong>Integrity (Keutuhan):</strong> Memastikan bahwa data yang dikirim tidak mengalami perubahan atau modifikasi tanpa izin di perjalanan jaringan.</li>
-          <li><strong>Availability (Ketersediaan):</strong> Menjamin bahwa layanan jaringan dan server selalu dapat diakses ketika pengguna yang sah membutuhkannya.</li>
-        </ul>
 
-        <h3>B. 4 Jenis Ancaman Sering Terjadi di Jaringan Komputer</h3>
-        <p>
-          Untuk menerapkan sistem pertahanan yang efektif, seorang teknisi jaringan (TJKT) harus mampu mengidentifikasi dan membedakan mekanisme serangan dari berbagai jenis ancaman siber:
-        </p>
-
-        <!-- 4 Kartu Visual Ancaman (PRD Seksi 5.2 - Layar 7) -->
-        <div class="threats-grid">
-          <!-- Ancaman 1: Virus -->
-          <div class="threat-card">
-            <div class="threat-card-header">
-              <div class="threat-icon virus">🦠</div>
-              <div>
-                <h4 class="threat-card-title">1. Virus Komputer</h4>
-                <span class="badge badge-danger">Memerlukan Inang & Aksi</span>
-              </div>
-            </div>
-            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
-              <strong>Cara Kerja:</strong> Program perusak yang <em>menempel pada file induk</em> (seperti file aplikasi <code>.exe</code> atau dokumen). Virus tidak dapat menyebar sendiri tanpa adanya tindakan eksekusi langsung dari pengguna (misalnya saat pengguna menjalankan program bajakan yang terinfeksi).
-            </p>
-            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
-              <em>Dampak:</em> Mengubah file sistem, merusak integritas dokumen, dan memperlambat kinerja komputer.
-            </p>
+        <!-- Pilihan Format Belajar: Baca Materi vs Tonton Video -->
+        <div class="learning-mode-box">
+          <div class="learning-mode-caption">
+            Materi bacaan dan video membahas topik yang sama. Pilih cara belajar yang paling nyaman untuk Anda:
           </div>
-
-          <!-- Ancaman 2: Worm -->
-          <div class="threat-card">
-            <div class="threat-card-header">
-              <div class="threat-icon worm">🐛</div>
+          <div class="learning-mode-tabs" role="tablist" aria-label="Pilih Mode Belajar Modul 1">
+            <button type="button" class="mode-tab-btn active" id="tabBtnMateri" role="tab" aria-selected="true" aria-controls="panelMateri">
+              <span class="mode-tab-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              </span>
               <div>
-                <h4 class="threat-card-title">2. Worm Jaringan</h4>
-                <span class="badge badge-warning">Menyebar Mandiri & Replikasi</span>
+                <span class="mode-tab-title">Baca Materi Teks</span>
+                <span class="mode-tab-sub">Penjelasan terstruktur, kartu ancaman &amp; catatan kunci</span>
               </div>
-            </div>
-            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
-              <strong>Cara Kerja:</strong> Program malware independen yang memiliki kemampuan untuk <em>menggandakan diri secara otomatis</em> dan menyusup ke komputer lain melalui celah port jaringan yang terbuka, <strong>tanpa campur tangan pengguna</strong> sama sekali.
-            </p>
-            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
-              <em>Dampak:</em> Menghabiskan lebar pita (bandwidth) jaringan lokal dan melumpuhkan komunikasi antar-komputer lab.
-            </p>
-          </div>
+            </button>
 
-          <!-- Ancaman 3: Phishing -->
-          <div class="threat-card">
-            <div class="threat-card-header">
-              <div class="threat-icon phishing">🎣</div>
-              <div>
-                <h4 class="threat-card-title">3. Phishing</h4>
-                <span class="badge badge-info">Rekayasa Sosial (Manipulasi)</span>
+            <button type="button" class="mode-tab-btn" id="tabBtnVideo" role="tab" aria-selected="false" aria-controls="panelVideo">
+              <span class="mode-tab-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </span>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
+                  <span class="mode-tab-title">Tonton Video Pembelajaran</span>
+                  <span class="badge badge-secondary" id="videoTabBadge" style="font-size: 0.72rem;">Video MP4</span>
+                </div>
+                <span class="mode-tab-sub">Penjelasan audio-visual materi identifikasi 4 ancaman</span>
               </div>
-            </div>
-            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
-              <strong>Cara Kerja:</strong> Teknik penipuan manipulasi psikologis di mana pelaku berpura-pura menjadi institusi tepercaya (misal bank atau pihak sekolah) melalui pesan/email tiruan dengan menyertakan tautan situs web palsu untuk memancing korban mengetikkan kredensial rahasia.
-            </p>
-            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
-              <em>Dampak:</em> Pencurian akun email, kata sandi portal nilai, dan identitas pribadi siswa/guru.
-            </p>
-          </div>
-
-          <!-- Ancaman 4: DDoS -->
-          <div class="threat-card">
-            <div class="threat-card-header">
-              <div class="threat-icon ddos">🌊</div>
-              <div>
-                <h4 class="threat-card-title">4. DDoS Attack</h4>
-                <span class="badge badge-danger">Banjir Permintaan Palsu</span>
-              </div>
-            </div>
-            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
-              <strong>Cara Kerja:</strong> <em>Distributed Denial of Service</em> memanfaatkan ribuan perangkat zombie (botnet) untuk membanjiri server sasaran secara serentak dengan jutaan permintaan koneksi palsu, hingga kapasitas server habis dan lumpuh total.
-            </p>
-            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
-              <em>Dampak:</em> Situs web sekolah atau server aplikasi ujian offline/online mati dan tidak dapat dibuka.
-            </p>
+            </button>
           </div>
         </div>
 
-        <!-- Kotak Catatan Semantik Kuning (#F5A524) -->
-        <div class="note-box">
-          <div class="note-box-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            <span>Poin Kunci Perbedaan Virus vs Worm:</span>
-          </div>
-          <div>
-            Ingat aturan ini: <strong>Virus butuh inang dan aksi klik pengguna</strong> untuk berpindah, sedangkan <strong>Worm bersifat mandiri dan aktif mengeksploitasi celah jaringan secara otomatis</strong>. Memahami perbedaan ini sangat penting saat Anda mengerjakan aktivitas seret-lepas (*drag and drop*) dan evaluasi modul ini.
-          </div>
-        </div>
+        <!-- PANEL 1: BACA MATERI TEKS -->
+        <section id="panelMateri" class="mode-panel" role="tabpanel" aria-labelledby="tabBtnMateri">
+          <h2>A. Pengertian Keamanan Jaringan Komputer</h2>
+          <p>
+            <strong>Keamanan Jaringan (Network Security)</strong> adalah proses pencegahan dan perlindungan sumber daya jaringan komputer dari akses ilegal, manipulasi data, perusakan perangkat lunak, maupun pencurian informasi penting. Di era digital saat ini, jaringan komputer di laboratorium sekolah maupun dunia industri terus-menerus terhubung ke internet global, sehingga risiko terhadap ancaman siber semakin meningkat.
+          </p>
+          <p>
+            Tiga pilar utama dalam keamanan informasi dikenal dengan istilah <strong>CIA Triad</strong>:
+          </p>
+          <ul>
+            <li><strong>Confidentiality (Kerahasiaan):</strong> Menjamin bahwa informasi hanya dapat diakses oleh pihak yang memiliki hak otorisasi.</li>
+            <li><strong>Integrity (Keutuhan):</strong> Memastikan bahwa data yang dikirim tidak mengalami perubahan atau modifikasi tanpa izin di perjalanan jaringan.</li>
+            <li><strong>Availability (Ketersediaan):</strong> Menjamin bahwa layanan jaringan dan server selalu dapat diakses ketika pengguna yang sah membutuhkannya.</li>
+          </ul>
 
-        <h3>C. Prinsip Dasar Pencegahan Ancaman Jaringan</h3>
-        <p>
-          Upaya pencegahan yang direkomendasikan pada laboratorium jaringan komputer SMK Negeri 1 Takalar meliputi:
-        </p>
-        <ol>
-          <li>Memasang perangkat lunak Antivirus terverifikasi pada setiap unit komputer klien dan memperbarui database virus secara berkala.</li>
-          <li>Mengonfigurasi firewall untuk menutup seluruh port layanan yang tidak digunakan (*default deny*).</li>
-          <li>Edukasi siswa agar waspada terhadap lampiran email mencurigakan serta tidak mengunduh perangkat lunak bajakan dari sumber tak resmi.</li>
-          <li>Menerapkan segmentasi jaringan virtual (VLAN) untuk membatasi ruang lingkup penyebaran worm antarkelas.</li>
-        </ol>
+          <h3>B. 4 Jenis Ancaman Sering Terjadi di Jaringan Komputer</h3>
+          <p>
+            Untuk menerapkan sistem pertahanan yang efektif, seorang teknisi jaringan (TJKT) harus mampu mengidentifikasi dan membedakan mekanisme serangan dari berbagai jenis ancaman siber:
+          </p>
+
+          <!-- 4 Kartu Visual Ancaman -->
+          <div class="threats-grid">
+            <!-- Ancaman 1: Virus -->
+            <div class="threat-card">
+              <div class="threat-card-header">
+                <div class="threat-icon virus">🦠</div>
+                <div>
+                  <h4 class="threat-card-title">1. Virus Komputer</h4>
+                  <span class="badge badge-danger">Memerlukan Inang &amp; Aksi</span>
+                </div>
+              </div>
+              <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                <strong>Cara Kerja:</strong> Program perusak yang <em>menempel pada file induk</em> (seperti file aplikasi <code>.exe</code> atau dokumen). Virus tidak dapat menyebar sendiri tanpa adanya tindakan eksekusi langsung dari pengguna (misalnya saat pengguna menjalankan program bajakan yang terinfeksi).
+              </p>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
+                <em>Dampak:</em> Mengubah file sistem, merusak integritas dokumen, dan memperlambat kinerja komputer.
+              </p>
+            </div>
+
+            <!-- Ancaman 2: Worm -->
+            <div class="threat-card">
+              <div class="threat-card-header">
+                <div class="threat-icon worm">🐛</div>
+                <div>
+                  <h4 class="threat-card-title">2. Worm Jaringan</h4>
+                  <span class="badge badge-warning">Menyebar Mandiri &amp; Replikasi</span>
+                </div>
+              </div>
+              <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                <strong>Cara Kerja:</strong> Program malware independen yang memiliki kemampuan untuk <em>menggandakan diri secara otomatis</em> dan menyusup ke komputer lain melalui celah port jaringan yang terbuka, <strong>tanpa campur tangan pengguna</strong> sama sekali.
+              </p>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
+                <em>Dampak:</em> Menghabiskan lebar pita (bandwidth) jaringan lokal dan melumpuhkan komunikasi antar-komputer lab.
+              </p>
+            </div>
+
+            <!-- Ancaman 3: Phishing -->
+            <div class="threat-card">
+              <div class="threat-card-header">
+                <div class="threat-icon phishing">🎣</div>
+                <div>
+                  <h4 class="threat-card-title">3. Phishing</h4>
+                  <span class="badge badge-info">Rekayasa Sosial (Manipulasi)</span>
+                </div>
+              </div>
+              <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                <strong>Cara Kerja:</strong> Teknik penipuan manipulasi psikologis di mana pelaku berpura-pura menjadi institusi tepercaya (misal bank atau pihak sekolah) melalui pesan/email tiruan dengan menyertakan tautan situs web palsu untuk memancing korban mengetikkan kredensial rahasia.
+              </p>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
+                <em>Dampak:</em> Pencurian akun email, kata sandi portal nilai, dan identitas pribadi siswa/guru.
+              </p>
+            </div>
+
+            <!-- Ancaman 4: DDoS -->
+            <div class="threat-card">
+              <div class="threat-card-header">
+                <div class="threat-icon ddos">🌊</div>
+                <div>
+                  <h4 class="threat-card-title">4. DDoS Attack</h4>
+                  <span class="badge badge-danger">Banjir Permintaan Palsu</span>
+                </div>
+              </div>
+              <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                <strong>Cara Kerja:</strong> <em>Distributed Denial of Service</em> memanfaatkan ribuan perangkat zombie (botnet) untuk membanjiri server sasaran secara serentak dengan jutaan permintaan koneksi palsu, hingga kapasitas server habis dan lumpuh total.
+              </p>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
+                <em>Dampak:</em> Situs web sekolah atau server aplikasi ujian offline/online mati dan tidak dapat dibuka.
+              </p>
+            </div>
+          </div>
+
+          <!-- Kotak Catatan Semantik Kuning -->
+          <div class="note-box">
+            <div class="note-box-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <span>Poin Kunci Perbedaan Virus vs Worm:</span>
+            </div>
+            <div>
+              Ingat aturan ini: <strong>Virus butuh inang dan aksi klik pengguna</strong> untuk berpindah, sedangkan <strong>Worm bersifat mandiri dan aktif mengeksploitasi celah jaringan secara otomatis</strong>. Memahami perbedaan ini sangat penting saat Anda mengerjakan aktivitas seret-lepas (<em>drag and drop</em>) dan evaluasi modul ini.
+            </div>
+          </div>
+
+          <h3>C. Prinsip Dasar Pencegahan Ancaman Jaringan</h3>
+          <p>
+            Upaya pencegahan yang direkomendasikan pada laboratorium jaringan komputer SMK Negeri 1 Takalar meliputi:
+          </p>
+          <ol>
+            <li>Memasang perangkat lunak Antivirus terverifikasi pada setiap unit komputer klien dan memperbarui database virus secara berkala.</li>
+            <li>Mengonfigurasi firewall untuk menutup seluruh port layanan yang tidak digunakan (<em>default deny</em>).</li>
+            <li>Edukasi siswa agar waspada terhadap lampiran email mencurigakan serta tidak mengunduh perangkat lunak bajakan dari sumber tak resmi.</li>
+            <li>Menerapkan segmentasi jaringan virtual (VLAN) untuk membatasi ruang lingkup penyebaran worm antarkelas.</li>
+          </ol>
+        </section>
+
+        <!-- PANEL 2: TONTON VIDEO PEMBELAJARAN -->
+        <section id="panelVideo" class="mode-panel" role="tabpanel" aria-labelledby="tabBtnVideo" hidden>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h3 style="margin: 0 0 0.35rem 0;">Video Pembelajaran: Identifikasi 4 Ancaman Siber</h3>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; margin: 0;">
+                Simak penjelasan audio-visual berikut untuk memahami mekanisme serangan Virus, Worm, Phishing, dan DDoS di jaringan.
+              </p>
+            </div>
+            <div>
+              <span class="badge badge-secondary" id="videoStatusBadge" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+                Belum Ditonton
+              </span>
+            </div>
+          </div>
+
+          <!-- Frame Pemutar Video HTML5 -->
+          <div class="real-video-wrapper">
+            <video
+              id="modul1VideoPlayer"
+              class="real-video-player"
+              controls
+              controlsList="nodownload"
+              preload="metadata"
+              playsinline>
+              <source src="../assets/videos/video-modul-1.mp4" type="video/mp4">
+              Browser Anda tidak mendukung tag video HTML5. Silakan gunakan Google Chrome atau browser modern lainnya.
+            </video>
+          </div>
+
+          <!-- Toolbar Kontrol Tambahan & Kecepatan Putar -->
+          <div class="video-toolbar">
+            <div class="toolbar-group">
+              <button type="button" class="skip-btn" id="btnRewind10" title="Mundur 10 Detik">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 19 2 12 11 5 11 19"></polygon><polygon points="22 19 13 12 22 5 22 19"></polygon></svg>
+                <span>-10s</span>
+              </button>
+              <button type="button" class="skip-btn" id="btnForward10" title="Maju 10 Detik">
+                <span>+10s</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>
+              </button>
+              <button type="button" class="skip-btn" id="btnRestartVideo" title="Ulangi dari Awal">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                <span>Ulangi</span>
+              </button>
+            </div>
+
+            <div class="toolbar-group">
+              <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 500;">Kecepatan Putar:</span>
+              <button type="button" class="speed-btn" data-speed="0.75">0.75x</button>
+              <button type="button" class="speed-btn active" data-speed="1.0">1.0x</button>
+              <button type="button" class="speed-btn" data-speed="1.25">1.25x</button>
+              <button type="button" class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+          </div>
+
+          <!-- Rangkuman Poin Inti Video -->
+          <div class="note-box">
+            <div class="note-box-title">
+              <span>Poin Inti Pembahasan Video:</span>
+            </div>
+            <div class="video-summary-grid">
+              <div class="summary-card">
+                <div style="font-size: 1.4rem; margin-bottom: 0.25rem;">🦠</div>
+                <strong style="color: var(--color-primary); font-size: 0.95rem;">1. Virus Komputer</strong>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4;">
+                  Membutuhkan file induk (host) dan eksekusi aktif pengguna untuk menginfeksi komputer.
+                </p>
+              </div>
+              <div class="summary-card">
+                <div style="font-size: 1.4rem; margin-bottom: 0.25rem;">🐛</div>
+                <strong style="color: var(--color-primary); font-size: 0.95rem;">2. Worm Jaringan</strong>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4;">
+                  Menyebar mandiri melalui celah port jaringan terbuka tanpa memerlukan bantuan interaksi pengguna.
+                </p>
+              </div>
+              <div class="summary-card">
+                <div style="font-size: 1.4rem; margin-bottom: 0.25rem;">🎣</div>
+                <strong style="color: var(--color-primary); font-size: 0.95rem;">3. Rekayasa Phishing</strong>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4;">
+                  Menyamar sebagai pihak tepercaya untuk memancing korban menyerahkan kredensial akun rahasia.
+                </p>
+              </div>
+              <div class="summary-card">
+                <div style="font-size: 1.4rem; margin-bottom: 0.25rem;">🌊</div>
+                <strong style="color: var(--color-primary); font-size: 0.95rem;">4. Serangan DDoS</strong>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.4;">
+                  Banjir lalu lintas data masif dari jaringan botnet untuk melumpuhkan server target hingga down.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <!-- Bottom Action Area -->
         <div class="bottom-action-area">
           <a href="modules.html" class="btn btn-outline">
             ← Kembali ke Katalog Modul
           </a>
-          <a href="module1-video.html" class="btn btn-primary" id="btnNextVideo">
-            Lanjut ke Video Pembelajaran →
+          <a href="module1-activity.html" class="btn btn-primary" id="btnNextActivity">
+            Lanjut ke Latihan Drag &amp; Drop →
           </a>
         </div>
       </article>
@@ -241,10 +562,112 @@
   <script src="js/module-common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Tandai otomatis materi Modul 1 telah dibaca
+      const tabBtnMateri = document.getElementById('tabBtnMateri');
+      const tabBtnVideo = document.getElementById('tabBtnVideo');
+      const panelMateri = document.getElementById('panelMateri');
+      const panelVideo = document.getElementById('panelVideo');
+
+      const video = document.getElementById('modul1VideoPlayer');
+      const statusBadge = document.getElementById('videoStatusBadge');
+      const videoTabBadge = document.getElementById('videoTabBadge');
+      const btnRewind10 = document.getElementById('btnRewind10');
+      const btnForward10 = document.getElementById('btnForward10');
+      const btnRestart = document.getElementById('btnRestartVideo');
+      const speedButtons = document.querySelectorAll('.speed-btn');
+
+      // Tandai materi Modul 1 dipelajari saat siswa membuka halaman materi/video ini
       window.ModuleHelper.markMaterialRead('1');
+
+      function setMode(mode) {
+        const isVideo = mode === 'video';
+        tabBtnMateri.classList.toggle('active', !isVideo);
+        tabBtnVideo.classList.toggle('active', isVideo);
+        tabBtnMateri.setAttribute('aria-selected', String(!isVideo));
+        tabBtnVideo.setAttribute('aria-selected', String(isVideo));
+
+        panelMateri.hidden = isVideo;
+        panelVideo.hidden = !isVideo;
+
+        if (!isVideo && video && !video.paused) {
+          video.pause();
+        }
+      }
+
+      tabBtnMateri.addEventListener('click', () => setMode('materi'));
+      tabBtnVideo.addEventListener('click', () => setMode('video'));
+
+      // Cek query param (?tab=video) atau hash (#video)
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('tab') === 'video' || window.location.hash === '#video') {
+        setMode('video');
+      }
+
+      // Cek apakah video sudah pernah ditonton sebelumnya
+      const currentUser = window.Auth ? window.Auth.getCurrentUser() : null;
+      if (currentUser && window.Storage) {
+        const prog = window.Storage.getStudentProgress(currentUser.id);
+        if (prog && prog['1'] && prog['1'].videoWatched) {
+          statusBadge.className = 'badge badge-success';
+          statusBadge.textContent = '✓ Telah Ditonton';
+          if (videoTabBadge) {
+            videoTabBadge.className = 'badge badge-success';
+            videoTabBadge.textContent = '✓ Telah Ditonton';
+          }
+        }
+      }
+
+      // Event saat video mulai diputar
+      video.addEventListener('play', () => {
+        if (!statusBadge.classList.contains('badge-success')) {
+          statusBadge.className = 'badge badge-info';
+          statusBadge.textContent = 'Sedang Diputar...';
+        }
+        window.ModuleHelper.markVideoWatched('1');
+      });
+
+      // Event saat video selesai diputar penuh
+      video.addEventListener('ended', () => {
+        statusBadge.className = 'badge badge-success';
+        statusBadge.textContent = '✓ Telah Selesai Ditonton';
+        if (videoTabBadge) {
+          videoTabBadge.className = 'badge badge-success';
+          videoTabBadge.textContent = '✓ Telah Ditonton';
+        }
+        window.ModuleHelper.markVideoWatched('1');
+        if (window.Utils) {
+          window.Utils.showToast('Video Modul 1 selesai disimak. Silakan lanjut ke Latihan Drag & Drop.', 'success');
+        }
+      });
+
+      // Kontrol video (-10s, +10s, ulangi, kecepatan)
+      btnRewind10.addEventListener('click', () => {
+        video.currentTime = Math.max(0, video.currentTime - 10);
+      });
+
+      btnForward10.addEventListener('click', () => {
+        video.currentTime = Math.min(video.duration || 0, video.currentTime + 10);
+      });
+
+      btnRestart.addEventListener('click', () => {
+        video.currentTime = 0;
+        video.play();
+      });
+
+      speedButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          speedButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          video.playbackRate = parseFloat(btn.getAttribute('data-speed'));
+        });
+      });
+
+      // Saat melanjutkan ke latihan dari mode video, tandai videoWatched juga
+      document.getElementById('btnNextActivity').addEventListener('click', () => {
+        if (tabBtnVideo.classList.contains('active')) {
+          window.ModuleHelper.markVideoWatched('1');
+        }
+      });
     });
   </script>
 </body>
 </html>
-

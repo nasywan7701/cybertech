@@ -1929,8 +1929,13 @@ const Storage = {
     const updated = { ...currentModProgress, ...stepUpdates };
 
     let percentage = 0;
-    if (updated.materialRead) percentage += 20;
-    if (updated.videoWatched) percentage += 20;
+    if (String(moduleId) === '1') {
+      // Modul 1 menggabungkan materi teks & video sebagai satu tahap pilihan belajar (40%)
+      if (updated.materialRead || updated.videoWatched) percentage += 40;
+    } else {
+      if (updated.materialRead) percentage += 20;
+      if (updated.videoWatched) percentage += 20;
+    }
     if (updated.activityDone) percentage += 30;
     if (updated.quizScore !== null && updated.quizScore >= 75) {
       percentage += 30;
