@@ -65,24 +65,24 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     '2': {
-      topik: 'Topik: Evaluasi Efektivitas & Rekomendasi Sistem',
+      topik: 'Topik: Evaluasi & Rekomendasi Sistem Keamanan',
       title: 'Modul 2: Evaluasi Matriks Studi Kasus & Rekomendasi',
       formatBadge: 'Evaluasi: Matriks Komparatif & Rekomendasi Berkriteria',
       steps: [
         { label: '✓ 1. Materi', href: 'module2-material.html' },
-        { label: '✓ 2. Infografis Interaktif', href: 'module2-infografis.html' },
-        { label: '✓ 3. Latihan Studi Kasus', href: 'module2-activity.html' },
+        { label: '✓ 2. Infografis', href: 'module2-infografis.html' },
+        { label: '✓ 3. Studi Kasus', href: 'module2-activity.html' },
         { label: '4. Evaluasi', href: '#', active: true }
       ]
     },
     '3': {
-      topik: 'Topik: Konfigurasi Kebijakan Firewall & Analisis Log',
+      topik: 'Topik: Konfigurasi Kebijakan Firewall & Log',
       title: 'Modul 3: Evaluasi Praktik Simulator Firewall & Penjelasan',
       formatBadge: 'Evaluasi: Uji Simulasi Allow/Block & Analisis Alasan',
       steps: [
         { label: '✓ 1. Materi', href: 'module3-material.html' },
         { label: '✓ 2. Animasi Firewall', href: 'module3-video.html' },
-        { label: '✓ 3. Latihan Simulasi', href: 'module3-activity.html' },
+        { label: '✓ 3. Simulasi Firewall', href: 'module3-activity.html' },
         { label: '4. Evaluasi', href: '#', active: true }
       ]
     }

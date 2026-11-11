@@ -22,34 +22,43 @@
 .module-header-box {
   background: #ffffff;
   border-radius: var(--radius-lg);
-  padding: 1.75rem 2rem;
+  padding: 1.5rem 2rem;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.25rem;
+}
+
+.module-header-box > div:first-child {
+  flex: 1 1 260px;
+  min-width: 0;
 }
 
 .module-stepper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .stepper-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   font-size: var(--font-size-caption);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-muted);
-  padding: 0.4rem 0.75rem;
+  padding: 0.42rem 0.85rem;
   border-radius: var(--radius-full);
   background: #f1f5f9;
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all var(--transition-fast);
 }
 
