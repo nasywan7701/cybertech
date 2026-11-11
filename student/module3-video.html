@@ -272,7 +272,7 @@
       const animStatusBadge = document.getElementById('animStatusBadge');
       const nextSimBtn = document.getElementById('btnNextSimulator');
       const prog = window.ModuleHelper.getModuleProgress('3');
-      const videoDone = Boolean(prog && prog.videoWatched);
+      let videoDone = Boolean(prog && prog.videoWatched);
 
       if (videoDone) {
         animStatusBadge.className = 'badge badge-success';
@@ -282,24 +282,26 @@
       window.ModuleHelper.setActionButtonLocked(
         nextSimBtn,
         !videoDone,
-        'Putar animasi firewall di atas terlebih dahulu sebelum melanjutkan ke Simulasi Firewall.'
+        'Tonton animasi firewall hingga selesai (minimal 85% durasi) sebelum membuka Simulasi Firewall.'
       );
 
       function setStatusStudying() {
-        if (!animStatusBadge.classList.contains('badge-success')) {
+        if (!videoDone) {
           animStatusBadge.className = 'badge badge-info';
           animStatusBadge.innerHTML = 'Sedang Dipelajari...';
         }
-        window.ModuleHelper.setActionButtonLocked(nextSimBtn, false);
-        window.ModuleHelper.markVideoWatched('3');
       }
 
       function setStatusCompleted() {
+        if (videoDone) return;
+        videoDone = true;
         animStatusBadge.className = 'badge badge-success';
         animStatusBadge.innerHTML = '✓ Telah Selesai Dipelajari';
         window.ModuleHelper.setActionButtonLocked(nextSimBtn, false);
         window.ModuleHelper.markVideoWatched('3');
-        window.Utils.showToast('Bagus! Anda telah menyelesaikan animasi firewall Modul 3. Silakan lanjut ke Simulator Firewall.', 'success');
+        if (window.Utils) {
+          window.Utils.showToast('Animasi Firewall selesai disimak! Tahap Simulasi Firewall kini terbuka.', 'success');
+        }
       }
 
       // =========================================================
@@ -307,6 +309,15 @@
       // =========================================================
       const videoEl = document.getElementById('firewallVideoPlayer');
       videoEl.addEventListener('play', setStatusStudying);
+      videoEl.addEventListener('timeupdate', () => {
+        if (videoDone || !videoEl.duration || !isFinite(videoEl.duration)) return;
+        const pct = Math.min(100, Math.round((videoEl.currentTime / videoEl.duration) * 100));
+        animStatusBadge.className = 'badge badge-info';
+        animStatusBadge.textContent = `Menonton: ${pct}% (min. 85%)`;
+        if (pct >= 85) {
+          setStatusCompleted();
+        }
+      });
       videoEl.addEventListener('ended', setStatusCompleted);
 
       document.getElementById('btnRewind10').addEventListener('click', () => {

@@ -305,6 +305,21 @@
         </div>
 
         <!-- Bottom Action Area -->
+        <div id="materiConfirmBox2" style="margin-top: 1.75rem; margin-bottom: 1.25rem; padding: 1.15rem 1.25rem; border-radius: var(--radius-md); background: #f8fafc; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <strong style="color: var(--color-primary); font-size: 0.95rem;">Konfirmasi Penyelesaian Materi Modul 2</strong>
+              <span class="badge badge-secondary" id="pillarProgressBadge2">Pilar Dipelajari: 1/4</span>
+            </div>
+            <div id="materiConfirmDesc2" style="font-size: 0.84rem; color: var(--color-text-muted); margin-top: 4px;">
+              Buka seluruh 4 tab Pilar Keamanan (Antivirus, Firewall, VPN, Autentikasi) lalu klik konfirmasi untuk membuka Tahap 2.
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="btnCompleteMateri2">
+            Tandai Selesai Membaca Materi ✓
+          </button>
+        </div>
+
         <div class="bottom-action-area">
           <a href="modules.html" class="btn btn-outline">
             ← Kembali ke Katalog Modul
@@ -325,9 +340,77 @@
   <script src="js/module-common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Inisialisasi akses tahap & tandai otomatis materi Modul 2 telah dibaca
+      // Inisialisasi akses tahap (jangan auto-mark selesai sebelum siswa membaca)
       if (window.ModuleHelper && !window.ModuleHelper.initStage('2', 'material')) return;
-      window.ModuleHelper.markMaterialRead('2');
+
+      const nextVideoBtn2 = document.getElementById('btnNextVideo2');
+      const btnCompleteMateri2 = document.getElementById('btnCompleteMateri2');
+      const materiConfirmBox2 = document.getElementById('materiConfirmBox2');
+      const materiConfirmDesc2 = document.getElementById('materiConfirmDesc2');
+      const pillarProgressBadge2 = document.getElementById('pillarProgressBadge2');
+
+      const prog2 = window.ModuleHelper.getModuleProgress('2');
+      let materiDone2 = Boolean(prog2 && prog2.materialRead);
+
+      const exploredTabs = {
+        antivirus: true,
+        firewall: materiDone2,
+        vpn: materiDone2,
+        auth: materiDone2
+      };
+
+      window.ModuleHelper.setActionButtonLocked(
+        nextVideoBtn2,
+        !materiDone2,
+        'Pelajari ke-4 tab Pilar Sistem Keamanan lalu klik "Tandai Selesai Membaca Materi" untuk membuka Infografis Interaktif.'
+      );
+
+      function updatePillarProgress2() {
+        const count = Object.values(exploredTabs).filter(Boolean).length;
+        if (pillarProgressBadge2) {
+          pillarProgressBadge2.textContent = `Pilar Dipelajari: ${count}/4`;
+          if (count === 4) {
+            pillarProgressBadge2.className = 'badge badge-success';
+          }
+        }
+      }
+
+      function applyMateriDoneUI2() {
+        if (btnCompleteMateri2) {
+          btnCompleteMateri2.textContent = '✓ Materi Selesai Dipelajari';
+          btnCompleteMateri2.className = 'btn btn-success';
+          btnCompleteMateri2.disabled = true;
+        }
+        if (materiConfirmBox2) {
+          materiConfirmBox2.style.background = '#f0fdf4';
+          materiConfirmBox2.style.borderColor = '#bbf7d0';
+        }
+        if (materiConfirmDesc2) {
+          materiConfirmDesc2.textContent = 'Tahap 1 telah diselesaikan. Tahap 2 (Infografis Interaktif) kini terbuka.';
+        }
+      }
+
+      updatePillarProgress2();
+      if (materiDone2) applyMateriDoneUI2();
+
+      if (btnCompleteMateri2) {
+        btnCompleteMateri2.addEventListener('click', () => {
+          const count = Object.values(exploredTabs).filter(Boolean).length;
+          if (count < 4) {
+            if (window.Utils) {
+              window.Utils.showToast(`Baru ${count} dari 4 tab Pilar Keamanan dibuka. Klik tab Antivirus, Firewall, VPN, dan Autentikasi di atas terlebih dahulu.`, 'warning', 4000);
+            }
+            return;
+          }
+          materiDone2 = true;
+          window.ModuleHelper.markMaterialRead('2');
+          window.ModuleHelper.setActionButtonLocked(nextVideoBtn2, false);
+          applyMateriDoneUI2();
+          if (window.Utils) {
+            window.Utils.showToast('Materi Modul 2 selesai! Tahap 2 (Infografis Interaktif) kini terbuka.', 'success');
+          }
+        });
+      }
 
       // Interaksi Tab Infografis Sistem Keamanan
       const tabData = {
@@ -405,6 +488,9 @@
           infoDesc.textContent = data.desc;
           infoExample.innerHTML = `<strong>Contoh Penggunaan:</strong> ${data.example}`;
           infoMockup.innerHTML = data.mockup;
+
+          exploredTabs[key] = true;
+          updatePillarProgress2();
         });
       });
     });

@@ -308,6 +308,19 @@
           </div>
         </div>
 
+        <!-- Konfirmasi Penyelesaian Materi Modul 3 -->
+        <div id="materiConfirmBox3" style="margin-top: 1.75rem; margin-bottom: 1.25rem; padding: 1.15rem 1.25rem; border-radius: var(--radius-md); background: #f8fafc; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <strong style="color: var(--color-primary); font-size: 0.95rem;">Konfirmasi Penyelesaian Materi Modul 3</strong>
+            <div id="materiConfirmDesc3" style="font-size: 0.84rem; color: var(--color-text-muted); margin-top: 2px;">
+              Klik tombol di samping setelah selesai membaca seluruh materi untuk membuka Tahap 2 (Animasi Firewall).
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="btnCompleteMateri3">
+            Tandai Selesai Membaca Materi ✓
+          </button>
+        </div>
+
         <!-- Bottom Action Area -->
         <div class="bottom-action-area">
           <a href="modules.html" class="btn btn-outline">
@@ -329,9 +342,51 @@
   <script src="js/module-common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Inisialisasi akses tahap & tandai otomatis materi Modul 3 telah dibaca
+      // Inisialisasi akses tahap (jangan auto-mark selesai sebelum siswa membaca)
       if (window.ModuleHelper && !window.ModuleHelper.initStage('3', 'material')) return;
-      window.ModuleHelper.markMaterialRead('3');
+
+      const nextVideoBtn3 = document.getElementById('btnNextVideo3');
+      const btnCompleteMateri3 = document.getElementById('btnCompleteMateri3');
+      const materiConfirmBox3 = document.getElementById('materiConfirmBox3');
+      const materiConfirmDesc3 = document.getElementById('materiConfirmDesc3');
+
+      const prog3 = window.ModuleHelper.getModuleProgress('3');
+      let materiDone3 = Boolean(prog3 && prog3.materialRead);
+
+      window.ModuleHelper.setActionButtonLocked(
+        nextVideoBtn3,
+        !materiDone3,
+        'Baca seluruh materi Modul 3 dan klik "Tandai Selesai Membaca Materi" untuk membuka Animasi Firewall.'
+      );
+
+      function applyMateriDoneUI3() {
+        if (btnCompleteMateri3) {
+          btnCompleteMateri3.textContent = '✓ Materi Selesai Dipelajari';
+          btnCompleteMateri3.className = 'btn btn-success';
+          btnCompleteMateri3.disabled = true;
+        }
+        if (materiConfirmBox3) {
+          materiConfirmBox3.style.background = '#f0fdf4';
+          materiConfirmBox3.style.borderColor = '#bbf7d0';
+        }
+        if (materiConfirmDesc3) {
+          materiConfirmDesc3.textContent = 'Tahap 1 telah diselesaikan. Tahap 2 (Animasi Firewall) kini terbuka.';
+        }
+      }
+
+      if (materiDone3) applyMateriDoneUI3();
+
+      if (btnCompleteMateri3) {
+        btnCompleteMateri3.addEventListener('click', () => {
+          materiDone3 = true;
+          window.ModuleHelper.markMaterialRead('3');
+          window.ModuleHelper.setActionButtonLocked(nextVideoBtn3, false);
+          applyMateriDoneUI3();
+          if (window.Utils) {
+            window.Utils.showToast('Materi Modul 3 selesai! Tahap 2 (Animasi Firewall) kini terbuka.', 'success');
+          }
+        });
+      }
     });
   </script>
 </body>

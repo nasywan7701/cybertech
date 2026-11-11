@@ -445,6 +445,18 @@
             <li>Edukasi siswa agar waspada terhadap lampiran email mencurigakan serta tidak mengunduh perangkat lunak bajakan dari sumber tak resmi.</li>
             <li>Menerapkan segmentasi jaringan virtual (VLAN) untuk membatasi ruang lingkup penyebaran worm antarkelas.</li>
           </ol>
+
+          <div id="materiConfirmBox1" style="margin-top: 1.75rem; padding: 1.15rem 1.25rem; border-radius: var(--radius-md); background: #f8fafc; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+            <div>
+              <strong style="color: var(--color-primary); font-size: 0.95rem;">Konfirmasi Penyelesaian Tahap Baca Materi</strong>
+              <div id="materiConfirmDesc1" style="font-size: 0.84rem; color: var(--color-text-muted); margin-top: 2px;">
+                Klik tombol di samping setelah selesai membaca seluruh materi untuk membuka Tahap 2 (Latihan Drag &amp; Drop).
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="btnCompleteMateri1">
+              Tandai Selesai Membaca Materi ✓
+            </button>
+          </div>
         </section>
 
         <!-- PANEL 2: TONTON VIDEO PEMBELAJARAN -->
@@ -574,10 +586,52 @@
       const btnForward10 = document.getElementById('btnForward10');
       const btnRestart = document.getElementById('btnRestartVideo');
       const speedButtons = document.querySelectorAll('.speed-btn');
+      const nextActivityBtn = document.getElementById('btnNextActivity');
+      const btnCompleteMateri1 = document.getElementById('btnCompleteMateri1');
+      const materiConfirmBox1 = document.getElementById('materiConfirmBox1');
+      const materiConfirmDesc1 = document.getElementById('materiConfirmDesc1');
 
-      // Inisialisasi akses tahap & tandai materi Modul 1 dipelajari
+      // Inisialisasi akses tahap (jangan auto-mark selesai saat halaman baru dibuka)
       if (!window.ModuleHelper.initStage('1', 'material')) return;
-      window.ModuleHelper.markMaterialRead('1');
+
+      const prog1 = window.ModuleHelper.getModuleProgress('1');
+      let stage1Done = window.ModuleHelper.isStageComplete('1', 'material', prog1);
+      window.ModuleHelper.setActionButtonLocked(
+        nextActivityBtn,
+        !stage1Done,
+        'Selesaikan pembacaan materi (klik "Tandai Selesai Membaca Materi") atau tonton video hingga selesai untuk membuka Latihan Drag & Drop.'
+      );
+
+      function applyMateriDoneUI() {
+        if (btnCompleteMateri1) {
+          btnCompleteMateri1.textContent = '✓ Materi Selesai Dipelajari';
+          btnCompleteMateri1.className = 'btn btn-success';
+          btnCompleteMateri1.disabled = true;
+        }
+        if (materiConfirmBox1) {
+          materiConfirmBox1.style.background = '#f0fdf4';
+          materiConfirmBox1.style.borderColor = '#bbf7d0';
+        }
+        if (materiConfirmDesc1) {
+          materiConfirmDesc1.textContent = 'Tahap 1 telah diselesaikan. Anda dapat melanjutkan ke Latihan Drag & Drop.';
+        }
+      }
+
+      if (prog1 && prog1.materialRead) {
+        applyMateriDoneUI();
+      }
+
+      if (btnCompleteMateri1) {
+        btnCompleteMateri1.addEventListener('click', () => {
+          stage1Done = true;
+          window.ModuleHelper.markMaterialRead('1');
+          window.ModuleHelper.setActionButtonLocked(nextActivityBtn, false);
+          applyMateriDoneUI();
+          if (window.Utils) {
+            window.Utils.showToast('Materi Modul 1 selesai! Tahap 2 (Latihan Drag & Drop) kini terbuka.', 'success');
+          }
+        });
+      }
 
       function setMode(mode) {
         const isVideo = mode === 'video';
@@ -604,30 +658,20 @@
       }
 
       // Cek apakah video sudah pernah ditonton sebelumnya
-      const currentUser = window.Auth ? window.Auth.getCurrentUser() : null;
-      if (currentUser && window.Storage) {
-        const prog = window.Storage.getStudentProgress(currentUser.id);
-        if (prog && prog['1'] && prog['1'].videoWatched) {
-          statusBadge.className = 'badge badge-success';
-          statusBadge.textContent = '✓ Telah Ditonton';
-          if (videoTabBadge) {
-            videoTabBadge.className = 'badge badge-success';
-            videoTabBadge.textContent = '✓ Telah Ditonton';
-          }
+      let videoDone = Boolean(prog1 && prog1.videoWatched);
+      if (videoDone) {
+        statusBadge.className = 'badge badge-success';
+        statusBadge.textContent = '✓ Telah Ditonton';
+        if (videoTabBadge) {
+          videoTabBadge.className = 'badge badge-success';
+          videoTabBadge.textContent = '✓ Telah Ditonton';
         }
       }
 
-      // Event saat video mulai diputar
-      video.addEventListener('play', () => {
-        if (!statusBadge.classList.contains('badge-success')) {
-          statusBadge.className = 'badge badge-info';
-          statusBadge.textContent = 'Sedang Diputar...';
-        }
-        window.ModuleHelper.markVideoWatched('1');
-      });
-
-      // Event saat video selesai diputar penuh
-      video.addEventListener('ended', () => {
+      function completeVideoStage1() {
+        if (videoDone) return;
+        videoDone = true;
+        stage1Done = true;
         statusBadge.className = 'badge badge-success';
         statusBadge.textContent = '✓ Telah Selesai Ditonton';
         if (videoTabBadge) {
@@ -635,10 +679,31 @@
           videoTabBadge.textContent = '✓ Telah Ditonton';
         }
         window.ModuleHelper.markVideoWatched('1');
+        window.ModuleHelper.setActionButtonLocked(nextActivityBtn, false);
         if (window.Utils) {
-          window.Utils.showToast('Video Modul 1 selesai disimak. Silakan lanjut ke Latihan Drag & Drop.', 'success');
+          window.Utils.showToast('Video Modul 1 selesai disimak! Tahap 2 (Latihan Drag & Drop) kini terbuka.', 'success');
+        }
+      }
+
+      // Event saat video diputar: pantau progres hingga minimal 85% atau selesai
+      video.addEventListener('play', () => {
+        if (!videoDone) {
+          statusBadge.className = 'badge badge-info';
+          statusBadge.textContent = 'Sedang Diputar...';
         }
       });
+
+      video.addEventListener('timeupdate', () => {
+        if (videoDone || !video.duration || !isFinite(video.duration)) return;
+        const pct = Math.min(100, Math.round((video.currentTime / video.duration) * 100));
+        statusBadge.className = 'badge badge-info';
+        statusBadge.textContent = `Menonton: ${pct}% (min. 85%)`;
+        if (pct >= 85) {
+          completeVideoStage1();
+        }
+      });
+
+      video.addEventListener('ended', completeVideoStage1);
 
       // Kontrol video (-10s, +10s, ulangi, kecepatan)
       btnRewind10.addEventListener('click', () => {
@@ -660,13 +725,6 @@
           btn.classList.add('active');
           video.playbackRate = parseFloat(btn.getAttribute('data-speed'));
         });
-      });
-
-      // Saat melanjutkan ke latihan dari mode video, tandai videoWatched juga
-      document.getElementById('btnNextActivity').addEventListener('click', () => {
-        if (tabBtnVideo.classList.contains('active')) {
-          window.ModuleHelper.markVideoWatched('1');
-        }
       });
     });
   </script>
