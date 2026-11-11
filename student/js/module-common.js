@@ -160,7 +160,7 @@ window.ModuleHelper = {
     items.forEach(item => {
       // Simpan teks label bersih tanpa prefix ✓ atau ikon gembok
       if (!item.dataset.baseLabel) {
-        item.dataset.baseLabel = item.textContent.replace(/^[✓🔒\s]+/u, '').trim();
+        item.dataset.baseLabel = item.textContent.replace(/^[\u2713\u{1F512}\s]+/u, '').trim();
       }
       const baseLabel = item.dataset.baseLabel;
       const itemStage = this._inferStageFromEl(item) || (item.classList.contains('active') ? currentStage : null);
@@ -199,11 +199,11 @@ window.ModuleHelper = {
         item.setAttribute('aria-disabled', 'true');
         item.dataset.lockMessage = lockMsg;
         item.title = lockMsg;
-        item.textContent = `🔒 ${baseLabel}`;
+        item.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span>${baseLabel}</span>`;
       } else if (isDone) {
         item.classList.add('completed');
         item.title = 'Tahap sudah diselesaikan';
-        item.textContent = `✓ ${baseLabel}`;
+        item.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"></polyline></svg><span>${baseLabel}</span>`;
       } else {
         item.title = `Buka ${baseLabel}`;
         item.textContent = baseLabel;

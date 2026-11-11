@@ -399,7 +399,7 @@
           <div>
             <h4
               style="margin: 0 0 0.25rem 0; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
-              <span>📊</span> Eksplorasi 4 Pilar Sistem Keamanan Jaringan
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Eksplorasi 4 Pilar Sistem Keamanan Jaringan
             </h4>
             <p style="margin: 0; color: var(--color-text-muted); font-size: 0.9rem;">
               Pelajari visualisasi infografis di bawah ini. Klik setiap elemen interaktif untuk memahami cara kerja
@@ -421,23 +421,23 @@
         <div class="infographic-nav" id="infoNav">
           <button type="button" class="info-tab-btn active read" data-tab="defense">
             <span class="tab-badge-check">✓</span>
-            <span>🏰 1. Pertahanan Berlapis (Defense in Depth)</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> 1. Pertahanan Berlapis (Defense in Depth)</span>
           </button>
           <button type="button" class="info-tab-btn" data-tab="antivirus">
             <span class="tab-badge-check">2</span>
-            <span>🛡️ 2. Anatomi Antivirus & Endpoint</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> 2. Anatomi Antivirus & Endpoint</span>
           </button>
           <button type="button" class="info-tab-btn" data-tab="firewall">
             <span class="tab-badge-check">3</span>
-            <span>🧱 3. Filter Gerbang Firewall</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="12" y1="3" x2="12" y2="9"/><line x1="8" y1="9" x2="8" y2="15"/><line x1="16" y1="9" x2="16" y2="15"/><line x1="12" y1="15" x2="12" y2="21"/></svg> 3. Filter Gerbang Firewall</span>
           </button>
           <button type="button" class="info-tab-btn" data-tab="vpn">
             <span class="tab-badge-check">4</span>
-            <span>🚇 4. Terowongan Enkripsi VPN</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> 4. Terowongan Enkripsi VPN</span>
           </button>
           <button type="button" class="info-tab-btn" data-tab="mfa">
             <span class="tab-badge-check">5</span>
-            <span>🔑 5. Autentikasi 2FA / Multifaktor</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> 5. Autentikasi 2FA / Multifaktor</span>
           </button>
         </div>
 
@@ -459,15 +459,18 @@
           <!-- Visual Canvas -->
           <div class="visual-infographic-canvas">
             <div class="canvas-badge">PIRAMIDA PERTAHANAN BERLAPIS (LAYERED DEFENSE)</div>
-            <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 1.5rem;">
-              💡 <em>Klik salah satu lapisan piramida di bawah ini untuk melihat teknologi yang bekerja di
+            <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5A524" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <em>Klik salah satu lapisan piramida di bawah ini untuk melihat teknologi yang bekerja di
                 dalamnya:</em>
             </p>
 
             <div class="pyramid-container">
               <div class="pyramid-layer" onclick="showLayerDetail('identitas')">
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                  <span style="font-size: 1.6rem;">🔑</span>
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(245,165,36,0.15);color:#F5A524;flex-shrink:0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                  </span>
                   <div>
                     <strong style="color: #ffffff; font-size: 1.05rem;">Lapisan 4: Identitas & Akses Pengguna (Data &
                       Identity)</strong>
@@ -482,7 +485,9 @@
 
               <div class="pyramid-layer" onclick="showLayerDetail('endpoint')">
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                  <span style="font-size: 1.6rem;">💻</span>
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(0,180,216,0.15);color:#00B4D8;flex-shrink:0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
                   <div>
                     <strong style="color: #ffffff; font-size: 1.05rem;">Lapisan 3: Perangkat Klien / Host (Endpoint
                       Protection)</strong>
@@ -497,7 +502,9 @@
 
               <div class="pyramid-layer" onclick="showLayerDetail('internal')">
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                  <span style="font-size: 1.6rem;">🚇</span>
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(43,182,115,0.15);color:#2BB673;flex-shrink:0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  </span>
                   <div>
                     <strong style="color: #ffffff; font-size: 1.05rem;">Lapisan 2: Jaringan Internal (Internal Network &
                       Transit)</strong>
@@ -512,7 +519,9 @@
 
               <div class="pyramid-layer" onclick="showLayerDetail('perimeter')">
                 <div style="display: flex; align-items: center; gap: 1rem;">
-                  <span style="font-size: 1.6rem;">🧱</span>
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(229,72,77,0.15);color:#E5484D;flex-shrink:0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="12" y1="3" x2="12" y2="9"/><line x1="8" y1="9" x2="8" y2="15"/><line x1="16" y1="9" x2="16" y2="15"/><line x1="12" y1="15" x2="12" y2="21"/></svg>
+                  </span>
                   <div>
                     <strong style="color: #ffffff; font-size: 1.05rem;">Lapisan 1: Garis Depan Perimeter (Perimeter
                       Defense)</strong>
@@ -529,7 +538,7 @@
 
           <!-- Deep-dive detail box yang berubah saat diklik -->
           <div class="deep-dive-box" id="layerDetailBox">
-            <h4 id="layerDetailTitle">📌 Penjelasan Lapisan: Klik salah satu lapisan piramida di atas</h4>
+            <h4 id="layerDetailTitle" style="display:flex;align-items:center;gap:0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Penjelasan Lapisan: Klik salah satu lapisan piramida di atas</h4>
             <p id="layerDetailDesc"
               style="margin: 0; font-size: 0.95rem; color: var(--color-text-dark); line-height: 1.6;">
               Konsep <strong>Defense in Depth</strong> menjamin jika peretas berhasil membobol pertahanan terluar
@@ -558,23 +567,29 @@
             <div class="infographic-grid-2">
               <!-- Metode 1 -->
               <div class="interactive-card active" id="cardSig" onclick="selectAntivirusMode('sig')">
-                <div class="interactive-card-icon">🧬</div>
+                <div class="interactive-card-icon" style="color: #00B4D8;">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 0 0 8 11a4 4 0 1 1 8 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0 0 15.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 0 0 8 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+                </div>
                 <h4>1. Deteksi Berbasis Signature (Sidik Jari)</h4>
                 <p>Membandingkan nilai hash unik (MD5/SHA-256) file target dengan jutaan database malware dunia yang
                   sudah dikenal.</p>
-                <div style="margin-top: 1rem; font-size: 0.8rem; color: #00B4D8; font-weight: 600;">
-                  ⚡ Sangat Cepat & Akurat untuk Virus Lama &bull; Butuh Update Rutin
+                <div style="margin-top: 1rem; font-size: 0.8rem; color: #00B4D8; font-weight: 600; display:flex; align-items:center; gap:0.35rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span>Sangat Cepat & Akurat untuk Virus Lama &bull; Butuh Update Rutin</span>
                 </div>
               </div>
 
               <!-- Metode 2 -->
               <div class="interactive-card" id="cardHeur" onclick="selectAntivirusMode('heur')">
-                <div class="interactive-card-icon">🧠</div>
+                <div class="interactive-card-icon" style="color: #2BB673;">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                </div>
                 <h4>2. Deteksi Heuristik & Behavioral (Perilaku)</h4>
                 <p>Menganalisis tingkah laku mencurigakan secara cerdas, seperti file yang mencoba memodifikasi registri
                   sistem atau menyuntikkan proses DLL secara diam-diam.</p>
-                <div style="margin-top: 1rem; font-size: 0.8rem; color: #2BB673; font-weight: 600;">
-                  🛡️ Efektif Melawan Serangan Hari-Nol (Zero-Day Attacks)
+                <div style="margin-top: 1rem; font-size: 0.8rem; color: #2BB673; font-weight: 600; display:flex; align-items:center; gap:0.35rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>Efektif Melawan Serangan Hari-Nol (Zero-Day Attacks)</span>
                 </div>
               </div>
             </div>
@@ -585,29 +600,37 @@
           <div class="infographic-grid-4" style="margin-bottom: 2rem;">
             <div
               style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
-              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">📥</div>
-              <strong style="color: var(--color-primary); font-size: 0.95rem;">1. File Diunduh</strong>
+              <div style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;background:#e0f2fe;color:#0284c7;margin-bottom:0.5rem;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </div>
+              <div style="display:block;"><strong style="color: var(--color-primary); font-size: 0.95rem;">1. File Diunduh</strong></div>
               <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0.25rem 0 0 0;">Browser / Flashdisk
                 memasukkan file ke harddisk.</p>
             </div>
             <div
               style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
-              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">🔍</div>
-              <strong style="color: var(--color-primary); font-size: 0.95rem;">2. Pemindaian Residen</strong>
+              <div style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;background:#e0f2fe;color:#0284c7;margin-bottom:0.5rem;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <div style="display:block;"><strong style="color: var(--color-primary); font-size: 0.95rem;">2. Pemindaian Residen</strong></div>
               <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0.25rem 0 0 0;">Antivirus mencegat
                 sebelum file dieksekusi.</p>
             </div>
             <div
               style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
-              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">📦</div>
-              <strong style="color: var(--color-danger); font-size: 0.95rem;">3. Karantina (Vault)</strong>
+              <div style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;background:#fee2e2;color:#dc2626;margin-bottom:0.5rem;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <div style="display:block;"><strong style="color: var(--color-danger); font-size: 0.95rem;">3. Karantina (Vault)</strong></div>
               <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0.25rem 0 0 0;">File diisolasi di
                 folder terkunci tanpa izin eksekusi.</p>
             </div>
             <div
               style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
-              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">🗑️</div>
-              <strong style="color: var(--color-success); font-size: 0.95rem;">4. Pembersihan / Hapus</strong>
+              <div style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;background:#dcfce7;color:#16a34a;margin-bottom:0.5rem;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+              </div>
+              <div style="display:block;"><strong style="color: var(--color-success); font-size: 0.95rem;">4. Pembersihan / Hapus</strong></div>
               <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0.25rem 0 0 0;">Kode virus dipotong
                 atau file dimusnahkan permanen.</p>
             </div>
@@ -637,7 +660,9 @@
 
             <div class="infographic-grid-3">
               <div class="interactive-card" style="border-top: 4px solid #2BB673;">
-                <div style="font-size: 2rem;">✅</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(43,182,115,0.15);color:#2BB673;margin-bottom:0.75rem;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
                 <h4>Tindakan: ALLOW (ACCEPT)</h4>
                 <p>Paket lolos verifikasi keamanan dan diteruskan ke server aplikasi di dalam jaringan laboratorium.</p>
                 <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #2BB673;">Contoh: Port 443 (HTTPS) web
@@ -645,7 +670,9 @@
               </div>
 
               <div class="interactive-card" style="border-top: 4px solid #E5484D;">
-                <div style="font-size: 2rem;">🛑</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(229,72,77,0.15);color:#E5484D;margin-bottom:0.75rem;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                </div>
                 <h4>Tindakan: DROP / BLOCK</h4>
                 <p>Paket dibuang diam-diam di gerbang firewall tanpa memberi tahu pengirim, menghemat bandwidth dari
                   serangan flood.</p>
@@ -654,7 +681,9 @@
               </div>
 
               <div class="interactive-card" style="border-top: 4px solid #F5A524;">
-                <div style="font-size: 2rem;">⚠️</div>
+                <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(245,165,36,0.15);color:#F5A524;margin-bottom:0.75rem;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
                 <h4>Tindakan: REJECT</h4>
                 <p>Paket ditolak dan firewall mengirim balasan sinyal ICMP Port Unreachable kepada pengirim.</p>
                 <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #F5A524;">Contoh: Komputer klien tanpa izin
@@ -665,7 +694,7 @@
 
           <!-- Matriks Port Umum -->
           <div class="deep-dive-box">
-            <h4>📋 Matriks Port Jaringan Penting untuk Administrasi Server:</h4>
+            <h4 style="display:flex;align-items:center;gap:0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Matriks Port Jaringan Penting untuk Administrasi Server:</h4>
             <div style="overflow-x: auto;">
               <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.75rem;">
                 <thead>
@@ -730,11 +759,13 @@
             <div class="canvas-badge">SIMULASI PAKET SNIFFING DI WI-FI PUBLIK</div>
 
             <div class="sim-toggle-bar">
-              <button type="button" class="sim-toggle-btn active" id="btnSimNoVpn" onclick="toggleVpnSim(false)">
-                ❌ Tanpa VPN (Koneksi Terbuka)
+              <button type="button" class="sim-toggle-btn active" id="btnSimNoVpn" onclick="toggleVpnSim(false)" style="display:inline-flex;align-items:center;gap:0.45rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                <span>Tanpa VPN (Koneksi Terbuka)</span>
               </button>
-              <button type="button" class="sim-toggle-btn" id="btnSimWithVpn" onclick="toggleVpnSim(true)">
-                🛡️ Dengan VPN (Terowongan AES-256)
+              <button type="button" class="sim-toggle-btn" id="btnSimWithVpn" onclick="toggleVpnSim(true)" style="display:inline-flex;align-items:center;gap:0.45rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Dengan VPN (Terowongan AES-256)</span>
               </button>
             </div>
 
@@ -742,7 +773,10 @@
             <div class="comparison-strip">
               <!-- Kolom Kiri: Sisi Klien Siswa -->
               <div class="comparison-col safe" style="border-top-color: #00B4D8;">
-                <h4 style="margin: 0 0 0.5rem 0; color: #ffffff;">📱 Laptop / HP Siswa</h4>
+                <h4 style="margin: 0 0 0.5rem 0; color: #ffffff; display:flex; align-items:center; gap:0.45rem;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                  <span>Laptop / HP Siswa</span>
+                </h4>
                 <div style="font-size: 0.85rem; color: #cbd5e1;" id="vpnClientStatus">
                   Mengirim request data login ke server sekolah:
                   <div
@@ -757,8 +791,10 @@
 
               <!-- Kolom Kanan: Apa yang Dilihat Peretas (Sniffer) -->
               <div class="comparison-col danger" id="hackerViewBox">
-                <h4 style="margin: 0 0 0.5rem 0; color: #E5484D;" id="hackerViewTitle">🕵️ Yang Terbaca Hacker di Wi-Fi
-                  Publik:</h4>
+                <h4 style="margin: 0 0 0.5rem 0; color: #E5484D; display:flex; align-items:center; gap:0.45rem;" id="hackerViewTitle">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Yang Terbaca Hacker di Wi-Fi Publik:</span>
+                </h4>
                 <div style="font-size: 0.85rem; color: #cbd5e1;">
                   <div
                     style="background: rgba(0,0,0,0.4); padding: 0.75rem; border-radius: 4px; margin-top: 0.5rem; font-family: monospace; color: #f87171;"
@@ -767,8 +803,9 @@
                     Username: siswa_tkj<br>
                     Password: rahasia123
                   </div>
-                  <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #fca5a5;" id="hackerDesc">
-                    ⚠️ Bahaya: Password akun langsung terbaca jelas tanpa perlindungan enkripsi!
+                  <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #fca5a5; display:flex; align-items:flex-start; gap:0.4rem;" id="hackerDesc">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <span>Bahaya: Password akun langsung terbaca jelas tanpa perlindungan enkripsi!</span>
                   </div>
                 </div>
               </div>
@@ -776,7 +813,7 @@
           </div>
 
           <div class="deep-dive-box">
-            <h4>💡 Cara Kerja Terowongan VPN (Tunneling):</h4>
+            <h4 style="display:flex;align-items:center;gap:0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Cara Kerja Terowongan VPN (Tunneling):</h4>
             <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--color-text-dark);">
               VPN membungkus seluruh paket data IP dalam amplop enkripsi yang hanya dapat dibuka oleh server VPN
               sekolah. Pihak ketiga seperti penyedia Wi-Fi kafe atau penyerang *Man-in-the-Middle* hanya akan melihat
@@ -804,7 +841,9 @@
 
             <div class="infographic-grid-3">
               <div class="interactive-card">
-                <div class="interactive-card-icon">🧠</div>
+                <div class="interactive-card-icon" style="color: #00B4D8;">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+                </div>
                 <h4>1. Something You Know</h4>
                 <p>Informasi rahasia yang hanya diingat oleh pemilik akun di otaknya.</p>
                 <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #00B4D8;">
@@ -813,7 +852,9 @@
               </div>
 
               <div class="interactive-card">
-                <div class="interactive-card-icon">📱</div>
+                <div class="interactive-card-icon" style="color: #2BB673;">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
                 <h4>2. Something You Have</h4>
                 <p>Benda fisik yang dipegang dan dimiliki oleh pengguna secara nyata.</p>
                 <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #2BB673;">
@@ -822,7 +863,9 @@
               </div>
 
               <div class="interactive-card">
-                <div class="interactive-card-icon">👁️</div>
+                <div class="interactive-card-icon" style="color: #F5A524;">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
                 <h4>3. Something You Are</h4>
                 <p>Karakteristik fisik unik biologis dari tubuh manusia itu sendiri.</p>
                 <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #F5A524;">
@@ -834,7 +877,7 @@
 
           <!-- Statistik & Fakta Nyata -->
           <div class="deep-dive-box">
-            <h4>📊 Fakta Nyata Keamanan Siber (Sumber: CISA & Microsoft Security):</h4>
+            <h4 style="display:flex;align-items:center;gap:0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Fakta Nyata Keamanan Siber (Sumber: CISA & Microsoft Security):</h4>
             <div style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-dark);">
               &bull; <strong>99.9% Serangan Pembobolan Akun</strong> otomatis gagal jika akun mengaktifkan 2FA.<br>
               &bull; Walaupun peretas membeli daftar bocoran password di Dark Web, mereka tetap <strong>tidak dapat
@@ -977,25 +1020,29 @@
 
         const details = {
           identitas: {
-            title: '🔑 Lapisan 4: Identitas & Akses Pengguna (Data & Identity)',
+            icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5A524" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>',
+            title: 'Lapisan 4: Identitas & Akses Pengguna (Data & Identity)',
             desc: 'Lapisan ini melindungi data sensitif seperti nilai siswa, database sekolah, dan kredensial server. Menggunakan autentikasi multifaktor (2FA), hak akses terbatas (Least Privilege), dan enkripsi database AES-256.'
           },
           endpoint: {
-            title: '💻 Lapisan 3: Perangkat Klien / Host (Endpoint Security)',
+            icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+            title: 'Lapisan 3: Perangkat Klien / Host (Endpoint Security)',
             desc: 'Lapisan ini berada di laptop guru, PC lab, dan server lokal. Antivirus bekerja secara real-time memindai file, mencegah injeksi trojan, memblokir ransomware, dan memastikan sistem operasi selalu mendapatkan update patch.'
           },
           internal: {
-            title: '🚇 Lapisan 2: Jaringan Internal & Transit Data',
+            icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2BB673" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+            title: 'Lapisan 2: Jaringan Internal & Transit Data',
             desc: 'Lapisan ini mengatur bagaimana paket data mengalir di dalam kabel LAN dan Wi-Fi sekolah. Menerapkan pemisahan segmen VLAN (VLAN Guru terpisah dari VLAN Siswa) dan enkripsi VPN untuk akses jarak jauh.'
           },
           perimeter: {
-            title: '🧱 Lapisan 1: Garis Depan Perimeter (Perimeter Defense)',
+            icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="12" y1="3" x2="12" y2="9"/><line x1="8" y1="9" x2="8" y2="15"/><line x1="16" y1="9" x2="16" y2="15"/><line x1="12" y1="15" x2="12" y2="21"/></svg>',
+            title: 'Lapisan 1: Garis Depan Perimeter (Perimeter Defense)',
             desc: 'Dinding pertahanan pertama yang berhadapan langsung dengan internet publik. Terdiri dari Hardware Firewall dan router filtering untuk memblokir botnet DDoS, port berbahaya (seperti port 23), dan serangan scanning liar.'
           }
         };
 
         if (details[layerKey]) {
-          titleEl.textContent = details[layerKey].title;
+          titleEl.innerHTML = details[layerKey].icon + ' <span>' + details[layerKey].title + '</span>';
           descEl.innerHTML = details[layerKey].desc;
           box.style.borderLeftColor = 'var(--color-success)';
         }
@@ -1029,7 +1076,7 @@
           hackerBox.className = 'comparison-col safe';
           hackerBox.style.borderTopColor = '#2BB673';
           hackerTitle.style.color = '#2BB673';
-          hackerTitle.textContent = '🔒 Yang Dilihat Hacker di Wi-Fi Publik (Dengan VPN):';
+          hackerTitle.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Yang Dilihat Hacker di Wi-Fi Publik (Dengan VPN):</span>';
           hackerDisplay.style.color = '#86efac';
           hackerDisplay.innerHTML = `
             [TEROWONGAN TERENKRIPSI AES-256]<br>
@@ -1038,14 +1085,14 @@
             Status: KODE ACAK TAK TERBACA!
           `;
           hackerDesc.style.color = '#86efac';
-          hackerDesc.textContent = '✓ Aman! Seluruh lalu lintas data dibungkus kriptografi kuat. Peretas tidak dapat melihat username maupun password.';
+          hackerDesc.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Aman! Seluruh lalu lintas data dibungkus kriptografi kuat. Peretas tidak dapat melihat username maupun password.</span>';
         } else {
           btnNo.classList.add('active');
           btnYes.classList.remove('active');
           hackerBox.className = 'comparison-col danger';
           hackerBox.style.borderTopColor = '#E5484D';
           hackerTitle.style.color = '#E5484D';
-          hackerTitle.textContent = '🕵️ Yang Terbaca Hacker di Wi-Fi Publik (Tanpa VPN):';
+          hackerTitle.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span>Yang Terbaca Hacker di Wi-Fi Publik (Tanpa VPN):</span>';
           hackerDisplay.style.color = '#f87171';
           hackerDisplay.innerHTML = `
             [PLAINTEXT BOCOR!]<br>
@@ -1053,7 +1100,7 @@
             Password: rahasia123
           `;
           hackerDesc.style.color = '#fca5a5';
-          hackerDesc.textContent = '⚠️ Bahaya: Password akun langsung terbaca jelas tanpa perlindungan enkripsi!';
+          hackerDesc.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Bahaya: Password akun langsung terbaca jelas tanpa perlindungan enkripsi!</span>';
         }
       };
 

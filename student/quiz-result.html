@@ -87,7 +87,9 @@
           <span class="badge badge-info" id="resultModuleBadge">Modul Pembelajaran</span>
         </div>
 
-        <div class="scorecard-trophy-icon" id="trophyIcon">🏆</div>
+        <div class="scorecard-trophy-icon" id="trophyIcon" style="display: flex; align-items: center; justify-content: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        </div>
         
         <h2 class="scorecard-title" id="scorecardTitle">Evaluasi Selesai!</h2>
         <p style="color: var(--color-text-muted); font-size: 1rem; margin: 0;" id="scorecardGreeting">
@@ -204,13 +206,13 @@
       if (isPass) {
         kkmBadge.className = 'badge badge-success';
         kkmBadge.textContent = `TUNTAS (✓ LULUS KKM ≥ 75)`;
-        trophyIcon.textContent = '🏆';
+        trophyIcon.innerHTML = '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>';
         title.textContent = 'Luar Biasa, Anda Berhasil!';
         greeting.textContent = 'Selamat! Nilai evaluasi Anda telah melampaui batas KKM.';
       } else {
         kkmBadge.className = 'badge badge-danger';
         kkmBadge.textContent = `BELUM TUNTAS (< KKM 75)`;
-        trophyIcon.textContent = '📚';
+        trophyIcon.innerHTML = '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
         title.textContent = 'Perlu Belajar Lebih Giat!';
         greeting.textContent = 'Skor Anda belum mencapai KKM 75. Silakan pelajari pembahasan dan ulangi kuis.';
       }

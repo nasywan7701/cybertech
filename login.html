@@ -84,7 +84,7 @@
 
       <!-- Petunjuk Demo Akun Bawaan (Berdasarkan PRD) -->
       <div class="auth-demo-hint" id="demoHint">
-        <strong>💡 Info Akun Siswa (Demo):</strong><br>
+        <strong style="display: inline-flex; align-items: center; gap: 6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> Info Akun Siswa (Demo):</strong><br>
         Username: <code>siswa</code> &bull; Password: <code>siswa123cybertech</code>
       </div>
 
@@ -116,13 +116,13 @@
           tabGuru.classList.add('active');
           tabSiswa.classList.remove('active');
           roleInput.value = 'guru';
-          demoHint.innerHTML = '<strong>💡 Info Akun Guru (Pre-provisioned PRD):</strong><br>Username: <code>guru</code> &bull; Password: <code>guru123cybertech</code>';
+          demoHint.innerHTML = '<strong style="display: inline-flex; align-items: center; gap: 6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> Info Akun Guru (Pre-provisioned PRD):</strong><br>Username: <code>guru</code> &bull; Password: <code>guru123cybertech</code>';
           registerPrompt.style.display = 'none'; // Akun guru tidak ada registrasi mandiri
         } else {
           tabSiswa.classList.add('active');
           tabGuru.classList.remove('active');
           roleInput.value = 'siswa';
-          demoHint.innerHTML = '<strong>💡 Info Akun Siswa (Demo):</strong><br>Username: <code>siswa</code> &bull; Password: <code>siswa123cybertech</code>';
+          demoHint.innerHTML = '<strong style="display: inline-flex; align-items: center; gap: 6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> Info Akun Siswa (Demo):</strong><br>Username: <code>siswa</code> &bull; Password: <code>siswa123cybertech</code>';
           registerPrompt.style.display = 'block';
         }
       }

@@ -256,7 +256,10 @@
       <!-- Activity Container -->
       <div class="activity-card">
         <div class="activity-instruction">
-          <div style="font-weight: 700; margin-bottom: 0.25rem;">🕹️ Petunjuk Simulasi:</div>
+          <div style="font-weight: 700; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 6px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+            <span>Petunjuk Simulasi:</span>
+          </div>
           <div>
             Pilih <strong>Jenis Trafik Jaringan</strong>, tentukan kebijakan aturan (<strong>ALLOW</strong> atau <strong>BLOCK</strong>), lalu tekan tombol <strong>"Jalankan Simulasi Paket"</strong>. Amati pergerakan paket data dan pastikan Anda menyelesaikan ke-4 skenario misi dengan tepat.
           </div>
@@ -265,25 +268,33 @@
         <!-- 1. Panggung Simulasi Grafis 3 Node (Client <-> Firewall <-> Server) -->
         <div class="simulator-stage">
           <div class="sim-track-line"></div>
-          <div class="sim-packet-ball" id="simPacket">🌐</div>
+          <div class="sim-packet-ball" id="simPacket" style="display: flex; align-items: center; justify-content: center; color: #ffffff;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
 
           <!-- Node 1: Komputer Klien -->
           <div class="sim-node" id="clientNode">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">💻</div>
+            <div style="margin-bottom: 0.45rem; color: #38bdf8; display: flex; justify-content: center;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
             <strong>Komputer Klien</strong>
             <div style="font-size: 0.75rem; color: #94a3b8;">IP: 192.168.1.50</div>
           </div>
 
           <!-- Node 2: Firewall Perimeter -->
           <div class="sim-node firewall-node" id="firewallNode">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">🧱</div>
+            <div style="margin-bottom: 0.45rem; color: #00B4D8; display: flex; justify-content: center;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
             <strong style="color: #00B4D8;">FIREWALL ASJ</strong>
             <div style="font-size: 0.75rem; color: #cbd5e1;">Packet Filter Active</div>
           </div>
 
           <!-- Node 3: Server Sekolah -->
           <div class="sim-node" id="serverNode">
-            <div style="font-size: 2rem; margin-bottom: 0.35rem;">🖥️</div>
+            <div style="margin-bottom: 0.45rem; color: #38bdf8; display: flex; justify-content: center;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
             <strong>Server Web Lab</strong>
             <div style="font-size: 0.75rem; color: #94a3b8;">IP: 10.0.0.1:PORT</div>
           </div>
@@ -297,10 +308,10 @@
               1. Pilih Jenis Lalu Lintas Jaringan:
             </label>
             <select id="trafficTypeSelect" class="form-select" style="font-size: 1rem; padding: 0.85rem;">
-              <option value="http">🌐 HTTP (Port 80) - Web Browsing Standar</option>
-              <option value="https">🔒 HTTPS (Port 443) - Web Aman Terenkripsi SSL/TLS</option>
-              <option value="telnet">⚠️ Telnet (Port 23) - Remote Terminal Teks Polos</option>
-              <option value="ddos">🌊 Banjir Paket ICMP (Serangan DDoS Ping Flood)</option>
+              <option value="http">HTTP (Port 80) - Web Browsing Standar</option>
+              <option value="https">HTTPS (Port 443) - Web Aman Terenkripsi SSL/TLS</option>
+              <option value="telnet">Telnet (Port 23) - Remote Terminal Teks Polos</option>
+              <option value="ddos">Banjir Paket ICMP (Serangan DDoS Ping Flood)</option>
             </select>
           </div>
 
@@ -363,7 +374,9 @@
         <!-- Banner Selamat Selesai 4 Misi -->
         <div class="activity-feedback-banner" id="finalSuccessBanner" style="display: none; margin-top: 2rem;">
           <div style="display: flex; align-items: center; gap: 1rem;">
-            <div style="font-size: 2rem;">🎖️</div>
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--color-success-bg); color: var(--color-success); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            </div>
             <div>
               <h4 style="color: var(--color-success); margin: 0; font-size: 1.15rem;">
                 Selamat! Seluruh 4 Skenario Simulasi Firewall Berhasil Dituntaskan!

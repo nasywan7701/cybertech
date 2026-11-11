@@ -188,7 +188,7 @@
           </div>
           <div>
             <span class="badge badge-secondary" id="animStatusBadge" style="font-size: 0.85rem; padding: 0.4rem 0.85rem;">
-              ⏳ Belum Dipelajari
+              Belum Dipelajari
             </span>
           </div>
         </div>
@@ -211,13 +211,16 @@
         <div class="video-toolbar">
           <div class="toolbar-group">
             <button type="button" class="skip-btn" id="btnRewind10" title="Mundur 10 Detik">
-              ⏪ -10s
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 19 2 12 11 5 11 19"></polygon><polygon points="22 19 13 12 22 5 22 19"></polygon></svg>
+              <span>-10s</span>
             </button>
             <button type="button" class="skip-btn" id="btnForward10" title="Maju 10 Detik">
-              ⏩ +10s
+              <span>+10s</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>
             </button>
             <button type="button" class="skip-btn" id="btnRestartVideo" title="Ulangi dari Awal">
-              🔄 Ulangi
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+              <span>Ulangi</span>
             </button>
           </div>
 
@@ -232,8 +235,9 @@
 
         <!-- Ulasan Ringkas Intisari Animasi -->
         <div class="note-box" style="margin-top: 1rem;">
-          <div class="note-box-title">
-            <span>📌 Rangkuman Pemahaman Animasi Firewall:</span>
+          <div class="note-box-title" style="display: flex; align-items: center; gap: 6px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+            <span>Rangkuman Pemahaman Animasi Firewall:</span>
           </div>
           <div style="font-size: 0.95rem; line-height: 1.6;">
             1. <strong>Packet Inspection (Inspeksi Paket):</strong> Firewall membaca IP asal, IP tujuan, protokol (TCP/UDP), dan nomor port sebelum mengambil keputusan.<br>
