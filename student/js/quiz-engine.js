@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!currentUser) return;
 
+  // Wajib menyelesaikan seluruh tahap & aktivitas modul sebelumnya sebelum membuka Evaluasi
+  if (window.ModuleHelper && !window.ModuleHelper.enforceStepAccess(moduleId, 'quiz')) {
+    return;
+  }
+
   const moduleMeta = window.Storage.getModuleById(moduleId) || {
     id: moduleId,
     judul: `Modul ${moduleId}`,
@@ -141,6 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
+
+    if (window.ModuleHelper) {
+      window.ModuleHelper.refreshStepper(moduleId, 'quiz');
+    }
   }
 
   function escapeHtml(str) {

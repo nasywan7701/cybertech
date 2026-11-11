@@ -329,7 +329,8 @@
   <script src="js/module-common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Tandai otomatis materi Modul 3 telah dibaca
+      // Inisialisasi akses tahap & tandai otomatis materi Modul 3 telah dibaca
+      if (window.ModuleHelper && !window.ModuleHelper.initStage('3', 'material')) return;
       window.ModuleHelper.markMaterialRead('3');
     });
   </script>

@@ -222,7 +222,7 @@
           <a href="module1-material.html" class="btn btn-outline">
             ← Kembali ke Materi &amp; Video
           </a>
-          <a href="quiz.html?module=1" class="btn btn-primary disabled" id="nextQuizBtn" style="pointer-events: none; opacity: 0.6;">
+          <a href="quiz.html?module=1" class="btn btn-primary disabled" id="nextQuizBtn">
             Lanjut ke Evaluasi Modul 1 →
           </a>
         </div>
@@ -239,18 +239,16 @@
   <script src="js/drag-drop.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Jika siswa sebelumnya sudah menyelesaikan aktivitas ini, buka kuncinya otomatis
-      const user = window.Auth.getCurrentUser();
-      if (user) {
-        const prog = window.Storage.getStudentProgress(user.id)['1'];
-        if (prog && prog.activityDone) {
-          const nextBtn = document.getElementById('nextQuizBtn');
-          nextBtn.classList.remove('disabled');
-          nextBtn.removeAttribute('disabled');
-          nextBtn.style.pointerEvents = 'auto';
-          nextBtn.style.opacity = '1';
-        }
-      }
+      if (window.ModuleHelper && !window.ModuleHelper.initStage('1', 'activity')) return;
+
+      const nextBtn = document.getElementById('nextQuizBtn');
+      const prog = window.ModuleHelper.getModuleProgress('1');
+      const done = Boolean(prog && prog.activityDone);
+      window.ModuleHelper.setActionButtonLocked(
+        nextBtn,
+        !done,
+        'Selesaikan seluruh 4 skenario Drag & Drop dengan benar sebelum membuka Evaluasi.'
+      );
     });
   </script>
 </body>

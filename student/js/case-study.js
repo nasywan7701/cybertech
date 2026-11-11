@@ -118,14 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         // Seluruh 3 kasus selesai
         finalBanner.style.display = 'flex';
-        nextQuizBtn.classList.remove('disabled');
-        nextQuizBtn.removeAttribute('disabled');
-        nextQuizBtn.style.pointerEvents = 'auto';
-        nextQuizBtn.style.opacity = '1';
+        if (window.ModuleHelper) {
+          window.ModuleHelper.setActionButtonLocked(nextQuizBtn, false);
+          window.ModuleHelper.markActivityDone('2');
+        } else {
+          nextQuizBtn.classList.remove('disabled');
+          nextQuizBtn.removeAttribute('disabled');
+          nextQuizBtn.style.pointerEvents = 'auto';
+          nextQuizBtn.style.opacity = '1';
+        }
         window.Utils.showToast('Luar biasa! Seluruh 3 studi kasus keamanan berhasil Anda selesaikan!', 'success', 3500);
-
-        // Catat progres aktivitas ke storage
-        window.ModuleHelper.markActivityDone('2');
       }
     } else {
       // Jawaban Salah

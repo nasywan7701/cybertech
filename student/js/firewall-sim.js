@@ -188,14 +188,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (completedMissions.size === 4) {
       // Seluruh 4 misi simulasi firewall selesai
       finalBanner.style.display = 'flex';
-      nextQuizBtn.classList.remove('disabled');
-      nextQuizBtn.removeAttribute('disabled');
-      nextQuizBtn.style.pointerEvents = 'auto';
-      nextQuizBtn.style.opacity = '1';
+      if (window.ModuleHelper) {
+        window.ModuleHelper.setActionButtonLocked(nextQuizBtn, false);
+        window.ModuleHelper.markActivityDone('3');
+      } else {
+        nextQuizBtn.classList.remove('disabled');
+        nextQuizBtn.removeAttribute('disabled');
+        nextQuizBtn.style.pointerEvents = 'auto';
+        nextQuizBtn.style.opacity = '1';
+      }
       window.Utils.showToast('Luar biasa! Keempat skenario konfigurasi Firewall berhasil Anda selesaikan!', 'success', 3500);
-
-      // Simpan progres ke storage
-      window.ModuleHelper.markActivityDone('3');
     }
   }
 });

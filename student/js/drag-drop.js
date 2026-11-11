@@ -141,12 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (correctCount === 4) {
       // Seluruh 4 kartu benar
       feedbackBanner.classList.add('show');
-      nextQuizBtn.classList.remove('disabled');
-      nextQuizBtn.removeAttribute('disabled');
+      if (window.ModuleHelper) {
+        window.ModuleHelper.setActionButtonLocked(nextQuizBtn, false);
+        window.ModuleHelper.markActivityDone('1');
+      } else {
+        nextQuizBtn.classList.remove('disabled');
+        nextQuizBtn.removeAttribute('disabled');
+      }
       window.Utils.showToast('Luar biasa! Seluruh 4 klasifikasi ancaman tepat!', 'success', 3000);
-
-      // Simpan progres ke storage
-      window.ModuleHelper.markActivityDone('1');
     } else {
       window.Utils.showToast(`${correctCount} dari 4 tepat. Periksa kartu yang berbingkai merah dan coba lagi!`, 'error', 3500);
     }

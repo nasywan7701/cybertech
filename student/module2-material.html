@@ -325,7 +325,8 @@
   <script src="js/module-common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Tandai otomatis materi Modul 2 telah dibaca
+      // Inisialisasi akses tahap & tandai otomatis materi Modul 2 telah dibaca
+      if (window.ModuleHelper && !window.ModuleHelper.initStage('2', 'material')) return;
       window.ModuleHelper.markMaterialRead('2');
 
       // Interaksi Tab Infografis Sistem Keamanan

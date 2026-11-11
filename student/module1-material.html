@@ -575,7 +575,8 @@
       const btnRestart = document.getElementById('btnRestartVideo');
       const speedButtons = document.querySelectorAll('.speed-btn');
 
-      // Tandai materi Modul 1 dipelajari saat siswa membuka halaman materi/video ini
+      // Inisialisasi akses tahap & tandai materi Modul 1 dipelajari
+      if (!window.ModuleHelper.initStage('1', 'material')) return;
       window.ModuleHelper.markMaterialRead('1');
 
       function setMode(mode) {

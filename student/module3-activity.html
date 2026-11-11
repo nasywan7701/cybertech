@@ -383,7 +383,7 @@
           <a href="module3-video.html" class="btn btn-outline">
             ← Kembali ke Animasi Firewall
           </a>
-          <a href="quiz.html?module=3" class="btn btn-primary disabled" id="nextQuizBtn" style="pointer-events: none; opacity: 0.6;">
+          <a href="quiz.html?module=3" class="btn btn-primary disabled" id="nextQuizBtn">
             Lanjut ke Evaluasi Modul 3 →
           </a>
         </div>
@@ -400,18 +400,16 @@
   <script src="js/firewall-sim.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Jika siswa sebelumnya sudah menyelesaikan aktivitas Modul 3, buka kuncinya otomatis
-      const user = window.Auth.getCurrentUser();
-      if (user) {
-        const prog = window.Storage.getStudentProgress(user.id)['3'];
-        if (prog && prog.activityDone) {
-          const nextBtn = document.getElementById('nextQuizBtn');
-          nextBtn.classList.remove('disabled');
-          nextBtn.removeAttribute('disabled');
-          nextBtn.style.pointerEvents = 'auto';
-          nextBtn.style.opacity = '1';
-        }
-      }
+      if (window.ModuleHelper && !window.ModuleHelper.initStage('3', 'activity')) return;
+
+      const nextBtn = document.getElementById('nextQuizBtn');
+      const prog = window.ModuleHelper.getModuleProgress('3');
+      const done = Boolean(prog && prog.activityDone);
+      window.ModuleHelper.setActionButtonLocked(
+        nextBtn,
+        !done,
+        'Selesaikan seluruh 4 skenario Simulasi Firewall dengan tepat sebelum membuka Evaluasi.'
+      );
     });
   </script>
 </body>

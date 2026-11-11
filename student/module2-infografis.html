@@ -409,7 +409,7 @@
           <div style="text-align: right;">
             <span class="badge badge-success" id="infographicProgressBadge"
               style="font-size: 0.9rem; padding: 0.4rem 0.85rem;">
-              1 / 4 Infografis Dipelajari
+              1 / 5 Infografis Dipelajari
             </span>
           </div>
         </div>
@@ -867,17 +867,27 @@
   <script src="js/module-common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Tandai bahwa tahap ini telah dibuka & dipelajari
-      window.ModuleHelper.markVideoWatched('2');
+      // 1. Validasi akses berurutan (wajib selesai Materi Modul 2)
+      if (window.ModuleHelper && !window.ModuleHelper.initStage('2', 'video')) return;
+
+      const nextCaseBtn = document.getElementById('btnNextCaseStudy');
+      const existingProg = window.ModuleHelper.getModuleProgress('2');
+      const alreadyDone = Boolean(existingProg && existingProg.videoWatched);
 
       // State Tabs & Checklist Pemahaman Siswa
       const understoodTabs = {
         defense: true,
-        antivirus: false,
-        firewall: false,
-        vpn: false,
-        mfa: false
+        antivirus: alreadyDone,
+        firewall: alreadyDone,
+        vpn: alreadyDone,
+        mfa: alreadyDone
       };
+
+      window.ModuleHelper.setActionButtonLocked(
+        nextCaseBtn,
+        !alreadyDone,
+        'Pelajari seluruh 5 tab infografis di halaman ini terlebih dahulu sebelum melanjutkan ke Studi Kasus.'
+      );
 
       const tabButtons = document.querySelectorAll('.info-tab-btn');
       const tabContents = {
@@ -888,6 +898,14 @@
         mfa: document.getElementById('tabContent_mfa')
       };
 
+      if (alreadyDone) {
+        tabButtons.forEach(b => {
+          b.classList.add('read');
+          const chk = b.querySelector('.tab-badge-check');
+          if (chk) chk.textContent = '✓';
+        });
+      }
+
       function updateProgressBadge() {
         const total = Object.keys(understoodTabs).length;
         const count = Object.values(understoodTabs).filter(Boolean).length;
@@ -896,7 +914,15 @@
           badge.textContent = `${count} / ${total} Infografis Dipelajari`;
           if (count === total) {
             badge.className = 'badge badge-success';
-            badge.textContent = `Semua Infografis Telah Dipelajari! (5/5) 🎉`;
+            badge.textContent = `Semua Infografis Telah Dipelajari! (5/5) ✓`;
+          }
+        }
+        if (count === total) {
+          const wasUnlocked = nextCaseBtn && nextCaseBtn.dataset.isLocked === '0';
+          window.ModuleHelper.setActionButtonLocked(nextCaseBtn, false);
+          window.ModuleHelper.markVideoWatched('2');
+          if (!wasUnlocked && window.Utils) {
+            window.Utils.showToast('Seluruh 5 infografis selesai dipelajari! Tahap Studi Kasus kini terbuka.', 'success', 3500);
           }
         }
       }
@@ -1030,11 +1056,6 @@
           hackerDesc.textContent = '⚠️ Bahaya: Password akun langsung terbaca jelas tanpa perlindungan enkripsi!';
         }
       };
-
-      // Pastikan tombol lanjut mencatat progres
-      document.getElementById('btnNextCaseStudy').addEventListener('click', () => {
-        window.ModuleHelper.markVideoWatched('2');
-      });
 
       updateProgressBadge();
     });

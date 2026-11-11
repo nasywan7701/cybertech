@@ -265,28 +265,39 @@
   <script src="js/module-common.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // 0. Validasi akses berurutan (wajib selesai Materi Modul 3)
+      if (window.ModuleHelper && !window.ModuleHelper.initStage('3', 'video')) return;
+
       // 1. Cek Progres Belajar Sebelumnya
       const animStatusBadge = document.getElementById('animStatusBadge');
-      const currentUser = window.Auth ? window.Auth.getCurrentUser() : null;
-      if (currentUser && window.Storage) {
-        const prog = window.Storage.getStudentProgress(currentUser.id);
-        if (prog && prog['3'] && prog['3'].videoWatched) {
-          animStatusBadge.className = 'badge badge-success';
-          animStatusBadge.innerHTML = '✓ Telah Dipelajari';
-        }
+      const nextSimBtn = document.getElementById('btnNextSimulator');
+      const prog = window.ModuleHelper.getModuleProgress('3');
+      const videoDone = Boolean(prog && prog.videoWatched);
+
+      if (videoDone) {
+        animStatusBadge.className = 'badge badge-success';
+        animStatusBadge.innerHTML = '✓ Telah Dipelajari';
       }
+
+      window.ModuleHelper.setActionButtonLocked(
+        nextSimBtn,
+        !videoDone,
+        'Putar animasi firewall di atas terlebih dahulu sebelum melanjutkan ke Simulasi Firewall.'
+      );
 
       function setStatusStudying() {
         if (!animStatusBadge.classList.contains('badge-success')) {
           animStatusBadge.className = 'badge badge-info';
-          animStatusBadge.innerHTML = '▶️ Sedang Dipelajari...';
+          animStatusBadge.innerHTML = 'Sedang Dipelajari...';
         }
+        window.ModuleHelper.setActionButtonLocked(nextSimBtn, false);
         window.ModuleHelper.markVideoWatched('3');
       }
 
       function setStatusCompleted() {
         animStatusBadge.className = 'badge badge-success';
         animStatusBadge.innerHTML = '✓ Telah Selesai Dipelajari';
+        window.ModuleHelper.setActionButtonLocked(nextSimBtn, false);
         window.ModuleHelper.markVideoWatched('3');
         window.Utils.showToast('Bagus! Anda telah menyelesaikan animasi firewall Modul 3. Silakan lanjut ke Simulator Firewall.', 'success');
       }
@@ -320,10 +331,6 @@
         });
       });
 
-      // Tombol Lanjut ke Simulator
-      document.getElementById('btnNextSimulator').addEventListener('click', () => {
-        window.ModuleHelper.markVideoWatched('3');
-      });
     });
   </script>
 </body>

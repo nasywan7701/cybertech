@@ -296,7 +296,7 @@
           <a href="module2-infografis.html" class="btn btn-outline">
             ← Kembali ke Infografis
           </a>
-          <a href="quiz.html?module=2" class="btn btn-primary disabled" id="nextQuizBtn" style="pointer-events: none; opacity: 0.6;">
+          <a href="quiz.html?module=2" class="btn btn-primary disabled" id="nextQuizBtn">
             Lanjut ke Evaluasi Modul 2 →
           </a>
         </div>
@@ -313,18 +313,16 @@
   <script src="js/case-study.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Jika siswa sebelumnya sudah menyelesaikan aktivitas Modul 2, buka kuncinya otomatis
-      const user = window.Auth.getCurrentUser();
-      if (user) {
-        const prog = window.Storage.getStudentProgress(user.id)['2'];
-        if (prog && prog.activityDone) {
-          const nextBtn = document.getElementById('nextQuizBtn');
-          nextBtn.classList.remove('disabled');
-          nextBtn.removeAttribute('disabled');
-          nextBtn.style.pointerEvents = 'auto';
-          nextBtn.style.opacity = '1';
-        }
-      }
+      if (window.ModuleHelper && !window.ModuleHelper.initStage('2', 'activity')) return;
+
+      const nextBtn = document.getElementById('nextQuizBtn');
+      const prog = window.ModuleHelper.getModuleProgress('2');
+      const done = Boolean(prog && prog.activityDone);
+      window.ModuleHelper.setActionButtonLocked(
+        nextBtn,
+        !done,
+        'Selesaikan seluruh 3 skenario Studi Kasus dengan tepat sebelum membuka Evaluasi.'
+      );
     });
   </script>
 </body>
