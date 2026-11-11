@@ -29,19 +29,26 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const QUESTIONS_PER_EVAL = 5;
-  const EVAL_DURATION_SECONDS = 20 * 60; // 20 menit pengerjaan HOTS
+  const QUESTIONS_PER_EVAL = 10;
+  const EVAL_DURATION_SECONDS = 30 * 60; // 30 menit pengerjaan evaluasi
 
   function shuffleArray(arr) {
     const copy = [...arr];
+    const hasCrypto = typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues;
     for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      let randVal = Math.random();
+      if (hasCrypto) {
+        const buf = new Uint32Array(1);
+        window.crypto.getRandomValues(buf);
+        randVal = buf[0] / 4294967296;
+      }
+      const j = Math.floor(randVal * (i + 1));
       [copy[i], copy[j]] = [copy[j], copy[i]];
     }
     return copy;
   }
 
-  // Ambil 5 kasus HOTS secara acak (Anti-Contek)
+  // Ambil 10 kasus secara acak per sesi siswa (Anti-Contek)
   const rawQuizzes = shuffleArray(allQuizzes).slice(0, Math.min(QUESTIONS_PER_EVAL, allQuizzes.length));
 
   // State Evaluasi
@@ -185,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderQuestion(currentIndex);
 
     if (window.Utils) {
-      window.Utils.showToast('Evaluasi dimulai! Waktu 20 menit berjalan. Kerjakan setiap tahap analisis.', 'info');
+      window.Utils.showToast('Evaluasi dimulai! Waktu 30 menit berjalan. Kerjakan setiap tahap analisis.', 'info');
     }
   }
 
