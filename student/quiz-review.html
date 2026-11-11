@@ -270,8 +270,8 @@
           reviewScoreSummary.textContent = `Nilai Evaluasi: ${resultObj.score} / 100 (${resultObj.correctCount || 0} Tuntas, ${resultObj.wrongCount || 0} Perlu Perbaikan) • ${statusReview} • ${window.Utils.formatDate(resultObj.timestamp)}`;
 
           reviewBadgeStatus.innerHTML = isPass
-            ? `<span class="badge badge-success" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">TUNTAS KKM (${resultObj.score}/100)</span>`
-            : `<span class="badge badge-danger" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">BELUM TUNTAS (&lt; KKM: ${resultObj.score}/100)</span>`;
+            ? `<span class="badge badge-success" style="font-size: 0.85rem;">TUNTAS KKM (${resultObj.score}/100)</span>`
+            : `<span class="badge badge-danger" style="font-size: 0.85rem;">BELUM TUNTAS (&lt; KKM: ${resultObj.score}/100)</span>`;
 
           btnBackToResult.style.display = 'inline-flex';
           btnBackToResult.href = `quiz-result.html?id=${resultObj.id}`;
@@ -300,7 +300,7 @@
           // Strict gating: Kunci pembahasan agar siswa belum mengerjakan tidak melihat kunci atau rubrik resmi
           teacherFeedbackBanner.style.display = 'none';
           reviewScoreSummary.textContent = `Evaluasi modul ini belum dikerjakan. Selesaikan evaluasi untuk membuka pembahasan dan rubrik resmi.`;
-          reviewBadgeStatus.innerHTML = `<span class="badge badge-secondary" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">Terkunci (Belum Dikerjakan)</span>`;
+          reviewBadgeStatus.innerHTML = `<span class="badge badge-secondary" style="font-size: 0.85rem;">Terkunci (Belum Dikerjakan)</span>`;
 
           btnBackToResult.style.display = 'none';
           btnTakeQuiz.style.display = 'inline-flex';

@@ -117,12 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </td>
           <td style="text-align: center;">
-            <span class="badge badge-info" style="display: inline-flex; align-items: center; justify-content: center; padding: 0.28rem 0.6rem; border-radius: 9999px; font-weight: 600; font-size: 0.78rem; white-space: nowrap;">
+            <span class="badge badge-info" style="display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.78rem; white-space: nowrap;">
               M${q.moduleId} &bull; ${esc(typeLabel)}
             </span>
           </td>
           <td style="text-align: center;">
-            <span class="badge badge-success" style="display: inline-flex; align-items: center; justify-content: center; padding: 0.28rem 0.65rem; border-radius: 9999px; font-weight: 700; font-size: 0.78rem; white-space: nowrap;">
+            <span class="badge badge-success" style="display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; white-space: nowrap;">
               ${esc(keyDisplay)}
             </span>
           </td>

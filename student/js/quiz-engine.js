@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="hots-section-label">1. Rancang Kebijakan Firewall &amp; Uji Simulasi Aliran Paket:</div>
 
         <!-- Info Header Paket -->
-        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.85rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 0.85rem;">
           <span class="badge badge-info">Trafik: ${escapeHtml(trafficLabel)}</span>
           <span class="badge badge-secondary">Protokol: ${escapeHtml(protocol)}</span>
           <span class="badge badge-secondary">Port: ${escapeHtml(port)}</span>

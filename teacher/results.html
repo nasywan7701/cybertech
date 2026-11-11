@@ -188,16 +188,16 @@
           const badgeClass = isPass ? 'badge-success' : 'badge-danger';
           const badgeText = isPass ? 'TUNTAS (Lulus KKM)' : 'BELUM TUNTAS (< KKM)';
           const teacherBadge = r.gradedByTeacher
-            ? '<span class="badge badge-info" style="font-size:0.72rem;margin-left:4px;">Diverifikasi Guru</span>'
-            : '<span class="badge badge-secondary" style="font-size:0.72rem;margin-left:4px;">Rubrik Otomatis</span>';
+            ? '<span class="badge badge-info" style="font-size:0.72rem;margin-left:8px;">Diverifikasi Guru</span>'
+            : '<span class="badge badge-secondary" style="font-size:0.72rem;margin-left:8px;">Rubrik Otomatis</span>';
 
           return `
             <tr>
               <td>${idx + 1}</td>
               <td><strong>${esc(r.studentName)}</strong></td>
-              <td><span class="badge badge-info">Modul ${esc(String(r.moduleId))}</span> ${esc(r.moduleTitle)}</td>
+              <td><span class="badge badge-info">Modul ${esc(String(r.moduleId))}</span> &bull; ${esc(r.moduleTitle)}</td>
               <td><span style="font-weight: 800; font-size: 1.1rem; color: ${isPass ? 'var(--color-success)' : 'var(--color-danger)'};">${r.score} / 100</span></td>
-              <td><span class="badge ${badgeClass}">${badgeText}</span>${teacherBadge}</td>
+              <td><span class="badge ${badgeClass}">${badgeText}</span> &bull; ${teacherBadge}</td>
               <td>${window.Utils.formatDate(r.timestamp)}</td>
               <td>
                 <button type="button" class="btn btn-outline btn-sm js-view-sheet" data-id="${esc(r.id)}" style="display: inline-flex; align-items: center; gap: 5px;">
