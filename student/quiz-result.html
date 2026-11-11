@@ -89,30 +89,38 @@
 
         <div class="scorecard-trophy-icon" id="trophyIcon">🏆</div>
         
-        <h2 class="scorecard-title" id="scorecardTitle">Pengerjaan Kuis Selesai!</h2>
+        <h2 class="scorecard-title" id="scorecardTitle">Evaluasi HOTS Selesai!</h2>
         <p style="color: var(--color-text-muted); font-size: 1rem; margin: 0;" id="scorecardGreeting">
-          Berikut adalah rincian capaian nilai kuis evaluasi Anda:
+          Berikut adalah rincian capaian evaluasi HOTS (Taksonomi Bloom C4-C6) Anda:
         </p>
 
         <!-- Angka Skor Besar -->
         <div class="scorecard-score-display" id="scoreDisplay">0</div>
 
-        <!-- Lencana Status KKM -->
-        <div>
+        <!-- Lencana Status KKM & Penilaian Guru -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
           <span class="badge badge-success" id="kkmBadge" style="font-size: 1rem; padding: 0.5rem 1.25rem;">
             TUNTAS (✓ LULUS KKM)
           </span>
+          <span class="badge badge-info" id="teacherReviewBadge" style="font-size: 0.85rem; padding: 0.45rem 0.9rem; display: none;">
+            ✓ Sudah Ditinjau Guru
+          </span>
+        </div>
+
+        <div id="teacherFeedbackCard" style="display: none; text-align: left; background: #f8fafc; border-left: 4px solid var(--color-secondary); padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-top: 1.25rem;">
+          <div style="font-weight: 700; color: var(--color-primary); font-size: 0.9rem; margin-bottom: 0.25rem;">Umpan Balik Guru Pembimbing:</div>
+          <div id="teacherFeedbackText" style="font-size: 0.92rem; color: var(--color-text-dark); line-height: 1.55;"></div>
         </div>
 
         <!-- Statistik Jawaban -->
         <div class="scorecard-stats-grid">
           <div class="score-stat-item">
             <div class="score-stat-value" style="color: var(--color-success);" id="statCorrect">0</div>
-            <div class="score-stat-label">Jawaban Benar</div>
+            <div class="score-stat-label">Kasus Tuntas (&ge; 75)</div>
           </div>
           <div class="score-stat-item">
             <div class="score-stat-value" style="color: var(--color-danger);" id="statWrong">0</div>
-            <div class="score-stat-label">Jawaban Salah</div>
+            <div class="score-stat-label">Perlu Pendalaman</div>
           </div>
           <div class="score-stat-item">
             <div class="score-stat-value" id="statTime">00:00</div>
@@ -124,11 +132,11 @@
         <div class="scorecard-actions">
           <a href="#" class="btn btn-primary btn-lg" id="btnReview" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-            <span>Lihat Pembahasan Soal</span>
+            <span>Lihat Pembahasan &amp; Rubrik</span>
           </a>
           <a href="#" class="btn btn-outline btn-lg" id="btnRetry" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-            <span>Ulangi Kuis</span>
+            <span>Ulangi Evaluasi</span>
           </a>
           <a href="dashboard.html" class="btn btn-outline btn-lg" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -167,8 +175,21 @@
       document.getElementById('headerSubtitle').textContent = `Diserahkan pada ${window.Utils.formatDate(result.timestamp)}`;
       document.getElementById('scoreDisplay').textContent = `${result.score} / 100`;
 
-      document.getElementById('statCorrect').textContent = `${result.correctCount} Soal`;
-      document.getElementById('statWrong').textContent = `${result.wrongCount} Soal`;
+      document.getElementById('statCorrect').textContent = `${result.correctCount} Kasus`;
+      document.getElementById('statWrong').textContent = `${result.wrongCount} Kasus`;
+
+      if (result.gradedByTeacher) {
+        const badgeEl = document.getElementById('teacherReviewBadge');
+        if (badgeEl) badgeEl.style.display = 'inline-flex';
+      }
+      if (result.teacherFeedback) {
+        const fbCard = document.getElementById('teacherFeedbackCard');
+        const fbText = document.getElementById('teacherFeedbackText');
+        if (fbCard && fbText) {
+          fbText.textContent = result.teacherFeedback;
+          fbCard.style.display = 'block';
+        }
+      }
 
       const m = Math.floor(result.durationSpent / 60);
       const s = result.durationSpent % 60;

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kelola Bank Soal Kuis - CyberTech</title>
+  <title>Kelola Bank Kasus HOTS C4–C6 - CyberTech</title>
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/components.css">
@@ -66,8 +66,8 @@
   <div class="app-main">
     <header class="app-topbar">
       <div>
-        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Kelola Evaluasi Akhir / Bank Soal</h2>
-        <div style="font-size: 0.85rem; color: var(--color-text-muted);">Manajemen butir soal kuis pilihan ganda Modul 1, 2, dan 3</div>
+        <h2 style="font-size: 1.35rem; margin: 0; color: var(--color-primary);">Kelola Bank Kasus Evaluasi HOTS (C4–C6)</h2>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">Manajemen studi kasus klasifikasi, matriks keputusan, simulator firewall &amp; rubrik kata kunci (Modul 1, 2, 3)</div>
       </div>
 
       <div class="user-profile-badge">
@@ -92,25 +92,25 @@
               <option value="2">Modul 2: Analisis Sistem Keamanan Jaringan</option>
               <option value="3">Modul 3: Firewall &amp; Simulasi Paket</option>
             </select>
-            <span class="badge badge-info" id="questionCountBadge">0 Butir Soal</span>
+            <span class="badge badge-info" id="questionCountBadge">0 Kasus Aktif</span>
           </div>
 
           <button type="button" class="btn btn-primary" id="addQuestionBtn" style="display: inline-flex; align-items: center; gap: 6px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>Tambah Soal Baru</span>
+            <span>Tambah Kasus HOTS</span>
           </button>
         </div>
 
-        <!-- Tabel Daftar Soal Kuis -->
+        <!-- Tabel Daftar Kasus Evaluasi HOTS -->
         <div class="table-responsive">
           <table class="data-table">
             <thead>
               <tr>
                 <th style="width: 40px; text-align: center;">No</th>
-                <th style="min-width: 220px;">Pertanyaan Soal</th>
-                <th style="width: 95px; text-align: center;">Modul</th>
-                <th style="width: 105px; text-align: center;">Kunci</th>
-                <th style="min-width: 170px;">Ringkasan Pembahasan</th>
+                <th style="min-width: 240px;">Skenario Kasus &amp; Kata Kunci Rubrik</th>
+                <th style="width: 110px; text-align: center;">Modul / Tipe</th>
+                <th style="width: 125px; text-align: center;">Kunci Keputusan</th>
+                <th style="min-width: 180px;">Ringkasan Pembahasan</th>
                 <th style="width: 145px; text-align: center;">Aksi</th>
               </tr>
             </thead>
@@ -124,12 +124,12 @@
   </div>
 
   <!-- ===================================================================
-       Layar 15: Modal Formulir Tambah / Edit Soal
+       Modal Formulir Tambah / Edit Kasus HOTS (C4-C6)
        =================================================================== -->
   <div class="modal-overlay" id="quizEditorModal">
     <div class="modal-box modal-box-lg">
       <div class="modal-header">
-        <h3 class="modal-title" id="editorModalTitle">Tambah Butir Soal Kuis</h3>
+        <h3 class="modal-title" id="editorModalTitle">Tambah Kasus Evaluasi HOTS</h3>
         <button type="button" class="modal-close" aria-label="Tutup">&times;</button>
       </div>
 
@@ -139,69 +139,149 @@
 
           <!-- Pilihan Target Modul -->
           <div class="form-group">
-            <label for="formModuleSelect" class="form-label">Target Modul Pembelajaran *</label>
+            <label for="formModuleSelect" class="form-label">Target Modul &amp; Model Evaluasi HOTS *</label>
             <select id="formModuleSelect" class="form-select" required>
-              <option value="1">Modul 1: Identifikasi Ancaman Jaringan</option>
-              <option value="2">Modul 2: Analisis Sistem Keamanan Jaringan</option>
-              <option value="3">Modul 3: Firewall &amp; Simulasi Paket</option>
+              <option value="1">Modul 1 (C4): Drag &amp; Drop Klasifikasi Ancaman + Justifikasi</option>
+              <option value="2">Modul 2 (C4–C5): Matriks 4 Sistem Keamanan + Rekomendasi</option>
+              <option value="3">Modul 3 (C4–C6): Simulator Firewall Allow/Block + Penjelasan</option>
             </select>
           </div>
 
-          <!-- Teks Pertanyaan Soal -->
+          <!-- Skenario Kasus -->
           <div class="form-group">
-            <label for="formQuestion" class="form-label">Teks Pertanyaan Soal *</label>
-            <textarea id="formQuestion" class="form-control" rows="3" placeholder="Ketik pertanyaan kuis di sini..." required></textarea>
+            <label for="formQuestion" class="form-label">Narasi Studi Kasus / Skenario Insiden *</label>
+            <textarea id="formQuestion" class="form-control" rows="3" placeholder="Tuliskan skenario insiden jaringan yang realistis untuk dianalisis siswa..." required></textarea>
           </div>
 
-          <!-- Pilihan Opsi A, B, C, D -->
-          <div style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.25rem;">
-            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.75rem; font-size: 0.95rem;">
-              Pilihan Jawaban (A, B, C, D) *
+          <!-- Bagian Dinamis Modul 1: Klasifikasi Ancaman -->
+          <div id="hotsFieldsM1" style="background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 1.15rem;">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.75rem; font-size: 0.92rem;">
+              Konfigurasi Kunci Modul 1 (Drag &amp; Drop Klasifikasi)
             </div>
-
-            <div class="form-group" style="margin-bottom: 0.75rem;">
-              <label for="formOptA" class="form-label">Pilihan A</label>
-              <input type="text" id="formOptA" class="form-control" placeholder="Teks jawaban pilihan A" required>
-            </div>
-
-            <div class="form-group" style="margin-bottom: 0.75rem;">
-              <label for="formOptB" class="form-label">Pilihan B</label>
-              <input type="text" id="formOptB" class="form-control" placeholder="Teks jawaban pilihan B" required>
-            </div>
-
-            <div class="form-group" style="margin-bottom: 0.75rem;">
-              <label for="formOptC" class="form-label">Pilihan C</label>
-              <input type="text" id="formOptC" class="form-control" placeholder="Teks jawaban pilihan C" required>
-            </div>
-
             <div class="form-group" style="margin-bottom: 0;">
-              <label for="formOptD" class="form-label">Pilihan D</label>
-              <input type="text" id="formOptD" class="form-control" placeholder="Teks jawaban pilihan D" required>
+              <label for="formM1Category" class="form-label">Kategori Ancaman yang Benar *</label>
+              <select id="formM1Category" class="form-select">
+                <option value="virus">Virus (Menempel pada file inang &amp; butuh eksekusi pengguna)</option>
+                <option value="worm">Worm (Menyebar otomatis mandiri lewat celah jaringan)</option>
+                <option value="phishing">Phishing (Manipulasi psikologis / pencurian kredensial)</option>
+                <option value="ddos">DDoS (Banjir trafik masif melumpuhkan layanan/server)</option>
+              </select>
             </div>
           </div>
 
-          <!-- Pemilih Kunci Jawaban Benar -->
-          <div class="form-group">
-            <label for="formCorrectKey" class="form-label">Kunci Jawaban yang Benar *</label>
-            <select id="formCorrectKey" class="form-select" required>
-              <option value="" disabled selected>Pilih Kunci Jawaban...</option>
-              <option value="A">Pilihan A</option>
-              <option value="B">Pilihan B</option>
-              <option value="C">Pilihan C</option>
-              <option value="D">Pilihan D</option>
-            </select>
+          <!-- Bagian Dinamis Modul 2: Matriks 4 Sistem + Rekomendasi -->
+          <div id="hotsFieldsM2" style="display: none; background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 1.15rem;">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.75rem; font-size: 0.92rem;">
+              Konfigurasi Matriks Efektivitas &amp; Rekomendasi (Modul 2)
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.75rem; margin-bottom: 0.9rem;">
+              <div>
+                <label for="formM2Antivirus" class="form-label" style="font-size: 0.85rem;">Efektivitas Antivirus</label>
+                <select id="formM2Antivirus" class="form-select">
+                  <option value="sangat_efektif">Sangat Efektif</option>
+                  <option value="kurang_efektif">Kurang Efektif</option>
+                  <option value="tidak_relevan">Tidak Relevan</option>
+                </select>
+              </div>
+              <div>
+                <label for="formM2Firewall" class="form-label" style="font-size: 0.85rem;">Efektivitas Firewall</label>
+                <select id="formM2Firewall" class="form-select">
+                  <option value="sangat_efektif">Sangat Efektif</option>
+                  <option value="kurang_efektif">Kurang Efektif</option>
+                  <option value="tidak_relevan">Tidak Relevan</option>
+                </select>
+              </div>
+              <div>
+                <label for="formM2Vpn" class="form-label" style="font-size: 0.85rem;">Efektivitas VPN</label>
+                <select id="formM2Vpn" class="form-select">
+                  <option value="sangat_efektif">Sangat Efektif</option>
+                  <option value="kurang_efektif">Kurang Efektif</option>
+                  <option value="tidak_relevan">Tidak Relevan</option>
+                </select>
+              </div>
+              <div>
+                <label for="formM2Auth" class="form-label" style="font-size: 0.85rem;">Efektivitas Autentikasi (2FA)</label>
+                <select id="formM2Auth" class="form-select">
+                  <option value="sangat_efektif">Sangat Efektif</option>
+                  <option value="kurang_efektif">Kurang Efektif</option>
+                  <option value="tidak_relevan">Tidak Relevan</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="formM2Recommended" class="form-label">Rekomendasi Sistem Prioritas Utama *</label>
+              <select id="formM2Recommended" class="form-select">
+                <option value="antivirus">Antivirus (Deteksi &amp; Karantina Malware Endpoint)</option>
+                <option value="firewall">Firewall (Penyaringan Paket, Port &amp; Trafik)</option>
+                <option value="vpn">VPN (Terowongan Enkripsi Jaringan Publik)</option>
+                <option value="auth">Autentikasi 2FA / IAM (Proteksi Akun &amp; Identitas)</option>
+              </select>
+            </div>
           </div>
 
-          <!-- Pembahasan Soal -->
+          <!-- Bagian Dinamis Modul 3: Parameter Paket Firewall -->
+          <div id="hotsFieldsM3" style="display: none; background: #f8fafc; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 1.15rem;">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.75rem; font-size: 0.92rem;">
+              Konfigurasi Paket Lalu Lintas &amp; Kebijakan Firewall (Modul 3)
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 0.75rem;">
+              <div>
+                <label for="formM3TrafficLabel" class="form-label" style="font-size: 0.85rem;">Label Lalu Lintas *</label>
+                <input type="text" id="formM3TrafficLabel" class="form-control" placeholder="mis: HTTPS Portal Akademik">
+              </div>
+              <div>
+                <label for="formM3Protocol" class="form-label" style="font-size: 0.85rem;">Protokol *</label>
+                <input type="text" id="formM3Protocol" class="form-control" placeholder="TCP / UDP / ICMP">
+              </div>
+              <div>
+                <label for="formM3Port" class="form-label" style="font-size: 0.85rem;">Nomor Port *</label>
+                <input type="text" id="formM3Port" class="form-control" placeholder="mis: 443, 23, 22, 445">
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+              <div>
+                <label for="formM3SourceIp" class="form-label" style="font-size: 0.85rem;">IP Sumber *</label>
+                <input type="text" id="formM3SourceIp" class="form-control" placeholder="mis: 192.168.10.25">
+              </div>
+              <div>
+                <label for="formM3DestIp" class="form-label" style="font-size: 0.85rem;">IP Tujuan *</label>
+                <input type="text" id="formM3DestIp" class="form-control" placeholder="mis: 10.10.1.50 (Server)">
+              </div>
+              <div>
+                <label for="formM3Action" class="form-label" style="font-size: 0.85rem;">Kebijakan Benar *</label>
+                <select id="formM3Action" class="form-select">
+                  <option value="ALLOW">ALLOW (Izinkan Paket)</option>
+                  <option value="BLOCK">BLOCK (Tolak / Drop Paket)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rubrik Penalaran Tertulis (Berlaku untuk Semua Modul) -->
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 1.15rem;">
+            <div style="font-weight: 700; color: #166534; margin-bottom: 0.65rem; font-size: 0.92rem;">
+              Rubrik Penilaian Penalaran Tertulis Otomatis
+            </div>
+            <div class="form-group" style="margin-bottom: 0.75rem;">
+              <label for="formKeywords" class="form-label">Kata Kunci Konsep Wajib (pisahkan dengan koma) *</label>
+              <input type="text" id="formKeywords" class="form-control" placeholder="mis: enkripsi, https, port 443, aman, sertifikat" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="formRubricHint" class="form-label">Pertanyaan Pemandu / Petunjuk untuk Siswa *</label>
+              <input type="text" id="formRubricHint" class="form-control" placeholder="mis: Jelaskan alasan teknis mengapa lalu lintas ini di-Allow atau di-Block." required>
+            </div>
+          </div>
+
+          <!-- Pembahasan Kasus -->
           <div class="form-group">
-            <label for="formExplanation" class="form-label">Pembahasan / Ulasan Konsep Soal *</label>
-            <textarea id="formExplanation" class="form-control" rows="3" placeholder="Jelaskan alasan mengapa kunci jawaban tersebut benar. Penjelasan ini akan dibaca siswa di lembar pembahasan kuis." required></textarea>
+            <label for="formExplanation" class="form-label">Pembahasan &amp; Kunci Analisis Resmi *</label>
+            <textarea id="formExplanation" class="form-control" rows="3" placeholder="Jelaskan analisis lengkap untuk ditampilkan di halaman Pembahasan setelah siswa menyelesaikan evaluasi." required></textarea>
           </div>
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-outline modal-close" onclick="window.Utils.closeModal('quizEditorModal')">Batal</button>
-          <button type="submit" class="btn btn-success" id="saveQuizBtn">Simpan Butir Soal</button>
+          <button type="submit" class="btn btn-success" id="saveQuizBtn">Simpan Kasus HOTS</button>
         </div>
       </form>
     </div>

@@ -377,3 +377,333 @@
   }
 }
 
+/* ===================================================================
+   HOTS Evaluation C4-C6 Components (Non-Pilihan Ganda)
+   =================================================================== */
+.hots-bloom-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: #ede9fe;
+  color: #5b21b6;
+  border: 1px solid #ddd6fe;
+  margin-bottom: 0.65rem;
+}
+
+.hots-scenario-box {
+  background: #f8fafc;
+  border: 1.5px solid var(--color-border);
+  border-left: 5px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.35rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-primary);
+}
+
+.hots-section-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* Modul 1: Drag & Drop Klasifikasi HOTS */
+.hots-dnd-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  align-items: stretch;
+}
+
+.hots-drag-card {
+  background: #ffffff;
+  border: 2px dashed var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  cursor: grab;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.hots-drag-card:hover {
+  border-style: solid;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hots-drag-card.dragging {
+  opacity: 0.55;
+  transform: scale(0.98);
+}
+
+.hots-drag-card.placed {
+  background: #f0fdf4;
+  border: 2px solid var(--color-success);
+  cursor: default;
+}
+
+.hots-zones-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.hots-drop-zone {
+  background: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  min-height: 92px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+}
+
+.hots-drop-zone:hover,
+.hots-drop-zone.drag-over {
+  border-color: var(--color-accent);
+  background: #e0f2fe;
+}
+
+.hots-drop-zone.selected-zone {
+  border: 2px solid var(--color-secondary);
+  background: #eff6ff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Modul 2: Matriks Efektivitas Komparatif & Rekomendasi (C4-C5) */
+.hots-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.hots-matrix-table th,
+.hots-matrix-table td {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.hots-matrix-table th {
+  background: #f1f5f9;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.hots-matrix-select {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: 1.5px solid var(--color-border-dark);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.hots-priority-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.hots-priority-btn {
+  padding: 0.75rem 0.9rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 600;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.hots-priority-btn:hover {
+  border-color: var(--color-accent);
+  background: #f0f9ff;
+}
+
+.hots-priority-btn.active {
+  border-color: var(--color-secondary);
+  background: #eff6ff;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Modul 3: Mini Simulator Firewall & Log Terminal (C4-C6) */
+.hots-sim-stage {
+  background: linear-gradient(135deg, #0b2545 0%, #133b5c 100%);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1rem;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.hots-sim-track {
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  top: 50%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+.hots-sim-node {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.8rem;
+  text-align: center;
+  min-width: 110px;
+  font-size: 0.8rem;
+}
+
+.hots-sim-node.fw {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.16);
+}
+
+.hots-sim-packet {
+  position: absolute;
+  top: 50%;
+  left: 16%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #38bdf8;
+  color: #0b2545;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.75rem;
+  z-index: 4;
+  box-shadow: 0 0 12px #38bdf8;
+}
+
+.hots-sim-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: stretch;
+  margin-bottom: 1rem;
+}
+
+.hots-fw-btn {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  border: 2px solid var(--color-border);
+  background: #f8fafc;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.hots-fw-btn.allow.active {
+  background: var(--color-success);
+  color: #ffffff;
+  border-color: var(--color-success);
+}
+
+.hots-fw-btn.block.active {
+  background: var(--color-danger);
+  color: #ffffff;
+  border-color: var(--color-danger);
+}
+
+.hots-sim-log {
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: monospace;
+  font-size: 0.84rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
+  border-left: 4px solid #64748b;
+}
+
+.hots-sim-log.allowed { border-left-color: #22c55e; }
+.hots-sim-log.blocked { border-left-color: #ef4444; }
+
+/* Kotak Penalaran / Justifikasi Tertulis (C4-C6) */
+.hots-reasoning-box {
+  background: #f8fafc;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.hots-reasoning-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.75rem 0.9rem;
+  border: 1.5px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  resize: vertical;
+  transition: border-color var(--transition-fast);
+}
+
+.hots-reasoning-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+}
+
+.hots-locked-overlay {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hots-dnd-wrapper,
+  .hots-zones-grid,
+  .hots-priority-grid,
+  .hots-sim-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+

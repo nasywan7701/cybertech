@@ -1,8 +1,8 @@
 /**
  * ===================================================================
  * CyberTech - Local Storage Management & Seed Data Layer (with MySQL API Sync)
- * Menangani persistensi data akun, modul, bank soal, dan hasil kuis
- * Mendukung mode Offline (localStorage) & mode Online/Server (MySQL API via Laragon/XAMPP)
+ * Mendukung Evaluasi HOTS Taksonomi Bloom C4-C6 (Non-Pilihan Ganda)
+ * Mendukung mode Offline (localStorage) & mode Online/Server (MySQL API)
  * ===================================================================
  */
 
@@ -46,1018 +46,465 @@ const DEFAULT_MODULES = [
   {
     id: '1',
     kode: 'MODUL-01',
-    judul: 'Identifikasi Ancaman Jaringan',
-    subjudul: 'Virus, Worm, Phishing, dan DDoS',
-    deskripsi: 'Memahami pengertian keamanan jaringan, mengklasifikasikan 4 jenis ancaman siber, dan metode pencegahan preventif.',
-    durasi: '15 Menit',
-    totalSoal: 10,
+    judul: 'Analisis & Klasifikasi Ancaman Jaringan',
+    subjudul: 'Klasifikasi Kasus Virus, Worm, Phishing, & DDoS (C4)',
+    deskripsi: 'Menganalisis mekanisme serangan siber dan mengklasifikasikan empat jenis ancaman jaringan secara tepat melalui aktivitas Drag & Drop beserta justifikasi teknis.',
+    durasi: '20 Menit',
+    totalSoal: 5,
     kkm: 75,
     icon: 'shield-alert'
   },
   {
     id: '2',
     kode: 'MODUL-02',
-    judul: 'Analisis Sistem Keamanan Jaringan',
-    subjudul: 'Antivirus, Firewall, VPN, dan Autentikasi',
-    deskripsi: 'Menganalisis efektivitas 4 komponen sistem pertahanan jaringan berlapis dalam mengatasi berbagai insiden keamanan.',
-    durasi: '15 Menit',
-    totalSoal: 10,
+    judul: 'Evaluasi & Rekomendasi Sistem Keamanan',
+    subjudul: 'Matriks Efektivitas Antivirus, Firewall, VPN, & 2FA (C4-C5)',
+    deskripsi: 'Menganalisis efektivitas komparatif empat sistem keamanan jaringan dalam mengatasi ancaman nyata dan merekomendasikan solusi paling tepat berbasis kriteria.',
+    durasi: '20 Menit',
+    totalSoal: 5,
     kkm: 75,
     icon: 'lock'
   },
   {
     id: '3',
     kode: 'MODUL-03',
-    judul: 'Firewall & Penyaringan Paket Data',
-    subjudul: 'Konfigurasi Aturan Allow dan Block',
-    deskripsi: 'Menerapkan penyaringan paket lalu lintas data berdasarkan port/protokol serta menganalisis hasil simulasi firewall.',
-    durasi: '15 Menit',
-    totalSoal: 10,
+    judul: 'Perancangan Kebijakan Firewall & Analisis Log',
+    subjudul: 'Simulasi Aturan Allow/Block & Justifikasi Lalu Lintas (C4-C6)',
+    deskripsi: 'Merancang dan menerapkan aturan Allow atau Block pada simulasi firewall sesuai jenis lalu lintas serta menjelaskan alasan teknis paket diterima atau ditolak.',
+    durasi: '20 Menit',
+    totalSoal: 5,
     kkm: 75,
     icon: 'flame'
   }
 ];
 
 const DEFAULT_QUIZZES = [
-  /* --- KUIS MODUL 1: Ancaman Jaringan --- */
+  /* ===================================================================
+     MODUL 1: Evaluasi Klasifikasi Drag & Drop + Analisis Alasan (C4)
+     =================================================================== */
   {
-    id: 'q_m1_01',
+    id: 'hots_m1_01',
     moduleId: '1',
-    pertanyaan: 'Jenis malware yang dapat menggandakan dirinya secara mandiri dan menyebar ke komputer lain melalui celah jaringan tanpa memerlukan tindakan dari pengguna disebut...',
-    opsi: {
-      A: 'Virus',
-      B: 'Worm',
-      C: 'Trojan Horse',
-      D: 'Spyware'
+    questionType: 'hots_m1_dnd',
+    pertanyaan: 'Seorang siswa menancapkan flashdisk pribadi untuk menyalin installer editor video bajakan (setup_crack.exe). Setelah file dijalankan, seluruh file .docx dan .exe di komputer tersebut rusak, namun komputer lain di laboratorium yang tidak menjalankan file dari flashdisk tetap aman.',
+    kunci: 'virus',
+    hotsData: {
+      category: 'virus',
+      categoryLabel: 'Virus Komputer',
+      expectedKeywords: ['inang', 'eksekusi', 'jalankan', 'klik', 'file', 'flashdisk', 'menempel', 'pengguna'],
+      rubricHint: 'Jelaskan mengapa insiden ini memerlukan file inang dan eksekusi pengguna untuk menginfeksi.'
     },
-    kunci: 'B',
-    pembahasan: 'Worm adalah program berbahaya mandiri yang mampu mereplikasi dirinya dan menyebar otomatis melalui celah port/protokol jaringan tanpa perlu menempel pada program induk atau campur tangan pengguna.'
+    pembahasan: 'Insiden ini merupakan Virus Komputer karena program jahat menempel pada file executable inang (setup_crack.exe) dan baru aktif merusak berkas lokal ketika pengguna mengklik/menjalankannya.'
   },
   {
-    id: 'q_m1_02',
+    id: 'hots_m1_02',
     moduleId: '1',
-    pertanyaan: 'Seorang staf sekolah menerima pesan email yang menyerupai tampilan resmi bank dan meminta login ulang pada tautan palsu untuk memperbarui password. Serangan ini merupakan bentuk...',
-    opsi: {
-      A: 'Phishing',
-      B: 'DDoS Attack',
-      C: 'SQL Injection',
-      D: 'Man-in-the-Middle'
+    questionType: 'hots_m1_dnd',
+    pertanyaan: 'Dalam waktu 10 menit, 24 PC di Lab TJKT mendadak melambat drastis dan membanjiri switch dengan lalu lintas SMB Port 445, padahal seluruh siswa sedang istirahat dan tidak ada satu pun yang membuka email atau menjalankan file lampiran.',
+    kunci: 'worm',
+    hotsData: {
+      category: 'worm',
+      categoryLabel: 'Network Worm',
+      expectedKeywords: ['mandiri', 'otomatis', 'tanpa', 'celah', 'port', 'jaringan', 'replikasi', 'smb'],
+      rubricHint: 'Analisis mekanisme replikasi otomatis Worm lewat jaringan tanpa campur tangan pengguna.'
     },
-    kunci: 'A',
-    pembahasan: 'Phishing adalah bentuk rekayasa sosial (social engineering) di mana pelaku menyamar sebagai entitas tepercaya melalui pesan/email palsu guna mengelabui korban agar memberikan data kredensial rahasia.'
+    pembahasan: 'Insiden ini adalah Network Worm karena mampu menggandakan diri secara mandiri dan menyebar otomatis ke 24 PC melalui celah port jaringan (SMB 445) tanpa interaksi pengguna.'
   },
   {
-    id: 'q_m1_03',
+    id: 'hots_m1_03',
     moduleId: '1',
-    pertanyaan: 'Serangan siber yang dilakukan dengan cara membanjiri server target menggunakan ribuan atau jutaan permintaan palsu secara serentak dari banyak komputer hingga server tidak dapat diakses disebut...',
-    opsi: {
-      A: 'Brute Force Attack',
-      B: 'Ransomware',
-      C: 'DDoS (Distributed Denial of Service)',
-      D: 'Eavesdropping'
+    questionType: 'hots_m1_dnd',
+    pertanyaan: 'Operator sekolah menerima email berlogo resmi Dinas Pendidikan dengan alamat pengirim admin@dinas-pendidikan-verif.xyz yang mendesak agar segera login ulang pada tautan terlampir agar akun Dapodik tidak diblokir dalam 2 jam.',
+    kunci: 'phishing',
+    hotsData: {
+      category: 'phishing',
+      categoryLabel: 'Phishing (Rekayasa Sosial)',
+      expectedKeywords: ['palsu', 'tautan', 'penyamaran', 'kredensial', 'password', 'psikologis', 'rekayasa sosial', 'domain'],
+      rubricHint: 'Uraikan teknik manipulasi psikologis dan pemalsuan identitas pada pesan tersebut.'
     },
-    kunci: 'C',
-    pembahasan: 'DDoS (Distributed Denial of Service) memanfaatkan banyak komputer botnet untuk mengirim banjir lalu lintas (traffic flood) menuju server sasaran hingga bandwidth dan kapasitas pemrosesan server lumpuh.'
+    pembahasan: 'Ini adalah serangan Phishing (rekayasa sosial) yang menyamar sebagai instansi tepercaya dengan domain palsu dan urgensi semu untuk memancing korban memasukkan kredensial login ke situs tiruan.'
   },
   {
-    id: 'q_m1_04',
+    id: 'hots_m1_04',
     moduleId: '1',
-    pertanyaan: 'Perbedaan mendasar antara Virus dan Worm dalam mekanisme penyebarannya pada komputer jaringan adalah...',
-    opsi: {
-      A: 'Virus menyebar otomatis lewat port jaringan, sedangkan Worm menempel pada file dokumen.',
-      B: 'Virus membutuhkan file induk dan eksekusi pengguna untuk menyebar, sedangkan Worm menyebar mandiri melalui jaringan.',
-      C: 'Virus tidak merusak sistem operasi, sedangkan Worm merusak perangkat keras.',
-      D: 'Virus hanya menyerang komputer klien, sedangkan Worm hanya menyerang printer.'
+    questionType: 'hots_m1_dnd',
+    pertanyaan: 'Tepat pukul 08.00 WITA saat ujian berlangsung, portal CBT sekolah gagal diakses (503 Service Unavailable). Log firewall mencatat 450.000 permintaan HTTP SYN per detik berasal dari ribuan IP asing yang tersebar di berbagai negara secara serentak.',
+    kunci: 'ddos',
+    hotsData: {
+      category: 'ddos',
+      categoryLabel: 'DDoS Attack',
+      expectedKeywords: ['banjir', 'traffic', 'ribuan', 'botnet', 'serentak', 'lumpuh', 'availability', 'ketersediaan'],
+      rubricHint: 'Analisis bagaimana banjir paket serentak melumpuhkan pilar ketersediaan (Availability) server.'
     },
-    kunci: 'B',
-    pembahasan: 'Virus memerlukan program atau file inang (host) dan aksi eksekusi pengguna agar aktif, sedangkan Worm merupakan program independen yang aktif memanfaatkan celah kelemahan jaringan secara mandiri.'
+    pembahasan: 'Ini merupakan DDoS (Distributed Denial of Service) menggunakan jaringan botnet global untuk membanjiri server target dengan ratusan ribu permintaan per detik hingga kapasitas layanan lumpuh.'
   },
   {
-    id: 'q_m1_05',
+    id: 'hots_m1_05',
     moduleId: '1',
-    pertanyaan: 'Langkah pencegahan preventif terbaik untuk meminimalisir risiko infeksi malware pada komputer laboratorium sekolah adalah...',
-    opsi: {
-      A: 'Mematikan koneksi internet secara permanen setiap hari.',
-      B: 'Memasang antivirus berlisensi, mengaktifkan pembaruan otomatis, dan tidak membuka sembarang file lampiran email.',
-      C: 'Menghapus seluruh file berekstensi .exe yang ada di dalam sistem Windows.',
-      D: 'Mengganti kabel LAN dengan kabel telepon rumah.'
+    questionType: 'hots_m1_dnd',
+    pertanyaan: 'Staf TU mengunduh lampiran dokumen penawaran berjudul Rincian_Biaya.docm dan mengklik tombol "Enable Content/Macros". Seketika itu juga skrip VBA di dalam dokumen memodifikasi file sistem Windows dan menyisipkan kode perusak ke aplikasi lain di PC tersebut.',
+    kunci: 'virus',
+    hotsData: {
+      category: 'virus',
+      categoryLabel: 'Virus Komputer (Macro)',
+      expectedKeywords: ['makro', 'dokumen', 'klik', 'eksekusi', 'inang', 'aktifkan', 'sistem', 'vba'],
+      rubricHint: 'Jelaskan keterkaitan antara file dokumen inang dan aksi pengguna mengaktifkan makro.'
     },
-    kunci: 'B',
-    pembahasan: 'Pencegahan malware yang efektif melibatkan kombinasi perangkat lunak antivirus yang selalu diperbarui, penambalan celah keamanan sistem operasi, dan kehati-hatian pengguna dalam membuka file atau tautan tak dikenal.'
+    pembahasan: 'Kasus ini termasuk Virus (Macro Virus) karena kode berbahaya disisipkan di dalam dokumen inang (.docm) dan hanya tereksekusi setelah korban memberikan aksi mengaktifkan konten makro.'
   },
   {
-    id: 'q_m1_06',
+    id: 'hots_m1_06',
     moduleId: '1',
-    pertanyaan: 'Malware yang menyamar sebagai perangkat lunak resmi atau game yang sah, namun ketika dipasang diam-diam membuka pintu belakang (backdoor) ke sistem komputer disebut...',
-    opsi: {
-      A: 'Trojan Horse',
-      B: 'Adware',
-      C: 'Worm',
-      D: 'Ransomware'
+    questionType: 'hots_m1_dnd',
+    pertanyaan: 'Sebuah laptop tamu yang terhubung ke Wi-Fi sekolah langsung memindai seluruh subnet IP 192.168.10.0/24 guna mengeksploitasi celah layanan jaringan yang belum di-patch, menggandakan salinannya ke server file tanpa campur tangan admin.',
+    kunci: 'worm',
+    hotsData: {
+      category: 'worm',
+      categoryLabel: 'Network Worm',
+      expectedKeywords: ['memindai', 'celah', 'otomatis', 'mandiri', 'jaringan', 'subnet', 'patch', 'ganda'],
+      rubricHint: 'Analisis bagaimana penyerang menyebar secara otonom dengan memindai kerentanan jaringan.'
     },
-    kunci: 'A',
-    pembahasan: 'Trojan Horse adalah program jahat yang disamarkan sebagai file atau aplikasi yang tampak sah untuk menipu pengguna agar menginstalnya, lalu membuka celah akses jarak jauh (backdoor).'
+    pembahasan: 'Ini adalah karakteristik utama Worm, yaitu melakukan pemindaian (scanning) jaringan otomatis dan mengeksploitasi celah sistem yang belum ditambal untuk mereplikasi diri lintas subnet.'
   },
   {
-    id: 'q_m1_07',
+    id: 'hots_m1_07',
     moduleId: '1',
-    pertanyaan: 'Jenis serangan siber di mana pelaku menyusup di antara komunikasi dua pihak (misalnya antara komputer klien dan server perbankan) untuk menguping atau mengubah data tanpa disadari disebut...',
-    opsi: {
-      A: 'Denial of Service',
-      B: 'Man-in-the-Middle (MitM)',
-      C: 'Brute Force Attack',
-      D: 'Cross-Site Scripting'
+    questionType: 'hots_m1_dnd',
+    pertanyaan: 'Seorang guru menerima pesan WhatsApp yang mengaku dari teknisi IT sekolah beserta tautan pemendek URL (bit.ly/reset-portal-guru) yang mendesak guru memasukkan NIP dan kata sandi e-Rapor agar akun tidak terhapus.',
+    kunci: 'phishing',
+    hotsData: {
+      category: 'phishing',
+      categoryLabel: 'Phishing (Smishing/Social Engineering)',
+      expectedKeywords: ['penipuan', 'tautan', 'kredensial', 'password', 'sandi', 'nip', 'mendesak', 'manipulasi'],
+      rubricHint: 'Jelaskan indikator penipuan identitas dan target pencurian data pada kasus pesan ini.'
     },
-    kunci: 'B',
-    pembahasan: 'Serangan Man-in-the-Middle (MitM) terjadi ketika pihak ketiga secara diam-diam memotong dan memanipulasi lalu lintas data antara dua pihak yang berkomunikasi di jaringan tanpa sepengetahuan mereka.'
+    pembahasan: 'Serangan ini tergolong Phishing karena memanfaatkan rekayasa sosial lewat pesan mendesak dan tautan tersamar untuk mencuri data kredensial sensitif (NIP dan kata sandi) milik guru.'
   },
   {
-    id: 'q_m1_08',
+    id: 'hots_m1_08',
     moduleId: '1',
-    pertanyaan: 'Serangan berbahaya yang mengunci atau mengenkripsi seluruh file penting di komputer korban dan menuntut tebusan uang untuk mendapatkan kunci pembukanya disebut...',
-    opsi: {
-      A: 'Spyware',
-      B: 'Ransomware',
-      C: 'Keylogger',
-      D: 'Rootkit'
+    questionType: 'hots_m1_dnd',
+    pertanyaan: 'Koneksi internet seluruh sekolah putus total saat jam belajar. Setelah diperiksa pada router gateway, antarmuka WAN dibanjiri 99% paket UDP sampah berukuran besar ke port acak yang dikirim bersamaan dari ratusan kamera CCTV IoT yang telah dibajak.',
+    kunci: 'ddos',
+    hotsData: {
+      category: 'ddos',
+      categoryLabel: 'DDoS (UDP Flood Botnet)',
+      expectedKeywords: ['banjir', 'bandwidth', 'udp', 'iot', 'botnet', 'massal', 'lumpuh', 'putus'],
+      rubricHint: 'Uraikan peran perangkat IoT terkompromi dalam melumpuhkan kapasitas bandwidth jaringan.'
     },
-    kunci: 'B',
-    pembahasan: 'Ransomware adalah varian malware pemerasan yang mengenkripsi data berharga milik korban dan meminta pembayaran tebusan (biasanya mata uang kripto) agar file dapat dipulihkan.'
-  },
-  {
-    id: 'q_m1_09',
-    moduleId: '1',
-    pertanyaan: 'Program pengintai yang dipasang tanpa persetujuan pengguna untuk merekam ketikan keyboard, riwayat peramban, dan kata sandi lalu mengirimkannya ke server penyerang disebut...',
-    opsi: {
-      A: 'Spyware / Keylogger',
-      B: 'Firmware',
-      C: 'Adware ramah',
-      D: 'Patch sistem'
-    },
-    kunci: 'A',
-    pembahasan: 'Spyware (termasuk modul Keylogger) dirancang untuk memata-matai seluruh kegiatan pengguna, terutama masukan ketikan keyboard dan kata sandi rahasia.'
-  },
-  {
-    id: 'q_m1_10',
-    moduleId: '1',
-    pertanyaan: 'Metode serangan peretasan akun yang mencoba menebak kata sandi secara berulang-ulang dengan menguji jutaan kombinasi karakter secara otomatis disebut...',
-    opsi: {
-      A: 'Phishing',
-      B: 'Brute Force Attack',
-      C: 'Social Engineering',
-      D: 'DNS Poisoning'
-    },
-    kunci: 'B',
-    pembahasan: 'Brute Force Attack adalah metode tebakan sistematis yang mencoba seluruh kemungkinan kombinasi huruf, angka, dan simbol sampai kata sandi yang valid berhasil ditemukan.'
-  },
-  {
-    id: 'q_m1_11',
-    moduleId: '1',
-    pertanyaan: 'Taktik manipulasi psikologis di mana pelaku menghubungi korban sambil mengaku sebagai petugas teknis IT dan meminta kata sandi darurat secara lisan termasuk teknik...',
-    opsi: {
-      A: 'Social Engineering',
-      B: 'Port Scanning',
-      C: 'Packet Sniffing',
-      D: 'SQL Injection'
-    },
-    kunci: 'A',
-    pembahasan: 'Social Engineering (rekayasa sosial) mengeksploitasi kelemahan psikologis manusia, seperti rasa percaya atau panik, untuk membocorkan informasi rahasia tanpa melalui celah teknis perangkat lunak.'
-  },
-  {
-    id: 'q_m1_12',
-    moduleId: '1',
-    pertanyaan: 'Perangkat lunak berbahaya tingkat lanjut yang menyembunyikan keberadaannya di dalam inti sistem operasi (kernel) agar tidak terdeteksi oleh antivirus konvensional disebut...',
-    opsi: {
-      A: 'Rootkit',
-      B: 'Bloatware',
-      C: 'Dialer',
-      D: 'Spam'
-    },
-    kunci: 'A',
-    pembahasan: 'Rootkit adalah sekumpulan program jahat yang memodifikasi kernel atau komponen internal OS untuk menyembunyikan proses, file, dan backdoor dari deteksi alat keamanan.'
-  },
-  {
-    id: 'q_m1_13',
-    moduleId: '1',
-    pertanyaan: 'Apa yang dimaksud dengan kerentanan "Zero-Day Exploit" dalam dunia keamanan jaringan?',
-    opsi: {
-      A: 'Serangan yang hanya membutuhkan waktu nol detik untuk mematikan komputer.',
-      B: 'Celah keamanan baru pada aplikasi yang belum diketahui oleh pengembang dan belum ada patch perbaikannya.',
-      C: 'Antivirus gratis yang kedaluwarsa dalam nol hari.',
-      D: 'Pencurian kabel jaringan di laboratorium komputer.'
-    },
-    kunci: 'B',
-    pembahasan: 'Zero-day exploit menargetkan celah keamanan perangkat lunak yang belum dirilis tambalannya (patch) oleh pengembang, sehingga sistem rentan terhadap serangan langsung.'
-  },
-  {
-    id: 'q_m1_14',
-    moduleId: '1',
-    pertanyaan: 'Pemberian izin akses aplikasi berbahaya melalui jendela peringatan UAC (User Account Control) yang sering diabaikan pengguna Windows berisiko menyebabkan...',
-    opsi: {
-      A: 'Layar monitor menjadi lebih jernih.',
-      B: 'Malware memperoleh hak akses administrator penuh ke sistem komputer.',
-      C: 'Kecepatan internet otomatis bertambah.',
-      D: 'Keyboard tidak membutuhkan arus listrik.'
-    },
-    kunci: 'B',
-    pembahasan: 'Ketika peringatan hak akses administrator disetujui sembarangan, malware mendapatkan privilege level tertinggi untuk memodifikasi registry, file sistem, dan menonaktifkan pertahanan Windows.'
-  },
-  {
-    id: 'q_m1_15',
-    moduleId: '1',
-    pertanyaan: 'Teknik penipuan identitas di mana penyerang memalsukan alamat IP asal pada header paket untuk menyamar sebagai perangkat terpercaya disebut...',
-    opsi: {
-      A: 'IP Spoofing',
-      B: 'MAC Binding',
-      C: 'DHCP Snooping',
-      D: 'NAT Forwarding'
-    },
-    kunci: 'A',
-    pembahasan: 'IP Spoofing adalah pembuatan paket IP dengan alamat sumber palsu untuk mengelabui filter penerima atau menyembunyikan identitas asli mesin penyerang dalam serangan DoS.'
-  },
-  {
-    id: 'q_m1_16',
-    moduleId: '1',
-    pertanyaan: 'Serangan siber di mana peretas memanipulasi cache server DNS sehingga pengguna yang mengetikkan alamat web asli diarahkan ke situs tiruan berbahaya disebut...',
-    opsi: {
-      A: 'DNS Spoofing / DNS Cache Poisoning',
-      B: 'ARP Poisoning',
-      C: 'MAC Flooding',
-      D: 'Port Forwarding'
-    },
-    kunci: 'A',
-    pembahasan: 'DNS Cache Poisoning (DNS Spoofing) merusak data resolusi nama domain pada cache server DNS lokal, mengalihkan pengguna ke IP server palsu milik penyerang secara tidak terlihat.'
-  },
-  {
-    id: 'q_m1_17',
-    moduleId: '1',
-    pertanyaan: 'Teknik penyadapan paket data yang melintas tanpa enkripsi pada jaringan kabel atau nirkabel menggunakan software penganalisis paket (packet analyzer) disebut...',
-    opsi: {
-      A: 'Eavesdropping / Packet Sniffing',
-      B: 'SQL Injection',
-      C: 'Buffer Overflow',
-      D: 'Cross-Site Scripting'
-    },
-    kunci: 'A',
-    pembahasan: 'Packet Sniffing / Eavesdropping memanfaatkan alat seperti Wireshark untuk merekam dan membaca isi lalu lintas paket data mentah yang melintas tanpa enkripsi pada satu segmen jaringan.'
-  },
-  {
-    id: 'q_m1_18',
-    moduleId: '1',
-    pertanyaan: 'Kumpulan komputer atau perangkat IoT yang telah terinfeksi malware dan dikendalikan secara rahasia dari jarak jauh oleh penyerang (botmaster) untuk melancarkan serangan terkoordinasi disebut...',
-    opsi: {
-      A: 'Botnet',
-      B: 'Workstation cluster',
-      C: 'Peer-to-peer network',
-      D: 'Intranet lokal'
-    },
-    kunci: 'A',
-    pembahasan: 'Botnet (robot network) adalah jaringan komputer zombi yang telah disusupi malware dan dapat diperintahkan secara massal untuk menyerang server korban (misalnya dalam serangan DDoS).'
-  },
-  {
-    id: 'q_m1_19',
-    moduleId: '1',
-    pertanyaan: 'Varian serangan phishing yang ditargetkan secara khusus dan dipersonalisasi kepada individu atau pejabat berwenang di suatu institusi disebut...',
-    opsi: {
-      A: 'Spear Phishing',
-      B: 'Mass Emailing',
-      C: 'Ping of Death',
-      D: 'Syn Flood'
-    },
-    kunci: 'A',
-    pembahasan: 'Spear Phishing adalah serangan rekayasa sosial yang dirancang khusus dengan mencantumkan nama, jabatan, atau konteks pekerjaan korban tertentu agar tampak sangat meyakinkan dibanding phishing massal.'
-  },
-  {
-    id: 'q_m1_20',
-    moduleId: '1',
-    pertanyaan: 'Serangan siber di mana penyerang mengirimkan pesan ARP palsu ke jaringan lokal untuk mengaitkan alamat MAC penyerang dengan alamat IP gateway yang sah disebut...',
-    opsi: {
-      A: 'ARP Spoofing / ARP Poisoning',
-      B: 'DHCP Starvation',
-      C: 'Smurf Attack',
-      D: 'VLAN Hopping'
-    },
-    kunci: 'A',
-    pembahasan: 'ARP Poisoning merusak tabel cache ARP di komputer korban pada layer data-link (Layer 2), sehingga seluruh lalu lintas diarahkan melalui komputer penyerang terlebih dahulu (Man-in-the-Middle).'
-  },
-  {
-    id: 'q_m1_21',
-    moduleId: '1',
-    pertanyaan: 'Ciri-ciri utama komputer laboratorium yang telah terinfeksi varian Crypto-mining Malware (Cryptojacking) tanpa disadari oleh pengguna adalah...',
-    opsi: {
-      A: 'Penggunaan prosesor (CPU/GPU) terus-menerus mencapai 100% dan kipas berputar kencang meski tidak membuka aplikasi berat.',
-      B: 'Ukuran monitor tiba-tiba mengecil secara fisik.',
-      C: 'Kabel UTP terlepas sendiri dari soket RJ-45.',
-      D: 'Speaker komputer mengeluarkan suara radio FM.'
-    },
-    kunci: 'A',
-    pembahasan: 'Cryptojacking membajak sumber daya komputasi perangkat keras korban (CPU/GPU) secara diam-diam untuk menambang mata uang kripto bagi keuntungan penyerang, menyebabkan sistem panas dan sangat lambat.'
-  },
-  {
-    id: 'q_m1_22',
-    moduleId: '1',
-    pertanyaan: 'Mengapa penggunaan flashdisk tanpa fitur proteksi atau membuka dokumen Word berekstensi asing yang mengandung "Macro" sangat berisiko bagi keamanan sistem?',
-    opsi: {
-      A: 'Macro script berbahaya dapat otomatis mengeksekusi perintah unduhan malware dan menyisipkan backdoor ke sistem operasi.',
-      B: 'Flashdisk akan mengurangi kapasitas daya listrik PLN.',
-      C: 'Macro menghapus keyboard secara permanen.',
-      D: 'Format flashdisk otomatis berubah menjadi CD-ROM.'
-    },
-    kunci: 'A',
-    pembahasan: 'Macro malware memanfaatkan bahasa pemrograman otomasi di dalam dokumen (seperti VBA) untuk mengunduh muatan payload jahat begitu pengguna mengaktifkan izin "Enable Content/Macros".'
-  },
-  {
-    id: 'q_m1_23',
-    moduleId: '1',
-    pertanyaan: 'Serangan Denial of Service yang membanjiri server target dengan paket SYN TCP tanpa pernah menyelesaikan proses three-way handshake disebut...',
-    opsi: {
-      A: 'SYN Flood Attack',
-      B: 'Ping Sweep',
-      C: 'XSS Attack',
-      D: 'Clickjacking'
-    },
-    kunci: 'A',
-    pembahasan: 'SYN Flood mengeksploitasi mekanisme TCP Three-Way Handshake dengan mengirim banjir permintaan koneksi awal (SYN) berulang kali dan membiarkan antrean buffer memori server penuh menunggu paket ACK balasan.'
-  },
-  {
-    id: 'q_m1_24',
-    moduleId: '1',
-    pertanyaan: 'Perangkat lunak jahat yang menyusup ke browser pengguna untuk membajak mesin pencari default dan mengalihkan ke situs iklan mencurigakan tanpa izin disebut...',
-    opsi: {
-      A: 'Browser Hijacker / Adware Agresif',
-      B: 'Device Driver',
-      C: 'Codec Video',
-      D: 'Firmware BIOS'
-    },
-    kunci: 'A',
-    pembahasan: 'Browser Hijacker memodifikasi pengaturan beranda, mesin telusur, dan menambahkan ekstensi mencurigakan untuk mendulang keuntungan tayangan iklan serta mengarahkan ke situs berbahaya.'
-  },
-  {
-    id: 'q_m1_25',
-    moduleId: '1',
-    pertanyaan: 'Metode penyerangan fisik/lingkungan di mana pelaku membuntuti staf resmi dari belakang saat memasuki ruang server berkeamanan tinggi tanpa menempelkan kartu akses sendiri disebut...',
-    opsi: {
-      A: 'Tailgating / Piggybacking',
-      B: 'Shoulder Surfing',
-      C: 'Dumpster Diving',
-      D: 'Baiting'
-    },
-    kunci: 'A',
-    pembahasan: 'Tailgating adalah pelanggaran keamanan fisik di mana orang tanpa hak izin menyusup mengekor di belakang pegawai yang baru saja membuka pintu berotentikasi.'
+    pembahasan: 'Ini adalah serangan DDoS (UDP Flood) yang memanfaatkan ratusan perangkat IoT yang telah disusupi (botnet) untuk menghabiskan seluruh kapasitas bandwidth WAN gateway sekolah.'
   },
 
-  /* --- KUIS MODUL 2: Analisis Sistem Keamanan Jaringan --- */
+  /* ===================================================================
+     MODUL 2: Evaluasi Matriks Efektivitas & Rekomendasi Sistem (C4-C5)
+     =================================================================== */
   {
-    id: 'q_m2_01',
+    id: 'hots_m2_01',
     moduleId: '2',
-    pertanyaan: 'Teknologi jaringan yang digunakan untuk menciptakan jalur komunikasi terenkripsi dan aman (terowongan privat) di atas jaringan internet publik adalah...',
-    opsi: {
-      A: 'NAT (Network Address Translation)',
-      B: 'DHCP (Dynamic Host Configuration Protocol)',
-      C: 'VPN (Virtual Private Network)',
-      D: 'DNS (Domain Name System)'
+    questionType: 'hots_m2_case',
+    pertanyaan: 'Seorang administrator sekolah sedang berada di luar kota dan harus mengakses server nilai internal melalui jaringan Wi-Fi publik kafe yang tidak terenkripsi. Kriteria utama kasus ini adalah melindungi kerahasiaan data selama transmisi di jaringan publik dari ancaman penyadapan (Man-in-the-Middle).',
+    kunci: 'vpn',
+    hotsData: {
+      matrix: {
+        antivirus: 'kurang_efektif',
+        firewall: 'kurang_efektif',
+        vpn: 'sangat_efektif',
+        auth: 'kurang_efektif'
+      },
+      recommended: 'vpn',
+      expectedKeywords: ['enkripsi', 'tunnel', 'publik', 'penyadapan', 'mitm', 'vpn', 'terowongan', 'kerahasiaan'],
+      rubricHint: 'Bandingkan efektivitas ke-4 sistem terhadap ancaman penyadapan Wi-Fi publik dan rekomendasikan solusi utamanya.'
     },
-    kunci: 'C',
-    pembahasan: 'VPN (Virtual Private Network) mengenkripsi seluruh paket pertukaran data antara perangkat klien dengan jaringan tujuan melalui mekanisme tunneling sehingga terlindung dari penyadapan pada Wi-Fi publik.'
+    pembahasan: 'VPN (Virtual Private Network) adalah rekomendasi paling tepat karena membentuk terowongan terenkripsi (encrypted tunnel) di atas Wi-Fi publik sehingga mencegah penyadapan MitM. Antivirus hanya melindungi endpoint lokal, sedangkan 2FA dan Firewall saja tidak mengenkripsi paket yang sedang melintas di Wi-Fi publik.'
   },
   {
-    id: 'q_m2_02',
+    id: 'hots_m2_02',
     moduleId: '2',
-    pertanyaan: 'Sistem pertahanan keamanan jaringan yang bertindak sebagai dinding penyaring antara jaringan internal sekolah dan internet berdasarkan seperangkat aturan yang telah ditentukan adalah...',
-    opsi: {
-      A: 'Firewall',
-      B: 'Switch Unmanaged',
-      C: 'Repeater',
-      D: 'Access Point'
+    questionType: 'hots_m2_case',
+    pertanyaan: 'Kredensial username dan kata sandi akun admin portal e-Rapor diketahui bocor akibat salah satu staf tertipu situs phishing. Kriteria keamanan utama adalah mencegah penyerang masuk ke akun walaupun kata sandi utama sudah berada di tangan peretas.',
+    kunci: 'auth',
+    hotsData: {
+      matrix: {
+        antivirus: 'tidak_relevan',
+        firewall: 'kurang_efektif',
+        vpn: 'tidak_relevan',
+        auth: 'sangat_efektif'
+      },
+      recommended: 'auth',
+      expectedKeywords: ['otp', 'lapis kedua', '2fa', 'mfa', 'verifikasi', 'password bocor', 'identitas', 'login'],
+      rubricHint: 'Jelaskan mengapa Autentikasi 2FA menjadi garis pertahanan utama saat password sudah diketahui peretas.'
     },
-    kunci: 'A',
-    pembahasan: 'Firewall bertugas memeriksa seluruh lalu lintas data yang masuk dan keluar berdasarkan aturan (ruleset) keamanan untuk mengizinkan (Allow) atau menolak (Block) lalu lintas mencurigakan.'
+    pembahasan: 'Autentikasi 2FA/MFA paling efektif karena mewajibkan faktor verifikasi kedua (seperti kode OTP ponsel) saat login; penyerang yang hanya memiliki password tetap tertolak. Antivirus dan VPN tidak menghentikan login sah memakai password curian.'
   },
   {
-    id: 'q_m2_03',
+    id: 'hots_m2_03',
     moduleId: '2',
-    pertanyaan: 'Mengapa autentikasi dua faktor (2FA / Two-Factor Authentication) jauh lebih aman dibandingkan hanya menggunakan kata sandi biasa?',
-    opsi: {
-      A: 'Karena 2FA mempercepat proses transfer file di jaringan lokal.',
-      B: 'Karena 2FA membutuhkan dua bentuk verifikasi berbeda (misal: password dan kode OTP ke ponsel), sehingga peretas tetap gagal jika hanya mengetahui password.',
-      C: 'Karena 2FA dapat menggantikan fungsi dari perangkat keras router.',
-      D: 'Karena 2FA menghapus seluruh virus yang ada di dalam server web.'
+    questionType: 'hots_m2_case',
+    pertanyaan: 'Server Web sekolah mengalami puluhan ribu percobaan koneksi asing dari internet ke port manajemen berisiko seperti Port 23 (Telnet) dan Port 3306 (Database). Kriteria utama adalah menyaring lalu lintas jaringan masuk dan menutup akses port yang tidak semestinya dibuka untuk publik.',
+    kunci: 'firewall',
+    hotsData: {
+      matrix: {
+        antivirus: 'tidak_relevan',
+        firewall: 'sangat_efektif',
+        vpn: 'tidak_relevan',
+        auth: 'kurang_efektif'
+      },
+      recommended: 'firewall',
+      expectedKeywords: ['port', 'filter', 'saring', 'blokir', 'lalu lintas', 'paket', 'firewall', 'drop'],
+      rubricHint: 'Analisis efektivitas ke-4 sistem untuk menyaring trafik port jaringan dan jelaskan mengapa Firewall paling tepat.'
     },
-    kunci: 'B',
-    pembahasan: '2FA menambahkan lapisan perlindungan sekunder. Jika kata sandi (something you know) bocor, peretas tetap tidak bisa masuk tanpa faktor kedua seperti kode OTP dari ponsel (something you have).'
+    pembahasan: 'Firewall adalah kontrol paling tepat karena secara spesifik memeriksa header paket jaringan (IP, protokol, nomor port) dan memblokir akses asing ke Port 23 maupun 3306 di perimeter jaringan sebelum menyentuh server.'
   },
   {
-    id: 'q_m2_04',
+    id: 'hots_m2_04',
     moduleId: '2',
-    pertanyaan: 'Jika sebuah perusahaan mempekerjakan teknisi jaringan jarak jauh (*work from home*) yang harus membuka file sensitif di server internal kantor, kombinasi keamanan paling tepat yang harus diterapkan adalah...',
-    opsi: {
-      A: 'Cukup menggunakan kabel fiber optik tanpa password.',
-      B: 'Membagikan folder publik di Google Drive tanpa enkripsi.',
-      C: 'Koneksi melalui VPN terenkripsi dengan autentikasi multi-faktor (MFA).',
-      D: 'Mematikan sistem firewall di kantor agar akses teknisi tidak lambat.'
+    questionType: 'hots_m2_case',
+    pertanyaan: 'Komputer di laboratorium sering mengalami kerusakan file dokumen akibat siswa bergantian menancapkan flashdisk pribadi untuk mencetak tugas. Kriteria utama kasus ini adalah mendeteksi, memblokir eksekusi, dan mengkarantina berkas malware lokal di perangkat komputer klien (endpoint).',
+    kunci: 'antivirus',
+    hotsData: {
+      matrix: {
+        antivirus: 'sangat_efektif',
+        firewall: 'kurang_efektif',
+        vpn: 'tidak_relevan',
+        auth: 'tidak_relevan'
+      },
+      recommended: 'antivirus',
+      expectedKeywords: ['pindai', 'scan', 'file', 'flashdisk', 'karantina', 'signature', 'endpoint', 'antivirus'],
+      rubricHint: 'Evaluasi efektivitas tiap sistem menghadapi infeksi media fisik flashdisk dan rekomendasikan pelindung endpoint terbaik.'
     },
-    kunci: 'C',
-    pembahasan: 'Kombinasi VPN untuk mengenkripsi jalur komunikasi publik dan MFA untuk memastikan identitas teknisi adalah standar keamanan industri dalam pengaksesan sumber daya internal secara jarak jauh.'
+    pembahasan: 'Antivirus paling efektif untuk memindai media eksternal USB (flashdisk) secara real-time melalui deteksi signature dan heuristik lalu mengkarantina malware sebelum dijalankan. Firewall jaringan tidak memeriksa file yang dipindah lewat port USB fisik.'
   },
   {
-    id: 'q_m2_05',
+    id: 'hots_m2_05',
     moduleId: '2',
-    pertanyaan: 'Perangkat lunak Antivirus pada komputer klien bekerja mendeteksi ancaman malware terutama menggunakan teknik...',
-    opsi: {
-      A: 'Mencocokkan tanda tangan file (Signature-based detection) dan analisis perilaku mencurigakan (Heuristic analysis).',
-      B: 'Mengukur suhu panas dari processor dan harddisk secara terus-menerus.',
-      C: 'Menghitung jumlah kata yang diketik oleh pengguna keyboard.',
-      D: 'Mengganti kartu jaringan dengan kartu nirkabel secara berkala.'
+    questionType: 'hots_m2_case',
+    pertanyaan: 'Sekolah memiliki gedung kampus utama dan gedung unit produksi di kecamatan berbeda yang harus bertukar data transaksi keuangan setiap hari melintasi jaringan internet ISP umum. Kriteria utama adalah menciptakan jembatan koneksi privat antar-kantor (Site-to-Site) yang terenkripsi penuh.',
+    kunci: 'vpn',
+    hotsData: {
+      matrix: {
+        antivirus: 'kurang_efektif',
+        firewall: 'kurang_efektif',
+        vpn: 'sangat_efektif',
+        auth: 'kurang_efektif'
+      },
+      recommended: 'vpn',
+      expectedKeywords: ['site-to-site', 'enkripsi', 'terowongan', 'tunnel', 'antar', 'cabang', 'publik', 'vpn'],
+      rubricHint: 'Jelaskan efektivitas VPN dalam menghubungkan dua lokasi jaringan terpisah secara aman melalui internet publik.'
     },
-    kunci: 'A',
-    pembahasan: 'Antivirus modern mengandalkan basis data signature virus yang diperbarui serta analisis heuristik untuk mengenali perilaku aplikasi yang abnormal atau berpotensi merusak sistem.'
+    pembahasan: 'VPN (khususnya Site-to-Site VPN dengan IPsec) paling efektif membentuk jalur komunikasi privat terenkripsi antar dua gedung melewati internet ISP publik agar data transaksi keuangan tidak terbaca pihak luar.'
   },
   {
-    id: 'q_m2_06',
+    id: 'hots_m2_06',
     moduleId: '2',
-    pertanyaan: 'Tiga pilar utama dalam keamanan informasi yang dikenal dengan singkatan CIA Triad adalah...',
-    opsi: {
-      A: 'Control, Internet, Access',
-      B: 'Confidentiality, Integrity, Availability',
-      C: 'Computer, Identity, Authentication',
-      D: 'Cables, Interface, Application'
+    questionType: 'hots_m2_case',
+    pertanyaan: 'Halaman login administrator router dan server portal siswa diserang menggunakan skrip otomatis Brute Force yang menebak ribuan kombinasi password. Kriteria utama adalah melindungi akses akun login meskipun kombinasi kata sandi berhasil ditebak oleh skrip.',
+    kunci: 'auth',
+    hotsData: {
+      matrix: {
+        antivirus: 'tidak_relevan',
+        firewall: 'kurang_efektif',
+        vpn: 'tidak_relevan',
+        auth: 'sangat_efektif'
+      },
+      recommended: 'auth',
+      expectedKeywords: ['2fa', 'otp', 'token', 'verifikasi', 'brute force', 'login', 'lapis kedua', 'mfa'],
+      rubricHint: 'Analisis perbandingan kontrol pertahanan terhadap serangan pembobolan akun login otomatis.'
     },
-    kunci: 'B',
-    pembahasan: 'CIA Triad (Kerahasiaan, Integritas, dan Ketersediaan) adalah model fondasi keamanan informasi untuk melindungi data dari akses tanpa izin, perubahan tidak sah, dan gangguan ketersediaan.'
+    pembahasan: 'Autentikasi 2FA/MFA merupakan pertahanan krusial untuk mencegah pembobolan akun meski skrip Brute Force berhasil menebak password, karena skrip penyerang tidak memiliki kode OTP dinamis di perangkat admin.'
   },
   {
-    id: 'q_m2_07',
+    id: 'hots_m2_07',
     moduleId: '2',
-    pertanyaan: 'Perbedaan utama antara IDS (Intrusion Detection System) dan IPS (Intrusion Prevention System) pada jaringan adalah...',
-    opsi: {
-      A: 'IDS hanya memonitor dan memberi peringatan (alert), sedangkan IPS dapat langsung memblokir ancaman secara aktif.',
-      B: 'IDS dipasang di kabel Wi-Fi, sedangkan IPS di kabel LAN.',
-      C: 'IDS mempercepat download, sedangkan IPS menghapus file.',
-      D: 'IDS hanya untuk sistem operasi Linux, sedangkan IPS untuk Windows.'
+    questionType: 'hots_m2_case',
+    pertanyaan: 'Siswa tidak sengaja mengunduh aplikasi gratis dari internet yang ternyata disisipi Trojan Backdoor di dalam sistem operasi Windows. Kriteria utama adalah mengenali perilaku mencurigakan file di dalam sistem operasi serta membersihkan proses jahat dari komputer klien.',
+    kunci: 'antivirus',
+    hotsData: {
+      matrix: {
+        antivirus: 'sangat_efektif',
+        firewall: 'kurang_efektif',
+        vpn: 'tidak_relevan',
+        auth: 'tidak_relevan'
+      },
+      recommended: 'antivirus',
+      expectedKeywords: ['trojan', 'heuristik', 'karantina', 'deteksi', 'komputer', 'endpoint', 'file', 'malware'],
+      rubricHint: 'Jelaskan bagaimana analisis heuristik Antivirus bekerja dibandingkan sistem jaringan lain pada kasus infeksi file lokal.'
     },
-    kunci: 'A',
-    pembahasan: 'IDS bersifat pasif yang menganalisis lalu lintas dan mengirimkan notifikasi saat ancaman terdeteksi, sedangkan IPS bertindak aktif di jalur transmisi (inline) dan langsung menjatuhkan (drop) paket jahat.'
+    pembahasan: 'Antivirus modern (dengan signature-based dan heuristic analysis) sangat efektif mendeteksi anomali perilaku file Trojan di memori/disk klien dan langsung mengkarantina file berbahaya tersebut.'
   },
   {
-    id: 'q_m2_08',
+    id: 'hots_m2_08',
     moduleId: '2',
-    pertanyaan: 'Prinsip keamanan "Least Privilege" (Hak Akses Minimum) dalam manajemen akun sistem jaringan bermakna bahwa...',
-    opsi: {
-      A: 'Semua siswa harus diberikan hak Administrator tertinggi.',
-      B: 'Setiap pengguna hanya diberikan hak akses yang benar-benar dibutuhkan untuk menyelesaikan tugas pekerjaannya.',
-      C: 'Password akun tidak boleh diubah selamanya.',
-      D: 'Semua file di server harus bisa dibaca oleh siapapun tanpa login.'
+    questionType: 'hots_m2_case',
+    pertanyaan: 'Manajemen sekolah menetapkan kebijakan agar komputer siswa di jam praktikum tidak dapat mengakses port layanan ilegal serta diblokir dari segmen server administrasi guru. Kriteria utama adalah menerapkan segmentasi kebijakan lalu lintas antar-subnet dan penyaringan port keluar/masuk.',
+    kunci: 'firewall',
+    hotsData: {
+      matrix: {
+        antivirus: 'tidak_relevan',
+        firewall: 'sangat_efektif',
+        vpn: 'tidak_relevan',
+        auth: 'tidak_relevan'
+      },
+      recommended: 'firewall',
+      expectedKeywords: ['blokir', 'aturan', 'port', 'ip', 'penyaringan', 'subnet', 'traffic', 'firewall'],
+      rubricHint: 'Uraikan mengapa kontrol berbasis aturan jaringan (Firewall) jauh lebih relevan dibanding sistem lainnya.'
     },
-    kunci: 'B',
-    pembahasan: 'Prinsip Least Privilege membatasi hak akses pengguna ke tingkat minimum yang diperlukan untuk mencegah potensi kerusakan atau penyalahgunaan jika akun tersebut disusupi.'
-  },
-  {
-    id: 'q_m2_09',
-    moduleId: '2',
-    pertanyaan: 'Protokol keamanan nirkabel yang paling kuat dan mutakhir untuk mengamankan jaringan Wi-Fi modern terhadap serangan offline dictionary attack adalah...',
-    opsi: {
-      A: 'WEP (Wired Equivalent Privacy)',
-      B: 'WPA (Wi-Fi Protected Access)',
-      C: 'WPA3 dengan protokol SAE',
-      D: 'Open System tanpa sandi'
-    },
-    kunci: 'C',
-    pembahasan: 'WPA3 menggunakan Simultaneous Authentication of Equals (SAE) yang tahan terhadap serangan kamus offline (offline dictionary attacks) dan menyediakan enkripsi yang lebih tangguh dibanding WPA2.'
-  },
-  {
-    id: 'q_m2_10',
-    moduleId: '2',
-    pertanyaan: 'Alat bantu baris perintah (CLI) yang sangat populer digunakan oleh administrator jaringan untuk melakukan audit keamanan dan pemindaian port aktif (port scanning) adalah...',
-    opsi: {
-      A: 'Nmap',
-      B: 'Notepad',
-      C: 'Winamp',
-      D: 'Paint'
-    },
-    kunci: 'A',
-    pembahasan: 'Nmap (Network Mapper) adalah utilitas open-source standar industri untuk eksplorasi jaringan, pemindaian port terbuka, inventarisasi perangkat, dan audit keamanan sistem.'
-  },
-  {
-    id: 'q_m2_11',
-    moduleId: '2',
-    pertanyaan: 'Mekanisme kriptografi yang menggunakan sepasang kunci berbeda, yaitu kunci publik (Public Key) untuk enkripsi dan kunci privat (Private Key) untuk dekripsi disebut...',
-    opsi: {
-      A: 'Kriptografi Asimetris (Public-key Cryptography)',
-      B: 'Kriptografi Simetris (Secret-key)',
-      C: 'Encoding Base64',
-      D: 'Hashing MD5'
-    },
-    kunci: 'A',
-    pembahasan: 'Kriptografi Asimetris menggunakan pasangan kunci matematis yang berbeda: kunci publik disebarkan secara terbuka untuk mengenkripsi pesan, sedangkan kunci privat disimpan rahasia oleh pemilik untuk membukanya.'
-  },
-  {
-    id: 'q_m2_12',
-    moduleId: '2',
-    pertanyaan: 'Mengapa salinan cadangan data (Data Backup) harus menerapkan aturan 3-2-1 untuk menjamin pemulihan bencana (Disaster Recovery)?',
-    opsi: {
-      A: 'Agar media penyimpanan cepat penuh.',
-      B: 'Menyimpan 3 salinan data, pada 2 jenis media berbeda, dengan 1 salinan disimpan di lokasi terpisah (off-site/cloud).',
-      C: 'Melakukan backup 3 kali sehari selama 2 jam dengan 1 teknisi.',
-      D: 'Menghapus data asli setelah 3 hari disimpan.'
-    },
-    kunci: 'B',
-    pembahasan: 'Aturan 3-2-1 menjamin ketahanan data: miliki minimal 3 salinan, simpan di 2 media berbeda (misal: NAS dan Hard Drive), dan 1 di lokasi luar (cloud/offsite) untuk mengantisipasi kebakaran atau ransomware.'
-  },
-  {
-    id: 'q_m2_13',
-    moduleId: '2',
-    pertanyaan: 'Fungsi Hash Satu Arah (Cryptographic Hash Function seperti SHA-256) dalam verifikasi integritas data file unduhan adalah...',
-    opsi: {
-      A: 'Menghasilkan checksum unik untuk memastikan file tidak mengalami modifikasi atau sisipan malware selama transfer.',
-      B: 'Mengompres ukuran file menjadi nol kilobyte.',
-      C: 'Menghapus password dari file terenkripsi.',
-      D: 'Mengubah format file dokumen menjadi video.'
-    },
-    kunci: 'A',
-    pembahasan: 'Fungsi hash menghasilkan nilai digest berukuran tetap unik. Jika satu bit saja dalam file berubah akibat kerusakan atau serangan malware, nilai hash yang dihasilkan akan berubah secara drastis (avalanche effect).'
-  },
-  {
-    id: 'q_m2_14',
-    moduleId: '2',
-    pertanyaan: 'Sertifikat Digital SSL/TLS yang terpasang pada sebuah server web diverifikasi keabsahannya oleh pihak ketiga tepercaya yang disebut...',
-    opsi: {
-      A: 'Certificate Authority (CA)',
-      B: 'Internet Service Provider (ISP)',
-      C: 'Search Engine Robot',
-      D: 'Domain Registrar'
-    },
-    kunci: 'A',
-    pembahasan: 'Certificate Authority (CA) adalah otoritas pihak ketiga terpercaya yang menerbitkan dan menandatangani sertifikat digital untuk memvalidasi kepemilikan domain dan mengaktifkan koneksi HTTPS.'
-  },
-  {
-    id: 'q_m2_15',
-    moduleId: '2',
-    pertanyaan: 'Teknik pertahanan keamanan jaringan yang sengaja menyiapkan server umpan palsu untuk memancing dan mempelajari perilaku penyerang disebut...',
-    opsi: {
-      A: 'Honeypot',
-      B: 'Proxy Server',
-      C: 'DNS Resolver',
-      D: 'Gateway Server'
-    },
-    kunci: 'A',
-    pembahasan: 'Honeypot adalah sistem keamanan jebakan yang sengaja dibiarkan rentan agar peretas masuk, memungkinkan tim keamanan mengisolasi dan mempelajari teknik penyerang tanpa membahayakan sistem produksi.'
-  },
-  {
-    id: 'q_m2_16',
-    moduleId: '2',
-    pertanyaan: 'Dalam implementasi sistem pertahanan mendalam (Defense in Depth), lapisan keamanan jaringan dirancang dengan prinsip...',
-    opsi: {
-      A: 'Menggabungkan beberapa lapisan perlindungan independen (firewall, segmentasi, antivirus, autentikasi) agar jika satu lapisan gagal, lapisan lain tetap melindungi.',
-      B: 'Hanya mengandalkan satu antivirus terbaik dan menonaktifkan fitur keamanan lainnya.',
-      C: 'Membuat satu password super panjang yang digunakan bersama oleh seluruh staf sekolah.',
-      D: 'Menutup seluruh akses internet selama 24 jam sehari.'
-    },
-    kunci: 'A',
-    pembahasan: 'Defense in Depth menerapkan pertahanan berlapis berjenjang; kegagalan satu komponen kontrol keamanan tidak serta merta membuat seluruh infrastruktur jaringan langsung bobol.'
-  },
-  {
-    id: 'q_m2_17',
-    moduleId: '2',
-    pertanyaan: 'Protokol tunneling VPN yang beroperasi pada layer jaringan dan menyediakan enkripsi data, integritas paket, serta autentikasi asal data yang sangat kuat adalah...',
-    opsi: {
-      A: 'IPsec (Internet Protocol Security)',
-      B: 'Telnet',
-      C: 'HTTP',
-      D: 'SNMP v1'
-    },
-    kunci: 'A',
-    pembahasan: 'IPsec adalah rangkaian protokol keamanan layer jaringan (Layer 3) yang mengamankan komunikasi IP melalui enkripsi dan autentikasi paket (menggunakan AH dan ESP).'
-  },
-  {
-    id: 'q_m2_18',
-    moduleId: '2',
-    pertanyaan: 'Algoritma enkripsi simetris dengan ukuran blok 128 bit yang menjadi standar baku pemerintah dan industri global dalam mengamankan data sensitif adalah...',
-    opsi: {
-      A: 'AES (Advanced Encryption Standard)',
-      B: 'DES (Data Encryption Standard yang sudah usang)',
-      C: 'Caesar Cipher',
-      D: 'ASCII'
-    },
-    kunci: 'A',
-    pembahasan: 'AES (Advanced Encryption Standard) dengan panjang kunci 128, 192, atau 256 bit merupakan standar enkripsi simetris paling aman dan efisien yang digunakan di seluruh dunia saat ini.'
-  },
-  {
-    id: 'q_m2_19',
-    moduleId: '2',
-    pertanyaan: 'Pada arsitektur jaringan aman, fungsi dari DMZ (Demilitarized Zone) adalah untuk...',
-    opsi: {
-      A: 'Menempatkan server publik yang dapat diakses dari internet terpisah dari jaringan komputer lokal internal sekolah.',
-      B: 'Menyimpan cadangan listrik darurat (UPS).',
-      C: 'Mempercepat kecepatan kipas pendingin ruang server.',
-      D: 'Menghapus log rekaman server setiap akhir pekan.'
-    },
-    kunci: 'A',
-    pembahasan: 'DMZ mengisolasi server yang melayani publik (web, email) dari LAN internal, sehingga jika server publik dieksploitasi penyerang, jaringan database dan komputer privat tidak langsung terpapar.'
-  },
-  {
-    id: 'q_m2_20',
-    moduleId: '2',
-    pertanyaan: 'Teknologi otentikasi jaringan yang menggunakan server RADIUS / TACACS+ untuk memusatkan otentikasi akun pengguna Wi-Fi sekolah dikenal dengan arsitektur...',
-    opsi: {
-      A: 'WPA2/WPA3 Enterprise (802.1X)',
-      B: 'WPA Personal (Pre-Shared Key tunggal)',
-      C: 'WEP 64-bit',
-      D: 'Wi-Fi Direct'
-    },
-    kunci: 'A',
-    pembahasan: 'WPA Enterprise menggunakan protokol IEEE 802.1X dan server RADIUS, di mana setiap siswa/guru login menggunakan username dan password pribadinya masing-masing.'
-  },
-  {
-    id: 'q_m2_21',
-    moduleId: '2',
-    pertanyaan: 'Fungsi dari sistem SIEM (Security Information and Event Management) di pusat operasi keamanan (SOC) adalah...',
-    opsi: {
-      A: 'Mengumpulkan, mengkorelasikan, dan menganalisis data log aktivitas dari berbagai perangkat jaringan secara terpusat untuk mendeteksi anomali.',
-      B: 'Mencetak laporan hasil kuis siswa ke kertas printer.',
-      C: 'Menggantikan kabel fiber optik yang terputus.',
-      D: 'Menyediakan koneksi Bluetooth untuk mouse laboratorium.'
-    },
-    kunci: 'A',
-    pembahasan: 'SIEM bertindak sebagai pusat pemantauan keamanan siber yang mengagregasi ribuan file log dari router, firewall, dan server untuk mengidentifikasi indikasi serangan (IoC).'
-  },
-  {
-    id: 'q_m2_22',
-    moduleId: '2',
-    pertanyaan: 'Pada konsep Public Key Infrastructure (PKI), apa yang terjadi apabila kunci privat (Private Key) dari sertifikat server web berhasil dicuri oleh peretas?',
-    opsi: {
-      A: 'Peretas dapat melakukan dekripsi lalu lintas data HTTPS pengguna dan menyamar sebagai server web yang sah.',
-      B: 'Komputer peretas akan rusak terkena arus balik tegangan tinggi.',
-      C: 'Website hanya bisa dibuka lewat peramban Internet Explorer.',
-      D: 'Ukuran domain website bertambah 10 karakter.'
-    },
-    kunci: 'A',
-    pembahasan: 'Private Key adalah rahasia tertinggi dalam enkripsi asimetris. Jika jatuh ke tangan penyerang, penyerang dapat mendekripsi sesi TLS dan melakukan serangan Man-in-the-Middle terselubung.'
-  },
-  {
-    id: 'q_m2_23',
-    moduleId: '2',
-    pertanyaan: 'Pendekatan keamanan modern berprinsip "Zero Trust Architecture" memiliki semboyan operasional yaitu...',
-    opsi: {
-      A: '"Never Trust, Always Verify" (Jangan pernah percaya, selalu verifikasi setiap permintaan akses).',
-      B: '"Trust Internal, Block External" (Percayai semua yang ada di jaringan LAN).',
-      C: '"No Password Needed" (Tidak memerlukan kata sandi).',
-      D: '"Always Allow All Traffic" (Izinkan seluruh lalu lintas).'
-    },
-    kunci: 'A',
-    pembahasan: 'Model Zero Trust mengasumsikan ancaman dapat berasal dari dalam maupun luar perimeter jaringan, sehingga setiap entitas dan perangkat wajib diverifikasi secara berkala sebelum diberi izin akses.'
-  },
-  {
-    id: 'q_m2_24',
-    moduleId: '2',
-    pertanyaan: 'Mekanisme keamanan email DMARC, SPF, dan DKIM dikonfigurasi pada DNS server domain sekolah terutama bertujuan untuk...',
-    opsi: {
-      A: 'Mencegah pemalsuan alamat email pengirim (Email Spoofing) dan memvalidasi keaslian pengirim email institusi.',
-      B: 'Mempercepat pengiriman attachment file video.',
-      C: 'Menghapus folder inbox secara otomatis setiap malam.',
-      D: 'Mengubah format email menjadi pesan SMS biasa.'
-    },
-    kunci: 'A',
-    pembahasan: 'SPF, DKIM, dan DMARC bekerja sama untuk memvalidasi bahwa email yang mengatasnamakan domain sekolah benar-benar berasal dari server resmi yang diotorisasi, menangkal phishing spoofing.'
-  },
-  {
-    id: 'q_m2_25',
-    moduleId: '2',
-    pertanyaan: 'Karakteristik kata sandi yang memenuhi standar rekomendasi NIST (National Institute of Standards and Technology) untuk melindungi akun dari serangan kamus adalah...',
-    opsi: {
-      A: 'Memiliki panjang minimal 12–16 karakter berupa passphrase unik tanpa pola tanggal lahir atau urutan angka berurutan.',
-      B: 'Menggunakan kata sandi pendek 4 huruf yang sering diganti tiap 3 hari.',
-      C: 'Menggunakan nama depan pengguna sebanyak tiga kali berulang.',
-      D: 'Menggunakan kata "password123".'
-    },
-    kunci: 'A',
-    pembahasan: 'NIST merekomendasikan penggunaan frasa sandi (passphrase) yang panjang dan unik ketimbang kombinasi pendek rumit yang mudah ditebak atau memaksa penggantian terlalu sering yang berujung pada pola lemah.'
+    pembahasan: 'Firewall adalah solusi paling tepat untuk menerapkan segmentasi lalu lintas antar-subnet dan menyaring/memblokir akses berdasarkan alamat IP dan port layanan sesuai kebijakan jaringan sekolah.'
   },
 
-  /* --- KUIS MODUL 3: Firewall & Penyaringan Paket --- */
+  /* ===================================================================
+     MODUL 3: Evaluasi Konfigurasi Simulator Firewall & Penjelasan (C4-C6)
+     =================================================================== */
   {
-    id: 'q_m3_01',
+    id: 'hots_m3_01',
     moduleId: '3',
-    pertanyaan: 'Pada metode penyaringan paket (*Packet Filtering Firewall*), kriteria data apa saja yang biasanya diperiksa dalam header paket data?',
-    opsi: {
-      A: 'Warna kabel jaringan dan merk kartu Ethernet.',
-      B: 'IP Asal, IP Tujuan, Protokol (TCP/UDP), dan Port Tujuan.',
-      C: 'Ukuran casing komputer dan kapasitas RAM server.',
-      D: 'Nama lengkap pengguna dan tanggal lahir pembuat website.'
+    questionType: 'hots_m3_firewall',
+    pertanyaan: 'Portal E-Learning ujian siswa membutuhkan akses browser web terenkripsi SSL/TLS agar siswa di Lab Komputer (192.168.1.50) dapat mengirimkan lembar jawaban ujian ke Server Ujian (10.0.0.10:443) tanpa risiko penyadapan.',
+    kunci: 'ALLOW',
+    hotsData: {
+      trafficKey: 'https',
+      trafficLabel: 'HTTPS (Port 443 TCP)',
+      protocol: 'TCP',
+      port: '443',
+      sourceIp: '192.168.1.50',
+      destIp: '10.0.0.10',
+      action: 'ALLOW',
+      expectedKeywords: ['https', '443', 'enkripsi', 'ssl', 'tls', 'diterima', 'allow', 'ujian'],
+      rubricHint: 'Terapkan aturan pada simulator dan jelaskan alasan teknis mengapa lalu lintas Port 443 ini harus diterima atau ditolak.'
     },
-    kunci: 'B',
-    pembahasan: 'Packet filtering memeriksa informasi pada layer 3 dan layer 4 OSI, mencakup alamat IP sumber dan tujuan, jenis protokol transport (TCP/UDP), serta nomor port layanan yang dituju.'
+    pembahasan: 'Aturan ALLOW wajib diterapkan untuk TCP Port 443 (HTTPS) karena lalu lintas ujian menggunakan enkripsi SSL/TLS yang aman untuk menjaga kerahasiaan dan kelancaran pengiriman jawaban ujian siswa ke server.'
   },
   {
-    id: 'q_m3_02',
+    id: 'hots_m3_02',
     moduleId: '3',
-    pertanyaan: 'Protokol Telnet menggunakan port 23 dan mengirimkan data kredensial tanpa enkripsi (*plain text*). Tindakan konfigurasi firewall yang tepat untuk melindungi server sekolah adalah...',
-    opsi: {
-      A: 'Membuat aturan ALLOW untuk port 23 dari seluruh internet.',
-      B: 'Membuat aturan BLOCK pada port 23 dan mengarahkan manajemen server ke SSH (Port 22).',
-      C: 'Menonaktifkan firewall saat proses login berlangsung.',
-      D: 'Mengubah nama server menjadi Telnet Server.'
+    questionType: 'hots_m3_firewall',
+    pertanyaan: 'Terdeteksi upaya login remote terminal menggunakan protokol Telnet (TCP Port 23) dari jaringan eksternal (203.0.113.88) ke Server Utama Sekolah (10.0.0.10:23). Kebijakan keamanan sekolah melarang keras pengiriman kata sandi secara plain text tanpa enkripsi.',
+    kunci: 'BLOCK',
+    hotsData: {
+      trafficKey: 'telnet',
+      trafficLabel: 'Telnet (Port 23 TCP)',
+      protocol: 'TCP',
+      port: '23',
+      sourceIp: '203.0.113.88',
+      destIp: '10.0.0.10',
+      action: 'BLOCK',
+      expectedKeywords: ['telnet', '23', 'plain', 'tidak terenkripsi', 'ditolak', 'block', 'sniffing', 'ssh'],
+      rubricHint: 'Jalankan aturan pada simulator lalu jelaskan risiko keamanan Telnet dan alasan paket ditolak/diterima.'
     },
-    kunci: 'B',
-    pembahasan: 'Telnet sangat rentan terhadap sniffing karena tidak terenkripsi. Aturan firewall harus memblokir (BLOCK) port 23 dan menggantinya dengan SSH (Secure Shell) pada port 22 yang aman dan terenkripsi.'
+    pembahasan: 'Aturan BLOCK wajib diterapkan pada Port 23 (Telnet) karena Telnet mengirimkan username dan password dalam format teks polos (plain text) yang mudah disadap (sniffing); remote manajemen harus diarahkan ke SSH Port 22.'
   },
   {
-    id: 'q_m3_03',
+    id: 'hots_m3_03',
     moduleId: '3',
-    pertanyaan: 'Jika sebuah firewall dikonfigurasi dengan aturan "ALLOW TCP Port 443", jenis lalu lintas data apa yang diizinkan melewati firewall menuju server web?',
-    opsi: {
-      A: 'Lalu lintas web terenkripsi yang aman (HTTPS).',
-      B: 'Lalu lintas transfer file FTP tanpa sandi (Port 21).',
-      C: 'Lalu lintas surat elektronik POP3 (Port 110).',
-      D: 'Lalu lintas ping ICMP banjir DDoS.'
+    questionType: 'hots_m3_firewall',
+    pertanyaan: 'Firewall mendeteksi lonjakan 50.000 paket ICMP Echo Request per detik secara serentak dari jaringan botnet asing (198.51.100.77) menuju Gateway Server (10.0.0.1) yang membuat respons jaringan sekolah macet total.',
+    kunci: 'BLOCK',
+    hotsData: {
+      trafficKey: 'ddos',
+      trafficLabel: 'ICMP Ping Flood (DDoS)',
+      protocol: 'ICMP',
+      port: 'N/A',
+      sourceIp: '198.51.100.77',
+      destIp: '10.0.0.1',
+      action: 'BLOCK',
+      expectedKeywords: ['ddos', 'icmp', 'banjir', 'lumpuh', 'ditolak', 'block', 'drop', 'bandwidth'],
+      rubricHint: 'Uji simulasi trafik banjir ICMP ini dan jelaskan alasan hasil penyaringan firewall.'
     },
-    kunci: 'A',
-    pembahasan: 'Port 443 adalah port standar untuk protokol HTTPS (Hypertext Transfer Protocol Secure) yang memanfaatkan enkripsi TLS/SSL untuk mengamankan pertukaran data web.'
+    pembahasan: 'Aturan BLOCK (DROP) harus diterapkan terhadap banjir paket ICMP Flood tersebut agar paket sampah DDoS dijatuhkan di perimeter firewall dan tidak menghabiskan bandwidth maupun CPU server gateway sekolah.'
   },
   {
-    id: 'q_m3_04',
+    id: 'hots_m3_04',
     moduleId: '3',
-    pertanyaan: 'Prinsip keamanan firewall "Default Deny / Default Block" berarti...',
-    opsi: {
-      A: 'Semua lalu lintas diizinkan secara default, kecuali yang diblokir oleh administrator.',
-      B: 'Semua lalu lintas ditolak secara default, hanya lalu lintas yang secara eksplisit diizinkan (Allow) yang dapat lewat.',
-      C: 'Firewall menolak semua koneksi termasuk koneksi administrator secara permanen.',
-      D: 'Firewall dimatikan secara otomatis setiap pergantian jam pelajaran.'
+    questionType: 'hots_m3_firewall',
+    pertanyaan: 'Seluruh PC klien laboratorium (192.168.1.25) tidak dapat menerjemahkan nama domain situs belajar (contoh: kemdikbud.go.id) karena kueri UDP Port 53 menuju DNS Resolver Internal (10.0.0.5:53) tertahan di firewall.',
+    kunci: 'ALLOW',
+    hotsData: {
+      trafficKey: 'dns',
+      trafficLabel: 'DNS Query (Port 53 UDP)',
+      protocol: 'UDP',
+      port: '53',
+      sourceIp: '192.168.1.25',
+      destIp: '10.0.0.5',
+      action: 'ALLOW',
+      expectedKeywords: ['dns', '53', 'domain', 'ip', 'diterima', 'allow', 'resolusi', 'akses'],
+      rubricHint: 'Terapkan kebijakan firewall yang tepat dan uraikan alasan mengapa trafik Port 53 ini harus lolos atau dibuang.'
     },
-    kunci: 'B',
-    pembahasan: 'Prinsip Default Deny merupakan praktik terbaik keamanan siber: sistem memblokir semua lalu lintas data tak dikenal, dan hanya mengizinkan lalu lintas yang secara tegas didaftarkan pada aturan Allow.'
+    pembahasan: 'Aturan ALLOW harus diterapkan pada UDP Port 53 (DNS) menuju DNS Resolver internal agar komputer klien dapat menerjemahkan nama domain menjadi alamat IP sehingga akses situs belajar berfungsi normal.'
   },
   {
-    id: 'q_m3_05',
+    id: 'hots_m3_05',
     moduleId: '3',
-    pertanyaan: 'Apa yang terjadi pada paket data di jaringan ketika firewall menerapkan tindakan "BLOCK / DROP" terhadap paket tersebut?',
-    opsi: {
-      A: 'Paket data digandakan lalu dikirim ke seluruh komputer di laboratorium.',
-      B: 'Paket data dihentikan dan dibuang di gerbang firewall sehingga tidak sampai ke komputer target.',
-      C: 'Paket data diubah menjadi video animasi.',
-      D: 'Paket data dipercepat pengirimannya hingga 100 kali lipat.'
+    questionType: 'hots_m3_firewall',
+    pertanyaan: 'Sebuah IP publik tak dikenal dari internet (45.33.12.9) mencoba membuka koneksi transfer file menggunakan protokol FTP standar (TCP Port 21) tanpa enkripsi ke Server Keuangan Sekolah (10.0.0.20:21).',
+    kunci: 'BLOCK',
+    hotsData: {
+      trafficKey: 'ftp',
+      trafficLabel: 'FTP Plain (Port 21 TCP)',
+      protocol: 'TCP',
+      port: '21',
+      sourceIp: '45.33.12.9',
+      destIp: '10.0.0.20',
+      action: 'BLOCK',
+      expectedKeywords: ['ftp', '21', 'plain', 'enkripsi', 'ditolak', 'block', 'keuangan', 'sftp'],
+      rubricHint: 'Jalankan simulasi firewall untuk lalu lintas FTP eksternal ini dan jelaskan alasan teknis keputusannya.'
     },
-    kunci: 'B',
-    pembahasan: 'Tindakan Block/Drop menghentikan paket berbahaya di perimeter firewall dan membuangnya dari antrean transmisi, melindungi server di balik firewall dari potensi serangan atau eksploitasi.'
+    pembahasan: 'Aturan BLOCK wajib diterapkan pada TCP Port 21 dari IP publik karena FTP mengirimkan kredensial dan berkas sensitif keuangan tanpa enkripsi; transfer berkas aman wajib memakai SFTP (Port 22) dari IP terotorisasi.'
   },
   {
-    id: 'q_m3_06',
+    id: 'hots_m3_06',
     moduleId: '3',
-    pertanyaan: 'Firewall generasi mutakhir yang tidak hanya memeriksa port dan IP, namun mampu menginspeksi isi konten aplikasi pada Layer 7 OSI serta dilengkapi IPS terintegrasi disebut...',
-    opsi: {
-      A: 'Next-Generation Firewall (NGFW)',
-      B: 'Hub Pasif',
-      C: 'Modem Dial-up',
-      D: 'Kabel Coaxial'
+    questionType: 'hots_m3_firewall',
+    pertanyaan: 'Administrator jaringan resmi sekolah (IP terotorisasi: 192.168.10.2) perlu melakukan pemeliharaan darurat pada Server Linux (10.0.0.10:22) melalui saluran remote terenkripsi Secure Shell (SSH TCP Port 22).',
+    kunci: 'ALLOW',
+    hotsData: {
+      trafficKey: 'ssh',
+      trafficLabel: 'SSH Admin (Port 22 TCP)',
+      protocol: 'TCP',
+      port: '22',
+      sourceIp: '192.168.10.2',
+      destIp: '10.0.0.10',
+      action: 'ALLOW',
+      expectedKeywords: ['ssh', '22', 'enkripsi', 'admin', 'diterima', 'allow', 'aman', 'remote'],
+      rubricHint: 'Konfigurasikan simulasi untuk permintaan SSH admin resmi ini dan jelaskan alasan hasil simulasi.'
     },
-    kunci: 'A',
-    pembahasan: 'Next-Generation Firewall (NGFW) menggabungkan inspeksi paket mendalam (DPI), kontrol aplikasi Layer 7, deteksi ancaman berbasis cloud, dan pencegahan intrusi terintegrasi.'
+    pembahasan: 'Aturan ALLOW diterapkan untuk koneksi SSH (TCP Port 22) karena berasal dari IP administrator terpercaya dan komunikasi SSH dienkripsi penuh dari ujung ke ujung sehingga aman untuk administrasi server.'
   },
   {
-    id: 'q_m3_07',
+    id: 'hots_m3_07',
     moduleId: '3',
-    pertanyaan: 'Zona jaringan khusus yang memisahkan server publik (seperti Web Server dan Mail Server) dari jaringan internal lokal sekolah guna membatasi risiko kebocoran disebut...',
-    opsi: {
-      A: 'DMZ (Demilitarized Zone)',
-      B: 'Intranet Murni',
-      C: 'Localhost Loopback',
-      D: 'Broadcast Domain'
+    questionType: 'hots_m3_firewall',
+    pertanyaan: 'Terdeteksi upaya koneksi langsung dari alamat IP internet publik (185.220.101.4) menuju layanan basis data MySQL (TCP Port 3306) di Server Database Nilai Siswa (10.0.0.50:3306).',
+    kunci: 'BLOCK',
+    hotsData: {
+      trafficKey: 'mysql',
+      trafficLabel: 'MySQL Public (Port 3306 TCP)',
+      protocol: 'TCP',
+      port: '3306',
+      sourceIp: '185.220.101.4',
+      destIp: '10.0.0.50',
+      action: 'BLOCK',
+      expectedKeywords: ['database', 'mysql', '3306', 'publik', 'ditolak', 'block', 'kebocoran', 'internal'],
+      rubricHint: 'Uji simulasi akses database publik ini dan jelaskan alasan mengapa lalu lintas diterima atau ditolak.'
     },
-    kunci: 'A',
-    pembahasan: 'DMZ (Demilitarized Zone) adalah subnet terisolasi perimeter jaringan tempat server layanan publik ditempatkan. Jika server DMZ diretas, penyerang tidak dapat langsung mengakses jaringan internal privat.'
+    pembahasan: 'Aturan BLOCK wajib diterapkan karena port database (MySQL 3306) tidak boleh diekspos langsung ke internet publik; membuka port database ke publik berisiko besar menyebabkan pencurian data dan serangan Brute Force.'
   },
   {
-    id: 'q_m3_08',
+    id: 'hots_m3_08',
     moduleId: '3',
-    pertanyaan: 'Pada sistem operasi Linux, utilitas firewall berbasis tabel filter paket yang sangat umum dikonfigurasi melalui baris perintah adalah...',
-    opsi: {
-      A: 'iptables / nftables',
-      B: 'apt-get install',
-      C: 'mkdir & rmdir',
-      D: 'ping & traceroute'
+    questionType: 'hots_m3_firewall',
+    pertanyaan: 'Sistem pemantau jaringan mendeteksi lalu lintas eksploitasi protokol berbagi berkas SMB (TCP Port 445) mencoba menerobos masuk dari luar jaringan (203.0.113.99) menuju komputer Lab TJKT (192.168.1.0/24), pola yang identik dengan penyebaran Worm/Ransomware.',
+    kunci: 'BLOCK',
+    hotsData: {
+      trafficKey: 'smb',
+      trafficLabel: 'SMB External (Port 445 TCP)',
+      protocol: 'TCP',
+      port: '445',
+      sourceIp: '203.0.113.99',
+      destIp: '192.168.1.50',
+      action: 'BLOCK',
+      expectedKeywords: ['smb', '445', 'worm', 'ransomware', 'ditolak', 'block', 'eksploitasi', 'eksternal'],
+      rubricHint: 'Terapkan aturan simulasi yang aman terhadap trafik SMB eksternal dan jelaskan alasan teknisnya.'
     },
-    kunci: 'A',
-    pembahasan: 'iptables dan penggantinya (nftables) adalah kerangka kerja firewall bawaan kernel Linux (Netfilter) yang mengelola aturan penyaringan, pengalihan, dan modifikasi paket jaringan.'
-  },
-  {
-    id: 'q_m3_09',
-    moduleId: '3',
-    pertanyaan: 'Pada konfigurasi iptables Linux, rantai (chain) aturan yang bertugas menyaring paket data yang masuk dan ditujukan khusus untuk mesin server itu sendiri adalah...',
-    opsi: {
-      A: 'Chain INPUT',
-      B: 'Chain OUTPUT',
-      C: 'Chain FORWARD',
-      D: 'Chain PREROUTING'
-    },
-    kunci: 'A',
-    pembahasan: 'Chain INPUT menangani paket yang memiliki alamat tujuan IP mesin lokal server tersebut, Chain FORWARD menangani paket yang dilewatkan/dirutekan, dan Chain OUTPUT untuk paket yang keluar dari server.'
-  },
-  {
-    id: 'q_m3_10',
-    moduleId: '3',
-    pertanyaan: 'Perbedaan utama antara tindakan DROP dan REJECT pada firewall ketika menolak paket data yang tidak sah adalah...',
-    opsi: {
-      A: 'DROP membuang paket secara diam-diam tanpa balasan ke pengirim, sedangkan REJECT membuang paket dan mengirim pesan kesalahan (ICMP) ke pengirim.',
-      B: 'DROP merusak kabel jaringan, sedangkan REJECT mematikan router.',
-      C: 'DROP mengizinkan paket lewat, sedangkan REJECT menggandakan paket.',
-      D: 'DROP hanya berlaku untuk protokol HTTP, sedangkan REJECT untuk SSH.'
-    },
-    kunci: 'A',
-    pembahasan: 'DROP membuang paket seketika (silent discard) sehingga penyerang mengalami timeout dan sulit mendeteksi keberadaan target. REJECT membuang paket namun mengembalikan paket penolakan (ICMP unreachable/TCP RST).'
-  },
-  {
-    id: 'q_m3_11',
-    moduleId: '3',
-    pertanyaan: 'Firewall tipe Stateful Inspection memiliki keunggulan dibandingkan Stateless Packet Filtering biasa karena...',
-    opsi: {
-      A: 'Mengingat dan melacak status tabel koneksi (State Table) aktif dari awal hingga akhir sesi transmisi.',
-      B: 'Tidak membutuhkan listrik untuk beroperasi.',
-      C: 'Bisa membaca file PDF tanpa Adobe Acrobat.',
-      D: 'Hanya bisa dipakai pada satu komputer klien saja.'
-    },
-    kunci: 'A',
-    pembahasan: 'Stateful firewall memelihara tabel status koneksi (SYN, ESTABLISHED, RELATED), sehingga paket balasan dari sesi yang sah diizinkan masuk otomatis tanpa perlu membuka port secara manual dari arah luar.'
-  },
-  {
-    id: 'q_m3_12',
-    moduleId: '3',
-    pertanyaan: 'Port standar jaringan yang digunakan oleh layanan Domain Name System (DNS) untuk menerjemahkan nama domain website menjadi alamat IP adalah port...',
-    opsi: {
-      A: 'Port 53 (UDP/TCP)',
-      B: 'Port 80 (HTTP)',
-      C: 'Port 21 (FTP)',
-      D: 'Port 25 (SMTP)'
-    },
-    kunci: 'A',
-    pembahasan: 'Port 53 adalah port baku protokol DNS yang menangani penerjemahan alamat hostname/domain ke alamat IP numerik yang dapat dipahami perangkat jaringan.'
-  },
-  {
-    id: 'q_m3_13',
-    moduleId: '3',
-    pertanyaan: 'Fitur NAT (Network Address Translation) jenis Masquerading pada router gateway firewall berfungsi untuk...',
-    opsi: {
-      A: 'Menerjemahkan banyak alamat IP privat jaringan lokal ke satu alamat IP publik agar semua klien dapat mengakses internet.',
-      B: 'Memperbanyak virus di komputer siswa.',
-      C: 'Menghapus konfigurasi router saat terjadi mati lampu.',
-      D: 'Mengubah sinyal Wi-Fi menjadi frekuensi radio FM.'
-    },
-    kunci: 'A',
-    pembahasan: 'IP Masquerade (Source NAT) menyamarkan alamat IP privat klien internal di balik satu alamat IP publik gateway ketika paket melintasi perbatasan ke jaringan internet.'
-  },
-  {
-    id: 'q_m3_14',
-    moduleId: '3',
-    pertanyaan: 'Layanan Secure Shell (SSH) untuk remote administrasi server menggunakan port default nomor...',
-    opsi: {
-      A: 'Port 22',
-      B: 'Port 23',
-      C: 'Port 80',
-      D: 'Port 443'
-    },
-    kunci: 'A',
-    pembahasan: 'SSH (Secure Shell) secara default beroperasi pada port 22, menggantikan protokol Telnet yang tidak aman dengan menyediakan saluran komunikasi terenkripsi penuh.'
-  },
-  {
-    id: 'q_m3_15',
-    moduleId: '3',
-    pertanyaan: 'Sebuah server web di laboratorium sekolah hanya boleh diakses menggunakan peramban web aman HTTPS. Aturan firewall paling tepat yang harus diterapkan adalah...',
-    opsi: {
-      A: 'ALLOW TCP Port 443 dan BLOCK port layanan lain yang tidak digunakan (Default Deny).',
-      B: 'ALLOW semua port dari 1 sampai 65535.',
-      C: 'BLOCK Port 443 dan buka Port 23 Telnet.',
-      D: 'Matikan router setiap kali ada akses masuk.'
-    },
-    kunci: 'A',
-    pembahasan: 'Konfigurasi paling aman adalah membuka hanya port yang dibutuhkan (Port 443 TCP untuk HTTPS) dan menerapkan kebijakan default block untuk seluruh port layanan lainnya guna mempersempit bidang serangan (attack surface).'
-  },
-  {
-    id: 'q_m3_16',
-    moduleId: '3',
-    pertanyaan: 'Port baku yang digunakan oleh protokol transfer file aman SFTP (SSH File Transfer Protocol) adalah...',
-    opsi: {
-      A: 'Port 22 (TCP)',
-      B: 'Port 21 (FTP Plain)',
-      C: 'Port 25 (SMTP)',
-      D: 'Port 110 (POP3)'
-    },
-    kunci: 'A',
-    pembahasan: 'SFTP memanfaatkan protokol SSH pada port 22 untuk mengamankan proses transfer berkas dengan enkripsi penuh, berbeda dengan FTP konvensional pada port 21 yang tidak terenkripsi.'
-  },
-  {
-    id: 'q_m3_17',
-    moduleId: '3',
-    pertanyaan: 'Aturan firewall yang mengarahkan port publik tertentu ke IP privat server internal (misal port 8080 diteruskan ke port 80 pada web server lokal) menerapkan fungsi...',
-    opsi: {
-      A: 'Destination NAT (Port Forwarding)',
-      B: 'Source NAT (Masquerade)',
-      C: 'Loopback Prevention',
-      D: 'ICMP Echo Ping'
-    },
-    kunci: 'A',
-    pembahasan: 'Destination NAT (Dst-NAT / Port Forwarding) mengubah alamat IP dan/atau port tujuan pada header paket agar layanan server internal dapat diakses dari luar jaringan privat.'
-  },
-  {
-    id: 'q_m3_18',
-    moduleId: '3',
-    pertanyaan: 'Perintah firewall iptables Linux: "iptables -A INPUT -p tcp --dport 22 -s 192.168.1.50 -j ACCEPT" memiliki fungsi...',
-    opsi: {
-      A: 'Hanya mengizinkan koneksi SSH (Port 22) yang berasal dari alamat IP komputer administrator 192.168.1.50.',
-      B: 'Menolak seluruh koneksi yang masuk ke server dari alamat IP 192.168.1.50.',
-      C: 'Mematikan port 22 untuk seluruh pengguna jaringan lokal.',
-      D: 'Mengizinkan semua orang di internet mengakses port 22 tanpa batasan.'
-    },
-    kunci: 'A',
-    pembahasan: 'Opsi -s (source IP) menentukan alamat sumber yang diizinkan; perintah tersebut mengunci akses port 22 SSH khusus untuk workstation pengelola 192.168.1.50.'
-  },
-  {
-    id: 'q_m3_19',
-    moduleId: '3',
-    pertanyaan: 'Jika administrator ingin memblokir akses ping ICMP agar server sekolah tidak merespons upaya pemindaian (ping sweep) peretas dari internet, opsi protokol yang harus difilter adalah...',
-    opsi: {
-      A: 'Protokol ICMP (Internet Control Message Protocol)',
-      B: 'Protokol TCP',
-      C: 'Protokol UDP',
-      D: 'Protokol IGMP'
-    },
-    kunci: 'A',
-    pembahasan: 'Utilitas Ping beroperasi menggunakan protokol ICMP (Echo Request tipe 8 dan Echo Reply tipe 0). Memblokir paket ICMP echo-request menyembunyikan host dari alat pemindai aktif.'
-  },
-  {
-    id: 'q_m3_20',
-    moduleId: '3',
-    pertanyaan: 'Perbedaan karakteristik transmisi antara protokol TCP dan UDP yang menjadi pertimbangan dalam penyusunan aturan firewall adalah...',
-    opsi: {
-      A: 'TCP berorientasi koneksi (connection-oriented) dan andal, sedangkan UDP bersifat connectionless dan tanpa jaminan pengiriman paket.',
-      B: 'TCP hanya mengirim gambar, sedangkan UDP hanya mengirim teks.',
-      C: 'TCP tidak memiliki nomor port, sedangkan UDP memiliki nomor port.',
-      D: 'TCP hanya berjalan di kabel fiber optik.'
-    },
-    kunci: 'A',
-    pembahasan: 'TCP melakukan jabat tangan (handshake) dan pelacakan status sesi, sedangkan UDP mengirim datagram secara langsung tanpa jabat tangan (banyak dipakai untuk streaming video, DNS, dan game online).'
-  },
-  {
-    id: 'q_m3_21',
-    moduleId: '3',
-    pertanyaan: 'Dalam urutan pembacaan aturan firewall (Rule Ordering), prinsip evaluasi aturan yang diterapkan oleh mesin firewall adalah...',
-    opsi: {
-      A: 'Aturan dievaluasi berurutan dari atas ke bawah (Top-to-Bottom); saat ada aturan yang cocok (match), paket langsung diproses dan evaluasi aturan di bawahnya dilewati.',
-      B: 'Semua aturan dijalankan secara acak setiap detik.',
-      C: 'Aturan paling bawah selalu mengabaikan aturan di atasnya.',
-      D: 'Firewall hanya membaca aturan pada baris genap.'
-    },
-    kunci: 'A',
-    pembahasan: 'Urutan aturan (ruleset order) sangat krusial: aturan yang lebih spesifik harus ditempatkan di atas, sedangkan aturan penolakan umum (Default Drop) diletakkan di baris paling bawah.'
-  },
-  {
-    id: 'q_m3_22',
-    moduleId: '3',
-    pertanyaan: 'Sebuah Web Application Firewall (WAF) berbeda dari Network Firewall konvensional karena WAF dirancang secara khusus untuk...',
-    opsi: {
-      A: 'Melindungi aplikasi web dari serangan berbasis payload aplikasi seperti SQL Injection, XSS, dan CSRF pada Layer 7.',
-      B: 'Menyambungkan kabel fiber optik antar gedung sekolah.',
-      C: 'Menggantikan peran sistem pendingin AC di ruang server.',
-      D: 'Mempercepat pengisian daya baterai laptop siswa.'
-    },
-    kunci: 'A',
-    pembahasan: 'WAF beroperasi pada Layer 7 (Application Layer) dengan memeriksa konten permintaan HTTP/HTTPS untuk mendeteksi pola serangan injeksi web yang lolos dari firewall layer transport biasa.'
-  },
-  {
-    id: 'q_m3_23',
-    moduleId: '3',
-    pertanyaan: 'Untuk mengizinkan pengguna di jaringan LAN membuka situs web umum di internet, port outbound yang wajib dibuka pada firewall gateway adalah...',
-    opsi: {
-      A: 'Port 80 (HTTP) dan Port 443 (HTTPS) TCP, serta Port 53 (DNS) UDP.',
-      B: 'Hanya Port 21 (FTP).',
-      C: 'Port 23 (Telnet) dan Port 25 (SMTP).',
-      D: 'Port 3389 (RDP) saja.'
-    },
-    kunci: 'A',
-    pembahasan: 'Aktivitas browsing internet membutuhkan resolusi domain (Port 53 UDP/TCP) serta akses ke halaman web baik non-enkripsi (Port 80 TCP) maupun web aman modern (Port 443 TCP).'
-  },
-  {
-    id: 'q_m3_24',
-    moduleId: '3',
-    pertanyaan: 'Fitur "Rate Limiting" atau "Connection Limiting" pada firewall bermanfaat untuk melindungi server dari serangan...',
-    opsi: {
-      A: 'Serangan Brute Force login dan banjir koneksi DoS dengan membatasi jumlah permintaan per detik dari satu IP.',
-      B: 'Korsleting arus listrik PLN.',
-      C: 'Debu yang menempel pada casing server.',
-      D: 'Kerusakan layar monitor LCD.'
-    },
-    kunci: 'A',
-    pembahasan: 'Rate limiting membatasi frekuensi percobaan koneksi atau paket per satuan waktu dari satu IP sumber, secara efektif meredam serangan tebakan password otomatis dan serangan banjir lalu lintas.'
-  },
-  {
-    id: 'q_m3_25',
-    moduleId: '3',
-    pertanyaan: 'Pada simulasi firewall jaringan laboratorium, apa indikator bahwa sebuah aturan firewall "BLOCK Port 80" berhasil diuji dengan benar?',
-    opsi: {
-      A: 'Komputer klien menerima status Connection Timed Out / Connection Refused saat mencoba membuka halaman HTTP web server.',
-      B: 'Halaman website langsung terbuka dalam 0,1 detik.',
-      C: 'Lampu monitor klien langsung mati total.',
-      D: 'Kabel jaringan otomatis terlepas dari switch.'
-    },
-    kunci: 'A',
-    pembahasan: 'Ketika port 80 diblokir oleh firewall, paket TCP SYN yang dikirim oleh peramban klien ditolak atau dibuang, sehingga peramban menampilkan pesan kegagalan koneksi (timeout atau connection refused).'
+    pembahasan: 'Aturan BLOCK wajib diterapkan terhadap Port 445 (SMB) dari jaringan eksternal karena port tersebut merupakan vektor serangan paling umum bagi Network Worm dan Ransomware untuk menyebar secara otomatis.'
   }
 ];
 
@@ -1085,53 +532,35 @@ const Storage = {
   },
 
   /**
-   * Inisialisasi storage awal jika belum tersedia
+   * Inisialisasi storage awal & migrasi otomatis ke format HOTS C4-C6
    */
   initStorage() {
     if (!localStorage.getItem(STORAGE_KEYS.USERS)) {
       localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(DEFAULT_USERS));
     }
-    if (!localStorage.getItem(STORAGE_KEYS.MODULES)) {
-      localStorage.setItem(STORAGE_KEYS.MODULES, JSON.stringify(DEFAULT_MODULES));
-    } else {
-      try {
-        const storedModules = JSON.parse(localStorage.getItem(STORAGE_KEYS.MODULES) || '[]');
-        let modUpdated = false;
-        storedModules.forEach(m => {
-          if (m.totalSoal !== 10) {
-            m.totalSoal = 10;
-            m.durasi = '15 Menit';
-            modUpdated = true;
-          }
-        });
-        if (modUpdated) {
-          localStorage.setItem(STORAGE_KEYS.MODULES, JSON.stringify(storedModules));
-        }
-      } catch (e) {
-        localStorage.setItem(STORAGE_KEYS.MODULES, JSON.stringify(DEFAULT_MODULES));
-      }
-    }
+
+    // Selalu sinkronkan metadata 3 modul dengan rumusan TP C4-C6 terbaru
+    localStorage.setItem(STORAGE_KEYS.MODULES, JSON.stringify(DEFAULT_MODULES));
+
     if (!localStorage.getItem(STORAGE_KEYS.QUIZZES)) {
       localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(DEFAULT_QUIZZES));
     } else {
-      // Pastikan butir soal baru terintegrasi ke dalam localStorage yang sudah ada
       try {
-        const storedQuizzes = JSON.parse(localStorage.getItem(STORAGE_KEYS.QUIZZES) || '[]');
-        const storedIds = new Set(storedQuizzes.map(q => q.id));
-        let hasNew = false;
+        let storedQuizzes = JSON.parse(localStorage.getItem(STORAGE_KEYS.QUIZZES) || '[]');
+        // Hapus soal Pilihan Ganda lama (q_m...) saat beralih ke Evaluasi HOTS C4-C6
+        storedQuizzes = storedQuizzes.filter(q => q && q.id && !String(q.id).startsWith('q_m'));
+        const storedMap = new Map(storedQuizzes.map(q => [q.id, q]));
         DEFAULT_QUIZZES.forEach(dq => {
-          if (!storedIds.has(dq.id)) {
-            storedQuizzes.push(dq);
-            hasNew = true;
+          if (!storedMap.has(dq.id)) {
+            storedMap.set(dq.id, dq);
           }
         });
-        if (hasNew) {
-          localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(storedQuizzes));
-        }
+        localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(Array.from(storedMap.values())));
       } catch (e) {
         localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(DEFAULT_QUIZZES));
       }
     }
+
     if (!localStorage.getItem(STORAGE_KEYS.RESULTS)) {
       localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify([]));
     }
@@ -1151,21 +580,26 @@ const Storage = {
     if (!api) return;
 
     try {
-      // 1. Sync Bank Soal dari MySQL (merging dengan DEFAULT_QUIZZES)
+      // 1. Sync Bank Kasus HOTS dari MySQL (merging dengan DEFAULT_QUIZZES, filter legacy q_m...)
       const p1 = fetch(`${api}/quizzes.php`)
         .then(r => r.json())
         .then(res => {
           if (res.success && Array.isArray(res.data) && res.data.length > 0) {
-            const currentQuizzes = JSON.parse(localStorage.getItem(STORAGE_KEYS.QUIZZES) || '[]');
+            const currentQuizzes = (JSON.parse(localStorage.getItem(STORAGE_KEYS.QUIZZES) || '[]'))
+              .filter(q => q && q.id && !String(q.id).startsWith('q_m'));
             const map = new Map();
             DEFAULT_QUIZZES.forEach(q => map.set(q.id, q));
             currentQuizzes.forEach(q => map.set(q.id, q));
-            res.data.forEach(q => map.set(q.id, q));
+            res.data.forEach(q => {
+              if (q && q.id && !String(q.id).startsWith('q_m')) {
+                map.set(q.id, q);
+              }
+            });
             localStorage.setItem(STORAGE_KEYS.QUIZZES, JSON.stringify(Array.from(map.values())));
           }
         }).catch(() => {});
 
-      // 2. Sync Rekap Hasil Kuis dari MySQL (merging agar data lokal tidak terhapus)
+      // 2. Sync Rekap Hasil Evaluasi HOTS dari MySQL
       const p2 = fetch(`${api}/results.php`)
         .then(r => r.json())
         .then(res => {
@@ -1383,7 +817,7 @@ const Storage = {
     return updated;
   },
 
-  /* --- MANAJEMEN BANK SOAL (CRUD GURU) --- */
+  /* --- MANAJEMEN BANK KASUS HOTS (CRUD GURU) --- */
   getQuizzes(moduleId = null) {
     const all = JSON.parse(localStorage.getItem(STORAGE_KEYS.QUIZZES) || JSON.stringify(DEFAULT_QUIZZES));
     if (moduleId !== null && moduleId !== undefined && moduleId !== 'all') {
@@ -1399,8 +833,12 @@ const Storage = {
 
   addQuiz(quizData) {
     const all = this.getQuizzes();
+    const defaultType = String(quizData.moduleId) === '1'
+      ? 'hots_m1_dnd'
+      : (String(quizData.moduleId) === '2' ? 'hots_m2_case' : 'hots_m3_firewall');
     const newQuiz = {
-      id: `q_m${quizData.moduleId}_${Date.now()}`,
+      id: `hots_m${quizData.moduleId}_${Date.now()}`,
+      questionType: quizData.questionType || defaultType,
       ...quizData
     };
     all.push(newQuiz);
@@ -1432,7 +870,7 @@ const Storage = {
         fetch(`${api}/quizzes.php`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id, ...quizData })
+          body: JSON.stringify({ id, ...all[index] })
         }).catch(() => {});
       }
 
@@ -1457,7 +895,7 @@ const Storage = {
     return filtered.length !== all.length;
   },
 
-  /* --- MANAJEMEN HASIL EVALUASI / KUIS --- */
+  /* --- MANAJEMEN HASIL EVALUASI HOTS & PENILAIAN GURU --- */
   getAllResults() {
     return JSON.parse(localStorage.getItem(STORAGE_KEYS.RESULTS) || '[]');
   },
@@ -1493,12 +931,14 @@ const Storage = {
     const newResult = {
       id: `res_${Date.now()}`,
       timestamp: new Date().toISOString(),
+      teacherFeedback: '',
+      gradedByTeacher: false,
       ...resultData
     };
     all.unshift(newResult);
     localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify(all));
 
-    // Update progres kuis siswa pada modul terkait di local
+    // Update progres evaluasi siswa pada modul terkait di local
     this.updateStudentProgress(resultData.studentId, resultData.moduleId, {
       quizScore: resultData.score,
       completed: resultData.score >= 75
@@ -1515,6 +955,44 @@ const Storage = {
     }
 
     return newResult;
+  },
+
+  /**
+   * Memperbarui nilai dan umpan balik guru untuk evaluasi HOTS siswa
+   */
+  updateResultGrade(resultId, newScore, teacherFeedback = '') {
+    const all = this.getAllResults();
+    const index = all.findIndex(r => r.id === resultId);
+    if (index === -1) return null;
+
+    const cleanScore = Math.max(0, Math.min(100, Math.round(Number(newScore) || 0)));
+    all[index].score = cleanScore;
+    all[index].teacherFeedback = String(teacherFeedback || '').trim();
+    all[index].gradedByTeacher = true;
+    localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify(all));
+
+    // Sinkronkan progres kelulusan modul siswa
+    const target = all[index];
+    this.updateStudentProgress(target.studentId, target.moduleId, {
+      quizScore: cleanScore,
+      completed: cleanScore >= (target.kkm || 75)
+    });
+
+    // Simpan ke MySQL API
+    const api = this.getApiBaseUrl();
+    if (api) {
+      fetch(`${api}/results.php`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: resultId,
+          score: cleanScore,
+          teacherFeedback: all[index].teacherFeedback
+        })
+      }).catch(() => {});
+    }
+
+    return all[index];
   }
 };
 

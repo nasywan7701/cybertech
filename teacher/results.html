@@ -153,7 +153,19 @@
       const tbody = document.getElementById('resultsTableBody');
       const filterSelect = document.getElementById('moduleFilterSelect');
 
-      // Periksa query parameter URL (?filter=1|2|3)
+      const CATEGORY_LABELS = { virus: 'Virus', worm: 'Worm', phishing: 'Phishing', ddos: 'DDoS' };
+      const SYSTEM_LABELS = { antivirus: 'Antivirus', firewall: 'Firewall', vpn: 'VPN', auth: 'Autentikasi (2FA)' };
+      const EFF_LABELS = { sangat_efektif: 'Sangat Efektif', kurang_efektif: 'Kurang Efektif', tidak_relevan: 'Tidak Relevan' };
+
+      function esc(str) {
+        if (window.Utils && typeof window.Utils.escapeHtml === 'function') {
+          return window.Utils.escapeHtml(str || '');
+        }
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+      }
+
       const urlParams = new URLSearchParams(window.location.search);
       const filterParam = urlParams.get('filter');
       if (filterParam) {
@@ -167,96 +179,198 @@
 
       function renderResults(list) {
         if (list.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding: 2rem; color: var(--color-text-muted);">Belum ada catatan evaluasi kuis pada modul ini.</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding: 2rem; color: var(--color-text-muted);">Belum ada catatan evaluasi HOTS pada modul ini.</td></tr>`;
           return;
         }
 
         tbody.innerHTML = list.map((r, idx) => {
-          const isPass = r.score >= 75;
+          const isPass = Number(r.score) >= 75;
           const badgeClass = isPass ? 'badge-success' : 'badge-danger';
-          const badgeText = isPass ? 'TUNTAS (✓ Lulus KKM)' : 'BELUM TUNTAS (< KKM)';
+          const badgeText = isPass ? 'TUNTAS (Lulus KKM)' : 'BELUM TUNTAS (< KKM)';
+          const teacherBadge = r.gradedByTeacher
+            ? '<span class="badge badge-info" style="font-size:0.72rem;margin-left:4px;">Diverifikasi Guru</span>'
+            : '<span class="badge badge-secondary" style="font-size:0.72rem;margin-left:4px;">Rubrik Otomatis</span>';
 
           return `
             <tr>
               <td>${idx + 1}</td>
-              <td><strong>${r.studentName}</strong></td>
-              <td><span class="badge badge-info">Modul ${r.moduleId}</span> ${r.moduleTitle}</td>
+              <td><strong>${esc(r.studentName)}</strong></td>
+              <td><span class="badge badge-info">Modul ${esc(String(r.moduleId))}</span> ${esc(r.moduleTitle)}</td>
               <td><span style="font-weight: 800; font-size: 1.1rem; color: ${isPass ? 'var(--color-success)' : 'var(--color-danger)'};">${r.score} / 100</span></td>
-              <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+              <td><span class="badge ${badgeClass}">${badgeText}</span>${teacherBadge}</td>
               <td>${window.Utils.formatDate(r.timestamp)}</td>
               <td>
-                <button type="button" class="btn btn-outline btn-sm js-view-sheet" data-id="${r.id}" style="display: inline-flex; align-items: center; gap: 5px;">
+                <button type="button" class="btn btn-outline btn-sm js-view-sheet" data-id="${esc(r.id)}" style="display: inline-flex; align-items: center; gap: 5px;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                  <span>Periksa Jawaban</span>
+                  <span>Periksa &amp; Nilai</span>
                 </button>
               </td>
             </tr>
           `;
         }).join('');
 
-        // Event listener periksa lembar jawaban
         document.querySelectorAll('.js-view-sheet').forEach(btn => {
           btn.addEventListener('click', () => {
-            const resultId = btn.getAttribute('data-id');
-            showSheetDetail(resultId);
+            showSheetDetail(btn.getAttribute('data-id'));
           });
         });
+      }
+
+      function renderKeywords(matched, expected) {
+        const exp = Array.isArray(expected) ? expected : [];
+        const hit = Array.isArray(matched) ? matched : [];
+        if (exp.length === 0) return '-';
+        return exp.map(kw => {
+          const ok = hit.includes(kw);
+          return `<span style="display:inline-block;padding:0.15rem 0.45rem;border-radius:999px;font-size:0.75rem;margin:2px;font-weight:600;${ok ? 'background:#dcfce7;color:#166534;' : 'background:#f1f5f9;color:#64748b;'}">${ok ? '✓ ' : ''}${esc(kw)}</span>`;
+        }).join('');
+      }
+
+      function renderHotsAnswerBlock(q, ans) {
+        const hots = q.hotsData || {};
+        const qType = q.questionType || (ans && ans.type) || 'hots_m1_dnd';
+
+        if (!ans || typeof ans !== 'object') {
+          return `<div style="font-size:0.85rem;color:var(--color-danger);">Tidak ada data jawaban HOTS terstruktur pada sesi ini.</div>`;
+        }
+
+        if (qType === 'hots_m1_dnd') {
+          const stuCat = CATEGORY_LABELS[ans.category] || 'Belum Dipilih';
+          const keyCat = CATEGORY_LABELS[hots.category || q.kunci] || q.kunci;
+          return `
+            <div style="font-size:0.85rem;line-height:1.55;margin-bottom:0.5rem;">
+              <div>Klasifikasi Drag &amp; Drop Siswa: <strong style="color:${ans.categoryCorrect ? 'var(--color-success)' : 'var(--color-danger)'};">${esc(stuCat)}</strong> &bull; Kunci: <strong style="color:var(--color-success);">${esc(keyCat)}</strong></div>
+              <div style="margin-top:0.35rem;padding:0.55rem 0.7rem;background:#f8fafc;border:1px solid var(--color-border);border-radius:var(--radius-sm);">
+                <strong>Justifikasi Siswa:</strong><br>${ans.reasoning ? esc(ans.reasoning) : '<em>Tidak diisi</em>'}
+              </div>
+              <div style="margin-top:0.35rem;"><strong>Kata Kunci Rubrik:</strong> ${renderKeywords(ans.matchedKeywords, hots.expectedKeywords)}</div>
+            </div>
+          `;
+        }
+
+        if (qType === 'hots_m2_case') {
+          const stuMatrix = ans.matrix || {};
+          const keyMatrix = hots.matrix || {};
+          const matrixLines = ['antivirus', 'firewall', 'vpn', 'auth'].map(k => {
+            const ok = stuMatrix[k] === keyMatrix[k];
+            return `<li>${SYSTEM_LABELS[k]}: <strong style="color:${ok ? '#166534' : '#991b1b'};">${esc(EFF_LABELS[stuMatrix[k]] || '-')}</strong> (Kunci: ${esc(EFF_LABELS[keyMatrix[k]] || '-')})</li>`;
+          }).join('');
+          const stuRec = SYSTEM_LABELS[ans.recommended] || 'Belum Dipilih';
+          const keyRec = SYSTEM_LABELS[hots.recommended || q.kunci] || q.kunci;
+
+          return `
+            <div style="font-size:0.85rem;line-height:1.5;margin-bottom:0.5rem;">
+              <ul style="margin:0 0 0.45rem 1.2rem;padding:0;">${matrixLines}</ul>
+              <div>Rekomendasi Siswa: <strong style="color:${ans.recommendedCorrect ? 'var(--color-success)' : 'var(--color-danger)'};">${esc(stuRec)}</strong> &bull; Kunci: <strong style="color:var(--color-success);">${esc(keyRec)}</strong></div>
+              <div style="margin-top:0.35rem;padding:0.55rem 0.7rem;background:#f8fafc;border:1px solid var(--color-border);border-radius:var(--radius-sm);">
+                <strong>Alasan Kriteria Siswa:</strong><br>${ans.reasoning ? esc(ans.reasoning) : '<em>Tidak diisi</em>'}
+              </div>
+              <div style="margin-top:0.35rem;"><strong>Kata Kunci Rubrik:</strong> ${renderKeywords(ans.matchedKeywords, hots.expectedKeywords)}</div>
+            </div>
+          `;
+        }
+
+        const keyAction = hots.action || q.kunci;
+        return `
+          <div style="font-size:0.85rem;line-height:1.55;margin-bottom:0.5rem;">
+            <div style="font-family:monospace;font-size:0.8rem;background:#0f172a;color:#e2e8f0;padding:0.35rem 0.6rem;border-radius:4px;margin-bottom:0.4rem;">
+              ${esc(hots.trafficLabel || '-')} (${esc(hots.protocol || '-')}:${esc(String(hots.port || '-'))} | ${esc(hots.sourceIp || '-')} -> ${esc(hots.destIp || '-')})
+            </div>
+            <div>Aturan Siswa: <strong style="color:${ans.actionCorrect ? 'var(--color-success)' : 'var(--color-danger)'};">${esc(ans.selectedAction || '-')}</strong> (${ans.simulated ? 'Simulasi dijalankan' : 'Belum simulasi'}) &bull; Kunci: <strong style="color:var(--color-success);">${esc(keyAction)}</strong></div>
+            <div style="margin-top:0.35rem;padding:0.55rem 0.7rem;background:#f8fafc;border:1px solid var(--color-border);border-radius:var(--radius-sm);">
+              <strong>Penjelasan Hasil Simulasi Siswa:</strong><br>${ans.reasoning ? esc(ans.reasoning) : '<em>Tidak diisi</em>'}
+            </div>
+            <div style="margin-top:0.35rem;"><strong>Kata Kunci Rubrik:</strong> ${renderKeywords(ans.matchedKeywords, hots.expectedKeywords)}</div>
+          </div>
+        `;
       }
 
       function showSheetDetail(resultId) {
         const result = window.Storage.getResultById(resultId);
         if (!result) return;
 
-        // Ambil butir soal yang diujikan pada sesi siswa ini
-        const allQuizzes = window.Storage.getQuizzes(result.moduleId);
+        const allQuizzes = window.Storage.getQuizzes(result.moduleId) || [];
         const userAnswers = result.userAnswers || {};
-        const assignedIds = result.assignedQuestionIds || Object.keys(userAnswers);
-        const quizzes = assignedIds.length > 0 
+        const assignedIds = Array.isArray(result.assignedQuestionIds) && result.assignedQuestionIds.length > 0
+          ? result.assignedQuestionIds
+          : Object.keys(userAnswers);
+        const quizzes = assignedIds.length > 0
           ? assignedIds.map(id => allQuizzes.find(q => q.id === id)).filter(Boolean)
           : allQuizzes;
 
         const itemsHtml = quizzes.map((q, idx) => {
-          const studentAns = userAnswers[q.id];
-          const isCorrect = studentAns === q.kunci;
-          const statusBadge = isCorrect 
-            ? '<span class="badge badge-success" style="display: inline-flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Benar</span>' 
-            : '<span class="badge badge-danger" style="display: inline-flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="18" x2="18" y2="18"></line></svg> Salah</span>';
+          const ans = userAnswers[q.id];
+          const autoScore = ans && typeof ans.autoScore === 'number' ? ans.autoScore : 0;
+          const isPassItem = autoScore >= 75;
+          const statusBadge = isPassItem
+            ? `<span class="badge badge-success">Skor Kasus: ${autoScore}/100</span>`
+            : `<span class="badge badge-danger">Skor Kasus: ${autoScore}/100</span>`;
 
           return `
             <div class="review-modal-item">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                <span class="font-bold" style="color: var(--color-primary);">Butir Soal #${idx + 1}</span>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; gap:0.5rem; flex-wrap:wrap;">
+                <span class="font-bold" style="color: var(--color-primary);">Kasus HOTS #${idx + 1}</span>
                 ${statusBadge}
               </div>
-              <div style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--color-text-dark);">${q.pertanyaan}</div>
-              <div style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">
-                <div>Pilihan Siswa: <strong>${studentAns ? `${studentAns}. ${q.opsi[studentAns]}` : 'Tidak Menjawab'}</strong></div>
-                <div style="color: var(--color-success);">Kunci Jawaban Resmi: <strong>${q.kunci}. ${q.opsi[q.kunci]}</strong></div>
-              </div>
+              <div style="font-size: 0.93rem; margin-bottom: 0.65rem; color: var(--color-text-dark); font-weight:600;">${esc(q.pertanyaan)}</div>
+              ${renderHotsAnswerBlock(q, ans)}
               <div style="background: #ffffff; padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--color-accent);">
-                <strong>Pembahasan:</strong> ${q.pembahasan}
+                <strong>Kunci Analisis Resmi:</strong> ${esc(q.pembahasan || '-')}
               </div>
             </div>
           `;
         }).join('');
 
         document.getElementById('modalSheetBody').innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: 1rem;">
             <div>
-              <h3 style="margin: 0; color: var(--color-primary);">${result.studentName}</h3>
+              <h3 style="margin: 0; color: var(--color-primary);">${esc(result.studentName)}</h3>
               <div style="font-size: 0.85rem; color: var(--color-text-muted);">
-                Modul ${result.moduleId}: ${result.moduleTitle} &bull; ${window.Utils.formatDate(result.timestamp)}
+                Modul ${esc(String(result.moduleId))}: ${esc(result.moduleTitle)} &bull; ${window.Utils.formatDate(result.timestamp)}
               </div>
             </div>
             <div style="text-align: right;">
-              <div style="font-size: 1.5rem; font-weight: 800; color: ${result.score >= 75 ? 'var(--color-success)' : 'var(--color-danger)'};">
+              <div id="modalScoreHeadline" style="font-size: 1.5rem; font-weight: 800; color: ${result.score >= 75 ? 'var(--color-success)' : 'var(--color-danger)'};">
                 ${result.score} / 100
               </div>
-              <div style="font-size: 0.8rem; color: var(--color-text-muted);">${result.correctCount} Benar, ${result.wrongCount} Salah</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted);">${result.correctCount || 0} Kasus &ge; 75, ${result.wrongCount || 0} Perlu Perbaikan</div>
             </div>
           </div>
-          <div>${itemsHtml}</div>
+
+          <div style="margin-bottom: 1.25rem;">${itemsHtml || '<p style="color:var(--color-text-muted);">Tidak ada rincian kasus.</p>'}</div>
+
+          <!-- Formulir Penilaian & Umpan Balik Guru -->
+          <form id="teacherGradeForm" style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-md); padding: 1.15rem;">
+            <div style="font-weight: 700; color: #1e3a8a; margin-bottom: 0.75rem; font-size: 0.95rem;">
+              Penilaian &amp; Umpan Balik Guru (Override Nilai Otomatis)
+            </div>
+            <div style="display: grid; grid-template-columns: 160px 1fr; gap: 0.85rem; align-items: start;">
+              <div>
+                <label for="teacherScoreInput" class="form-label" style="font-size: 0.83rem;">Skor Akhir (0–100)</label>
+                <input type="number" id="teacherScoreInput" class="form-control" min="0" max="100" value="${Number(result.score) || 0}" required>
+              </div>
+              <div>
+                <label for="teacherFeedbackInput" class="form-label" style="font-size: 0.83rem;">Catatan / Umpan Balik Guru untuk Siswa</label>
+                <textarea id="teacherFeedbackInput" class="form-control" rows="2" placeholder="Berikan masukan atas ketajaman analisis dan alasan tertulis siswa...">${esc(result.teacherFeedback || '')}</textarea>
+              </div>
+            </div>
+            <div style="margin-top: 0.85rem; text-align: right;">
+              <button type="submit" class="btn btn-primary btn-sm">Simpan Nilai &amp; Umpan Balik Guru</button>
+            </div>
+          </form>
         `;
+
+        const gradeForm = document.getElementById('teacherGradeForm');
+        gradeForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const newScore = Math.max(0, Math.min(100, parseInt(document.getElementById('teacherScoreInput').value, 10) || 0));
+          const feedback = document.getElementById('teacherFeedbackInput').value.trim();
+
+          window.Storage.updateResultGrade(result.id, newScore, feedback);
+          window.Utils.showToast('Nilai verifikasi & umpan balik guru berhasil disimpan!', 'success');
+          window.Utils.closeModal('sheetDetailModal');
+          loadAndRender();
+        });
 
         window.Utils.openModal('sheetDetailModal');
       }
@@ -273,12 +387,10 @@
 
       filterSelect.addEventListener('change', filterAndRender);
 
-      // Tombol Cetak / Ekspor PDF
       document.getElementById('btnPrintResults').addEventListener('click', () => {
         window.print();
       });
 
-      // Render awal & listen API sync
       filterAndRender();
       window.addEventListener('cybertech:synced', loadAndRender);
     });
