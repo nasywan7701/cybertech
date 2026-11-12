@@ -1,0 +1,16 @@
+{
+  "name": "cybertech-lms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Platform Pembelajaran Keamanan Jaringan Berbasis HOTS (Vercel + Neon Postgres)",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "db:init": "node scripts/init-neon.js",
+    "test:api": "node scripts/test-api.js"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0"
+  }
+}

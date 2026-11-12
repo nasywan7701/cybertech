@@ -1,0 +1,11 @@
+api/*.php
+database.sql
+.htaccess
+docs/
+PRD&ISSUE/
+issue*.md
+assets/videos/*.mp4
+.git/
+node_modules/
+.env
+.env.local

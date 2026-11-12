@@ -1,0 +1,2435 @@
+{
+  "users": [
+    {
+      "id": "user_guru_01",
+      "username": "guru",
+      "email": "guru@smkn1takalar.sch.id",
+      "nama": "Guru Pembimbing TKJ",
+      "password": "guru123cybertech",
+      "role": "guru",
+      "nip": "198507152010011012",
+      "avatar": "G",
+      "createdAt": "2026-10-26T08:00:00.000Z"
+    },
+    {
+      "id": "user_siswa_01",
+      "username": "siswa",
+      "email": "siswa@smkn1takalar.sch.id",
+      "nama": "Nasywan Siswa TKJ",
+      "password": "siswa123cybertech",
+      "role": "siswa",
+      "nisn": "0061234567",
+      "kelas": "XI TJKT 1",
+      "sekolah": "SMK Negeri 1 Takalar",
+      "avatar": "N",
+      "createdAt": "2026-10-26T09:00:00.000Z"
+    }
+  ],
+  "modules": [
+    {
+      "id": "1",
+      "kode": "MODUL-01",
+      "judul": "Analisis & Klasifikasi Ancaman Jaringan",
+      "subjudul": "Klasifikasi Kasus Virus, Worm, Phishing, & DDoS",
+      "deskripsi": "Menganalisis mekanisme serangan siber dan mengklasifikasikan empat jenis ancaman jaringan secara tepat melalui aktivitas Drag & Drop beserta justifikasi teknis.",
+      "durasi": "30 Menit",
+      "totalSoal": 10,
+      "kkm": 75,
+      "icon": "shield-alert"
+    },
+    {
+      "id": "2",
+      "kode": "MODUL-02",
+      "judul": "Evaluasi & Rekomendasi Sistem Keamanan",
+      "subjudul": "Matriks Efektivitas Antivirus, Firewall, VPN, & 2FA",
+      "deskripsi": "Menganalisis efektivitas komparatif empat sistem keamanan jaringan dalam mengatasi ancaman nyata dan merekomendasikan solusi paling tepat berbasis kriteria.",
+      "durasi": "30 Menit",
+      "totalSoal": 10,
+      "kkm": 75,
+      "icon": "lock"
+    },
+    {
+      "id": "3",
+      "kode": "MODUL-03",
+      "judul": "Perancangan Kebijakan Firewall & Analisis Log",
+      "subjudul": "Simulasi Aturan Allow/Block & Justifikasi Lalu Lintas",
+      "deskripsi": "Merancang dan menerapkan aturan Allow atau Block pada simulasi firewall sesuai jenis lalu lintas serta menjelaskan alasan teknis paket diterima atau ditolak.",
+      "durasi": "30 Menit",
+      "totalSoal": 10,
+      "kkm": 75,
+      "icon": "flame"
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "hots_m1_01",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Seorang siswa menancapkan flashdisk pribadi untuk menyalin installer editor video bajakan (setup_crack.exe). Setelah file dijalankan, seluruh file .docx dan .exe di komputer tersebut rusak, namun komputer lain di laboratorium yang tidak menjalankan file dari flashdisk tetap aman.",
+      "kunci": "virus",
+      "hotsData": {
+        "category": "virus",
+        "categoryLabel": "Virus Komputer",
+        "expectedKeywords": [
+          "inang",
+          "eksekusi",
+          "jalankan",
+          "klik",
+          "file",
+          "flashdisk",
+          "menempel",
+          "pengguna"
+        ],
+        "rubricHint": "Jelaskan mengapa insiden ini memerlukan file inang dan eksekusi pengguna untuk menginfeksi."
+      },
+      "pembahasan": "Insiden ini merupakan Virus Komputer karena program jahat menempel pada file executable inang (setup_crack.exe) dan baru aktif merusak berkas lokal ketika pengguna mengklik/menjalankannya."
+    },
+    {
+      "id": "hots_m1_02",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Dalam waktu 10 menit, 24 PC di Lab TJKT mendadak melambat drastis dan membanjiri switch dengan lalu lintas SMB Port 445, padahal seluruh siswa sedang istirahat dan tidak ada satu pun yang membuka email atau menjalankan file lampiran.",
+      "kunci": "worm",
+      "hotsData": {
+        "category": "worm",
+        "categoryLabel": "Network Worm",
+        "expectedKeywords": [
+          "mandiri",
+          "otomatis",
+          "tanpa",
+          "celah",
+          "port",
+          "jaringan",
+          "replikasi",
+          "smb"
+        ],
+        "rubricHint": "Analisis mekanisme replikasi otomatis Worm lewat jaringan tanpa campur tangan pengguna."
+      },
+      "pembahasan": "Insiden ini adalah Network Worm karena mampu menggandakan diri secara mandiri dan menyebar otomatis ke 24 PC melalui celah port jaringan (SMB 445) tanpa interaksi pengguna."
+    },
+    {
+      "id": "hots_m1_03",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Operator sekolah menerima email berlogo resmi Dinas Pendidikan dengan alamat pengirim admin@dinas-pendidikan-verif.xyz yang mendesak agar segera login ulang pada tautan terlampir agar akun Dapodik tidak diblokir dalam 2 jam.",
+      "kunci": "phishing",
+      "hotsData": {
+        "category": "phishing",
+        "categoryLabel": "Phishing (Rekayasa Sosial)",
+        "expectedKeywords": [
+          "palsu",
+          "tautan",
+          "penyamaran",
+          "kredensial",
+          "password",
+          "psikologis",
+          "rekayasa sosial",
+          "domain"
+        ],
+        "rubricHint": "Uraikan teknik manipulasi psikologis dan pemalsuan identitas pada pesan tersebut."
+      },
+      "pembahasan": "Ini adalah serangan Phishing (rekayasa sosial) yang menyamar sebagai instansi tepercaya dengan domain palsu dan urgensi semu untuk memancing korban memasukkan kredensial login ke situs tiruan."
+    },
+    {
+      "id": "hots_m1_04",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Tepat pukul 08.00 WITA saat ujian berlangsung, portal CBT sekolah gagal diakses (503 Service Unavailable). Log firewall mencatat 450.000 permintaan HTTP SYN per detik berasal dari ribuan IP asing yang tersebar di berbagai negara secara serentak.",
+      "kunci": "ddos",
+      "hotsData": {
+        "category": "ddos",
+        "categoryLabel": "DDoS Attack",
+        "expectedKeywords": [
+          "banjir",
+          "traffic",
+          "ribuan",
+          "botnet",
+          "serentak",
+          "lumpuh",
+          "availability",
+          "ketersediaan"
+        ],
+        "rubricHint": "Analisis bagaimana banjir paket serentak melumpuhkan pilar ketersediaan (Availability) server."
+      },
+      "pembahasan": "Ini merupakan DDoS (Distributed Denial of Service) menggunakan jaringan botnet global untuk membanjiri server target dengan ratusan ribu permintaan per detik hingga kapasitas layanan lumpuh."
+    },
+    {
+      "id": "hots_m1_05",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Staf TU mengunduh lampiran dokumen penawaran berjudul Rincian_Biaya.docm dan mengklik tombol \"Enable Content/Macros\". Seketika itu juga skrip VBA di dalam dokumen memodifikasi file sistem Windows dan menyisipkan kode perusak ke aplikasi lain di PC tersebut.",
+      "kunci": "virus",
+      "hotsData": {
+        "category": "virus",
+        "categoryLabel": "Virus Komputer (Macro)",
+        "expectedKeywords": [
+          "makro",
+          "dokumen",
+          "klik",
+          "eksekusi",
+          "inang",
+          "aktifkan",
+          "sistem",
+          "vba"
+        ],
+        "rubricHint": "Jelaskan keterkaitan antara file dokumen inang dan aksi pengguna mengaktifkan makro."
+      },
+      "pembahasan": "Kasus ini termasuk Virus (Macro Virus) karena kode berbahaya disisipkan di dalam dokumen inang (.docm) dan hanya tereksekusi setelah korban memberikan aksi mengaktifkan konten makro."
+    },
+    {
+      "id": "hots_m1_06",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Sebuah laptop tamu yang terhubung ke Wi-Fi sekolah langsung memindai seluruh subnet IP 192.168.10.0/24 guna mengeksploitasi celah layanan jaringan yang belum di-patch, menggandakan salinannya ke server file tanpa campur tangan admin.",
+      "kunci": "worm",
+      "hotsData": {
+        "category": "worm",
+        "categoryLabel": "Network Worm",
+        "expectedKeywords": [
+          "memindai",
+          "celah",
+          "otomatis",
+          "mandiri",
+          "jaringan",
+          "subnet",
+          "patch",
+          "ganda"
+        ],
+        "rubricHint": "Analisis bagaimana penyerang menyebar secara otonom dengan memindai kerentanan jaringan."
+      },
+      "pembahasan": "Ini adalah karakteristik utama Worm, yaitu melakukan pemindaian (scanning) jaringan otomatis dan mengeksploitasi celah sistem yang belum ditambal untuk mereplikasi diri lintas subnet."
+    },
+    {
+      "id": "hots_m1_07",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Seorang guru menerima pesan WhatsApp yang mengaku dari teknisi IT sekolah beserta tautan pemendek URL (bit.ly/reset-portal-guru) yang mendesak guru memasukkan NIP dan kata sandi e-Rapor agar akun tidak terhapus.",
+      "kunci": "phishing",
+      "hotsData": {
+        "category": "phishing",
+        "categoryLabel": "Phishing (Smishing/Social Engineering)",
+        "expectedKeywords": [
+          "penipuan",
+          "tautan",
+          "kredensial",
+          "password",
+          "sandi",
+          "nip",
+          "mendesak",
+          "manipulasi"
+        ],
+        "rubricHint": "Jelaskan indikator penipuan identitas dan target pencurian data pada kasus pesan ini."
+      },
+      "pembahasan": "Serangan ini tergolong Phishing karena memanfaatkan rekayasa sosial lewat pesan mendesak dan tautan tersamar untuk mencuri data kredensial sensitif (NIP dan kata sandi) milik guru."
+    },
+    {
+      "id": "hots_m1_08",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Koneksi internet seluruh sekolah putus total saat jam belajar. Setelah diperiksa pada router gateway, antarmuka WAN dibanjiri 99% paket UDP sampah berukuran besar ke port acak yang dikirim bersamaan dari ratusan kamera CCTV IoT yang telah dibajak.",
+      "kunci": "ddos",
+      "hotsData": {
+        "category": "ddos",
+        "categoryLabel": "DDoS (UDP Flood Botnet)",
+        "expectedKeywords": [
+          "banjir",
+          "bandwidth",
+          "udp",
+          "iot",
+          "botnet",
+          "massal",
+          "lumpuh",
+          "putus"
+        ],
+        "rubricHint": "Uraikan peran perangkat IoT terkompromi dalam melumpuhkan kapasitas bandwidth jaringan."
+      },
+      "pembahasan": "Ini adalah serangan DDoS (UDP Flood) yang memanfaatkan ratusan perangkat IoT yang telah disusupi (botnet) untuk menghabiskan seluruh kapasitas bandwidth WAN gateway sekolah."
+    },
+    {
+      "id": "hots_m1_09",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Salah satu siswa mengunduh file MP3 musik dari situs ilegal yang ternyata disertai skrip eksekusi tersembunyi (musik_remix.mp3.scr). Begitu file diklik dua kali, seluruh shortcut aplikasi di desktop PC siswa tersebut berubah menjadi file terinfeksi dan menyebar ke harddisk lokal.",
+      "kunci": "virus",
+      "hotsData": {
+        "category": "virus",
+        "categoryLabel": "Virus Komputer",
+        "expectedKeywords": [
+          "eksekusi",
+          "klik",
+          "inang",
+          "file",
+          "terinfeksi",
+          "pengguna",
+          "lokal",
+          "ekstensi"
+        ],
+        "rubricHint": "Jelaskan mengapa pemalsuan ekstensi file ini baru menginfeksi setelah diklik oleh pengguna."
+      },
+      "pembahasan": "Insiden ini adalah Virus Komputer karena kode jahat menumpang pada file umpan (.scr) dan membutuhkan aksi klik/eksekusi manual pengguna untuk mulai merusak dan menulari berkas lokal."
+    },
+    {
+      "id": "hots_m1_10",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Sebuah malware menyusup lewat celah layanan RPC Windows di satu laptop lalu tanpa diklik siapa pun langsung mengirim paket eksploitasi ke seluruh alamat IP di segmen Wi-Fi guru hingga belasan laptop tertular otomatis dalam hitungan detik.",
+      "kunci": "worm",
+      "hotsData": {
+        "category": "worm",
+        "categoryLabel": "Network Worm",
+        "expectedKeywords": [
+          "otomatis",
+          "mandiri",
+          "celah",
+          "rpc",
+          "jaringan",
+          "tanpa",
+          "replikasi",
+          "ip"
+        ],
+        "rubricHint": "Analisis bagaimana malware menyebar lintas perangkat hanya dengan memanfaatkan celah jaringan."
+      },
+      "pembahasan": "Ini merupakan Network Worm karena mampu menggandakan dan menyebarkan diri secara mandiri melalui celah protokol jaringan (RPC) tanpa menunggu file dijalankan pengguna."
+    },
+    {
+      "id": "hots_m1_11",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Calon peserta didik menerima formulir web tiruan di alamat ppdb-smkn1takalar.site yang tampilannya 100% mirip portal resmi sekolah, lengkap dengan kolom pengisian NIK, nomor KK, kata sandi akun, dan permintaan biaya daftar ulang.",
+      "kunci": "phishing",
+      "hotsData": {
+        "category": "phishing",
+        "categoryLabel": "Phishing (Situs Tiruan)",
+        "expectedKeywords": [
+          "palsu",
+          "tiruan",
+          "domain",
+          "kredensial",
+          "penipuan",
+          "identitas",
+          "formulir",
+          "mencuri"
+        ],
+        "rubricHint": "Uraikan ciri manipulasi situs tiruan dan tujuan pengumpulan data sensitif pada kasus ini."
+      },
+      "pembahasan": "Kasus ini termasuk Phishing karena pelaku membuat domain palsu yang meniru tampilan portal resmi sekolah untuk menipu korban agar menyerahkan data pribadi dan kredensial login."
+    },
+    {
+      "id": "hots_m1_12",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Server aplikasi perpustakaan sekolah kehabisan memori RAM karena ribuan komputer zombie secara bersamaan membuka koneksi TCP setengah matang (SYN) dan tidak pernah mengirimkan balasan ACK (SYN Flood) hingga pengguna asli tidak bisa masuk.",
+      "kunci": "ddos",
+      "hotsData": {
+        "category": "ddos",
+        "categoryLabel": "DDoS (SYN Flood)",
+        "expectedKeywords": [
+          "syn",
+          "banjir",
+          "koneksi",
+          "zombie",
+          "botnet",
+          "ram",
+          "lumpuh",
+          "ketersediaan"
+        ],
+        "rubricHint": "Jelaskan bagaimana banjir koneksi setengah matang dari banyak host menghabiskan sumber daya server."
+      },
+      "pembahasan": "Serangan ini adalah DDoS tipe SYN Flood yang membanjiri tabel antrean koneksi TCP server dari ribuan perangkat botnet sehingga server kehabisan memori dan menolak akses pengguna sah."
+    },
+    {
+      "id": "hots_m1_13",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Setiap kali admin lab menyalakan PC No. 05 dari flashdisk bootable yang tidak terverifikasi, kode berbahaya pada sektor boot (Boot Sector) aktif sebelum sistem operasi termuat dan menular ke setiap flashdisk lain yang dicolokkan ke PC tersebut.",
+      "kunci": "virus",
+      "hotsData": {
+        "category": "virus",
+        "categoryLabel": "Virus Komputer (Boot Sector)",
+        "expectedKeywords": [
+          "boot",
+          "flashdisk",
+          "inang",
+          "menular",
+          "eksekusi",
+          "media",
+          "sistem",
+          "replikasi"
+        ],
+        "rubricHint": "Identifikasi peran media fisik dan proses boot sebagai pemicu aktifnya ancaman ini."
+      },
+      "pembahasan": "Ini adalah Virus Boot Sector yang menempel pada area boot flashdisk/harddisk sebagai inang dan baru menyebar ketika pengguna melakukan booting atau mengakses media terinfeksi tersebut."
+    },
+    {
+      "id": "hots_m1_14",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Perangkat printer jaringan di tata usaha tiba-tiba mencetak karakter acak dan memindai port 23 (Telnet) ke seluruh subnet sekolah secara otomatis untuk menyebarkan skrip Linux ke router dan IP camera lain yang memakai password bawaan pabrik.",
+      "kunci": "worm",
+      "hotsData": {
+        "category": "worm",
+        "categoryLabel": "Network Worm (IoT)",
+        "expectedKeywords": [
+          "memindai",
+          "port",
+          "otomatis",
+          "mandiri",
+          "subnet",
+          "iot",
+          "telnet",
+          "sebar"
+        ],
+        "rubricHint": "Jelaskan mengapa perilaku pemindaian otomatis antar perangkat IoT masuk kategori Worm."
+      },
+      "pembahasan": "Perilaku memindai port jaringan (Telnet 23) secara otomatis dari satu perangkat ke perangkat lain tanpa campur tangan manusia adalah ciri khas Network Worm berbasis IoT."
+    },
+    {
+      "id": "hots_m1_15",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Di area kantin sekolah tertempel poster kode QR bertuliskan \"Scan untuk Claim Kuota Belajar Gratis 10GB\". Saat dipindai siswa, kode QR mengarahkan ke halaman login palsu akun Google sekolah yang meminta siswa memasukkan email dan password.",
+      "kunci": "phishing",
+      "hotsData": {
+        "category": "phishing",
+        "categoryLabel": "Phishing (Quishing)",
+        "expectedKeywords": [
+          "qr",
+          "palsu",
+          "login",
+          "password",
+          "email",
+          "penipuan",
+          "umpan",
+          "kredensial"
+        ],
+        "rubricHint": "Analisis teknik rekayasa sosial berbasis QR Code dan target data yang diincar pelaku."
+      },
+      "pembahasan": "Ini adalah Phishing berbasis QR Code (Quishing), yaitu teknik penipuan yang menyembunyikan URL halaman login palsu di balik QR untuk mencuri email dan kata sandi akun sekolah."
+    },
+    {
+      "id": "hots_m1_16",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Web server sekolah mendadak down selama 3 jam karena menerima ratusan ribu permintaan HTTP GET yang sangat lambat dan menggantung (Slowloris) dari puluhan ribu alamat IP luar negeri secara terdistribusi hingga seluruh worker Apache penuh.",
+      "kunci": "ddos",
+      "hotsData": {
+        "category": "ddos",
+        "categoryLabel": "DDoS (Application Layer)",
+        "expectedKeywords": [
+          "terdistribusi",
+          "http",
+          "penuh",
+          "ip",
+          "down",
+          "availability",
+          "server",
+          "massal"
+        ],
+        "rubricHint": "Jelaskan mengapa penahanan worker server secara serentak oleh banyak IP tergolong DDoS."
+      },
+      "pembahasan": "Serangan Slowloris dari ribuan IP secara terdistribusi tersebut merupakan DDoS pada layer aplikasi untuk menghabiskan slot koneksi server web sehingga layanan tidak tersedia bagi pengguna sah."
+    },
+    {
+      "id": "hots_m1_17",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Seorang siswa menginstal modul Python atau skrip batch (.bat) modifikasi untuk cheat game di PC praktikum. Setelah skrip dijalankan, program menempel ke file winlogon dan merusak seluruh aplikasi perkantoran yang dibuka setelahnya.",
+      "kunci": "virus",
+      "hotsData": {
+        "category": "virus",
+        "categoryLabel": "Virus Komputer",
+        "expectedKeywords": [
+          "dijalankan",
+          "skrip",
+          "inang",
+          "menempel",
+          "aplikasi",
+          "eksekusi",
+          "merusak",
+          "pengguna"
+        ],
+        "rubricHint": "Tunjukkan ketergantungan ancaman ini pada eksekusi skrip oleh siswa serta file inang."
+      },
+      "pembahasan": "Kasus ini termasuk Virus Komputer karena kode jahat disisipkan dalam skrip umpan dan menempel ke aplikasi sistem lokal hanya setelah siswa menjalankannya secara langsung."
+    },
+    {
+      "id": "hots_m1_18",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Administrator menemukan satu komputer terhubung ke internet tanpa proteksi, lalu dalam semalam malware mengirimkan dirinya sendiri sebagai salinan otomatis ke 60 komputer di gedung lain melalui protokol berbagi file LAN tanpa ada yang menyentuh PC mana pun.",
+      "kunci": "worm",
+      "hotsData": {
+        "category": "worm",
+        "categoryLabel": "Network Worm",
+        "expectedKeywords": [
+          "mandiri",
+          "otomatis",
+          "salinan",
+          "lan",
+          "tanpa",
+          "komputer",
+          "sebar",
+          "jaringan"
+        ],
+        "rubricHint": "Jelaskan faktor utama penyebaran otomatis lintas gedung tanpa aksi klik pengguna."
+      },
+      "pembahasan": "Ini merupakan Network Worm karena menyalin dirinya sendiri secara otomatis melewati jalur LAN antar-gedung tanpa perlu eksekusi berkas oleh operator atau siswa."
+    },
+    {
+      "id": "hots_m1_19",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Kepala jurusan menerima telepon dari penipu yang mengaku petugas keamanan bank mitra sekolah, membacakan skrip darurat tentang pemblokiran rekening, lalu meminta korban menyebutkan 6 digit kode OTP SMS yang baru masuk.",
+      "kunci": "phishing",
+      "hotsData": {
+        "category": "phishing",
+        "categoryLabel": "Phishing (Vishing / Rekayasa Sosial)",
+        "expectedKeywords": [
+          "otp",
+          "penipu",
+          "identitas",
+          "darurat",
+          "rekayasa sosial",
+          "kredensial",
+          "psikologis",
+          "sms"
+        ],
+        "rubricHint": "Analisis pola manipulasi psikologis dan target rahasia yang diminta melalui panggilan suara."
+      },
+      "pembahasan": "Kasus ini merupakan Phishing suara (Vishing) yang menggunakan rekayasa sosial berkedok keadaan darurat resmi untuk memancing korban membocorkan kode OTP rahasia."
+    },
+    {
+      "id": "hots_m1_20",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Server DNS lokal sekolah kebanjiran paket respons raksasa (DNS Amplification) dari ribuan open DNS resolver di seluruh dunia yang dipicu oleh pemalsuan alamat IP sumber milik sekolah oleh kelompok penyerang.",
+      "kunci": "ddos",
+      "hotsData": {
+        "category": "ddos",
+        "categoryLabel": "DDoS (DNS Amplification)",
+        "expectedKeywords": [
+          "amplification",
+          "banjir",
+          "ribuan",
+          "bandwidth",
+          "lumpuh",
+          "dns",
+          "terdistribusi",
+          "paket"
+        ],
+        "rubricHint": "Uraikan bagaimana pembanjiran paket pantulan dari ribuan resolver melumpuhkan layanan."
+      },
+      "pembahasan": "Ini adalah DDoS tipe DNS Amplification karena penyerang memanfaatkan ribuan resolver publik untuk membanjiri server sekolah dengan lalu lintas raksasa secara serentak."
+    },
+    {
+      "id": "hots_m1_21",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "File PDF palsu bernama Jadwal_Ujian_Resmi.pdf.exe dibuka oleh seorang pegawai. Begitu dibuka, muatan jahat menempelkan kodenya pada seluruh file PDF lain di direktori Documents komputer tersebut sehingga file PDF rusak saat dibuka.",
+      "kunci": "virus",
+      "hotsData": {
+        "category": "virus",
+        "categoryLabel": "Virus Komputer",
+        "expectedKeywords": [
+          "dibuka",
+          "file",
+          "inang",
+          "menempel",
+          "exe",
+          "eksekusi",
+          "pegawai",
+          "merusak"
+        ],
+        "rubricHint": "Jelaskan mengapa perilaku menumpang dan merusak file setelah dibuka termasuk ciri Virus."
+      },
+      "pembahasan": "Insiden ini termasuk Virus Komputer karena program jahat menyamar sebagai PDF, menunggu dieksekusi pegawai, lalu menempelkan kodenya ke berkas lain di komputer tersebut."
+    },
+    {
+      "id": "hots_m1_22",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Sebuah malware baru mengeksploitasi kerentanan layanan Print Spooler di jaringan kantor tanpa ada email atau USB. Dalam 15 menit seluruh server cabang yang terhubung VPN internal langsung terinfeksi dan melakukan hal yang sama ke host tetangga.",
+      "kunci": "worm",
+      "hotsData": {
+        "category": "worm",
+        "categoryLabel": "Network Worm",
+        "expectedKeywords": [
+          "kerentanan",
+          "otomatis",
+          "jaringan",
+          "tanpa",
+          "replikasi",
+          "host",
+          "vpn",
+          "eksploitasi"
+        ],
+        "rubricHint": "Buktikan bahwa eksploitasi kerentanan layanan lintas jaringan tanpa file umpan merupakan ciri Worm."
+      },
+      "pembahasan": "Malware tersebut adalah Network Worm karena mengeksploitasi celah layanan jaringan (Print Spooler) dan menggandakan diri ke seluruh jaringan secara otonom tanpa interaksi pengguna."
+    },
+    {
+      "id": "hots_m1_23",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Saat siswa terhubung ke hotspot palsu bernama \"FREE_WIFI_SEKOLAH\" di sekitar gerbang, layar otomatis menampilkan halaman login palsu berlogo CyberTech yang meminta siswa memasukkan NISN dan kata sandi akun belajar mereka.",
+      "kunci": "phishing",
+      "hotsData": {
+        "category": "phishing",
+        "categoryLabel": "Phishing (Evil Twin Captive Portal)",
+        "expectedKeywords": [
+          "palsu",
+          "portal",
+          "login",
+          "nisn",
+          "sandi",
+          "kredensial",
+          "menyamarkan",
+          "penipuan"
+        ],
+        "rubricHint": "Jelaskan bagaimana halaman login hotspot tiruan menargetkan pencurian kredensial siswa."
+      },
+      "pembahasan": "Ini merupakan serangan Phishing melalui portal Wi-Fi tiruan (Evil Twin Captive Portal) yang dirancang untuk mengecoh siswa agar mengetikkan NISN dan kata sandi akunnya."
+    },
+    {
+      "id": "hots_m1_24",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Portal PPDB online tidak bisa dibuka selama pengumuman kelulusan karena 80.000 bot browser otomatis dari berbagai negara melakukan refresh halaman profil dan kueri pencarian berat tanpa jeda hingga CPU database mencapai 100%.",
+      "kunci": "ddos",
+      "hotsData": {
+        "category": "ddos",
+        "categoryLabel": "DDoS (HTTP Flood)",
+        "expectedKeywords": [
+          "bot",
+          "massal",
+          "cpu",
+          "lumpuh",
+          "ketersediaan",
+          "serentak",
+          "flood",
+          "negara"
+        ],
+        "rubricHint": "Jelaskan mengapa serangan beban serentak dari ribuan bot ke aplikasi web termasuk DDoS."
+      },
+      "pembahasan": "Serangan HTTP Flood oleh 80.000 bot dari berbagai lokasi secara bersamaan untuk menghabiskan CPU database dan membuat portal tidak dapat diakses tergolong serangan DDoS."
+    },
+    {
+      "id": "hots_m1_25",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Komputer kasir koperasi sekolah terinfeksi setelah kasir mengunduh software aktivator gratis (KMS_Activator.zip) dan menjalankan file patch di dalamnya. Program langsung menyuntikkan kode ke file aplikasi kasir lokal dan merusak integritas databasenya.",
+      "kunci": "virus",
+      "hotsData": {
+        "category": "virus",
+        "categoryLabel": "Virus Komputer",
+        "expectedKeywords": [
+          "menjalankan",
+          "patch",
+          "inang",
+          "file",
+          "menyuntikkan",
+          "eksekusi",
+          "aplikasi",
+          "kasir"
+        ],
+        "rubricHint": "Analisis alasan insiden yang bermula dari aktivator bajakan ini diklasifikasikan sebagai Virus."
+      },
+      "pembahasan": "Ini adalah Virus Komputer karena kode berbahaya terbungkus dalam berkas patch aktivator dan baru menulari aplikasi kasir setelah pengguna menjalankannya secara manual."
+    },
+    {
+      "id": "hots_m1_26",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Lalu lintas jaringan internal melambat tajam pukul 02.00 dini hari saat gedung kosong. Wireshark menunjukkan puluhan PC mengirim paket ping scan acak dan paket replikasi berbahaya ke subnet server nilai tanpa ada satu pun user login.",
+      "kunci": "worm",
+      "hotsData": {
+        "category": "worm",
+        "categoryLabel": "Network Worm",
+        "expectedKeywords": [
+          "tanpa user",
+          "otomatis",
+          "scan",
+          "replikasi",
+          "subnet",
+          "mandiri",
+          "paket",
+          "jaringan"
+        ],
+        "rubricHint": "Jelaskan bukti dari log jam 02.00 dini hari yang memastikan ini adalah aktivitas Worm."
+      },
+      "pembahasan": "Aktivitas pemindaian (scan) dan pengiriman salinan berbahaya lintas subnet secara otomatis pada dini hari tanpa ada pengguna yang login membuktikan bahwa pelakunya adalah Network Worm."
+    },
+    {
+      "id": "hots_m1_27",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Beberapa siswa menerima DM Instagram dari akun @beasiswa_kemdikbud_official99 yang menjanjikan bantuan kuota dan meminta pengisian email, password, serta foto kartu pelajar lewat tautan formulir eksternal.",
+      "kunci": "phishing",
+      "hotsData": {
+        "category": "phishing",
+        "categoryLabel": "Phishing (Media Sosial)",
+        "expectedKeywords": [
+          "akun palsu",
+          "tautan",
+          "password",
+          "penipuan",
+          "identitas",
+          "kredensial",
+          "palsu",
+          "rekayasa sosial"
+        ],
+        "rubricHint": "Identifikasi teknik penyamaran identitas dan iming-iming hadiah untuk mencuri akun siswa."
+      },
+      "pembahasan": "Ini adalah Phishing di media sosial (Angler Phishing) menggunakan akun tiruan dan iming-iming beasiswa agar siswa menyerahkan kredensial login serta data pribadinya."
+    },
+    {
+      "id": "hots_m1_28",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Router utama kampus dibanjiri jutaan paket NTP Monlist terpantul berkapasitas 12 Gbps dari ribuan server NTP rentan di luar negeri sehingga seluruh layanan web dan e-learning putus seketika.",
+      "kunci": "ddos",
+      "hotsData": {
+        "category": "ddos",
+        "categoryLabel": "DDoS (NTP Reflection Flood)",
+        "expectedKeywords": [
+          "banjir",
+          "gbps",
+          "ribuan",
+          "bandwidth",
+          "putus",
+          "terpantul",
+          "lumpuh",
+          "ketersediaan"
+        ],
+        "rubricHint": "Jelaskan bagaimana pembanjiran bandwidth 12 Gbps dari ribuan sumber melumpuhkan gateway."
+      },
+      "pembahasan": "Serangan NTP Reflection dari ribuan server untuk membanjiri jalur bandwidth (12 Gbps) hingga gateway mati total merupakan serangan DDoS berbasis volumetrik."
+    },
+    {
+      "id": "hots_m1_29",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Seorang siswa membuka file spreadsheet Tugas_Akuntansi.xlsm dari komputer umum dan menekan tombol izinkan skrip. Sesaat kemudian, kode berbahaya melekat pada template Excel lokal sehingga setiap file Excel baru yang dibuat ikut terinfeksi.",
+      "kunci": "virus",
+      "hotsData": {
+        "category": "virus",
+        "categoryLabel": "Virus Komputer (Macro)",
+        "expectedKeywords": [
+          "xlsm",
+          "skrip",
+          "template",
+          "melekat",
+          "menekan",
+          "eksekusi",
+          "inang",
+          "terinfeksi"
+        ],
+        "rubricHint": "Jelaskan bagaimana infeksi template lewat file spreadsheet yang dibuka siswa bekerja."
+      },
+      "pembahasan": "Ini adalah Virus Makro karena menyisipkan diri pada dokumen spreadsheet inang (.xlsm), aktif saat siswa mengizinkan skrip, lalu menulari berkas Excel lain melalui template lokal."
+    },
+    {
+      "id": "hots_m1_30",
+      "moduleId": "1",
+      "questionType": "hots_m1_dnd",
+      "pertanyaan": "Setelah satu server lab lama terhubung ke jaringan Wi-Fi tanpa update keamanan, perangkat router, access point, dan komputer lain yang rentan di segmen LAN langsung terinfeksi secara berantai dalam 5 menit lewat eksploitasi SMB tanpa klik apa pun.",
+      "kunci": "worm",
+      "hotsData": {
+        "category": "worm",
+        "categoryLabel": "Network Worm",
+        "expectedKeywords": [
+          "berantai",
+          "smb",
+          "eksploitasi",
+          "tanpa klik",
+          "otomatis",
+          "lan",
+          "update",
+          "mandiri"
+        ],
+        "rubricHint": "Jelaskan alasan penyebaran berantai lewat celah SMB tanpa interaksi pengguna disebut Worm."
+      },
+      "pembahasan": "Penyebaran berantai secara otomatis mengeksploitasi celah jaringan (SMB) tanpa interaksi atau klik pengguna merupakan mekanisme kerja Network Worm."
+    },
+    {
+      "id": "hots_m2_01",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Seorang administrator sekolah sedang berada di luar kota dan harus mengakses server nilai internal melalui jaringan Wi-Fi publik kafe yang tidak terenkripsi. Kriteria utama kasus ini adalah melindungi kerahasiaan data selama transmisi di jaringan publik dari ancaman penyadapan (Man-in-the-Middle).",
+      "kunci": "vpn",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "kurang_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "sangat_efektif",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "vpn",
+        "expectedKeywords": [
+          "enkripsi",
+          "tunnel",
+          "publik",
+          "penyadapan",
+          "mitm",
+          "vpn",
+          "terowongan",
+          "kerahasiaan"
+        ],
+        "rubricHint": "Bandingkan efektivitas ke-4 sistem terhadap ancaman penyadapan Wi-Fi publik dan rekomendasikan solusi utamanya."
+      },
+      "pembahasan": "VPN (Virtual Private Network) adalah rekomendasi paling tepat karena membentuk terowongan terenkripsi (encrypted tunnel) di atas Wi-Fi publik sehingga mencegah penyadapan MitM. Antivirus hanya melindungi endpoint lokal, sedangkan 2FA dan Firewall saja tidak mengenkripsi paket yang sedang melintas di Wi-Fi publik."
+    },
+    {
+      "id": "hots_m2_02",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Kredensial username dan kata sandi akun admin portal e-Rapor diketahui bocor akibat salah satu staf tertipu situs phishing. Kriteria keamanan utama adalah mencegah penyerang masuk ke akun walaupun kata sandi utama sudah berada di tangan peretas.",
+      "kunci": "auth",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "sangat_efektif"
+        },
+        "recommended": "auth",
+        "expectedKeywords": [
+          "otp",
+          "lapis kedua",
+          "2fa",
+          "mfa",
+          "verifikasi",
+          "password bocor",
+          "identitas",
+          "login"
+        ],
+        "rubricHint": "Jelaskan mengapa Autentikasi 2FA menjadi garis pertahanan utama saat password sudah diketahui peretas."
+      },
+      "pembahasan": "Autentikasi 2FA/MFA paling efektif karena mewajibkan faktor verifikasi kedua (seperti kode OTP ponsel) saat login; penyerang yang hanya memiliki password tetap tertolak. Antivirus dan VPN tidak menghentikan login sah memakai password curian."
+    },
+    {
+      "id": "hots_m2_03",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Server Web sekolah mengalami puluhan ribu percobaan koneksi asing dari internet ke port manajemen berisiko seperti Port 23 (Telnet) dan Port 3306 (Database). Kriteria utama adalah menyaring lalu lintas jaringan masuk dan menutup akses port yang tidak semestinya dibuka untuk publik.",
+      "kunci": "firewall",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "sangat_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "firewall",
+        "expectedKeywords": [
+          "port",
+          "filter",
+          "saring",
+          "blokir",
+          "lalu lintas",
+          "paket",
+          "firewall",
+          "drop"
+        ],
+        "rubricHint": "Analisis efektivitas ke-4 sistem untuk menyaring trafik port jaringan dan jelaskan mengapa Firewall paling tepat."
+      },
+      "pembahasan": "Firewall adalah kontrol paling tepat karena secara spesifik memeriksa header paket jaringan (IP, protokol, nomor port) dan memblokir akses asing ke Port 23 maupun 3306 di perimeter jaringan sebelum menyentuh server."
+    },
+    {
+      "id": "hots_m2_04",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Komputer di laboratorium sering mengalami kerusakan file dokumen akibat siswa bergantian menancapkan flashdisk pribadi untuk mencetak tugas. Kriteria utama kasus ini adalah mendeteksi, memblokir eksekusi, dan mengkarantina berkas malware lokal di perangkat komputer klien (endpoint).",
+      "kunci": "antivirus",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "sangat_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "antivirus",
+        "expectedKeywords": [
+          "pindai",
+          "scan",
+          "file",
+          "flashdisk",
+          "karantina",
+          "signature",
+          "endpoint",
+          "antivirus"
+        ],
+        "rubricHint": "Evaluasi efektivitas tiap sistem menghadapi infeksi media fisik flashdisk dan rekomendasikan pelindung endpoint terbaik."
+      },
+      "pembahasan": "Antivirus paling efektif untuk memindai media eksternal USB (flashdisk) secara real-time melalui deteksi signature dan heuristik lalu mengkarantina malware sebelum dijalankan. Firewall jaringan tidak memeriksa file yang dipindah lewat port USB fisik."
+    },
+    {
+      "id": "hots_m2_05",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Sekolah memiliki gedung kampus utama dan gedung unit produksi di kecamatan berbeda yang harus bertukar data transaksi keuangan setiap hari melintasi jaringan internet ISP umum. Kriteria utama adalah menciptakan jembatan koneksi privat antar-kantor (Site-to-Site) yang terenkripsi penuh.",
+      "kunci": "vpn",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "kurang_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "sangat_efektif",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "vpn",
+        "expectedKeywords": [
+          "site-to-site",
+          "enkripsi",
+          "terowongan",
+          "tunnel",
+          "antar",
+          "cabang",
+          "publik",
+          "vpn"
+        ],
+        "rubricHint": "Jelaskan efektivitas VPN dalam menghubungkan dua lokasi jaringan terpisah secara aman melalui internet publik."
+      },
+      "pembahasan": "VPN (khususnya Site-to-Site VPN dengan IPsec) paling efektif membentuk jalur komunikasi privat terenkripsi antar dua gedung melewati internet ISP publik agar data transaksi keuangan tidak terbaca pihak luar."
+    },
+    {
+      "id": "hots_m2_06",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Halaman login administrator router dan server portal siswa diserang menggunakan skrip otomatis Brute Force yang menebak ribuan kombinasi password. Kriteria utama adalah melindungi akses akun login meskipun kombinasi kata sandi berhasil ditebak oleh skrip.",
+      "kunci": "auth",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "sangat_efektif"
+        },
+        "recommended": "auth",
+        "expectedKeywords": [
+          "2fa",
+          "otp",
+          "token",
+          "verifikasi",
+          "brute force",
+          "login",
+          "lapis kedua",
+          "mfa"
+        ],
+        "rubricHint": "Analisis perbandingan kontrol pertahanan terhadap serangan pembobolan akun login otomatis."
+      },
+      "pembahasan": "Autentikasi 2FA/MFA merupakan pertahanan krusial untuk mencegah pembobolan akun meski skrip Brute Force berhasil menebak password, karena skrip penyerang tidak memiliki kode OTP dinamis di perangkat admin."
+    },
+    {
+      "id": "hots_m2_07",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Siswa tidak sengaja mengunduh aplikasi gratis dari internet yang ternyata disisipi Trojan Backdoor di dalam sistem operasi Windows. Kriteria utama adalah mengenali perilaku mencurigakan file di dalam sistem operasi serta membersihkan proses jahat dari komputer klien.",
+      "kunci": "antivirus",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "sangat_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "antivirus",
+        "expectedKeywords": [
+          "trojan",
+          "heuristik",
+          "karantina",
+          "deteksi",
+          "komputer",
+          "endpoint",
+          "file",
+          "malware"
+        ],
+        "rubricHint": "Jelaskan bagaimana analisis heuristik Antivirus bekerja dibandingkan sistem jaringan lain pada kasus infeksi file lokal."
+      },
+      "pembahasan": "Antivirus modern (dengan signature-based dan heuristic analysis) sangat efektif mendeteksi anomali perilaku file Trojan di memori/disk klien dan langsung mengkarantina file berbahaya tersebut."
+    },
+    {
+      "id": "hots_m2_08",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Manajemen sekolah menetapkan kebijakan agar komputer siswa di jam praktikum tidak dapat mengakses port layanan ilegal serta diblokir dari segmen server administrasi guru. Kriteria utama adalah menerapkan segmentasi kebijakan lalu lintas antar-subnet dan penyaringan port keluar/masuk.",
+      "kunci": "firewall",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "sangat_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "firewall",
+        "expectedKeywords": [
+          "blokir",
+          "aturan",
+          "port",
+          "ip",
+          "penyaringan",
+          "subnet",
+          "traffic",
+          "firewall"
+        ],
+        "rubricHint": "Uraikan mengapa kontrol berbasis aturan jaringan (Firewall) jauh lebih relevan dibanding sistem lainnya."
+      },
+      "pembahasan": "Firewall adalah solusi paling tepat untuk menerapkan segmentasi lalu lintas antar-subnet dan menyaring/memblokir akses berdasarkan alamat IP dan port layanan sesuai kebijakan jaringan sekolah."
+    },
+    {
+      "id": "hots_m2_09",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Guru wali kelas sering bekerja dari rumah dan mengakses server arsip sekolah menggunakan laptop pribadi lewat jaringan internet rumah tangga atau hotspot umum. Kriteria utama kasus ini adalah membentuk jalur terenkripsi privat dari perangkat jarak jauh menuju jaringan sekolah.",
+      "kunci": "vpn",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "kurang_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "sangat_efektif",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "vpn",
+        "expectedKeywords": [
+          "enkripsi",
+          "remote",
+          "tunnel",
+          "terowongan",
+          "publik",
+          "vpn",
+          "privat",
+          "kerahasiaan"
+        ],
+        "rubricHint": "Bandingkan ke-4 sistem untuk skenario remote access aman guru dari luar sekolah."
+      },
+      "pembahasan": "Remote Access VPN adalah solusi paling tepat karena membungkus lalu lintas data antara laptop guru di luar sekolah dan server internal ke dalam terowongan terenkripsi yang aman dari penyadapan ISP maupun hotspot umum."
+    },
+    {
+      "id": "hots_m2_10",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Akun email admin domain sekolah menggunakan kata sandi yang ternyata pernah bocor di dark web karena digunakan di situs lain (Credential Stuffing). Kriteria utama adalah memastikan penyerang tetap gagal masuk meskipun username dan password persis cocok.",
+      "kunci": "auth",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "sangat_efektif"
+        },
+        "recommended": "auth",
+        "expectedKeywords": [
+          "2fa",
+          "mfa",
+          "otp",
+          "lapis kedua",
+          "bocor",
+          "verifikasi",
+          "credential",
+          "login"
+        ],
+        "rubricHint": "Jelaskan mengapa Autentikasi berlapis paling efektif menghadapi kebocoran password."
+      },
+      "pembahasan": "Autentikasi 2FA/MFA adalah pertahanan utama menghadapi serangan Credential Stuffing karena penyerang yang memiliki username dan password tetap membutuhkan token OTP dinamis dari perangkat pemilik sah."
+    },
+    {
+      "id": "hots_m2_11",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Administrator menemukan beberapa komputer lab diam-diam menghubungi IP server Command & Control (C2) peretas pada port tidak standar 4444. Kriteria utama adalah memblokir koneksi keluar (outbound) menuju port dan IP eksternal berbahaya di gerbang jaringan.",
+      "kunci": "firewall",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "kurang_efektif",
+          "firewall": "sangat_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "firewall",
+        "expectedKeywords": [
+          "outbound",
+          "port",
+          "blokir",
+          "ip",
+          "firewall",
+          "c2",
+          "egress",
+          "lalu lintas"
+        ],
+        "rubricHint": "Evaluasi peran penyaringan paket keluar (egress filtering) dibandingkan sistem lainnya."
+      },
+      "pembahasan": "Firewall (dengan kebijakan Egress Filtering) paling efektif memutus komunikasi malware ke server C2 eksternal dengan cara memblokir IP tujuan mencurigakan dan port non-standar (seperti 4444)."
+    },
+    {
+      "id": "hots_m2_12",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Staf perpustakaan tanpa sengaja mengunduh ekstensi browser dan program konverter PDF gratis yang disisipi Adware/Spyware pencatat ketikan (keylogger) di PC Windows. Kriteria utama adalah membasmi program mata-mata yang sudah tertanam di file sistem operasi lokal.",
+      "kunci": "antivirus",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "sangat_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "antivirus",
+        "expectedKeywords": [
+          "keylogger",
+          "spyware",
+          "scan",
+          "karantina",
+          "lokal",
+          "antivirus",
+          "endpoint",
+          "hapus"
+        ],
+        "rubricHint": "Jelaskan mengapa pembersihan malware lokal seperti keylogger membutuhkan Antivirus."
+      },
+      "pembahasan": "Antivirus/Anti-Malware pada endpoint paling efektif melakukan pemindaian memori dan disk lokal untuk mendeteksi keylogger serta mengkarantina berkas berbahaya tersebut dari komputer."
+    },
+    {
+      "id": "hots_m2_13",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Sebuah kantor pelayanan publik ingin mengakses server aplikasi desktop jarak jauh (RDP Port 3389) dari kantor cabang melewati internet tanpa membuka port 3389 secara telanjang ke seluruh dunia. Kriteria utama adalah mengenkapsulasi sesi remote di dalam jalur privat terenkripsi.",
+      "kunci": "vpn",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "sangat_efektif",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "vpn",
+        "expectedKeywords": [
+          "vpn",
+          "rdp",
+          "tunnel",
+          "enkripsi",
+          "privat",
+          "publik",
+          "terowongan",
+          "aman"
+        ],
+        "rubricHint": "Bandingkan efektivitas VPN dalam menyembunyikan dan mengenkripsi akses RDP lintas internet."
+      },
+      "pembahasan": "VPN sangat efektif karena memungkinkan akses RDP hanya lewat jaringan privat virtual yang terenkripsi (encrypted tunnel) sehingga port 3389 tidak perlu terekspos ke internet publik."
+    },
+    {
+      "id": "hots_m2_14",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Portal manajemen nilai mengizinkan banyak guru login dari berbagai tempat, namun beberapa guru menggunakan kata sandi lemah yang mudah ditebak. Kriteria utama adalah mewajibkan kode verifikasi tambahan berbasis aplikasi authenticator setiap kali sesi login baru dimulai.",
+      "kunci": "auth",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "tidak_relevan",
+          "vpn": "tidak_relevan",
+          "auth": "sangat_efektif"
+        },
+        "recommended": "auth",
+        "expectedKeywords": [
+          "authenticator",
+          "2fa",
+          "otp",
+          "mfa",
+          "login",
+          "verifikasi",
+          "lemah",
+          "lapis"
+        ],
+        "rubricHint": "Analisis mengapa penerapan kontrol identitas 2FA adalah satu-satunya solusi tepat pada kasus ini."
+      },
+      "pembahasan": "Autentikasi 2FA/MFA (dengan aplikasi Authenticator/OTP) sangat efektif menutup kelemahan password yang mudah ditebak dengan menambahkan faktor verifikasi kedua pada saat login."
+    },
+    {
+      "id": "hots_m2_15",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Server Linux sekolah dibombardir ratusan percobaan koneksi SSH per detik dari berbagai alamat IP luar negeri serta pemindaian port massal (Nmap port scan). Kriteria utama adalah menyaring dan membatasi sumber IP serta memblokir lalu lintas scanning di gerbang jaringan.",
+      "kunci": "firewall",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "sangat_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "firewall",
+        "expectedKeywords": [
+          "firewall",
+          "port",
+          "ip",
+          "blokir",
+          "scan",
+          "ssh",
+          "saring",
+          "perimeter"
+        ],
+        "rubricHint": "Evaluasi peran Firewall menyaring IP dan menutup port sebelum trafik mencapai server."
+      },
+      "pembahasan": "Firewall paling efektif menyaring alamat IP asing yang melakukan port scanning dan memblokir akses ke port SSH kecuali dari daftar IP administrator yang diizinkan (whitelist)."
+    },
+    {
+      "id": "hots_m2_16",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Seluruh PC di ruang TU mengalami perlambatan dan muncul jendela pop-up permintaan tebusan palsu (Ransomware awal) setelah seorang pegawai membuka lampiran faktur .zip dari email. Kriteria utama adalah memutus proses enkripsi file di disk lokal dan mengisolasi biner jahat pada OS.",
+      "kunci": "antivirus",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "sangat_efektif",
+          "firewall": "tidak_relevan",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "antivirus",
+        "expectedKeywords": [
+          "ransomware",
+          "antivirus",
+          "karantina",
+          "file",
+          "endpoint",
+          "enkripsi",
+          "lokal",
+          "deteksi"
+        ],
+        "rubricHint": "Jelaskan mengapa proteksi file & proses sistem lokal oleh Antivirus menjadi solusi terpenting."
+      },
+      "pembahasan": "Antivirus modern (dengan proteksi perilaku/behavioral shield anti-ransomware) sangat efektif mendeteksi proses enkripsi massal tidak wajar pada berkas lokal lalu memutus dan mengkarantina eksekusinya."
+    },
+    {
+      "id": "hots_m2_17",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Tim teknisi sekolah sering mengelola perangkat mikrotik dan server sekolah saat rapat di hotel menggunakan jaringan Wi-Fi gratis hotel tanpa HTTPS. Kriteria utama adalah mencegah pihak di Wi-Fi yang sama mengintip (sniffing) paket konfigurasi yang dikirim.",
+      "kunci": "vpn",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "kurang_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "sangat_efektif",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "vpn",
+        "expectedKeywords": [
+          "sniffing",
+          "wi-fi",
+          "enkripsi",
+          "vpn",
+          "hotel",
+          "tunnel",
+          "publik",
+          "mitm"
+        ],
+        "rubricHint": "Bandingkan efektivitas ke-4 sistem menghadapi sniffing pada Wi-Fi terbuka di hotel."
+      },
+      "pembahasan": "VPN sangat efektif melindungi komunikasi di Wi-Fi publik hotel karena seluruh paket data dienkripsi dari perangkat teknisi hingga server VPN tujuan sehingga pelaku sniffing hanya melihat data teracak."
+    },
+    {
+      "id": "hots_m2_18",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Meskipun firewall sudah menutup port lain dan hanya membuka HTTPS 443, penyerang tetap bisa mencoba masuk ke dashboard administrator cloud sekolah memakai username/password mantan admin yang belum dicabut penuh. Kriteria utama adalah mewajibkan verifikasi fisik/token pada perangkat admin aktif.",
+      "kunci": "auth",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "kurang_efektif",
+          "auth": "sangat_efektif"
+        },
+        "recommended": "auth",
+        "expectedKeywords": [
+          "token",
+          "2fa",
+          "mfa",
+          "identitas",
+          "login",
+          "verifikasi",
+          "akses",
+          "otorisasi"
+        ],
+        "rubricHint": "Analisis keterbatasan Firewall Port 443 pada kasus penyalahgunaan kredensial sah dan mengapa Autentikasi lebih tepat."
+      },
+      "pembahasan": "Autentikasi berlapis (2FA/IAM) sangat efektif memverifikasi kepemilikan perangkat fisik/token sah di level akun, sedangkan firewall tetap meloloskan paket HTTPS 443 yang memakai password benar."
+    },
+    {
+      "id": "hots_m2_19",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Jaringan Wi-Fi tamu (Guest) di aula sekolah tidak boleh dapat menjangkau subnet server database keuangan maupun subnet kamera CCTV internal, namun tetap boleh mengakses internet HTTP/HTTPS. Kriteria utama adalah penyaringan rute lalu lintas antar-jaringan berdasarkan IP/port.",
+      "kunci": "firewall",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "sangat_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "firewall",
+        "expectedKeywords": [
+          "subnet",
+          "segmentasi",
+          "firewall",
+          "blokir",
+          "ip",
+          "isolasi",
+          "guest",
+          "aturan"
+        ],
+        "rubricHint": "Jelaskan mengapa isolasi segmen Guest terhadap LAN internal adalah tugas utama Firewall."
+      },
+      "pembahasan": "Firewall adalah komponen paling tepat untuk menerapkan aturan ACL (Access Control List) yang memblokir paket dari segmen Guest menuju subnet internal sambil mengizinkan akses internet HTTP/HTTPS."
+    },
+    {
+      "id": "hots_m2_20",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Sebuah komputer siswa tertular Virus Boot/Executable lewat kartu SD kamera praktikum yang dipasang melalui card reader. Kriteria utama adalah pemeriksaan otomatis seluruh berkas baru pada media penyimpanan lokal sebelum aplikasi dijalankan.",
+      "kunci": "antivirus",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "sangat_efektif",
+          "firewall": "tidak_relevan",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "antivirus",
+        "expectedKeywords": [
+          "antivirus",
+          "scan",
+          "media",
+          "karantina",
+          "eksekusi",
+          "file",
+          "endpoint",
+          "deteksi"
+        ],
+        "rubricHint": "Evaluasi sistem mana yang bekerja memeriksa berkas di media penyimpanan eksternal lokal."
+      },
+      "pembahasan": "Antivirus bekerja langsung pada level sistem file komputer (endpoint) untuk memindai media penyimpanan eksternal seperti SD Card atau USB dan memblokir/mengkarantina file terinfeksi sebelum dieksekusi."
+    },
+    {
+      "id": "hots_m2_21",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Dalam audit keamanan, ditemukan bahwa lalu lintas sinkronisasi backup database malam hari antar dua server gedung berbeda dikirim dalam bentuk plain text melalui koneksi internet publik ISP. Kriteria utama adalah mengenkripsi seluruh jalur komunikasi antar dua router gedung secara otomatis.",
+      "kunci": "vpn",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "sangat_efektif",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "vpn",
+        "expectedKeywords": [
+          "enkripsi",
+          "site-to-site",
+          "vpn",
+          "antar",
+          "tunnel",
+          "plain",
+          "publik",
+          "router"
+        ],
+        "rubricHint": "Jelaskan solusi keamanan jaringan untuk mengamankan jalur sinkronisasi antar-gedung."
+      },
+      "pembahasan": "Site-to-Site VPN sangat efektif karena membentuk terowongan terenkripsi otomatis antar router dua gedung, mencegah kebocoran data backup saat melintasi jaringan ISP publik."
+    },
+    {
+      "id": "hots_m2_22",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Pengurus OSIS membagikan akun pengelola web berita sekolah ke beberapa anggota, namun salah satu perangkat anggota hilang sehingga risiko pembobolan akun meningkat. Kriteria utama adalah mewajibkan konfirmasi kode OTP ke perangkat penanggung jawab sebelum login berhasil.",
+      "kunci": "auth",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "tidak_relevan",
+          "vpn": "tidak_relevan",
+          "auth": "sangat_efektif"
+        },
+        "recommended": "auth",
+        "expectedKeywords": [
+          "otp",
+          "2fa",
+          "verifikasi",
+          "login",
+          "akun",
+          "mfa",
+          "konfirmasi",
+          "lapis kedua"
+        ],
+        "rubricHint": "Analisis bagaimana mekanisme verifikasi kedua memproteksi akun yang kredensialnya berisiko."
+      },
+      "pembahasan": "Autentikasi 2FA/MFA sangat efektif memastikan hanya pemilik perangkat verifikasi OTP resmi yang dapat menyelesaikan proses login meskipun password akun diketahui pihak lain."
+    },
+    {
+      "id": "hots_m2_23",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Server CBT ujian sering mengalami gangguan akibat lalu lintas paket ICMP banjir (Ping Flood) dan permintaan koneksi acak pada port UDP yang tidak dipakai dari internet luar. Kriteria utama adalah membuang (drop) paket-paket anomali di pintu masuk jaringan.",
+      "kunci": "firewall",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "sangat_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "firewall",
+        "expectedKeywords": [
+          "drop",
+          "blokir",
+          "icmp",
+          "udp",
+          "firewall",
+          "paket",
+          "perimeter",
+          "saring"
+        ],
+        "rubricHint": "Bandingkan kemampuan ke-4 sistem untuk menyaring banjir paket ICMP/UDP dari luar."
+      },
+      "pembahasan": "Firewall sangat efektif memblokir dan membuang (drop) paket banjir ICMP dan port UDP tidak terpakai di perimeter jaringan sehingga beban server CBT tetap terjaga stabil."
+    },
+    {
+      "id": "hots_m2_24",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Siswa mengekstrak arsip crack aplikasi desain grafis yang mengaktifkan skrip berbahaya di Registry Windows sehingga setiap aplikasi .exe gagal dijalankan. Kriteria utama adalah mendeteksi dan membersihkan infeksi file & registry di dalam sistem operasi klien.",
+      "kunci": "antivirus",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "sangat_efektif",
+          "firewall": "tidak_relevan",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "antivirus",
+        "expectedKeywords": [
+          "antivirus",
+          "registry",
+          "exe",
+          "karantina",
+          "lokal",
+          "scan",
+          "infeksi",
+          "bersihkan"
+        ],
+        "rubricHint": "Jelaskan mengapa hanya pemindai endpoint yang efektif menangani kerusakan berkas & registry lokal."
+      },
+      "pembahasan": "Antivirus paling tepat dan sangat efektif untuk memindai berkas executable yang terinfeksi serta memulihkan entri sistem/registry yang dimanipulasi malware di komputer lokal."
+    },
+    {
+      "id": "hots_m2_25",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Bendahara sekolah sedang mengikuti pelatihan luar provinsi dan perlu mengunduh laporan gaji guru dari server lokal sekolah lewat jaringan internet umum. Kriteria utama adalah memastikan koneksi dari luar sekolah masuk ke jaringan lokal secara privat dan terenkripsi.",
+      "kunci": "vpn",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "kurang_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "sangat_efektif",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "vpn",
+        "expectedKeywords": [
+          "vpn",
+          "enkripsi",
+          "privat",
+          "remote",
+          "tunnel",
+          "publik",
+          "akses",
+          "laporan"
+        ],
+        "rubricHint": "Evaluasi solusi paling aman bagi pengguna jarak jauh yang membutuhkan akses ke jaringan internal."
+      },
+      "pembahasan": "VPN merupakan sistem paling efektif karena menyediakan akses remote privat terenkripsi menuju server lokal sekolah melewati jaringan internet umum tanpa mengekspos server gaji ke publik."
+    },
+    {
+      "id": "hots_m2_26",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Tim keamanan mendapati upaya login mencurigakan ke portal admin akademik dari lokasi IP berbeda memakai password hasil phishing. Kriteria utama adalah menghentikan akses masuk akun tanpa kode verifikasi fisik dari pemilik akun asli.",
+      "kunci": "auth",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "sangat_efektif"
+        },
+        "recommended": "auth",
+        "expectedKeywords": [
+          "2fa",
+          "mfa",
+          "phishing",
+          "otp",
+          "verifikasi",
+          "akun",
+          "login",
+          "password"
+        ],
+        "rubricHint": "Jelaskan mengapa autentikasi multifaktor mematahkan penyalahgunaan kredensial hasil phishing."
+      },
+      "pembahasan": "Autentikasi 2FA/MFA sangat efektif menggagalkan login penyerang meskipun mereka telah mencuri username dan password lewat phishing, karena kode verifikasi kedua hanya dimiliki admin sah."
+    },
+    {
+      "id": "hots_m2_27",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Di jaringan laboratorium komputer, siswa dilarang menjalankan aplikasi peer-to-peer torrent atau mengakses layanan game eksternal pada port TCP/UDP tertentu selama jam pelajaran. Kriteria utama adalah penegakan aturan blokir port & protokol pada gateway jaringan.",
+      "kunci": "firewall",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "sangat_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "firewall",
+        "expectedKeywords": [
+          "firewall",
+          "port",
+          "blokir",
+          "aturan",
+          "protokol",
+          "gateway",
+          "lalu lintas",
+          "filter"
+        ],
+        "rubricHint": "Uraikan mengapa pengendalian port dan protokol keluar masuk hanya dapat ditegakkan oleh Firewall."
+      },
+      "pembahasan": "Firewall adalah solusi paling tepat untuk menyaring dan memblokir port maupun protokol tertentu (seperti torrent/game) pada lalu lintas jaringan laboratorium sesuai aturan kebijakan sekolah."
+    },
+    {
+      "id": "hots_m2_28",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Dokumen tugas siswa dalam format Word bermakro (.docm) terdeteksi menyisipkan skrip pengunduh malware saat dibuka di beberapa PC lab. Kriteria utama adalah mendeteksi pola kode makro berbahaya pada dokumen lokal sebelum skrip merusak file lain.",
+      "kunci": "antivirus",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "sangat_efektif",
+          "firewall": "kurang_efektif",
+          "vpn": "tidak_relevan",
+          "auth": "tidak_relevan"
+        },
+        "recommended": "antivirus",
+        "expectedKeywords": [
+          "makro",
+          "antivirus",
+          "dokumen",
+          "scan",
+          "karantina",
+          "endpoint",
+          "deteksi",
+          "heuristik"
+        ],
+        "rubricHint": "Bandingkan efektivitas ke-4 sistem terhadap serangan malware yang disisipkan pada dokumen Word lokal."
+      },
+      "pembahasan": "Antivirus sangat efektif mendeteksi skrip makro berbahaya di dalam file dokumen lokal melalui pemindaian real-time & analisis heuristik sebelum mengeksekusi muatan malware."
+    },
+    {
+      "id": "hots_m2_29",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Sekolah mengembangkan sistem presensi mobile bagi guru lapangan agar dapat terhubung aman ke server basis data presensi internal tanpa membuka akses port basis data langsung ke internet publik. Kriteria utama adalah jembatan komunikasi terenkripsi menuju intranet sekolah.",
+      "kunci": "vpn",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "sangat_efektif",
+          "auth": "kurang_efektif"
+        },
+        "recommended": "vpn",
+        "expectedKeywords": [
+          "vpn",
+          "enkripsi",
+          "intranet",
+          "tunnel",
+          "publik",
+          "database",
+          "privat",
+          "aman"
+        ],
+        "rubricHint": "Jelaskan mengapa jalur terowongan terenkripsi diperlukan bagi pengguna mobile di jaringan publik."
+      },
+      "pembahasan": "VPN sangat efektif menjadi gerbang jembatan terenkripsi agar perangkat mobile guru di internet umum dapat masuk ke intranet sekolah secara aman tanpa mengekspos server basis data ke publik."
+    },
+    {
+      "id": "hots_m2_30",
+      "moduleId": "2",
+      "questionType": "hots_m2_case",
+      "pertanyaan": "Admin jaringan mengamankan akses SSH server produksi dan panel kontrol hosting sekolah. Selain password panjang, disyaratkan adanya lapisan verifikasi identitas kedua berupa kunci token OTP agar tidak mudah dibobol jika password bocor.",
+      "kunci": "auth",
+      "hotsData": {
+        "matrix": {
+          "antivirus": "tidak_relevan",
+          "firewall": "kurang_efektif",
+          "vpn": "kurang_efektif",
+          "auth": "sangat_efektif"
+        },
+        "recommended": "auth",
+        "expectedKeywords": [
+          "otp",
+          "token",
+          "2fa",
+          "mfa",
+          "identitas",
+          "verifikasi",
+          "lapis kedua",
+          "login"
+        ],
+        "rubricHint": "Evaluasi peran sistem autentikasi multifaktor dalam memperkuat proteksi akses akun administrator."
+      },
+      "pembahasan": "Autentikasi 2FA/MFA paling tepat dan sangat efektif karena menambahkan verifikasi token OTP dinamis di atas password sehingga pembobolan berbasis pencurian password dapat dicegah."
+    },
+    {
+      "id": "hots_m3_01",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Portal E-Learning ujian siswa membutuhkan akses browser web terenkripsi SSL/TLS agar siswa di Lab Komputer (192.168.1.50) dapat mengirimkan lembar jawaban ujian ke Server Ujian (10.0.0.10:443) tanpa risiko penyadapan.",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "https",
+        "trafficLabel": "HTTPS (Port 443 TCP)",
+        "protocol": "TCP",
+        "port": "443",
+        "sourceIp": "192.168.1.50",
+        "destIp": "10.0.0.10",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "https",
+          "443",
+          "enkripsi",
+          "ssl",
+          "tls",
+          "diterima",
+          "allow",
+          "ujian"
+        ],
+        "rubricHint": "Terapkan aturan pada simulator dan jelaskan alasan teknis mengapa lalu lintas Port 443 ini harus diterima atau ditolak."
+      },
+      "pembahasan": "Aturan ALLOW wajib diterapkan untuk TCP Port 443 (HTTPS) karena lalu lintas ujian menggunakan enkripsi SSL/TLS yang aman untuk menjaga kerahasiaan dan kelancaran pengiriman jawaban ujian siswa ke server."
+    },
+    {
+      "id": "hots_m3_02",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Terdeteksi upaya login remote terminal menggunakan protokol Telnet (TCP Port 23) dari jaringan eksternal (203.0.113.88) ke Server Utama Sekolah (10.0.0.10:23). Kebijakan keamanan sekolah melarang keras pengiriman kata sandi secara plain text tanpa enkripsi.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "telnet",
+        "trafficLabel": "Telnet (Port 23 TCP)",
+        "protocol": "TCP",
+        "port": "23",
+        "sourceIp": "203.0.113.88",
+        "destIp": "10.0.0.10",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "telnet",
+          "23",
+          "plain",
+          "tidak terenkripsi",
+          "ditolak",
+          "block",
+          "sniffing",
+          "ssh"
+        ],
+        "rubricHint": "Jalankan aturan pada simulator lalu jelaskan risiko keamanan Telnet dan alasan paket ditolak/diterima."
+      },
+      "pembahasan": "Aturan BLOCK wajib diterapkan pada Port 23 (Telnet) karena Telnet mengirimkan username dan password dalam format teks polos (plain text) yang mudah disadap (sniffing); remote manajemen harus diarahkan ke SSH Port 22."
+    },
+    {
+      "id": "hots_m3_03",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Firewall mendeteksi lonjakan 50.000 paket ICMP Echo Request per detik secara serentak dari jaringan botnet asing (198.51.100.77) menuju Gateway Server (10.0.0.1) yang membuat respons jaringan sekolah macet total.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "ddos",
+        "trafficLabel": "ICMP Ping Flood (DDoS)",
+        "protocol": "ICMP",
+        "port": "N/A",
+        "sourceIp": "198.51.100.77",
+        "destIp": "10.0.0.1",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "ddos",
+          "icmp",
+          "banjir",
+          "lumpuh",
+          "ditolak",
+          "block",
+          "drop",
+          "bandwidth"
+        ],
+        "rubricHint": "Uji simulasi trafik banjir ICMP ini dan jelaskan alasan hasil penyaringan firewall."
+      },
+      "pembahasan": "Aturan BLOCK (DROP) harus diterapkan terhadap banjir paket ICMP Flood tersebut agar paket sampah DDoS dijatuhkan di perimeter firewall dan tidak menghabiskan bandwidth maupun CPU server gateway sekolah."
+    },
+    {
+      "id": "hots_m3_04",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Seluruh PC klien laboratorium (192.168.1.25) tidak dapat menerjemahkan nama domain situs belajar (contoh: kemdikbud.go.id) karena kueri UDP Port 53 menuju DNS Resolver Internal (10.0.0.5:53) tertahan di firewall.",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "dns",
+        "trafficLabel": "DNS Query (Port 53 UDP)",
+        "protocol": "UDP",
+        "port": "53",
+        "sourceIp": "192.168.1.25",
+        "destIp": "10.0.0.5",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "dns",
+          "53",
+          "domain",
+          "ip",
+          "diterima",
+          "allow",
+          "resolusi",
+          "akses"
+        ],
+        "rubricHint": "Terapkan kebijakan firewall yang tepat dan uraikan alasan mengapa trafik Port 53 ini harus lolos atau dibuang."
+      },
+      "pembahasan": "Aturan ALLOW harus diterapkan pada UDP Port 53 (DNS) menuju DNS Resolver internal agar komputer klien dapat menerjemahkan nama domain menjadi alamat IP sehingga akses situs belajar berfungsi normal."
+    },
+    {
+      "id": "hots_m3_05",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Sebuah IP publik tak dikenal dari internet (45.33.12.9) mencoba membuka koneksi transfer file menggunakan protokol FTP standar (TCP Port 21) tanpa enkripsi ke Server Keuangan Sekolah (10.0.0.20:21).",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "ftp",
+        "trafficLabel": "FTP Plain (Port 21 TCP)",
+        "protocol": "TCP",
+        "port": "21",
+        "sourceIp": "45.33.12.9",
+        "destIp": "10.0.0.20",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "ftp",
+          "21",
+          "plain",
+          "enkripsi",
+          "ditolak",
+          "block",
+          "keuangan",
+          "sftp"
+        ],
+        "rubricHint": "Jalankan simulasi firewall untuk lalu lintas FTP eksternal ini dan jelaskan alasan teknis keputusannya."
+      },
+      "pembahasan": "Aturan BLOCK wajib diterapkan pada TCP Port 21 dari IP publik karena FTP mengirimkan kredensial dan berkas sensitif keuangan tanpa enkripsi; transfer berkas aman wajib memakai SFTP (Port 22) dari IP terotorisasi."
+    },
+    {
+      "id": "hots_m3_06",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Administrator jaringan resmi sekolah (IP terotorisasi: 192.168.10.2) perlu melakukan pemeliharaan darurat pada Server Linux (10.0.0.10:22) melalui saluran remote terenkripsi Secure Shell (SSH TCP Port 22).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "ssh",
+        "trafficLabel": "SSH Admin (Port 22 TCP)",
+        "protocol": "TCP",
+        "port": "22",
+        "sourceIp": "192.168.10.2",
+        "destIp": "10.0.0.10",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "ssh",
+          "22",
+          "enkripsi",
+          "admin",
+          "diterima",
+          "allow",
+          "aman",
+          "remote"
+        ],
+        "rubricHint": "Konfigurasikan simulasi untuk permintaan SSH admin resmi ini dan jelaskan alasan hasil simulasi."
+      },
+      "pembahasan": "Aturan ALLOW diterapkan untuk koneksi SSH (TCP Port 22) karena berasal dari IP administrator terpercaya dan komunikasi SSH dienkripsi penuh dari ujung ke ujung sehingga aman untuk administrasi server."
+    },
+    {
+      "id": "hots_m3_07",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Terdeteksi upaya koneksi langsung dari alamat IP internet publik (185.220.101.4) menuju layanan basis data MySQL (TCP Port 3306) di Server Database Nilai Siswa (10.0.0.50:3306).",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "mysql",
+        "trafficLabel": "MySQL Public (Port 3306 TCP)",
+        "protocol": "TCP",
+        "port": "3306",
+        "sourceIp": "185.220.101.4",
+        "destIp": "10.0.0.50",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "database",
+          "mysql",
+          "3306",
+          "publik",
+          "ditolak",
+          "block",
+          "kebocoran",
+          "internal"
+        ],
+        "rubricHint": "Uji simulasi akses database publik ini dan jelaskan alasan mengapa lalu lintas diterima atau ditolak."
+      },
+      "pembahasan": "Aturan BLOCK wajib diterapkan karena port database (MySQL 3306) tidak boleh diekspos langsung ke internet publik; membuka port database ke publik berisiko besar menyebabkan pencurian data dan serangan Brute Force."
+    },
+    {
+      "id": "hots_m3_08",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Sistem pemantau jaringan mendeteksi lalu lintas eksploitasi protokol berbagi berkas SMB (TCP Port 445) mencoba menerobos masuk dari luar jaringan (203.0.113.99) menuju komputer Lab TJKT (192.168.1.0/24), pola yang identik dengan penyebaran Worm/Ransomware.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "smb",
+        "trafficLabel": "SMB External (Port 445 TCP)",
+        "protocol": "TCP",
+        "port": "445",
+        "sourceIp": "203.0.113.99",
+        "destIp": "192.168.1.50",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "smb",
+          "445",
+          "worm",
+          "ransomware",
+          "ditolak",
+          "block",
+          "eksploitasi",
+          "eksternal"
+        ],
+        "rubricHint": "Terapkan aturan simulasi yang aman terhadap trafik SMB eksternal dan jelaskan alasan teknisnya."
+      },
+      "pembahasan": "Aturan BLOCK wajib diterapkan terhadap Port 445 (SMB) dari jaringan eksternal karena port tersebut merupakan vektor serangan paling umum bagi Network Worm dan Ransomware untuk menyebar secara otomatis."
+    },
+    {
+      "id": "hots_m3_09",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Staf keuangan sekolah mengakses portal e-Banking dan aplikasi SIAKAD berbasis HTTPS terenkripsi (TCP Port 443) dari subnet workstation kantor (192.168.10.25) menuju server aplikasi resmi (10.0.0.20:443).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "https",
+        "trafficLabel": "HTTPS Web Portal (Port 443 TCP)",
+        "protocol": "TCP",
+        "port": "443",
+        "sourceIp": "192.168.10.25",
+        "destIp": "10.0.0.20",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "https",
+          "443",
+          "tls",
+          "enkripsi",
+          "allow",
+          "diterima",
+          "aman",
+          "portal"
+        ],
+        "rubricHint": "Konfigurasikan aturan firewall untuk trafik portal HTTPS terenkripsi ini dan jelaskan alasan hasil simulasi."
+      },
+      "pembahasan": "Aturan ALLOW diterapkan pada lalu lintas HTTPS (TCP Port 443) menuju server aplikasi resmi karena koneksi web modern menggunakan enkripsi TLS/SSL untuk menjaga kerahasiaan data transaksi."
+    },
+    {
+      "id": "hots_m3_10",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Seorang penyerang dari IP luar negeri (91.132.147.88) mencoba mengakses layanan administrasi jauh Remote Desktop Protocol / RDP (TCP Port 3389) pada komputer server ruang guru (192.168.2.15:3389) secara langsung tanpa VPN.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "rdp_ext",
+        "trafficLabel": "RDP External Direct (Port 3389 TCP)",
+        "protocol": "TCP",
+        "port": "3389",
+        "sourceIp": "91.132.147.88",
+        "destIp": "192.168.2.15",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "rdp",
+          "3389",
+          "eksternal",
+          "vpn",
+          "brute",
+          "block",
+          "ditolak",
+          "remote"
+        ],
+        "rubricHint": "Terapkan kebijakan firewall yang tepat terhadap percobaan akses RDP publik ini dan uraikan alasannya."
+      },
+      "pembahasan": "Aturan BLOCK wajib diberlakukan karena mengekspos RDP (Port 3389) langsung ke internet publik menjadi sasaran empuk serangan Brute Force dan eksploitasi celah BlueKeep; akses remote desktop eksternal wajib melalui terowongan VPN."
+    },
+    {
+      "id": "hots_m3_11",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Server aplikasi perpustakaan (10.0.0.12) mengirim paket sinkronisasi waktu resmi menggunakan protokol NTP (UDP Port 123) menuju server waktu lokal sekolah (10.0.0.5:123) agar log audit tetap akurat.",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "ntp",
+        "trafficLabel": "NTP Time Sync (Port 123 UDP)",
+        "protocol": "UDP",
+        "port": "123",
+        "sourceIp": "10.0.0.12",
+        "destIp": "10.0.0.5",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "ntp",
+          "123",
+          "waktu",
+          "log",
+          "internal",
+          "allow",
+          "diterima",
+          "sinkronisasi"
+        ],
+        "rubricHint": "Tentukan aturan simulasi untuk lalu lintas sinkronisasi NTP internal ini dan jelaskan fungsi keamanannya."
+      },
+      "pembahasan": "Aturan ALLOW diberikan untuk lalu lintas NTP (UDP Port 123) antar-server internal tepercaya karena ketepatan stempel waktu sangat krusial bagi validitas sertifikat digital dan korelasi log forensik keamanan."
+    },
+    {
+      "id": "hots_m3_12",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Scanner otomatis dari internet (45.95.147.200) berupaya menghubungi basis data Redis (TCP Port 6379) milik server praktikum cloud sekolah (10.0.0.45:6379) yang berjalan di jaringan internal.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "redis",
+        "trafficLabel": "Redis In-Memory DB (Port 6379 TCP)",
+        "protocol": "TCP",
+        "port": "6379",
+        "sourceIp": "45.95.147.200",
+        "destIp": "10.0.0.45",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "redis",
+          "6379",
+          "database",
+          "publik",
+          "block",
+          "ditolak",
+          "eksternal",
+          "internal"
+        ],
+        "rubricHint": "Konfigurasikan respons firewall terhadap akses port Redis dari internet dan jelaskan risikonya."
+      },
+      "pembahasan": "Aturan BLOCK wajib dipasang karena port Redis (6379) umumnya tidak memiliki autentikasi bawaan yang kuat untuk akses publik dan hanya boleh diakses oleh host aplikasi di dalam segmen internal."
+    },
+    {
+      "id": "hots_m3_13",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Perangkat klien lab komputer (192.168.1.44) mengajukan kueri DNS (UDP Port 53) ke server DNS internal sekolah (10.0.0.2:53) untuk menerjemahkan nama domain portal ujian lokal.",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "dns_internal",
+        "trafficLabel": "DNS Query Internal (Port 53 UDP)",
+        "protocol": "UDP",
+        "port": "53",
+        "sourceIp": "192.168.1.44",
+        "destIp": "10.0.0.2",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "dns",
+          "53",
+          "domain",
+          "internal",
+          "allow",
+          "diterima",
+          "resolusi",
+          "lokal"
+        ],
+        "rubricHint": "Uji kebijakan firewall untuk kueri DNS internal menuju DNS Resolver resmi dan jelaskan alasannya."
+      },
+      "pembahasan": "Aturan ALLOW diterapkan untuk lalu lintas DNS (UDP Port 53) dari klien lab ke server DNS resolver resmi agar pengguna dapat menerjemahkan nama domain ke alamat IP tanpa mengarahkan kueri ke DNS liar."
+    },
+    {
+      "id": "hots_m3_14",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Ditemukan lalu lintas protokol Telnet (TCP Port 23) yang mencoba melakukan login ke switch inti laboratorium (10.0.0.1:23) dari segmen Wi-Fi tamu (172.16.50.99) secara teks polos tanpa enkripsi.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "telnet",
+        "trafficLabel": "Telnet Cleartext (Port 23 TCP)",
+        "protocol": "TCP",
+        "port": "23",
+        "sourceIp": "172.16.50.99",
+        "destIp": "10.0.0.1",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "telnet",
+          "23",
+          "polos",
+          "enkripsi",
+          "sniffing",
+          "block",
+          "ditolak",
+          "tamu"
+        ],
+        "rubricHint": "Tetapkan aturan keamanan pada percobaan login Telnet dari Wi-Fi tamu dan jelaskan alasan teknisnya."
+      },
+      "pembahasan": "Aturan BLOCK wajib diterapkan karena Telnet (TCP Port 23) mengirim username dan password tanpa enkripsi sehingga sangat mudah disadap (Sniffing), terlebih berasal dari segmen Wi-Fi tamu yang tidak tepercaya."
+    },
+    {
+      "id": "hots_m3_15",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Server aplikasi web e-learning (10.0.0.10) mengirimkan catatan log sistem terpusat melalui Syslog terenkripsi (TCP Port 6514) menuju server SIEM pemantauan keamanan (10.0.0.60:6514).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "syslog_tls",
+        "trafficLabel": "Syslog over TLS (Port 6514 TCP)",
+        "protocol": "TCP",
+        "port": "6514",
+        "sourceIp": "10.0.0.10",
+        "destIp": "10.0.0.60",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "syslog",
+          "6514",
+          "log",
+          "siem",
+          "tls",
+          "allow",
+          "diterima",
+          "internal"
+        ],
+        "rubricHint": "Simulasikan pengiriman log Syslog antar-server keamanan internal ini dan jelaskan manfaat keamanannya."
+      },
+      "pembahasan": "Aturan ALLOW diberikan untuk lalu lintas Syslog-TLS (TCP Port 6514) menuju server SIEM karena pengiriman log audit terenkripsi di segmen internal penting untuk pemantauan insiden real-time."
+    },
+    {
+      "id": "hots_m3_16",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Host tidak dikenal di luar jaringan (198.51.100.77) mencoba mengunduh berkas konfigurasi router melalui protokol TFTP tanpa autentikasi (UDP Port 69) pada server jaringan (10.0.0.8:69).",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "tftp",
+        "trafficLabel": "TFTP Unauthenticated (Port 69 UDP)",
+        "protocol": "UDP",
+        "port": "69",
+        "sourceIp": "198.51.100.77",
+        "destIp": "10.0.0.8",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "tftp",
+          "69",
+          "autentikasi",
+          "konfigurasi",
+          "eksternal",
+          "block",
+          "ditolak",
+          "enkripsi"
+        ],
+        "rubricHint": "Konfigurasikan kebijakan terhadap akses TFTP dari eksternal dan jelaskan kerentanan protokolnya."
+      },
+      "pembahasan": "Aturan BLOCK wajib diterapkan terhadap TFTP (UDP Port 69) dari luar jaringan karena protokol ini tidak memiliki mekanisme login maupun enkripsi, sehingga membuka celah pencurian file konfigurasi perangkat jaringan."
+    },
+    {
+      "id": "hots_m3_17",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Guru pengampu mengunggah materi modul video ke server repositori sekolah (10.0.0.30:22) menggunakan protokol SFTP terenkripsi (TCP Port 22) dari IP komputer staf terdaftar (192.168.10.18).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "sftp",
+        "trafficLabel": "SFTP Secure Transfer (Port 22 TCP)",
+        "protocol": "TCP",
+        "port": "22",
+        "sourceIp": "192.168.10.18",
+        "destIp": "10.0.0.30",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "sftp",
+          "22",
+          "enkripsi",
+          "staf",
+          "aman",
+          "allow",
+          "diterima",
+          "ssh"
+        ],
+        "rubricHint": "Jalankan simulasi firewall untuk unggahan SFTP staf terdaftar dan jelaskan mengapa aman."
+      },
+      "pembahasan": "Aturan ALLOW tepat diterapkan untuk SFTP (TCP Port 22) dari alamat IP staf terotorisasi karena seluruh proses transfer berkas dan kredensial terlindungi di dalam saluran SSH terenkripsi."
+    },
+    {
+      "id": "hots_m3_18",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Sebuah IP asing (103.145.22.19) melakukan pemindaian terhadap protokol manajemen jaringan SNMPv1/v2 (UDP Port 161) pada router gerbang utama (10.0.0.1:161) untuk membaca topologi jaringan sekolah.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "snmp",
+        "trafficLabel": "SNMP Public Probe (Port 161 UDP)",
+        "protocol": "UDP",
+        "port": "161",
+        "sourceIp": "103.145.22.19",
+        "destIp": "10.0.0.1",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "snmp",
+          "161",
+          "pemindaian",
+          "topologi",
+          "router",
+          "block",
+          "ditolak",
+          "eksternal"
+        ],
+        "rubricHint": "Tentukan aturan firewall terhadap kueri SNMP dari IP internet publik dan jelaskan dampaknya."
+      },
+      "pembahasan": "Aturan BLOCK wajib diberlakukan pada port SNMP (UDP 161) dari internet karena SNMPv1/v2 menggunakan community string teks polos dan dapat membocorkan struktur topologi serta statistik perangkat router."
+    },
+    {
+      "id": "hots_m3_19",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Karyawan yang sedang dinas luar kota menghubungkan laptop kantor melalui terowongan WireGuard VPN (UDP Port 51820) dari IP publik (114.79.12.55) menuju gateway VPN sekolah (202.150.10.1:51820).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "vpn_wg",
+        "trafficLabel": "WireGuard VPN Gateway (Port 51820 UDP)",
+        "protocol": "UDP",
+        "port": "51820",
+        "sourceIp": "114.79.12.55",
+        "destIp": "202.150.10.1",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "vpn",
+          "wireguard",
+          "51820",
+          "terowongan",
+          "enkripsi",
+          "allow",
+          "diterima",
+          "gateway"
+        ],
+        "rubricHint": "Konfigurasikan aturan akses untuk koneksi terowongan VPN menuju gateway resmi dan jelaskan alasannya."
+      },
+      "pembahasan": "Aturan ALLOW diterapkan pada gateway VPN resmi (UDP Port 51820) karena jalur terowongan terenkripsi inilah yang memang dirancang agar pengguna eksternal dapat terhubung ke jaringan internal dengan aman."
+    },
+    {
+      "id": "hots_m3_20",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Permintaan akses jarak jauh menuju Docker Daemon API tanpa sertifikat TLS (TCP Port 2375) terdeteksi datang dari alamat IP internet (194.26.135.12) ke server virtualisasi lab (10.0.0.70:2375).",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "docker_api",
+        "trafficLabel": "Docker API Unencrypted (Port 2375 TCP)",
+        "protocol": "TCP",
+        "port": "2375",
+        "sourceIp": "194.26.135.12",
+        "destIp": "10.0.0.70",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "docker",
+          "2375",
+          "api",
+          "tls",
+          "root",
+          "block",
+          "ditolak",
+          "eksternal"
+        ],
+        "rubricHint": "Uji kebijakan pemblokiran pada eksposur Docker API eksternal dan jelaskan konsekuensi keamanannya."
+      },
+      "pembahasan": "Aturan BLOCK mutlak diterapkan karena mengekspos Docker API port 2375 tanpa autentikasi TLS memungkinkan penyerang menjalankan container jahat dengan hak akses setara root pada server host."
+    },
+    {
+      "id": "hots_m3_21",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Server notifikasi ujian mengirim email konfirmasi pendaftaran menggunakan protokol SMTP Submission terenkripsi STARTTLS (TCP Port 587) dari IP server aplikasi (10.0.0.15) ke Mail Relay resmi (10.0.0.25:587).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "smtp_tls",
+        "trafficLabel": "SMTP Submission TLS (Port 587 TCP)",
+        "protocol": "TCP",
+        "port": "587",
+        "sourceIp": "10.0.0.15",
+        "destIp": "10.0.0.25",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "smtp",
+          "587",
+          "email",
+          "tls",
+          "relay",
+          "allow",
+          "diterima",
+          "internal"
+        ],
+        "rubricHint": "Simulasikan aturan untuk lalu lintas SMTP Submission internal terenkripsi dan jelaskan alasannya."
+      },
+      "pembahasan": "Aturan ALLOW diterapkan untuk lalu lintas SMTP Submission (TCP Port 587) dari server aplikasi ke mail relay resmi karena pengiriman email terautentikasi dan terenkripsi STARTTLS mencegah pemalsuan pengirim."
+    },
+    {
+      "id": "hots_m3_22",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Koneksi masuk dari IP publik mencurigakan (178.128.90.41) mencoba menembus basis data PostgreSQL sekolah (TCP Port 5432) di server data akademik (10.0.0.51:5432) secara langsung.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "postgres",
+        "trafficLabel": "PostgreSQL Public (Port 5432 TCP)",
+        "protocol": "TCP",
+        "port": "5432",
+        "sourceIp": "178.128.90.41",
+        "destIp": "10.0.0.51",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "postgresql",
+          "5432",
+          "database",
+          "publik",
+          "block",
+          "ditolak",
+          "internal",
+          "kebocoran"
+        ],
+        "rubricHint": "Terapkan kebijakan firewall untuk akses PostgreSQL publik dan jelaskan mengapa port database harus dilindungi."
+      },
+      "pembahasan": "Aturan BLOCK wajib digunakan karena layanan basis data PostgreSQL (Port 5432) harus diisolasi pada segmen internal dan hanya melayani permintaan dari server backend, bukan akses langsung dari internet."
+    },
+    {
+      "id": "hots_m3_23",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Aplikasi client guru pada jaringan staf (192.168.10.30) mengakses portal autentikasi terpusat melalui LDAPS terenkripsi (TCP Port 636) menuju server direktori identitas (10.0.0.9:636).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "ldaps",
+        "trafficLabel": "LDAPS Directory Auth (Port 636 TCP)",
+        "protocol": "TCP",
+        "port": "636",
+        "sourceIp": "192.168.10.30",
+        "destIp": "10.0.0.9",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "ldaps",
+          "636",
+          "autentikasi",
+          "enkripsi",
+          "tls",
+          "allow",
+          "diterima",
+          "staf"
+        ],
+        "rubricHint": "Konfigurasikan simulasi firewall untuk lalu lintas autentikasi LDAPS internal dan uraikan alasannya."
+      },
+      "pembahasan": "Aturan ALLOW diberikan untuk lalu lintas LDAPS (TCP Port 636) di dalam jaringan internal karena protokol ini mengenkripsi pertukaran kredensial pengguna dengan SSL/TLS saat proses autentikasi."
+    },
+    {
+      "id": "hots_m3_24",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Alamat IP internet luar (89.248.165.14) mencoba terhubung ke layanan layar jarak jauh VNC tanpa terowongan VPN (TCP Port 5900) milik komputer operator ujian (192.168.1.88:5900).",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "vnc",
+        "trafficLabel": "VNC Direct Public (Port 5900 TCP)",
+        "protocol": "TCP",
+        "port": "5900",
+        "sourceIp": "89.248.165.14",
+        "destIp": "192.168.1.88",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "vnc",
+          "5900",
+          "eksternal",
+          "remote",
+          "vpn",
+          "block",
+          "ditolak",
+          "enkripsi"
+        ],
+        "rubricHint": "Terapkan simulasi untuk memutus percobaan VNC dari internet dan jelaskan celah keamanannya."
+      },
+      "pembahasan": "Aturan BLOCK wajib diberlakukan karena VNC (TCP Port 5900) sering kali memakai otentikasi kata sandi pendek dan tidak mengenkripsi sesi layar secara penuh apabila diekspos langsung ke jaringan publik."
+    },
+    {
+      "id": "hots_m3_25",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Siswa di Lab Komputer 1 (192.168.1.21) mengakses fitur chat diskusi real-time pada LMS sekolah melalui koneksi WebSocket terenkripsi WSS/HTTPS (TCP Port 443) ke server LMS (10.0.0.14:443).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "wss_lms",
+        "trafficLabel": "WSS Realtime LMS (Port 443 TCP)",
+        "protocol": "TCP",
+        "port": "443",
+        "sourceIp": "192.168.1.21",
+        "destIp": "10.0.0.14",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "443",
+          "wss",
+          "https",
+          "tls",
+          "lms",
+          "allow",
+          "diterima",
+          "enkripsi"
+        ],
+        "rubricHint": "Jalankan simulasi untuk lalu lintas WebSocket terenkripsi di LMS dan jelaskan alasannya."
+      },
+      "pembahasan": "Aturan ALLOW diterapkan untuk lalu lintas WSS pada Port 443 karena berjalan di atas enkripsi TLS yang aman serta berasal dari subnet lab siswa menuju layanan pembelajaran resmi."
+    },
+    {
+      "id": "hots_m3_26",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Lalu lintas dari subnet Wi-Fi tamu (172.16.50.112) mencoba mengakses layanan eksekusi jarak jauh Windows Remote Management / WinRM HTTP (TCP Port 5985) pada server administrasi (10.0.0.11:5985).",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "winrm",
+        "trafficLabel": "WinRM from Guest Wi-Fi (Port 5985 TCP)",
+        "protocol": "TCP",
+        "port": "5985",
+        "sourceIp": "172.16.50.112",
+        "destIp": "10.0.0.11",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "winrm",
+          "5985",
+          "tamu",
+          "isolasi",
+          "segmentasi",
+          "block",
+          "ditolak",
+          "manajemen"
+        ],
+        "rubricHint": "Konfigurasikan kebijakan segmentasi terhadap akses WinRM dari Wi-Fi tamu dan jelaskan alasannya."
+      },
+      "pembahasan": "Aturan BLOCK mutlak diterapkan karena jaringan Wi-Fi tamu harus diisolasi dari layanan manajemen server (WinRM 5985) untuk mencegah pergerakan lateral maupun eksekusi perintah jarak jauh."
+    },
+    {
+      "id": "hots_m3_27",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Mesin backup otomatis (10.0.0.65) menarik cadangan terenkripsi harian dari server database akademik melalui SSH Tunnel terotentikasi kunci privat (TCP Port 22) menuju host backup target (10.0.0.50:22).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "ssh_backup",
+        "trafficLabel": "SSH Automated Backup (Port 22 TCP)",
+        "protocol": "TCP",
+        "port": "22",
+        "sourceIp": "10.0.0.65",
+        "destIp": "10.0.0.50",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "ssh",
+          "22",
+          "backup",
+          "kunci",
+          "enkripsi",
+          "allow",
+          "diterima",
+          "internal"
+        ],
+        "rubricHint": "Uji kebijakan firewall untuk proses backup terenkripsi antar-server dan jelaskan pertimbangannya."
+      },
+      "pembahasan": "Aturan ALLOW diberikan untuk lalu lintas SSH antar-server backup dan database di zona internal karena menggunakan autentikasi kunci kriptografi dan mengenkripsi seluruh data cadangan saat transit."
+    },
+    {
+      "id": "hots_m3_28",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Serangan botnet mengirimkan ratusan ribu paket ICMP Echo Request berukuran besar secara beruntun dari berbagai IP eksternal (198.18.0.44) ke gateway web sekolah (202.150.10.2) untuk melumpuhkan bandwidth.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "icmp_flood",
+        "trafficLabel": "ICMP Ping Flood Eksternal (ICMP)",
+        "protocol": "ICMP",
+        "port": "Echo",
+        "sourceIp": "198.18.0.44",
+        "destIp": "202.150.10.2",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "icmp",
+          "flood",
+          "ddos",
+          "bandwidth",
+          "ping",
+          "block",
+          "ditolak",
+          "eksternal"
+        ],
+        "rubricHint": "Terapkan aturan firewall untuk meredam banjir paket ICMP eksternal dan jelaskan alasan kerjanya."
+      },
+      "pembahasan": "Aturan BLOCK atau pembatasan laju (rate-limiting) terhadap banjir paket ICMP dari eksternal wajib diterapkan guna mencegah kejenuhan bandwidth (ICMP Flood / Ping Flood DDoS) pada gateway jaringan."
+    },
+    {
+      "id": "hots_m3_29",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Sistem absensi biometrik di ruang piket (192.168.10.75) mengirimkan data presensi ke API server pusat melalui protokol HTTPS (TCP Port 443) menuju server API sekolah (10.0.0.35:443).",
+      "kunci": "ALLOW",
+      "hotsData": {
+        "trafficKey": "https_api",
+        "trafficLabel": "HTTPS Attendance API (Port 443 TCP)",
+        "protocol": "TCP",
+        "port": "443",
+        "sourceIp": "192.168.10.75",
+        "destIp": "10.0.0.35",
+        "action": "ALLOW",
+        "expectedKeywords": [
+          "https",
+          "443",
+          "api",
+          "enkripsi",
+          "tls",
+          "allow",
+          "diterima",
+          "resmi"
+        ],
+        "rubricHint": "Konfigurasikan simulasi trafik API HTTPS dari perangkat absensi resmi dan jelaskan alasannya."
+      },
+      "pembahasan": "Aturan ALLOW tepat diterapkan karena pengiriman data presensi menggunakan HTTPS (Port 443) terenkripsi TLS dari perangkat internal terdaftar menuju server API resmi sekolah."
+    },
+    {
+      "id": "hots_m3_30",
+      "moduleId": "3",
+      "questionType": "hots_m3_firewall",
+      "pertanyaan": "Terdeteksi upaya koneksi luar jaringan (162.247.74.27) mencoba mengakses port Microsoft SQL Server (TCP Port 1433) pada server keuangan yayasan (10.0.0.55:1433) melalui internet publik.",
+      "kunci": "BLOCK",
+      "hotsData": {
+        "trafficKey": "mssql",
+        "trafficLabel": "MS SQL Server Public (Port 1433 TCP)",
+        "protocol": "TCP",
+        "port": "1433",
+        "sourceIp": "162.247.74.27",
+        "destIp": "10.0.0.55",
+        "action": "BLOCK",
+        "expectedKeywords": [
+          "sql",
+          "1433",
+          "database",
+          "publik",
+          "block",
+          "ditolak",
+          "eksternal",
+          "internal"
+        ],
+        "rubricHint": "Terapkan simulasi penolakan akses port SQL Server dari publik dan jelaskan alasan teknisnya."
+      },
+      "pembahasan": "Aturan BLOCK mutlak diterapkan pada port MS SQL Server (TCP 1433) dari jaringan publik agar basis data keuangan tetap terisolasi dari serangan injeksi, Brute Force, dan pencurian data."
+    }
+  ]
+}

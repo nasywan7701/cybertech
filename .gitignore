@@ -18,3 +18,10 @@ tmp/
 # Video Berukuran Besar (>100MB melampaui batas maksimal push GitHub)
 assets/videos/*.mp4
 
+# Node & Vercel
+node_modules/
+.vercel/
+.env
+.env.local
+.env*.local
+
