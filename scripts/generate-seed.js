@@ -36,3 +36,4 @@ if (!seed || !Array.isArray(seed.users) || !Array.isArray(seed.modules) || !Arra
 
 fs.writeFileSync(outPath, JSON.stringify(seed, null, 2), 'utf8');
 console.log(`Generated ${outPath}: ${seed.users.length} users, ${seed.modules.length} modules, ${seed.quizzes.length} quizzes.`);
+

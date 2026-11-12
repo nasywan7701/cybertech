@@ -9,3 +9,4 @@ assets/videos/*.mp4
 node_modules/
 .env
 .env.local
+

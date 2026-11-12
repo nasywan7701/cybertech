@@ -41,3 +41,4 @@ main().catch((err) => {
   console.error('Database initialization failed:', err.message);
   process.exit(1);
 });
+
