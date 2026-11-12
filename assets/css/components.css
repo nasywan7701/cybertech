@@ -266,6 +266,9 @@ textarea.form-control {
 
 .modal-close {
   cursor: pointer;
+}
+
+.modal-close:not(.btn) {
   background: transparent;
   border: none;
 }
@@ -290,14 +293,38 @@ textarea.form-control {
 /* Tombol Modal Close bila berupa tombol biasa (seperti di modal-footer) */
 .btn.modal-close,
 .modal-footer .modal-close {
-  width: auto !important;
-  height: auto !important;
-  border-radius: var(--radius-sm) !important;
-  font-size: var(--font-size-body) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0.55rem 1.25rem !important;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.35rem;
+}
+
+.btn-outline.modal-close {
+  background-color: #ffffff;
+  color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 1px 3px rgba(11, 37, 69, 0.08);
+}
+
+.btn-outline.modal-close:hover {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+}
+
+.modal-footer > .btn.modal-close:only-child {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  border: 2px solid var(--color-secondary);
+}
+
+.modal-footer > .btn.modal-close:only-child:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .modal-body {
