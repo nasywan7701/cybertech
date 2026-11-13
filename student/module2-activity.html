@@ -83,6 +83,30 @@
       color: #ffffff;
     }
 
+    .btn-next-case {
+      background-color: var(--color-secondary) !important;
+      color: #ffffff !important;
+      border: 2px solid var(--color-secondary) !important;
+      border-radius: var(--radius-md) !important;
+      padding: 0.85rem 1.75rem !important;
+      font-size: 1.1rem !important;
+      font-weight: 700 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      cursor: pointer !important;
+      box-shadow: 0 4px 14px rgba(19, 64, 116, 0.3) !important;
+      transition: all var(--transition-fast) !important;
+    }
+
+    .btn-next-case:hover {
+      background-color: var(--color-primary) !important;
+      border-color: var(--color-primary) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(11, 37, 69, 0.4) !important;
+    }
+
     @media (max-width: 768px) {
       .case-options-grid {
         grid-template-columns: 1fr;
@@ -266,8 +290,9 @@
           <button type="button" class="btn btn-primary btn-lg" id="submitCaseBtn">
             Analisis & Kirim Solusi
           </button>
-          <button type="button" class="btn btn-secondary btn-lg" id="nextCaseBtn" style="display: none;">
-            Lanjut ke Kasus Berikutnya →
+          <button type="button" class="btn btn-primary btn-lg btn-next-case" id="nextCaseBtn" style="display: none;">
+            <span>Lanjut ke Kasus Berikutnya</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
         </div>
 

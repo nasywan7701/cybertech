@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (currentCaseIndex < caseScenarios.length - 1) {
         nextCaseBtn.style.display = 'inline-flex';
-        nextCaseBtn.textContent = `Lanjut ke Kasus ${currentCaseIndex + 2} →`;
+        nextCaseBtn.innerHTML = `<span>Lanjut ke Kasus ${currentCaseIndex + 2}</span> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
       } else {
         // Seluruh 3 kasus selesai
         finalBanner.style.display = 'flex';

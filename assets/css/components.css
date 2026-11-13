@@ -44,6 +44,19 @@
   box-shadow: 0 4px 12px rgba(11, 37, 69, 0.25);
 }
 
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  border-color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(11, 37, 69, 0.25);
+}
+
 .btn-accent {
   background-color: var(--color-accent);
   color: #ffffff;
