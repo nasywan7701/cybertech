@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentCaseIndex = 0;
   let selectedOption = null;
+  let caseSolved = false;
   const solvedCases = new Set();
 
   const caseBadge = document.getElementById('caseBadge');
@@ -53,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextQuizBtn = document.getElementById('nextQuizBtn');
 
   function renderCurrentCase() {
+    caseSolved = false;
     const activeCase = caseScenarios[currentCaseIndex];
     caseBadge.textContent = activeCase.badge;
     caseTitle.textContent = activeCase.title;
@@ -67,7 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedOption = null;
     feedbackBox.style.display = 'none';
     submitBtn.style.display = 'inline-flex';
-    nextCaseBtn.style.display = 'none';
+    submitBtn.innerHTML = 'Analisis & Kirim Solusi';
+    if (nextCaseBtn) nextCaseBtn.style.display = 'none';
 
     // Update stepper dot
     document.querySelectorAll('.case-step-dot').forEach((dot, idx) => {
@@ -80,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Pilih kartu opsi solusi
   optionCards.forEach(card => {
     card.addEventListener('click', () => {
+      if (caseSolved) return; // Sudah benar, tinggal klik tombol lanjut
       optionCards.forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
       const radio = card.querySelector('input[type="radio"]');
@@ -88,8 +92,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Tombol Kirim Analisis
+  // Tombol Kirim Analisis / Lanjut ke Kasus Berikutnya
   submitBtn.addEventListener('click', () => {
+    // Jika kasus saat ini sudah diselesaikan dengan benar, tombol bertindak untuk lanjut
+    if (caseSolved) {
+      if (currentCaseIndex < caseScenarios.length - 1) {
+        currentCaseIndex++;
+        renderCurrentCase();
+      } else {
+        window.location.href = 'quiz.html?module=2';
+      }
+      return;
+    }
+
     if (!selectedOption) {
       window.Utils.showToast('Pilih salah satu sistem keamanan terlebih dahulu!', 'warning');
       return;
@@ -110,13 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
       feedbackStatus.innerHTML = '<span style="color: var(--color-success); font-weight: bold;">✓ Rekomendasi Solusi Tepat!</span>';
       feedbackText.textContent = activeCase.explanationCorrect;
       
-      submitBtn.style.display = 'none';
+      caseSolved = true;
 
       if (currentCaseIndex < caseScenarios.length - 1) {
-        nextCaseBtn.style.display = 'inline-flex';
-        nextCaseBtn.innerHTML = `<span>Lanjut ke Kasus ${currentCaseIndex + 2}</span> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
+        submitBtn.innerHTML = `<span>Lanjut ke Kasus ${currentCaseIndex + 2}</span> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
       } else {
         // Seluruh 3 kasus selesai
+        submitBtn.innerHTML = `<span>Lanjut ke Evaluasi Modul 2</span> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
         finalBanner.style.display = 'flex';
         if (window.ModuleHelper) {
           window.ModuleHelper.setActionButtonLocked(nextQuizBtn, false);
@@ -140,13 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Tombol Lanjut ke Kasus Berikutnya
-  nextCaseBtn.addEventListener('click', () => {
-    currentCaseIndex++;
-    if (currentCaseIndex < caseScenarios.length) {
-      renderCurrentCase();
-    }
-  });
+  if (nextCaseBtn) {
+    nextCaseBtn.addEventListener('click', () => {
+      currentCaseIndex++;
+      if (currentCaseIndex < caseScenarios.length) {
+        renderCurrentCase();
+      }
+    });
+  }
 
   // Render awal kasus 1
   renderCurrentCase();
